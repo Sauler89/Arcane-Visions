@@ -25,6 +25,6 @@ Technical references:
 - [Near Infinity](https://github.com/Argent77/NearInfinity)
 - [WeiDU](https://github.com/WeiDUorg/weidu)
 
-WeiDU 251 Windows executable and its license are included. Python tools use
+WeiDU 251 Windows executable and [its own license](sr_original_spell_animations/docs/WEIDU-COPYING.txt) are included. Python tools use
 standard libraries; preview rendering uses Pillow. GIFs are generated from
 the actual bundled assets and do not depict a launched game.

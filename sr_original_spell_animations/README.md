@@ -203,5 +203,5 @@ respective original creators. This project claims no ownership of those assets.
 The supplied SR README says: “This mod may not be sold, published, compiled
 or redistributed in any form without the consent of its author.” That source
 notice remains applicable; inclusion here does not grant a new graphics license.
-WeiDU is distributed under its own license in [WEIDU-COPYING.txt](../WEIDU-COPYING.txt).
+WeiDU is distributed under its own license in [WeiDU license](docs/WEIDU-COPYING.txt).
 See [CREDITS.md](../CREDITS.md) for provenance and technical references.

@@ -11,6 +11,7 @@
 - Fix nested result-directory creation in the exported-EET test utility.
 - Document native/shared-resource scope and component-specific skip behavior accurately.
 - Add six reproducible GIF previews and English/Italian README instructions.
+- Keep the bundled WeiDU license with its documentation, separate from project/graphics licensing.
 - Keep Globe of Invulnerability icons excluded from the animation-only mod.
 
 ## v0.2.0-beta.1
