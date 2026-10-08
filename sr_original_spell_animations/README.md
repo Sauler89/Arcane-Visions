@@ -8,8 +8,8 @@ shown after a spell is cast, while retaining the installed spell's mechanics.
 **Spell Revisions and IWDification are not required.**
 
 Current version: **v0.2.0-beta.2**, by **Sauler89**.
-[Italian instructions](README.it.md) · [Affected spells](#affected-spells) ·
-[Audit and validation](sr_original_spell_animations/docs/RIGOROUS_AUDIT.md)
+[Italian instructions](../README.it.md) · [Affected spells](#affected-spells) ·
+[Audit and validation](docs/RIGOROUS_AUDIT.md)
 
 ## Animation examples
 
@@ -20,11 +20,11 @@ orientation and timing. Entangle shows an individual animated tendril.
 
 | Shared protection aura — `SPMAGGLO` | Entangle — `SPENTAAI` | Ghost Armor — `GHARMOR` |
 |:---:|:---:|:---:|
-| ![SPMAGGLO animation](docs/previews/spmagglo.gif) | ![Entangle animation](docs/previews/entangle.gif) | ![Ghost Armor animation](docs/previews/ghost-armor.gif) |
+| ![SPMAGGLO animation](../docs/previews/spmagglo.gif) | ![Entangle animation](../docs/previews/entangle.gif) | ![Ghost Armor animation](../docs/previews/ghost-armor.gif) |
 
 | Chromatic Orb — `SPCHRORB` | Mantle — `DVMANTLE` | Blade Barrier — `BBARRH1` |
 |:---:|:---:|:---:|
-| ![Chromatic Orb animation](docs/previews/chromatic-orb.gif) | ![Mantle animation](docs/previews/mantle.gif) | ![Blade Barrier animation](docs/previews/blade-barrier.gif) |
+| ![Chromatic Orb animation](../docs/previews/chromatic-orb.gif) | ![Mantle animation](../docs/previews/mantle.gif) | ![Blade Barrier animation](../docs/previews/blade-barrier.gif) |
 
 **Globe of Invulnerability and Minor Globe of Invulnerability are not included.**
 The SR files named `spwi406a/b/c` and `spwi602a/b/c` are spell icons, not new
@@ -171,7 +171,7 @@ An additional **22 regression cases** cover malformed layouts, an unused global
 index, conditional visual effects, wrong targets/delays, resource collisions
 and unsupported games. Source SR spell layouts and both EET/BG2EE synthetic
 profiles also passed. Full details and retained results are in
-[the rigorous audit](sr_original_spell_animations/docs/RIGOROUS_AUDIT.md).
+[the rigorous audit](docs/RIGOROUS_AUDIT.md).
 
 **The mod has not yet been visually tested in a launched EET game.** Position,
 blending and synchronization of the effects require in-game confirmation.
@@ -203,5 +203,5 @@ respective original creators. This project claims no ownership of those assets.
 The supplied SR README says: “This mod may not be sold, published, compiled
 or redistributed in any form without the consent of its author.” That source
 notice remains applicable; inclusion here does not grant a new graphics license.
-WeiDU is distributed under its own license in [WEIDU-COPYING.txt](WEIDU-COPYING.txt).
-See [CREDITS.md](CREDITS.md) for provenance and technical references.
+WeiDU is distributed under its own license in [WEIDU-COPYING.txt](../WEIDU-COPYING.txt).
+See [CREDITS.md](../CREDITS.md) for provenance and technical references.

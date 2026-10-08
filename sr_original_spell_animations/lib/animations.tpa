@@ -1,0 +1,200 @@
+// Engine-named visual resources: no spell mechanics or icon fields touched.
+ACTION_FOR_EACH sra_native IN ~spentaai.bam~ ~spentaci.bam~ ~spchrorb.bam~ ~spmagglo.bam~ ~spmagglo.vvc~ BEGIN
+  // SPMAGGLO.VVC can be absent while its hard-coded BAM overlay exists.
+  ACTION_IF FILE_EXISTS_IN_GAME ~%sra_native%~ OR (~%sra_native%~ STRING_EQUAL_CASE ~spmagglo.vvc~ AND FILE_EXISTS_IN_GAME ~spmagglo.bam~) BEGIN
+    COPY ~sr_original_spell_animations/assets/native/%sra_native%~ ~override~
+  END ELSE BEGIN
+    PRINT ~SR Spell Animations: native resource %sra_native% missing, skipped.~
+  END
+END
+COPY ~sr_original_spell_animations/assets/custom~ ~override~
+
+DEFINE_PATCH_FUNCTION sra_add_visual
+  INT_VAR sra_target = 2 sra_where = 1 sra_seconds = 2 sra_persistent = 0
+  STR_VAR sra_vvc = ~~
+BEGIN
+  PATCH_IF (SOURCE_SIZE >= 0x72) BEGIN
+    READ_ASCII 0x00 sra_signature (8)
+    READ_LONG 0x64 sra_abilities
+    READ_SHORT 0x68 sra_count
+    READ_LONG 0x6a sra_effects
+    READ_SHORT 0x6e sra_global_idx
+    READ_SHORT 0x70 sra_global_count
+    SET sra_valid = (~%sra_signature%~ STRING_EQUAL_CASE ~SPL V1  ~) AND sra_count > 0 AND sra_abilities >= 0x72 AND sra_abilities + sra_count * 0x28 <= SOURCE_SIZE AND sra_effects >= sra_abilities + sra_count * 0x28 AND sra_effects <= SOURCE_SIZE
+    SET sra_previous_end = 0
+    PATCH_IF sra_global_count > 0 BEGIN
+      SET sra_previous_end = sra_global_idx + sra_global_count
+      PATCH_IF (sra_effects + sra_previous_end * 0x30 > SOURCE_SIZE) BEGIN SET sra_valid = 0 END
+    END
+    // WeiDU effect-table edits require separate, ordered effect blocks.
+    // Reject shared/overlapping blocks instead of changing casting effects.
+    FOR (sra_i = 0; sra_i < sra_count AND sra_valid; ++sra_i) BEGIN
+      READ_SHORT (sra_abilities + sra_i * 0x28 + 0x1e) sra_n
+      READ_SHORT (sra_abilities + sra_i * 0x28 + 0x20) sra_idx
+      PATCH_IF (sra_effects + (sra_idx + sra_n) * 0x30 > SOURCE_SIZE OR (sra_n > 0 AND sra_idx < sra_previous_end)) BEGIN SET sra_valid = 0 END
+      PATCH_IF sra_n > 0 BEGIN SET sra_previous_end = sra_idx + sra_n END
+    END
+    PATCH_IF sra_valid BEGIN
+      // Only after-cast visual opcodes in ability headers. Casting-feature
+      // effects and all nonvisual effects are preserved.
+      FOR (sra_i = 0; sra_i < sra_count; ++sra_i) BEGIN
+        SET sra_duration = sra_seconds
+        SET sra_visual_target = sra_target
+        SET sra_timing = 0
+        SET sra_dispel = 2
+        SET sra_power = 0
+        SET sra_probability1 = 100
+        SET sra_probability2 = 0
+        SET sra_save = 0
+        SET sra_savebonus = 0
+        // Target Self supplies a living effect recipient on an empty point;
+        // parameter2=2 places the non-looping visual at the selected point.
+        // Timing 1 lets its complete BAM sequence play without a 2s cutoff.
+        PATCH_IF sra_where = 2 OR (!sra_persistent AND !(~%sra_vvc%~ STRING_EQUAL_CASE ~srasun1~)) BEGIN
+          SET sra_timing = 1
+          SET sra_duration = 0
+        END
+        PATCH_IF sra_persistent BEGIN
+          SET sra_buff_duration = 0
+          SET sra_old_duration = 0
+          READ_LONG 0x6a sra_effects
+          READ_SHORT (sra_abilities + sra_i * 0x28 + 0x1e) sra_n
+          READ_SHORT (sra_abilities + sra_i * 0x28 + 0x20) sra_idx
+          FOR (sra_j = 0; sra_j < sra_n; ++sra_j) BEGIN
+            SET sra_eff = sra_effects + (sra_idx + sra_j) * 0x30
+            READ_SHORT sra_eff sra_opcode
+            READ_BYTE (sra_eff + 0x0c) sra_timing
+            READ_LONG (sra_eff + 0x0e) sra_mech_duration
+            READ_LONG (sra_eff + 0x08) sra_p2
+            PATCH_IF (sra_opcode = 215 AND sra_p2 = 1 AND sra_timing = 0 AND sra_mech_duration > sra_old_duration) BEGIN SET sra_old_duration = sra_mech_duration END
+            // Follow Mantle's weapon protection, not unrelated long effects.
+            PATCH_IF (sra_opcode = 120 AND sra_timing = 0 AND sra_mech_duration > sra_buff_duration) BEGIN
+              SET sra_buff_duration = sra_mech_duration
+              READ_BYTE (sra_eff + 0x02) sra_visual_target
+              READ_BYTE (sra_eff + 0x03) sra_power
+              READ_BYTE (sra_eff + 0x0d) sra_dispel
+              READ_BYTE (sra_eff + 0x12) sra_probability1
+              READ_BYTE (sra_eff + 0x13) sra_probability2
+              READ_LONG (sra_eff + 0x24) sra_save
+              READ_LONG (sra_eff + 0x28) sra_savebonus
+            END
+          END
+          SET sra_timing = 0
+          PATCH_IF sra_buff_duration > 0 BEGIN
+            SET sra_duration = sra_buff_duration
+          END ELSE PATCH_IF sra_old_duration > 0 BEGIN
+            SET sra_duration = sra_old_duration
+          END ELSE BEGIN
+            PATCH_PRINT ~SR Spell Animations: %SOURCE_RES%.spl header %sra_i% has no direct timed weapon protection; Mantle aura uses 24s fallback.~
+          END
+        END
+        LPF DELETE_EFFECT INT_VAR check_globals = 0 header = sra_i match_opcode = 215 multi_match = 65535 silent = 1 END
+        LPF DELETE_EFFECT INT_VAR check_globals = 0 header = sra_i match_opcode = 141 multi_match = 65535 silent = 1 END
+        LPF ADD_SPELL_EFFECT INT_VAR opcode = 215 target = sra_visual_target parameter2 = sra_where timing = sra_timing duration = sra_duration resist_dispel = sra_dispel power = sra_power probability1 = sra_probability1 probability2 = sra_probability2 savingthrow = sra_save savebonus = sra_savebonus header = sra_i + 1 STR_VAR resource = EVAL ~%sra_vvc%~ END
+        PATCH_IF (~%sra_vvc%~ STRING_EQUAL_CASE ~srasun1~) BEGIN
+          LPF ADD_SPELL_EFFECT INT_VAR opcode = 215 target = 1 parameter2 = 1 timing = 3 duration = 3 resist_dispel = 2 header = sra_i + 1 STR_VAR resource = ~srasun2~ END
+        END
+      END
+    END ELSE BEGIN
+      PATCH_PRINT ~SR Spell Animations: invalid or unsupported effect layout in %SOURCE_RES%.spl, skipped.~
+    END
+  END ELSE BEGIN
+    PATCH_PRINT ~SR Spell Animations: truncated %SOURCE_RES%.spl, skipped.~
+  END
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~SPWI206.spl~ BEGIN
+  COPY_EXISTING ~SPWI206.spl~ ~override~
+    LPF sra_add_visual INT_VAR sra_target = 2 sra_where = 1 sra_seconds = 2 sra_persistent = 0 STR_VAR sra_vvc = ~srailus~ END
+  BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~SR Spell Animations: SPWI206.spl missing, skipped.~ END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~SPWI212.spl~ BEGIN
+  COPY_EXISTING ~SPWI212.spl~ ~override~
+    LPF sra_add_visual INT_VAR sra_target = 1 sra_where = 1 sra_seconds = 2 sra_persistent = 0 STR_VAR sra_vvc = ~srailus~ END
+  BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~SR Spell Animations: SPWI212.spl missing, skipped.~ END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~SPWI307.spl~ BEGIN
+  COPY_EXISTING ~SPWI307.spl~ ~override~
+    LPF sra_add_visual INT_VAR sra_target = 2 sra_where = 1 sra_seconds = 2 sra_persistent = 0 STR_VAR sra_vvc = ~srailus~ END
+  BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~SR Spell Animations: SPWI307.spl missing, skipped.~ END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~SPPR516.spl~ BEGIN
+  COPY_EXISTING ~SPPR516.spl~ ~override~
+    LPF sra_add_visual INT_VAR sra_target = 2 sra_where = 1 sra_seconds = 2 sra_persistent = 0 STR_VAR sra_vvc = ~srailus~ END
+  BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~SR Spell Animations: SPPR516.spl missing, skipped.~ END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~SPWI317.spl~ BEGIN
+  COPY_EXISTING ~SPWI317.spl~ ~override~
+    LPF sra_add_visual INT_VAR sra_target = 2 sra_where = 1 sra_seconds = 3 sra_persistent = 0 STR_VAR sra_vvc = ~sraghst~ END
+  BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~SR Spell Animations: SPWI317.spl missing, skipped.~ END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~SPWI414.spl~ BEGIN
+  COPY_EXISTING ~SPWI414.spl~ ~override~
+    LPF sra_add_visual INT_VAR sra_target = 2 sra_where = 1 sra_seconds = 4 sra_persistent = 0 STR_VAR sra_vvc = ~srasprt~ END
+  BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~SR Spell Animations: SPWI414.spl missing, skipped.~ END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~SPWI505.spl~ BEGIN
+  COPY_EXISTING ~SPWI505.spl~ ~override~
+    LPF sra_add_visual INT_VAR sra_target = 1 sra_where = 0 sra_seconds = 2 sra_persistent = 0 STR_VAR sra_vvc = ~srasdor~ END
+  BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~SR Spell Animations: SPWI505.spl missing, skipped.~ END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~SPPR728.spl~ BEGIN
+  COPY_EXISTING ~SPPR728.spl~ ~override~
+    LPF sra_add_visual INT_VAR sra_target = 2 sra_where = 0 sra_seconds = 1 sra_persistent = 0 STR_VAR sra_vvc = ~sraimpl~ END
+  BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~SR Spell Animations: SPPR728.spl missing, skipped.~ END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~SPPR609.spl~ BEGIN
+  COPY_EXISTING ~SPPR609.spl~ ~override~
+    LPF sra_add_visual INT_VAR sra_target = 1 sra_where = 1 sra_seconds = 3 sra_persistent = 0 STR_VAR sra_vvc = ~srasun1~ END
+  BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~SR Spell Animations: SPPR609.spl missing, skipped.~ END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~SPWI708.spl~ BEGIN
+  COPY_EXISTING ~SPWI708.spl~ ~override~
+    LPF sra_add_visual INT_VAR sra_target = 1 sra_where = 1 sra_seconds = 24 sra_persistent = 1 STR_VAR sra_vvc = ~sramant~ END
+  BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~SR Spell Animations: SPWI708.spl missing, skipped.~ END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~SPWI516.spl~ BEGIN
+  COPY_EXISTING ~SPWI516.spl~ ~override~
+    LPF sra_add_visual INT_VAR sra_target = 1 sra_where = 2 sra_seconds = 0 sra_persistent = 0 STR_VAR sra_vvc = ~sraelfir~ END
+  BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~SR Spell Animations: SPWI516.spl missing, skipped.~ END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~SPWI520.spl~ BEGIN
+  COPY_EXISTING ~SPWI520.spl~ ~override~
+    LPF sra_add_visual INT_VAR sra_target = 1 sra_where = 2 sra_seconds = 0 sra_persistent = 0 STR_VAR sra_vvc = ~sraelair~ END
+  BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~SR Spell Animations: SPWI520.spl missing, skipped.~ END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~SPWI521.spl~ BEGIN
+  COPY_EXISTING ~SPWI521.spl~ ~override~
+    LPF sra_add_visual INT_VAR sra_target = 1 sra_where = 2 sra_seconds = 0 sra_persistent = 0 STR_VAR sra_vvc = ~sraelear~ END
+  BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~SR Spell Animations: SPWI521.spl missing, skipped.~ END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~SPWI620.spl~ BEGIN
+  COPY_EXISTING ~SPWI620.spl~ ~override~
+    LPF sra_add_visual INT_VAR sra_target = 1 sra_where = 2 sra_seconds = 0 sra_persistent = 0 STR_VAR sra_vvc = ~sraelfir~ END
+  BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~SR Spell Animations: SPWI620.spl missing, skipped.~ END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~SPWI621.spl~ BEGIN
+  COPY_EXISTING ~SPWI621.spl~ ~override~
+    LPF sra_add_visual INT_VAR sra_target = 1 sra_where = 2 sra_seconds = 0 sra_persistent = 0 STR_VAR sra_vvc = ~sraelair~ END
+  BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~SR Spell Animations: SPWI621.spl missing, skipped.~ END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~SPWI622.spl~ BEGIN
+  COPY_EXISTING ~SPWI622.spl~ ~override~
+    LPF sra_add_visual INT_VAR sra_target = 1 sra_where = 2 sra_seconds = 0 sra_persistent = 0 STR_VAR sra_vvc = ~sraelear~ END
+  BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~SR Spell Animations: SPWI622.spl missing, skipped.~ END

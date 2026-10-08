@@ -1,0 +1,4 @@
+sr_original_spell_animations/backup/
+*.debug
+*.DEBUG
+__pycache__/

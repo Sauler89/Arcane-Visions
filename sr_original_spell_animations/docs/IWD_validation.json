@@ -1,0 +1,115 @@
+{
+  "status": "PASS",
+  "component": 10,
+  "spells": 16,
+  "bam_assets": 15,
+  "vvc_assets": 15,
+  "frames_validated": 623,
+  "spell_checks": [
+    {
+      "spell": "SPPR308",
+      "abilities": 1,
+      "visual_effects_replaced": 1,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
+      "spell": "SPPR411",
+      "abilities": 5,
+      "visual_effects_replaced": 5,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
+      "spell": "SPPR417",
+      "abilities": 1,
+      "visual_effects_replaced": 1,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
+      "spell": "SPPR502",
+      "abilities": 1,
+      "visual_effects_replaced": 1,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
+      "spell": "SPPR603",
+      "abilities": 1,
+      "visual_effects_replaced": 2,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
+      "spell": "SPPR708",
+      "abilities": 7,
+      "visual_effects_replaced": 7,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
+      "spell": "SPPR711",
+      "abilities": 7,
+      "visual_effects_replaced": 7,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
+      "spell": "SPPR713",
+      "abilities": 1,
+      "visual_effects_replaced": 1,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
+      "spell": "SPPR722",
+      "abilities": 1,
+      "visual_effects_replaced": 1,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
+      "spell": "SPWI605",
+      "abilities": 1,
+      "visual_effects_replaced": 1,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
+      "spell": "SPWI612",
+      "abilities": 1,
+      "visual_effects_replaced": 1,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
+      "spell": "SPWI711",
+      "abilities": 1,
+      "visual_effects_replaced": 1,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
+      "spell": "SPWI713",
+      "abilities": 1,
+      "visual_effects_replaced": 1,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
+      "spell": "SPWI715",
+      "abilities": 1,
+      "visual_effects_replaced": 1,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
+      "spell": "SPWI812",
+      "abilities": 5,
+      "visual_effects_replaced": 5,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
+      "spell": "SPWI922",
+      "abilities": 1,
+      "visual_effects_replaced": 1,
+      "all_mechanics_and_conditions_preserved": true
+    }
+  ],
+  "standalone_install": true,
+  "combined_with_SR": true,
+  "reinstall_stable": true,
+  "uninstall_byte_exact": true,
+  "unknown_visual_skipped": true,
+  "icons_projectiles_globals_nonvisual_effects_and_conditions_preserved": true,
+  "game_rendering_tested": false,
+  "baseline": "owner-supplied modded EET exports; isolated fixture with synthetic KEY/TLK",
+  "excluded_framework_cache": "ADD_SPELL.IDS"
+}

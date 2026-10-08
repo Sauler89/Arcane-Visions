@@ -1,0 +1,212 @@
+[
+  {
+    "source": "ADHWILH.BAM",
+    "destination": "sr_original_spell_animations/assets/iwd/sriowilt.bam",
+    "installed_sha256": "9769280b48b9b4c62a8216619134c3acec5523dccd881b6b88c251f9cb9aa3b6",
+    "source_sha256": "9769280b48b9b4c62a8216619134c3acec5523dccd881b6b88c251f9cb9aa3b6",
+    "synthesized_controller": false
+  },
+  {
+    "source": "ADHWILH.VVC",
+    "destination": "sr_original_spell_animations/assets/iwd/sriowilt.vvc",
+    "installed_sha256": "c1d3b9e988aba3e50dd57ca91b4ce9050ca86c8afa3210bafa8a61420bc41e25",
+    "source_sha256": "50bd9e8e88d1b1dea05e559c53abc8a6f665b1bfcfaa30229917ab599cd47c18",
+    "synthesized_controller": false
+  },
+  {
+    "source": "BBARRH1.BAM",
+    "destination": "sr_original_spell_animations/assets/iwd/srioblt.bam",
+    "installed_sha256": "1fb418510caa7ada4bf6fb9efd3fbc6e3dc25f2b4c0fa2d25c39c713fea6c857",
+    "source_sha256": "1fb418510caa7ada4bf6fb9efd3fbc6e3dc25f2b4c0fa2d25c39c713fea6c857",
+    "synthesized_controller": false
+  },
+  {
+    "source": "BBARRH1.VVC",
+    "destination": "sr_original_spell_animations/assets/iwd/srioblt.vvc",
+    "installed_sha256": "983565c1b4bc9531a8b4c543b2c071019f375876e9f73a81b6a6c6be87a89045",
+    "source_sha256": "539e8a38969a7edd110af0bacd5fcce62cc69ff9e42aec00733853d9d13f6b5d",
+    "synthesized_controller": false
+  },
+  {
+    "source": "BBARRH2.BAM",
+    "destination": "sr_original_spell_animations/assets/iwd/srioblb.bam",
+    "installed_sha256": "b8df3647b4c83ae646a27a2645aceddfa6755ce8057b30927a059145d7b8d03f",
+    "source_sha256": "b8df3647b4c83ae646a27a2645aceddfa6755ce8057b30927a059145d7b8d03f",
+    "synthesized_controller": false
+  },
+  {
+    "source": "BBARRH2.VVC",
+    "destination": "sr_original_spell_animations/assets/iwd/srioblb.vvc",
+    "installed_sha256": "1e6e42c2e36a718c7b13d3ddc37f0d692c49044d50ea1583b7bef05446adeeb3",
+    "source_sha256": "245d238f12723ea4087dbd1b304609aa1b5d84be160ef495d54953a35df27cab",
+    "synthesized_controller": false
+  },
+  {
+    "source": "CCWOUNH.BAM",
+    "destination": "sr_original_spell_animations/assets/iwd/sriocrit.bam",
+    "installed_sha256": "c578dd59f0cd4494dba29f4ca2995d4939792e68a74d17c1aaa0dc075dd836b3",
+    "source_sha256": "c578dd59f0cd4494dba29f4ca2995d4939792e68a74d17c1aaa0dc075dd836b3",
+    "synthesized_controller": false
+  },
+  {
+    "source": "CCWOUNH.VVC",
+    "destination": "sr_original_spell_animations/assets/iwd/sriocrit.vvc",
+    "installed_sha256": "7c487f168ca16a7e39513a5821f3db94d35ebd2a1206ca365b2bba6c5e6d700a",
+    "source_sha256": "199cdee243c7a0d58f87f1a3c736ecc0bc30ac9b96166fe03da2b5cb37afc915",
+    "synthesized_controller": false
+  },
+  {
+    "source": "CONFUSH.BAM",
+    "destination": "sr_original_spell_animations/assets/iwd/srioconf.bam",
+    "installed_sha256": "475d2a15a7b74335dd9f3a80993fc3d484d9a4d063faed67359042badbb67f2b",
+    "source_sha256": "475d2a15a7b74335dd9f3a80993fc3d484d9a4d063faed67359042badbb67f2b",
+    "synthesized_controller": false
+  },
+  {
+    "source": "CONFUSH.VVC",
+    "destination": "sr_original_spell_animations/assets/iwd/srioconf.vvc",
+    "installed_sha256": "73fb6b76e988e4d5c849661839a81adf30bfe18f339b320b792f62c3594968e2",
+    "source_sha256": "22186b7b787738b851373a3cc16ef6990e1c3552f5e515a8cb098d94d318ff49",
+    "synthesized_controller": false
+  },
+  {
+    "source": "DSPELLH.BAM",
+    "destination": "sr_original_spell_animations/assets/iwd/sriodead.bam",
+    "installed_sha256": "4fd8b63352dbe13b7e08700f6abd73e9634a54b8ec85e866979f931180720d8f",
+    "source_sha256": "4fd8b63352dbe13b7e08700f6abd73e9634a54b8ec85e866979f931180720d8f",
+    "synthesized_controller": false
+  },
+  {
+    "source": "DSPELLH.VVC",
+    "destination": "sr_original_spell_animations/assets/iwd/sriodead.vvc",
+    "installed_sha256": "ae913489d10ea6d638e886d21d8ce7d84f0a76cc77d85a6b168d7f658ddde68f",
+    "source_sha256": "333f7e7df43b628895eab4e2328c5c2fafa0ad23ecec403e19a62600dc2acd51",
+    "synthesized_controller": false
+  },
+  {
+    "source": "FODEATH.BAM",
+    "destination": "sr_original_spell_animations/assets/iwd/sriodeth.bam",
+    "installed_sha256": "3636e6c541bffa52a74491dda9f4a8f741008d2da5c8bfba7f80dbf1e964f59e",
+    "source_sha256": "3636e6c541bffa52a74491dda9f4a8f741008d2da5c8bfba7f80dbf1e964f59e",
+    "synthesized_controller": false
+  },
+  {
+    "source": "FODEATH.VVC",
+    "destination": "sr_original_spell_animations/assets/iwd/sriodeth.vvc",
+    "installed_sha256": "d265ca95b9b7951dd0df57d2a0020998cf74422509e19a5fe0bf35774ba9c495",
+    "source_sha256": "46940a8c29efc2643286dfda572c2218f77005040e19a16650ba42fcba00abed",
+    "synthesized_controller": false
+  },
+  {
+    "source": "GRESTORH.BAM",
+    "destination": "sr_original_spell_animations/assets/iwd/sriogres.bam",
+    "installed_sha256": "1dbc4d2117dadddc2b8579647df95e6b90ba01ddad78edcc62f3933928b1f6da",
+    "source_sha256": "1dbc4d2117dadddc2b8579647df95e6b90ba01ddad78edcc62f3933928b1f6da",
+    "synthesized_controller": false
+  },
+  {
+    "source": "SPOISOH.VVC (template for GRESTORH.BAM)",
+    "destination": "sr_original_spell_animations/assets/iwd/sriogres.vvc",
+    "installed_sha256": "1ffcfd39deb868e0d2dc5c9283828fb88e0d5960da3e73eb33cc3e4e25181933",
+    "source_sha256": "a725cc04651842c5d1805d04c362a494fbb5142d4a8be75c0d2a25b6b300a4db",
+    "synthesized_controller": true
+  },
+  {
+    "source": "LRESTORH.BAM",
+    "destination": "sr_original_spell_animations/assets/iwd/sriolres.bam",
+    "installed_sha256": "e73366f1fdb8d1074b1e05dd4f99bfe113ccccc9801b57b8736fdc46b42f88dc",
+    "source_sha256": "e73366f1fdb8d1074b1e05dd4f99bfe113ccccc9801b57b8736fdc46b42f88dc",
+    "synthesized_controller": false
+  },
+  {
+    "source": "SPOISOH.VVC (template for LRESTORH.BAM)",
+    "destination": "sr_original_spell_animations/assets/iwd/sriolres.vvc",
+    "installed_sha256": "d36594939dabc92925eafdd9ab4a813fa6fddbcea4093ca85fc4b45e4107cc3d",
+    "source_sha256": "a725cc04651842c5d1805d04c362a494fbb5142d4a8be75c0d2a25b6b300a4db",
+    "synthesized_controller": true
+  },
+  {
+    "source": "POISONH.BAM",
+    "destination": "sr_original_spell_animations/assets/iwd/sriopois.bam",
+    "installed_sha256": "1603936a07668776a4a6ef8cc6d30544a37824d3e287883f9b1462f5b6f985cb",
+    "source_sha256": "1603936a07668776a4a6ef8cc6d30544a37824d3e287883f9b1462f5b6f985cb",
+    "synthesized_controller": false
+  },
+  {
+    "source": "POISONH.VVC",
+    "destination": "sr_original_spell_animations/assets/iwd/sriopois.vvc",
+    "installed_sha256": "506eb5294f15491a4137e79b8d11030ffd6dbb1fc7e267966b7ad5e18c9226d5",
+    "source_sha256": "eb3d9718a239d2c3dfd265960151a26667314988e6c3dfde9d5a282a6da75cc3",
+    "synthesized_controller": false
+  },
+  {
+    "source": "PWSILEH.BAM",
+    "destination": "sr_original_spell_animations/assets/iwd/sriopwsi.bam",
+    "installed_sha256": "da4df63d825189fd1481d2395c1d14b91d5461250b3de011ddd4d0a08facb434",
+    "source_sha256": "da4df63d825189fd1481d2395c1d14b91d5461250b3de011ddd4d0a08facb434",
+    "synthesized_controller": false
+  },
+  {
+    "source": "PWSILEH.VVC",
+    "destination": "sr_original_spell_animations/assets/iwd/sriopwsi.vvc",
+    "installed_sha256": "b626da0138cf7524d3dd94c834395a5c135c8388fc61cbd6914410d7db946a06",
+    "source_sha256": "f1d1e20fa3abf9ab8bf71650dcc8b3f89f9b3f9bb0e42799779b00fef89a793a",
+    "synthesized_controller": false
+  },
+  {
+    "source": "PWSTUNH.BAM",
+    "destination": "sr_original_spell_animations/assets/iwd/sriopwst.bam",
+    "installed_sha256": "5afba6211239b114778c07ec0d69f85da98a9bfd9e1311629042a89b7f45e394",
+    "source_sha256": "5afba6211239b114778c07ec0d69f85da98a9bfd9e1311629042a89b7f45e394",
+    "synthesized_controller": false
+  },
+  {
+    "source": "PWSTUNH.VVC",
+    "destination": "sr_original_spell_animations/assets/iwd/sriopwst.vvc",
+    "installed_sha256": "0059d1bd7c8f3b4c27640cd925ffe6879ccc8c3065fafb01a324de68638e22f9",
+    "source_sha256": "cec4ba14881fa389f3c4b7717e4c5d46550aac65ed09d0712af9ef99ac7efac0",
+    "synthesized_controller": false
+  },
+  {
+    "source": "REGENERH.BAM",
+    "destination": "sr_original_spell_animations/assets/iwd/srioregn.bam",
+    "installed_sha256": "5456e6e36db1414e079c618104bccaa981e34c9ec8a612aefe82283d04fae4ab",
+    "source_sha256": "5456e6e36db1414e079c618104bccaa981e34c9ec8a612aefe82283d04fae4ab",
+    "synthesized_controller": false
+  },
+  {
+    "source": "SPOISOH.VVC (template for REGENERH.BAM)",
+    "destination": "sr_original_spell_animations/assets/iwd/srioregn.vvc",
+    "installed_sha256": "47b3a688d3fd92446459ef0a37f22e3e96d9f6d38c4c28db1593df6841ee9e87",
+    "source_sha256": "a725cc04651842c5d1805d04c362a494fbb5142d4a8be75c0d2a25b6b300a4db",
+    "synthesized_controller": true
+  },
+  {
+    "source": "RPARALH.BAM",
+    "destination": "sr_original_spell_animations/assets/iwd/sriopara.bam",
+    "installed_sha256": "9de5dd837283052d210c9edb68edd49ae7290fbb1c26fa3655b1ed16c2e86162",
+    "source_sha256": "9de5dd837283052d210c9edb68edd49ae7290fbb1c26fa3655b1ed16c2e86162",
+    "synthesized_controller": false
+  },
+  {
+    "source": "RPARALH.VVC",
+    "destination": "sr_original_spell_animations/assets/iwd/sriopara.vvc",
+    "installed_sha256": "e7a531d0d5a5c419f97a26a03c870854a128e70fa86e57853130e9a36448482b",
+    "source_sha256": "370e1fe1fbaee4a45a8c1e5b3a3f0537cc4b020a8d149aeaeb13ac002c26ac81",
+    "synthesized_controller": false
+  },
+  {
+    "source": "SPDRGNBR.BAM",
+    "destination": "sr_original_spell_animations/assets/iwd/sriodrag.bam",
+    "installed_sha256": "781a0224c495b06fa145f3997a04de95efe35a0b7d5c94eb9d9854724d9cc82a",
+    "source_sha256": "781a0224c495b06fa145f3997a04de95efe35a0b7d5c94eb9d9854724d9cc82a",
+    "synthesized_controller": false
+  },
+  {
+    "source": "SPDRGNBR.VVC",
+    "destination": "sr_original_spell_animations/assets/iwd/sriodrag.vvc",
+    "installed_sha256": "4f4c4709e20b354b37dae0ee730699a1acb9298d978fd7e33aea1e8517267527",
+    "source_sha256": "5b9c78ff148d43f6fc899e2c2dfe0778fd95296a14d02d6723f13466b460a493",
+    "synthesized_controller": false
+  }
+]

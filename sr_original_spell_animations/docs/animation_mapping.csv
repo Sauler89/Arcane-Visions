@@ -1,0 +1,15 @@
+original_asset,packaged_asset,original_spell_usage,installation_mode
+shared/spentaai.bam,spentaai.bam,Entangle: SPPR105,native
+shared/spentaci.bam,spentaci.bam,Entangle: SPPR105,native
+spwi1##/spchrorb.bam,spchrorb.bam,Chromatic Orb: SPWI118,native
+shared/spmagglo.bam,spmagglo.bam,Shared spell-deflection/immunity/shield overlay,native
+shared/illush.bam,srailus.bam,"Invisibility, Mirror Image, Invisibility 10 ft., Pixie Dust",custom
+spwi3##/gharmor.bam,sraghst.bam,Ghost Armor: SPWI317,custom
+spwi4##/sparmor.bam,srasprt.bam,Spirit Armor: SPWI414,custom
+spwi5##/dvsdoor.bam,srasdor.bam,Shadow Door: SPWI505,custom
+sppr7##/dvimplo.bam,sraimpl.bam,Implosion: SPPR728,custom
+shared/dvsun.bam,srasun.bam,False Dawn: SPPR609,custom
+shared/dvelair.bam,sraelair.bam,"Lesser Air / Air Elemental: SPWI520, SPWI621",custom
+shared/dveleart.bam,sraelear.bam,"Lesser Earth / Earth Elemental: SPWI521, SPWI622",custom
+shared/dvelfire.bam,sraelfir.bam,"Lesser Fire / Fire Elemental: SPWI516, SPWI620",custom
+spwi7##/dvmantle.bam,sramant.bam,Mantle: SPWI708 (SR calls it Prismatic Mantle),custom

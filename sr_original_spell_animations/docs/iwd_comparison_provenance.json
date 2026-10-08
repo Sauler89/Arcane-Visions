@@ -1,0 +1,40 @@
+{
+  "inputs": [
+    {
+      "name": "iwdee_effetti_export.zip",
+      "bytes": 2248416,
+      "sha256": "68f2845fa83025c731d5da82e017f1708abd38e35b14b2b6b5a80b2279e7bd80"
+    },
+    {
+      "name": "files(5).zip",
+      "bytes": 27321889,
+      "sha256": "a17aa6ef7c626f417ecb316b7477c99bd3e77ec1c84ff21ce96d802336ce0699"
+    },
+    {
+      "name": "iwd bams aggiuntivi.zip",
+      "bytes": 128640,
+      "sha256": "f0e1ab935942c3f169776715ed2db676bd32b8645e4064affadc76f48dbb397c"
+    },
+    {
+      "name": "eet files.zip",
+      "bytes": 21887417,
+      "sha256": "95086f3c932d4722e49bd8b13545ae6f427f493d61a71cb8341cf898d9a22637"
+    },
+    {
+      "name": "files(6).zip",
+      "bytes": 23383250,
+      "sha256": "d582920d6d7fa3d8487dd6d04efbc43925256eef2ebd0b4ade12ff96c01ebb9c"
+    },
+    {
+      "name": "spell_rev-v4-21.zip",
+      "bytes": 7621022,
+      "sha256": "f72c73ec0fa6a57f7b595fb8ba79f41909f53e13b12a768a386795c36dba30fb"
+    }
+  ],
+  "iwdee_bams": 246,
+  "eet_bams": 386,
+  "sr_bams": 14,
+  "selected_iwdee_bams": 15,
+  "selected_original_spells": 16,
+  "not_render_tested": true
+}

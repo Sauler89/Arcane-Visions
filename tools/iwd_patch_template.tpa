@@ -1,0 +1,67 @@
+// Isolated graphics only; retain every gameplay byte and all effect conditions.
+COPY ~sr_original_spell_animations/assets/iwd~ ~override~
+DEFINE_PATCH_FUNCTION srio_replace
+ INT_VAR srio_op = 215 srio_p2 = 1 srio_target = 2 srio_loop = 0 srio_expected = 1
+ STR_VAR srio_old = ~~ srio_new = ~~ srio_old2 = ~~ srio_new2 = ~~
+BEGIN
+ PATCH_IF SOURCE_SIZE >= 0x72 BEGIN
+  READ_ASCII 0 srio_sig (8)
+  READ_LONG 0x64 srio_ao
+  READ_SHORT 0x68 srio_ac
+  READ_LONG 0x6a srio_eo
+  READ_SHORT 0x6e srio_gi
+  READ_SHORT 0x70 srio_gc
+  SET srio_valid = (~%srio_sig%~ STRING_EQUAL_CASE ~SPL V1  ~) AND srio_ao >= 0x72 AND srio_ac > 0 AND srio_ao + srio_ac * 40 <= SOURCE_SIZE AND srio_eo >= srio_ao + srio_ac * 40 AND (srio_gc = 0 OR srio_eo + (srio_gi + srio_gc) * 48 <= SOURCE_SIZE)
+  // Ordered, disjoint blocks ensure global casting effects cannot be edited.
+  SET srio_end = 0
+  PATCH_IF srio_gc > 0 BEGIN SET srio_end = srio_gi + srio_gc END
+  FOR (srio_i = 0; srio_i < srio_ac AND srio_valid; ++srio_i) BEGIN
+   READ_SHORT (srio_ao + srio_i * 40 + 30) srio_n
+   READ_SHORT (srio_ao + srio_i * 40 + 32) srio_idx
+   PATCH_IF srio_eo + (srio_idx + srio_n) * 48 > SOURCE_SIZE OR (srio_n > 0 AND srio_idx < srio_end) BEGIN SET srio_valid = 0 END
+   PATCH_IF srio_n > 0 BEGIN SET srio_end = srio_idx + srio_n END
+  END
+  PATCH_IF srio_valid BEGIN
+   FOR (srio_i = 0; srio_i < srio_ac; ++srio_i) BEGIN
+    READ_SHORT (srio_ao + srio_i * 40 + 30) srio_n
+    READ_SHORT (srio_ao + srio_i * 40 + 32) srio_idx
+    SET srio_visuals = 0 SET srio_hits = 0 SET srio_hits2 = 0
+    FOR (srio_j = 0; srio_j < srio_n; ++srio_j) BEGIN
+     SET srio_e = srio_eo + (srio_idx + srio_j) * 48
+     READ_SHORT srio_e srio_opcode
+     PATCH_IF srio_opcode = 141 OR srio_opcode = 215 BEGIN
+      SET srio_visuals += 1
+      READ_BYTE (srio_e + 2) srio_t
+      READ_LONG (srio_e + 8) srio_param2
+      READ_BYTE (srio_e + 12) srio_time
+      READ_LONG (srio_e + 14) srio_duration
+      READ_ASCII (srio_e + 20) srio_ref (8) NULL
+      SET srio_time_ok = (srio_loop AND srio_time = 0 AND srio_duration > 0) OR (!srio_loop AND (srio_time = 1 OR (srio_time = 0 AND srio_duration <= 6)))
+      PATCH_IF srio_opcode = srio_op AND srio_param2 = srio_p2 AND srio_t = srio_target AND srio_time_ok BEGIN
+       PATCH_IF (~%srio_ref%~ STRING_EQUAL_CASE ~%srio_old%~) BEGIN
+        SET srio_hits += 1 SET srio_first = srio_e
+       END ELSE PATCH_IF srio_expected = 2 AND (~%srio_ref%~ STRING_EQUAL_CASE ~%srio_old2%~) BEGIN
+        SET srio_hits2 += 1 SET srio_second = srio_e
+       END
+      END
+     END
+    END
+    PATCH_IF srio_visuals = srio_expected AND srio_hits = 1 AND (srio_expected = 1 OR srio_hits2 = 1) BEGIN
+     FOR (srio_k = 0; srio_k < srio_expected; ++srio_k) BEGIN
+      PATCH_IF srio_k = 0 BEGIN SET srio_e = srio_first SPRINT srio_ref_new ~%srio_new%~ END ELSE BEGIN SET srio_e = srio_second SPRINT srio_ref_new ~%srio_new2%~ END
+      WRITE_SHORT srio_e 215
+      // Attachment retained for old VVCs; hard-coded hit cues become attached VVCs.
+      PATCH_IF srio_op = 141 BEGIN WRITE_LONG (srio_e + 8) 1 END
+      WRITE_ASCIIE (srio_e + 20) ~%srio_ref_new%~ #8
+      PATCH_IF !srio_loop BEGIN
+       WRITE_BYTE (srio_e + 12) 1
+       WRITE_LONG (srio_e + 14) 0
+      END
+     END
+    END ELSE BEGIN
+     PATCH_PRINT ~IWD Spell Animations: %SOURCE_RES%.spl ability %srio_i% has an unrecognized visual layout; skipped.~
+    END
+   END
+  END ELSE BEGIN PATCH_PRINT ~IWD Spell Animations: %SOURCE_RES%.spl has an unsupported layout; skipped.~ END
+ END ELSE BEGIN PATCH_PRINT ~IWD Spell Animations: truncated %SOURCE_RES%.spl, skipped.~ END
+END

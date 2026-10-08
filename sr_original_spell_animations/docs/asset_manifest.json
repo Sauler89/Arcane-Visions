@@ -1,0 +1,210 @@
+[
+  {
+    "source": "shared/spentaai.bam",
+    "destination": "sr_original_spell_animations/assets/native/spentaai.bam",
+    "usage": "Entangle: SPPR105",
+    "source_sha256": "73b66e96127192bc1a9ad1a19ba7ab25fd95a8110079c2f75d111fc10d43c22a",
+    "installed_sha256": "73b66e96127192bc1a9ad1a19ba7ab25fd95a8110079c2f75d111fc10d43c22a",
+    "changes": "BAM bytes unchanged"
+  },
+  {
+    "source": "shared/spentaci.bam",
+    "destination": "sr_original_spell_animations/assets/native/spentaci.bam",
+    "usage": "Entangle: SPPR105",
+    "source_sha256": "ee2e54480a47a92a3014688cb4382433560c286c0bc637348e7f3d5eaefe34c3",
+    "installed_sha256": "ee2e54480a47a92a3014688cb4382433560c286c0bc637348e7f3d5eaefe34c3",
+    "changes": "BAM bytes unchanged"
+  },
+  {
+    "source": "spwi1##/spchrorb.bam",
+    "destination": "sr_original_spell_animations/assets/native/spchrorb.bam",
+    "usage": "Chromatic Orb: SPWI118",
+    "source_sha256": "69df045c87341b3b19c636af807c5b46426878c74151d21ca6390d6a7b67f968",
+    "installed_sha256": "69df045c87341b3b19c636af807c5b46426878c74151d21ca6390d6a7b67f968",
+    "changes": "BAM bytes unchanged"
+  },
+  {
+    "source": "shared/spmagglo.bam",
+    "destination": "sr_original_spell_animations/assets/native/spmagglo.bam",
+    "usage": "Shared spell-deflection/immunity/shield overlay",
+    "source_sha256": "86cb2ecd721fbb5e5ed05928b3666ff724492deb32b1da21d2d536767b73d9f6",
+    "installed_sha256": "86cb2ecd721fbb5e5ed05928b3666ff724492deb32b1da21d2d536767b73d9f6",
+    "changes": "BAM bytes unchanged"
+  },
+  {
+    "source": "shared/spmagglo.vvc",
+    "destination": "sr_original_spell_animations/assets/native/spmagglo.vvc",
+    "usage": "Shared spell-deflection/immunity/shield overlay",
+    "source_sha256": "43b810ac6950203847ca6574e1a8777c6da2f4247e84562873360f4e28343f4e",
+    "installed_sha256": "6abb5dfb12539d2e5cb1c149b5bcdec0b662cd8761d600b069e813cd067888a6",
+    "changes": "BAM reference/internal name renamed; three audio references cleared"
+  },
+  {
+    "source": "shared/illush.bam",
+    "destination": "sr_original_spell_animations/assets/custom/srailus.bam",
+    "usage": "Invisibility, Mirror Image, Invisibility 10 ft., Pixie Dust",
+    "source_sha256": "7b8449334559079ebbc001a873be96ed6a2d8829ebda66964c2c431d72f69045",
+    "installed_sha256": "7b8449334559079ebbc001a873be96ed6a2d8829ebda66964c2c431d72f69045",
+    "changes": "BAM bytes unchanged"
+  },
+  {
+    "source": "shared/illushvc.vvc",
+    "destination": "sr_original_spell_animations/assets/custom/srailus.vvc",
+    "usage": "Invisibility, Mirror Image, Invisibility 10 ft., Pixie Dust",
+    "source_sha256": "66fab4c32f0dcc51e1f829315f8dd880420e6367eecaedb45817c2a92a41ac73",
+    "installed_sha256": "48706edeecbd6075b766fc47c05aed7e74525f3715ebc19d6f169a8d4bb028fd",
+    "changes": "BAM reference/internal name renamed; three audio references cleared"
+  },
+  {
+    "source": "spwi3##/gharmor.bam",
+    "destination": "sr_original_spell_animations/assets/custom/sraghst.bam",
+    "usage": "Ghost Armor: SPWI317",
+    "source_sha256": "5022298304f7ea077175013cfbfa98068e1cacbd43794f43eed763a9e51f6d06",
+    "installed_sha256": "5022298304f7ea077175013cfbfa98068e1cacbd43794f43eed763a9e51f6d06",
+    "changes": "BAM bytes unchanged"
+  },
+  {
+    "source": "spwi3##/gharmor.vvc",
+    "destination": "sr_original_spell_animations/assets/custom/sraghst.vvc",
+    "usage": "Ghost Armor: SPWI317",
+    "source_sha256": "e2749407ebf95e97281da5d9d076fea6df2b149b8903c35673698d007370a108",
+    "installed_sha256": "a75a6c223477ae8dc615d1543d4c0e599080a9cfe7afac12b07e7f66b1fec42a",
+    "changes": "BAM reference/internal name renamed; three audio references cleared"
+  },
+  {
+    "source": "spwi4##/sparmor.bam",
+    "destination": "sr_original_spell_animations/assets/custom/srasprt.bam",
+    "usage": "Spirit Armor: SPWI414",
+    "source_sha256": "80a49e0c34c3422c9f4170dbfe3378ba82a986425ee4bb71f0ee8bb06833d23b",
+    "installed_sha256": "80a49e0c34c3422c9f4170dbfe3378ba82a986425ee4bb71f0ee8bb06833d23b",
+    "changes": "BAM bytes unchanged"
+  },
+  {
+    "source": "spwi4##/sparmor.vvc",
+    "destination": "sr_original_spell_animations/assets/custom/srasprt.vvc",
+    "usage": "Spirit Armor: SPWI414",
+    "source_sha256": "99a7599c348b3a3ab462461e1b2293ed13023f31267ed8486136ef2f337c9987",
+    "installed_sha256": "9c7e38bf9b88bb6ee5dca2d5dd3e78e552d7ee4ebc9989cb2776ad3fe13fc0b3",
+    "changes": "BAM reference/internal name renamed; three audio references cleared"
+  },
+  {
+    "source": "spwi5##/dvsdoor.bam",
+    "destination": "sr_original_spell_animations/assets/custom/srasdor.bam",
+    "usage": "Shadow Door: SPWI505",
+    "source_sha256": "f3d79fec03f62dcd769e8090a7623eac57800da8057514d2cb0cecaeedca1fdc",
+    "installed_sha256": "f3d79fec03f62dcd769e8090a7623eac57800da8057514d2cb0cecaeedca1fdc",
+    "changes": "BAM bytes unchanged"
+  },
+  {
+    "source": "spwi5##/dvsdoor.vvc",
+    "destination": "sr_original_spell_animations/assets/custom/srasdor.vvc",
+    "usage": "Shadow Door: SPWI505",
+    "source_sha256": "b743402d548cf76ef6e17bf7613d53e82c03a7d824d32a545c2baf7120494821",
+    "installed_sha256": "be59c23098255e2190e8dda1cf43ed04441c9c7f9f78a5d35cda820ffe1b0c36",
+    "changes": "BAM reference/internal name renamed; three audio references cleared"
+  },
+  {
+    "source": "sppr7##/dvimplo.bam",
+    "destination": "sr_original_spell_animations/assets/custom/sraimpl.bam",
+    "usage": "Implosion: SPPR728",
+    "source_sha256": "e2c66ed31a0087be92bde91422c6f3c43a63aa6657565574df91c7ce37be2de6",
+    "installed_sha256": "e2c66ed31a0087be92bde91422c6f3c43a63aa6657565574df91c7ce37be2de6",
+    "changes": "BAM bytes unchanged"
+  },
+  {
+    "source": "sppr7##/dvimplo.vvc",
+    "destination": "sr_original_spell_animations/assets/custom/sraimpl.vvc",
+    "usage": "Implosion: SPPR728",
+    "source_sha256": "db03c0a45347c40c91b0f95165a03a4de4d152e672708327187613d3e953b297",
+    "installed_sha256": "010ebde2d6153cd38e78830f32ddf5ab78d30587be20f8acfbee380cd0b946b0",
+    "changes": "BAM reference/internal name renamed; three audio references cleared"
+  },
+  {
+    "source": "shared/dvsun.bam",
+    "destination": "sr_original_spell_animations/assets/custom/srasun.bam",
+    "usage": "False Dawn: SPPR609",
+    "source_sha256": "7ed026d3cb435741b919ccf22cbd5f159e713fd78b1f461fc10cd15bd3e60cfc",
+    "installed_sha256": "7ed026d3cb435741b919ccf22cbd5f159e713fd78b1f461fc10cd15bd3e60cfc",
+    "changes": "BAM bytes unchanged"
+  },
+  {
+    "source": "shared/dvsun1.vvc",
+    "destination": "sr_original_spell_animations/assets/custom/srasun1.vvc",
+    "usage": "False Dawn: SPPR609",
+    "source_sha256": "393fe4ea3961b1256b64276de98c4c6d368634aaade6670c22c171c523fcd221",
+    "installed_sha256": "027f5e025b632ee2211f171d39f48dd214ea3e6b4903f46eb7903a4e3ff409c0",
+    "changes": "BAM reference/internal name renamed; three audio references cleared"
+  },
+  {
+    "source": "shared/dvsun2.vvc",
+    "destination": "sr_original_spell_animations/assets/custom/srasun2.vvc",
+    "usage": "False Dawn: SPPR609",
+    "source_sha256": "ee1af020628332d83175f94560b2906f5e1781361961fa2cddbc936b232fa861",
+    "installed_sha256": "87a4a454283eeee211aa48e1955d99f2138e90f60584d2fec8bc5ea14fac1608",
+    "changes": "BAM reference/internal name renamed; three audio references cleared"
+  },
+  {
+    "source": "shared/dvelair.bam",
+    "destination": "sr_original_spell_animations/assets/custom/sraelair.bam",
+    "usage": "Lesser Air / Air Elemental: SPWI520, SPWI621",
+    "source_sha256": "e98b2e6aaef1e355125f4eee2068b422c28a2d99668083006ed7bcaf1cac9651",
+    "installed_sha256": "e98b2e6aaef1e355125f4eee2068b422c28a2d99668083006ed7bcaf1cac9651",
+    "changes": "BAM bytes unchanged"
+  },
+  {
+    "source": "shared/dvelair.vvc",
+    "destination": "sr_original_spell_animations/assets/custom/sraelair.vvc",
+    "usage": "Lesser Air / Air Elemental: SPWI520, SPWI621",
+    "source_sha256": "ad928ad8b451fdaae1715843b9b141d6289cad51f31c3fa321b450677131f89a",
+    "installed_sha256": "91f416841cbd4ea99a681bfae543563356cfa1f403319ebe16ebd8254b1992ec",
+    "changes": "BAM reference/internal name renamed; three audio references cleared"
+  },
+  {
+    "source": "shared/dveleart.bam",
+    "destination": "sr_original_spell_animations/assets/custom/sraelear.bam",
+    "usage": "Lesser Earth / Earth Elemental: SPWI521, SPWI622",
+    "source_sha256": "c76866bf0cdbf3d8de8c539f582dd2762b5a9b3b797d0059b9dcbd2cd81b2700",
+    "installed_sha256": "c76866bf0cdbf3d8de8c539f582dd2762b5a9b3b797d0059b9dcbd2cd81b2700",
+    "changes": "BAM bytes unchanged"
+  },
+  {
+    "source": "shared/dveleart.vvc",
+    "destination": "sr_original_spell_animations/assets/custom/sraelear.vvc",
+    "usage": "Lesser Earth / Earth Elemental: SPWI521, SPWI622",
+    "source_sha256": "cf03785c1328b3fc25d8cd83bd3c9abba09c99f16a57f795ebb49ec5c795c7f8",
+    "installed_sha256": "cba1535341400b023abbe295015e2a6829910cc983997a8d5319c57c682ed41c",
+    "changes": "BAM reference/internal name renamed; three audio references cleared"
+  },
+  {
+    "source": "shared/dvelfire.bam",
+    "destination": "sr_original_spell_animations/assets/custom/sraelfir.bam",
+    "usage": "Lesser Fire / Fire Elemental: SPWI516, SPWI620",
+    "source_sha256": "767bc300f487a2f3cea42e8f9fa80d5b8bacea520239d847be99a5bd3d61f622",
+    "installed_sha256": "767bc300f487a2f3cea42e8f9fa80d5b8bacea520239d847be99a5bd3d61f622",
+    "changes": "BAM bytes unchanged"
+  },
+  {
+    "source": "shared/dvelfire.vvc",
+    "destination": "sr_original_spell_animations/assets/custom/sraelfir.vvc",
+    "usage": "Lesser Fire / Fire Elemental: SPWI516, SPWI620",
+    "source_sha256": "bd80c71a78b73b543b81705e23e2fe6daf9e5c452af597f4ea047b59004eda89",
+    "installed_sha256": "ad02d5485775a2b6ff278be3c838612318d8d51506c79b23e1b992a397c1fb3d",
+    "changes": "BAM reference/internal name renamed; three audio references cleared"
+  },
+  {
+    "source": "spwi7##/dvmantle.bam",
+    "destination": "sr_original_spell_animations/assets/custom/sramant.bam",
+    "usage": "Mantle: SPWI708 (SR calls it Prismatic Mantle)",
+    "source_sha256": "b516a63a3a6de6d879f44adefd19e61222b332c70e1c1460e86752dea968dcce",
+    "installed_sha256": "b516a63a3a6de6d879f44adefd19e61222b332c70e1c1460e86752dea968dcce",
+    "changes": "BAM bytes unchanged"
+  },
+  {
+    "source": "spwi7##/dvmantle.vvc",
+    "destination": "sr_original_spell_animations/assets/custom/sramant.vvc",
+    "usage": "Mantle: SPWI708 (SR calls it Prismatic Mantle)",
+    "source_sha256": "c5142cf5d82b6c10b9940593b6c5dd609bcd11b2940aeacab5c8de804b078cf5",
+    "installed_sha256": "50af16708f1030f8a2b9edccdac678a6aad3dbbf34826fd1cfd5f1071633ad03",
+    "changes": "BAM reference/internal name renamed; three audio references cleared"
+  }
+]

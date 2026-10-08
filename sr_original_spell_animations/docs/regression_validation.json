@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "cases": 22,
+  "checks": [
+    "truncated",
+    "signature",
+    "ability-offset",
+    "ability-count",
+    "effect-before-abilities",
+    "effect-offset",
+    "global-index",
+    "global-count",
+    "ability-effect-count",
+    "ability-effect-index",
+    "global-overlap",
+    "shared-ability-block",
+    "no-abilities",
+    "unused-global-index",
+    "conditional-visual-preserved",
+    "wrong-target",
+    "delayed-visual",
+    "persistent-unknown-visual",
+    "collision-component-0",
+    "collision-component-10",
+    "unsupported-game-component-0",
+    "unsupported-game-component-10"
+  ],
+  "game_rendering_tested": false
+}

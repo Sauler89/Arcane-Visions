@@ -1,0 +1,60 @@
+[/workspace/scratch/bdd9eba40ea0/tools/Linux/WeiDU-Linux/weidu] WeiDU version 25100
+[./chitin.key] 0 BIFFs, 0 resources
+[./dialog.tlk] 1 string entries
+[./dialog.tlk] claims to be writeable.
+[./dialog.tlk] claims to be a regular file.
+Using Language [English]
+[English] has 1 top-level TRA files
+[sr_original_spell_animations/languages/english/setup.tra] has 3 translation strings
+SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2  0 10 Installed
+
+Removing old installation of [Distinct IWDEE post-cast effects for original BG spells] first ...
+uninstall: sr_original_spell_animations/setup-sr_original_spell_animations.tp2 10
+Will uninstall  46 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 10.
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPPR308.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPPR411.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPPR417.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPPR502.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPPR603.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPPR708.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPPR711.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPPR713.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPPR722.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPWI605.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPWI612.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPWI711.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPWI713.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPWI715.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPWI812.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPWI922.spl]
+Uninstalled     46 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 10.
+
+SUCCESSFULLY REMOVED OLD [Distinct IWDEE post-cast effects for original BG spells]
+
+
+Installing [Distinct IWDEE post-cast effects for original BG spells] [v0.2.0-beta.2]
+Copying 1 file ...
+Copying and patching 1 file ...
+Copying and patching 1 file ...
+Copying and patching 1 file ...
+Copying and patching 1 file ...
+Copying and patching 1 file ...
+Copying and patching 1 file ...
+Copying and patching 1 file ...
+Copying and patching 1 file ...
+Copying and patching 1 file ...
+Copying and patching 1 file ...
+Copying and patching 1 file ...
+Copying and patching 1 file ...
+Copying and patching 1 file ...
+Copying and patching 1 file ...
+Copying and patching 1 file ...
+Copying and patching 1 file ...
+
+
+Saving This Log:
+SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2  0 10 Permanently_Uninstalled
+SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2  0 10 Installed ~Distinct IWDEE post-cast effects for original BG spells~
+[sr_original_spell_animations/languages/english/setup.tra] has 3 translation strings
+
+SUCCESSFULLY INSTALLED      Distinct IWDEE post-cast effects for original BG spells

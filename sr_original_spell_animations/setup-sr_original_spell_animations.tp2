@@ -1,0 +1,28 @@
+BACKUP ~sr_original_spell_animations/backup~
+AUTHOR ~Sauler89~
+VERSION ~v0.2.0-beta.2~
+README ~sr_original_spell_animations/README.md~
+LANGUAGE ~English~ ~english~ ~sr_original_spell_animations/languages/english/setup.tra~
+LANGUAGE ~Italiano~ ~italian~ ~sr_original_spell_animations/languages/italian/setup.tra~
+
+BEGIN @0
+DESIGNATED 0
+LABEL ~sra-original-spell-effect-animations~
+REQUIRE_PREDICATE (GAME_IS ~eet bg2ee~) @1
+ACTION_FOR_EACH av_private IN ~sraelair.bam~ ~sraelair.vvc~ ~sraelear.bam~ ~sraelear.vvc~ ~sraelfir.bam~ ~sraelfir.vvc~ ~sraghst.bam~ ~sraghst.vvc~ ~srailus.bam~ ~srailus.vvc~ ~sraimpl.bam~ ~sraimpl.vvc~ ~sramant.bam~ ~sramant.vvc~ ~srasdor.bam~ ~srasdor.vvc~ ~srasprt.bam~ ~srasprt.vvc~ ~srasun.bam~ ~srasun1.vvc~ ~srasun2.vvc~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%av_private%~ BEGIN
+    FAIL ~Arcane Visions: private resource %av_private% already exists; component skipped to avoid overwriting another mod.~
+  END
+END
+INCLUDE ~sr_original_spell_animations/lib/animations.tpa~
+
+BEGIN @10
+DESIGNATED 10
+LABEL ~sra-iwd-original-spell-effect-animations~
+REQUIRE_PREDICATE (GAME_IS ~eet bg2ee~) @1
+ACTION_FOR_EACH av_private IN ~srioblb.bam~ ~srioblb.vvc~ ~srioblt.bam~ ~srioblt.vvc~ ~srioconf.bam~ ~srioconf.vvc~ ~sriocrit.bam~ ~sriocrit.vvc~ ~sriodead.bam~ ~sriodead.vvc~ ~sriodeth.bam~ ~sriodeth.vvc~ ~sriodrag.bam~ ~sriodrag.vvc~ ~sriogres.bam~ ~sriogres.vvc~ ~sriolres.bam~ ~sriolres.vvc~ ~sriopara.bam~ ~sriopara.vvc~ ~sriopois.bam~ ~sriopois.vvc~ ~sriopwsi.bam~ ~sriopwsi.vvc~ ~sriopwst.bam~ ~sriopwst.vvc~ ~srioregn.bam~ ~srioregn.vvc~ ~sriowilt.bam~ ~sriowilt.vvc~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%av_private%~ BEGIN
+    FAIL ~Arcane Visions: private resource %av_private% already exists; component skipped to avoid overwriting another mod.~
+  END
+END
+INCLUDE ~sr_original_spell_animations/lib/iwd_animations.tpa~

@@ -1,0 +1,83 @@
+[
+  {
+    "file": "docs/previews/spmagglo.gif",
+    "asset": "sr_original_spell_animations/assets/native/spmagglo.bam",
+    "asset_sha256": "86cb2ecd721fbb5e5ed05928b3666ff724492deb32b1da21d2d536767b73d9f6",
+    "gif_sha256": "70f6262f95deb45702fba8356677feb05996a2bd1580677279128e350c7a04e1",
+    "bam_cycles": [
+      0
+    ],
+    "frame_rate": 10,
+    "preview_frame_delay_ms": 100,
+    "screen_blending_approximation": true,
+    "game_capture": false
+  },
+  {
+    "file": "docs/previews/entangle.gif",
+    "asset": "sr_original_spell_animations/assets/native/spentaai.bam",
+    "asset_sha256": "73b66e96127192bc1a9ad1a19ba7ab25fd95a8110079c2f75d111fc10d43c22a",
+    "gif_sha256": "12b8be3dce764e765e0f567a41acb28e1e913f4b15e26a7ebe8cba033ff8340b",
+    "bam_cycles": [
+      0
+    ],
+    "frame_rate": 10,
+    "preview_frame_delay_ms": 100,
+    "screen_blending_approximation": true,
+    "game_capture": false
+  },
+  {
+    "file": "docs/previews/ghost-armor.gif",
+    "asset": "sr_original_spell_animations/assets/custom/sraghst.bam",
+    "asset_sha256": "5022298304f7ea077175013cfbfa98068e1cacbd43794f43eed763a9e51f6d06",
+    "gif_sha256": "54b945e83c9b9d4caa3d668514b8d10c0581d98c33fa0fa6ad66dbbe0ebcde52",
+    "bam_cycles": [
+      0
+    ],
+    "frame_rate": 15,
+    "preview_frame_delay_ms": 70,
+    "screen_blending_approximation": true,
+    "game_capture": false
+  },
+  {
+    "file": "docs/previews/chromatic-orb.gif",
+    "asset": "sr_original_spell_animations/assets/native/spchrorb.bam",
+    "asset_sha256": "69df045c87341b3b19c636af807c5b46426878c74151d21ca6390d6a7b67f968",
+    "gif_sha256": "babfe8f48c1a42de584ab76f2f8e572bb020aff15b31ccc585d7c4aaa8d0fffb",
+    "bam_cycles": [
+      0
+    ],
+    "frame_rate": 15,
+    "preview_frame_delay_ms": 70,
+    "screen_blending_approximation": true,
+    "game_capture": false
+  },
+  {
+    "file": "docs/previews/mantle.gif",
+    "asset": "sr_original_spell_animations/assets/custom/sramant.bam",
+    "asset_sha256": "b516a63a3a6de6d879f44adefd19e61222b332c70e1c1460e86752dea968dcce",
+    "gif_sha256": "6a926cc76b428fdbc8e472df61c78027be0bb94b5a84970c07ee9d246cc5f139",
+    "bam_cycles": [
+      0
+    ],
+    "frame_rate": 10,
+    "preview_frame_delay_ms": 100,
+    "screen_blending_approximation": true,
+    "game_capture": false
+  },
+  {
+    "file": "docs/previews/blade-barrier.gif",
+    "asset": "sr_original_spell_animations/assets/iwd/srioblt.bam",
+    "asset_sha256": "1fb418510caa7ada4bf6fb9efd3fbc6e3dc25f2b4c0fa2d25c39c713fea6c857",
+    "gif_sha256": "efc2bf74186d91b8683707ed82b4fd471444537408cb87e143a5a2b75ce80f55",
+    "bam_cycles": [
+      0,
+      1,
+      1,
+      2
+    ],
+    "frame_rate": 15,
+    "preview_frame_delay_ms": 70,
+    "screen_blending_approximation": false,
+    "game_capture": false
+  }
+]

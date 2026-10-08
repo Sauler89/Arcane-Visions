@@ -1,0 +1,290 @@
+{
+  "spells": [
+    [
+      "SPWI206",
+      "srailus",
+      2,
+      1,
+      0,
+      0
+    ],
+    [
+      "SPWI212",
+      "srailus",
+      1,
+      1,
+      0,
+      0
+    ],
+    [
+      "SPWI307",
+      "srailus",
+      2,
+      1,
+      0,
+      0
+    ],
+    [
+      "SPPR516",
+      "srailus",
+      2,
+      1,
+      0,
+      0
+    ],
+    [
+      "SPWI317",
+      "sraghst",
+      2,
+      1,
+      0,
+      0
+    ],
+    [
+      "SPWI414",
+      "srasprt",
+      2,
+      1,
+      0,
+      0
+    ],
+    [
+      "SPWI505",
+      "srasdor",
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      "SPPR728",
+      "sraimpl",
+      2,
+      0,
+      0,
+      0
+    ],
+    [
+      "SPPR609",
+      "srasun1",
+      1,
+      1,
+      3,
+      0
+    ],
+    [
+      "SPWI708",
+      "sramant",
+      1,
+      1,
+      24,
+      1
+    ],
+    [
+      "SPWI516",
+      "sraelfir",
+      1,
+      2,
+      0,
+      0
+    ],
+    [
+      "SPWI520",
+      "sraelair",
+      1,
+      2,
+      0,
+      0
+    ],
+    [
+      "SPWI521",
+      "sraelear",
+      1,
+      2,
+      0,
+      0
+    ],
+    [
+      "SPWI620",
+      "sraelfir",
+      1,
+      2,
+      0,
+      0
+    ],
+    [
+      "SPWI621",
+      "sraelair",
+      1,
+      2,
+      0,
+      0
+    ],
+    [
+      "SPWI622",
+      "sraelear",
+      1,
+      2,
+      0,
+      0
+    ]
+  ],
+  "assets": [
+    [
+      "shared/spentaai.bam",
+      "spentaai.bam",
+      "Entangle: SPPR105",
+      "native"
+    ],
+    [
+      "shared/spentaci.bam",
+      "spentaci.bam",
+      "Entangle: SPPR105",
+      "native"
+    ],
+    [
+      "spwi1##/spchrorb.bam",
+      "spchrorb.bam",
+      "Chromatic Orb: SPWI118",
+      "native"
+    ],
+    [
+      "shared/spmagglo.bam",
+      "spmagglo.bam",
+      "Shared spell-deflection/immunity/shield overlay",
+      "native"
+    ],
+    [
+      "shared/spmagglo.vvc",
+      "spmagglo.vvc",
+      "Shared spell-deflection/immunity/shield overlay",
+      "native"
+    ],
+    [
+      "shared/illush.bam",
+      "srailus.bam",
+      "Invisibility, Mirror Image, Invisibility 10 ft., Pixie Dust",
+      "custom"
+    ],
+    [
+      "shared/illushvc.vvc",
+      "srailus.vvc",
+      "Invisibility, Mirror Image, Invisibility 10 ft., Pixie Dust",
+      "custom"
+    ],
+    [
+      "spwi3##/gharmor.bam",
+      "sraghst.bam",
+      "Ghost Armor: SPWI317",
+      "custom"
+    ],
+    [
+      "spwi3##/gharmor.vvc",
+      "sraghst.vvc",
+      "Ghost Armor: SPWI317",
+      "custom"
+    ],
+    [
+      "spwi4##/sparmor.bam",
+      "srasprt.bam",
+      "Spirit Armor: SPWI414",
+      "custom"
+    ],
+    [
+      "spwi4##/sparmor.vvc",
+      "srasprt.vvc",
+      "Spirit Armor: SPWI414",
+      "custom"
+    ],
+    [
+      "spwi5##/dvsdoor.bam",
+      "srasdor.bam",
+      "Shadow Door: SPWI505",
+      "custom"
+    ],
+    [
+      "spwi5##/dvsdoor.vvc",
+      "srasdor.vvc",
+      "Shadow Door: SPWI505",
+      "custom"
+    ],
+    [
+      "sppr7##/dvimplo.bam",
+      "sraimpl.bam",
+      "Implosion: SPPR728",
+      "custom"
+    ],
+    [
+      "sppr7##/dvimplo.vvc",
+      "sraimpl.vvc",
+      "Implosion: SPPR728",
+      "custom"
+    ],
+    [
+      "shared/dvsun.bam",
+      "srasun.bam",
+      "False Dawn: SPPR609",
+      "custom"
+    ],
+    [
+      "shared/dvsun1.vvc",
+      "srasun1.vvc",
+      "False Dawn: SPPR609",
+      "custom"
+    ],
+    [
+      "shared/dvsun2.vvc",
+      "srasun2.vvc",
+      "False Dawn: SPPR609",
+      "custom"
+    ],
+    [
+      "shared/dvelair.bam",
+      "sraelair.bam",
+      "Lesser Air / Air Elemental: SPWI520, SPWI621",
+      "custom"
+    ],
+    [
+      "shared/dvelair.vvc",
+      "sraelair.vvc",
+      "Lesser Air / Air Elemental: SPWI520, SPWI621",
+      "custom"
+    ],
+    [
+      "shared/dveleart.bam",
+      "sraelear.bam",
+      "Lesser Earth / Earth Elemental: SPWI521, SPWI622",
+      "custom"
+    ],
+    [
+      "shared/dveleart.vvc",
+      "sraelear.vvc",
+      "Lesser Earth / Earth Elemental: SPWI521, SPWI622",
+      "custom"
+    ],
+    [
+      "shared/dvelfire.bam",
+      "sraelfir.bam",
+      "Lesser Fire / Fire Elemental: SPWI516, SPWI620",
+      "custom"
+    ],
+    [
+      "shared/dvelfire.vvc",
+      "sraelfir.vvc",
+      "Lesser Fire / Fire Elemental: SPWI516, SPWI620",
+      "custom"
+    ],
+    [
+      "spwi7##/dvmantle.bam",
+      "sramant.bam",
+      "Mantle: SPWI708 (SR calls it Prismatic Mantle)",
+      "custom"
+    ],
+    [
+      "spwi7##/dvmantle.vvc",
+      "sramant.vvc",
+      "Mantle: SPWI708 (SR calls it Prismatic Mantle)",
+      "custom"
+    ]
+  ]
+}

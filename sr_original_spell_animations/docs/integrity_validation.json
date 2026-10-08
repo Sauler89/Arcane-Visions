@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "bam": 29,
+  "vvc": 27,
+  "total_frames": 947,
+  "preview_gifs": 6,
+  "core_spells": 16,
+  "iwd_spells": 16,
+  "exact_BAM_source_bytes": true,
+  "no_icons_or_gameplay_imports": true,
+  "private_names_unique": true,
+  "all_controller_dependencies_resolved": true,
+  "IWD_no_shared_EET_SR_art_or_shapes": true,
+  "README_local_links_valid": true
+}
