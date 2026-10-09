@@ -1,3 +1,6 @@
+> Rapporto storico della prima selezione. La beta.4 corregge anche le
+> esclusioni per sagoma: [ricontrollo completo aggiornato](FULL_SOURCE_AUDIT.it.md).
+
 > Historical review of beta.1. The overlay exclusions below are superseded by beta.3: see [IWD_SELECTION_RECHECK.it.md](IWD_SELECTION_RECHECK.it.md) and [RIGOROUS_AUDIT.md](RIGOROUS_AUDIT.md).
 
 # Componente IWDEE: ricontrollo e integrazione

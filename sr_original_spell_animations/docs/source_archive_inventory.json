@@ -1,0 +1,106 @@
+[
+  {
+    "archive": "spell_rev-v4-21.zip",
+    "sha256": "f72c73ec0fa6a57f7b595fb8ba79f41909f53e13b12a768a386795c36dba30fb",
+    "bytes": 7621022,
+    "resource_files_verified": 1692,
+    "extension_counts": {
+      ".2da": 30,
+      ".itm": 434,
+      ".spl": 616,
+      ".eff": 153,
+      ".bam": 224,
+      ".cre": 79,
+      ".vvc": 24,
+      ".bcs": 28,
+      ".pro": 47,
+      ".html": 1,
+      ".ini": 4,
+      ".txt": 9,
+      ".wav": 3,
+      ".tp2": 1,
+      ".mrk": 3,
+      ".tpa": 25,
+      ".ico": 2,
+      ".bmp": 6,
+      ".css": 1,
+      ".md": 1,
+      ".dll": 5,
+      ".patch": 1,
+      ".lua": 6,
+      ".exe": 3,
+      ".htm": 2,
+      ".tra": 16,
+      ".ids": 2,
+      ".tph": 19
+    },
+    "local_bytes_match_ZIP_CRC": true
+  },
+  {
+    "archive": "iwdee_effetti_export.zip",
+    "sha256": "68f2845fa83025c731d5da82e017f1708abd38e35b14b2b6b5a80b2279e7bd80",
+    "bytes": 2248416,
+    "resource_files_verified": 2766,
+    "extension_counts": {
+      ".vvc": 427,
+      ".spl": 1226,
+      ".eff": 662,
+      ".vef": 5,
+      ".pro": 375,
+      ".ids": 71,
+      ".tlk": 1,
+      ".log": 1
+    },
+    "local_bytes_match_ZIP_CRC": true
+  },
+  {
+    "archive": "files(5).zip",
+    "sha256": "a17aa6ef7c626f417ecb316b7477c99bd3e77ec1c84ff21ce96d802336ce0699",
+    "bytes": 27321889,
+    "resource_files_verified": 245,
+    "extension_counts": {
+      ".bam": 240,
+      ".ini": 5
+    },
+    "local_bytes_match_ZIP_CRC": true
+  },
+  {
+    "archive": "iwd bams aggiuntivi.zip",
+    "sha256": "f0e1ab935942c3f169776715ed2db676bd32b8645e4064affadc76f48dbb397c",
+    "bytes": 128640,
+    "resource_files_verified": 6,
+    "extension_counts": {
+      ".bam": 6
+    },
+    "local_bytes_match_ZIP_CRC": true
+  },
+  {
+    "archive": "eet files.zip",
+    "sha256": "95086f3c932d4722e49bd8b13545ae6f427f493d61a71cb8341cf898d9a22637",
+    "bytes": 21887417,
+    "resource_files_verified": 4649,
+    "extension_counts": {
+      ".bam": 162,
+      ".vvc": 408,
+      ".spl": 2695,
+      ".eff": 950,
+      ".pro": 357,
+      ".ids": 75,
+      ".vef": 2
+    },
+    "local_bytes_match_ZIP_CRC": true
+  },
+  {
+    "archive": "files(6).zip",
+    "sha256": "d582920d6d7fa3d8487dd6d04efbc43925256eef2ebd0b4ade12ff96c01ebb9c",
+    "bytes": 23383250,
+    "resource_files_verified": 242,
+    "extension_counts": {
+      ".bmp": 17,
+      ".key": 1,
+      ".bam": 224,
+      ".log": 2
+    },
+    "local_bytes_match_ZIP_CRC": true
+  }
+]

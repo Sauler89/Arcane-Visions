@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "cases": 22,
+  "cases": 28,
   "checks": [
     "truncated",
     "signature",
@@ -20,6 +20,12 @@
     "wrong-target",
     "delayed-visual",
     "persistent-unknown-visual",
+    "additional-overlay-153",
+    "additional-overlay-154",
+    "additional-overlay-155",
+    "additional-overlay-156",
+    "additional-overlay-157",
+    "additional-overlay-158",
     "collision-component-0",
     "collision-component-10",
     "unsupported-game-component-0",

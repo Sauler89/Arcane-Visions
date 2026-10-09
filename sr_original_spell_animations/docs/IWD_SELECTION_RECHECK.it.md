@@ -1,4 +1,4 @@
-# Ricontrollo delle esclusioni IWDEE — beta.3
+# Ricontrollo delle esclusioni IWDEE — aggiornamento beta.4
 
 Il pacchetto precedente **non importava tutti gli effetti distinti IWDEE**.
 I 15 BAM erano una selezione di cue diretti riconosciuti nelle spell EET.
@@ -16,7 +16,8 @@ SR, ma non giustificava l'esclusione delle loro vere animazioni IWDEE.
 | Globe of Invulnerability, `SPWI602` | `GOINVUC` | Nessuna | Incluso come `sriogglb`; opcode 155 EET o 215 preesistente mantenuto |
 | Call Lightning, `SPPR302` | Fulmine verticale da identificare/confrontare | Non determinabile: BAM assente dagli export | In attesa dei BAM IWDEE/EET `SKYBOLT`; non escluso per overlap SR |
 
-Il confronto comprende 246 BAM IWDEE, 386 EET e 14 SR. I quattro BAM aggiunti
+Il confronto beta.3 comprendeva 246 BAM IWDEE, 386 EET e 14 SR;
+la beta.4 ricontrolla tutti i 224 BAM dell'archivio SR. I quattro BAM aggiunti
 sono byte-identici agli originali IWDEE. Ognuno ha un ciclo di 16 frame.
 Protection from Arrows usa il controller IWDEE `#PRONM`; il Globo maggiore
 usa `#GLOBINV`. Sanctuary e Globo minore, richiamati direttamente come BAM
@@ -60,42 +61,19 @@ SKYBOLT sia presente nel KEY EET non prova che la catena IWDEE usi lo stesso
 asset o che sia esclusivo. Non viene forzata un'animazione senza tale prova.
 Non si importano numero di fulmini, ritardi, selezione dei bersagli o danni IWDEE.
 
-## Tutti i BAM sono ora inclusi?
+## Ricontrollo completo beta.4
 
-**No.** La beta.3 contiene 19 BAM IWDEE per 20 spell originali, oltre al
-componente SR. Il [CSV completo](iwd_selection_recheck.csv) riclassifica
-ciascuno dei 246 BAM forniti:
+La beta.4 aggiunge anche `GLDUSTA`, `WEBC`, `ORSPHEC`, `RESURRH`, `HEALH` e
+`SPOISOH`: omissioni dei cue, degli overlay, delle sottospell e delle varianti
+ricolorate. [Rapporto completo](FULL_SOURCE_AUDIT.it.md).
 
-| Stato | BAM |
-|---|---:|
-| Inclusi | 19 |
-| Grafica o sagoma già presente nei BAM EET confrontati | 174 |
-| Spell già coperta da SR, con grafica distinta non selezionata | 5 |
-| Nessuna corrispondenza tracciata con una spell originale BG | 6 |
-| Candidati distinti ancora da integrare | 42 |
+La tabella beta.3 di esclusioni è stata sostituita: la sola sagoma non prova
+un duplicato. Su 246 BAM: 25 inclusi, 163 corrispondenze grafiche complete EET,
+1 corrispondenza di tutti i cicli visibili, 5 spell già coperte da SR,
+6 senza root originale tracciata e **46 candidati ancora da integrare**.
+Questi 46 non sono esclusi per overlap SR. [Tutte le decisioni](iwd_selection_recheck.csv),
+[candidati e motivi](iwd_pending_candidates.csv), [tutti i BAM SR](sr_source_selection.csv).
 
-I 42 candidati **non sono esclusi per overlap SR**. Comprendono, per esempio,
-`WEBC`, `GREASEB/C`, `ORSPHEC`, `RESURRH`, `LIGHTNT`, `CLIGHTT`, `DISINTT`
-e molte animazioni di nubi/aree. Richiedono l'analisi della relativa fase,
-sottospell, arma o PRO già installato. Alcuni riferimenti nell'audit originario
-sono dichiarati ma non provati attivi: la presenza di un BAM nel grafo non
-basta a dimostrare che venga mostrato. Non vengono aggiunti a un caster o a
-un bersaglio arbitrario solo per renderli visibili.
-
-La classificazione delle corrispondenze è più ampia del precedente conteggio
-163 identici + 1 ciclo: comprende anche le sagome ricolorate e i RGB emessi.
-È riferita agli export forniti, non a tutti i BAM di ogni possibile EET.
-
-## Verifica
-
-PASS: componente IWDEE da solo e insieme a SR, 20 SPL IWD + 16 SPL SR reali
-esportate, reinstallazione stabile e disinstallazione con ripristino byte
-per byte. PASS: 44 nuovi casi per i quattro overlay, oltre ai 22 precedenti.
-Sono mantenuti stato, durata, condizioni, icone, proiettili, effetti globali
-e meccaniche. Sono provati riferimenti sconosciuti, visuali aggiuntivi,
-collisioni, layout malformati e il Globo maggiore preesistente in opcode 215.
-
-Risultati: [overlay_validation.json](overlay_validation.json),
-[IWD_validation.json](IWD_validation.json),
-[riepilogo selezione](iwd_selection_recheck.json).
-**La resa dentro una partita EET non è ancora stata verificata.**
+PASS: 42 SPL EET reali, 54 casi overlay, 28 regressioni e 12 casi sottospell.
+Nessun test visivo dentro una partita. Vedere il rapporto completo per le
+richieste mirate di file e i limiti dei riferimenti PRO dichiarati.

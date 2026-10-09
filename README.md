@@ -7,7 +7,7 @@ Spell Revisions or Icewind Dale: Enhanced Edition. It replaces the artwork
 shown after a spell is cast, while retaining the installed spell's mechanics.
 **Spell Revisions and IWDification are not required.**
 
-Current version: **v0.2.0-beta.3**, by **Sauler89**.
+Current version: **v0.2.0-beta.4**, by **Sauler89**.
 [Italian instructions](README.it.md) · [Affected spells](#affected-spells) ·
 [Audit and validation](sr_original_spell_animations/docs/RIGOROUS_AUDIT.md)
 
@@ -34,6 +34,14 @@ orientation and timing. Entangle shows an individual animated tendril.
 |:---:|:---:|
 | ![Minor Globe animation](docs/previews/minor-globe.gif) | ![Globe of Invulnerability animation](docs/previews/globe-of-invulnerability.gif) |
 
+| Glitterdust — `GLDUSTA`, VVC phase 2 | Web target overlay — `WEBC` |
+|:---:|:---:|
+| ![Glitterdust animation](docs/previews/glitterdust.gif) | ![Web animation](docs/previews/web.gif) |
+
+| Otiluke's Resilient Sphere — `ORSPHEC` | Resurrection — `RESURRH` |
+|:---:|:---:|
+| ![Resilient Sphere animation](docs/previews/resilient-sphere.gif) | ![Resurrection animation](docs/previews/resurrection.gif) |
+
 The two globe previews are **IWDEE effect animations**, added in beta.3.
 The similarly named SR files `spwi406a/b/c` and `spwi602a/b/c` remain excluded
 because they are icons. `SPMAGGLO` is a separate shared protection overlay.
@@ -43,11 +51,11 @@ because they are icons. `SPMAGGLO` is a separate shared protection overlay.
 | Component | Content | Assets |
 |---|---|---|
 | **0** | SR effect animations for selected original spells | 14 BAMs, 12 VVCs |
-| **10** | Distinct IWDEE effects for 20 other original spells | 19 BAMs, 19 VVCs |
+| **10** | Distinct IWDEE effects for 26 other original spells | 25 BAMs, 25 VVCs |
 
 Components can be installed independently or together. Their targeted spell
-lists are disjoint. The complete package contains **33 animation BAMs and
-31 visual-controller VVCs**, and patches **36 original SPL files** in the
+lists are disjoint. The complete package contains **39 animation BAMs and
+37 visual-controller VVCs**, and patches **42 SPL files (including two child spells)** in the
 supplied EET baseline. Additional spells use the replaced native graphics.
 
 No spellbook/action-bar/portrait icons, new spells, revised spell descriptions,
@@ -135,6 +143,12 @@ resource names; other consumers of those BAMs receive the replacement art.
 | Protection from Normal Missiles / Arrows | `SPWI311` | `PFNMISC` |
 | Minor Globe of Invulnerability | `SPWI406` | `MGOINVC` |
 | Globe of Invulnerability | `SPWI602` | `GOINVUC` |
+| Glitterdust | `SPWI224` | `GLDUSTA` |
+| Web (target overlay) | `SPWI215` | `WEBC` |
+| Otiluke's Resilient Sphere | `SPWI413` → `SPWI413A` | `ORSPHEC` |
+| Resurrection | `SPPR712` → `SPPR712A` | `RESURRH` |
+| Heal | `SPPR607` | `HEALH` |
+| Slow Poison | `SPPR212` | `SPOISOH` |
 
 
 Storm of Vengeance replaces its existing direct visual cue only; its weather,
@@ -143,7 +157,7 @@ direct hit cue, not the persistent Confusion/Chaos status indicator. Blade
 Barrier preserves the existing duration of both visual layers. Dito/Finger of
 Death variants and Storm of Vengeance share one isolated `FODEATH` copy.
 
-The four persistent overlays retain their existing state opcodes, duration,
+The five state overlays retain their existing state opcodes, duration,
 conditions and protections. Only the recognized graphic reference/mode changes.
 Both globes use private resources, so minor and major can show different art
 without replacing `MINORGLB` globally. Sanctuary's state is retained; it is
@@ -169,36 +183,41 @@ opcode 67's resource fields. The IWD component preserves effect order/counts,
 all nonvisual bytes and the probability/save/resistance/target conditions of
 the replaced visual effects.
 
-IWD selection was compared against **246 IWDEE BAMs, 386 exported EET BAMs,
-and the 14 SR BAMs**. The supplied EET already contains IWDification, SCS and
-other spell packs. Identical files, identical decompressed/rendered content,
-shared cycles and recolored shared shapes were excluded. The final 19 IWD BAMs
-have no complete/cropped-art/shape/emitted-RGB cycle match in those comparison
-sets. This establishes distinctness against the supplied baseline, not every
-BAM in every possible game installation or modlist.
+The complete source review compares **246 IWDEE BAMs, 386 exported EET BAMs,
+and all 224 BAMs in the SR archive**. Only exact graphics and all-visible-cycle
+art matches are duplicate evidence; partial matches and shared/recolored shapes
+are diagnostics. Heal and Slow Poison are retained despite shared EET shapes.
+All 25 imported IWD BAMs have no full-art match to the selected original-spell
+SR artwork. The comparison concerns the supplied exports, not every modlist.
 
-**This is a selected import, not all IWDEE BAMs.** The beta.3 review found that
-Sanctuary, Protection from Arrows and both globes had been omitted because the
-original patcher handled direct 141/215 cues, not persistent engine overlays.
-Their omission was **not** due to SR overlap. Other distinct candidates still
-require integration of their projectile, area, status or subspell routes.
-Call Lightning is pending missing IWDEE/EET `SKYBOLT.BAM` exports; its vertical
-bolt was not in the supplied BAM set. See the
-[selection and exclusion review](sr_original_spell_animations/docs/IWD_SELECTION_RECHECK.it.md)
-and [all 246 BAM classifications](sr_original_spell_animations/docs/iwd_selection_recheck.csv).
+**This is a selected import, not all IWDEE BAMs.** Beta.4 adds Glitterdust,
+Web's target overlay, Otiluke's Resilient Sphere, Resurrection, Heal and Slow
+Poison. The original Web state is retained, and child spells are patched only
+when the original root still calls them. The root bytes are unchanged.
+The full archive review found no additional demonstrated active original-spell
+SR artwork to add. **46 distinct IWD candidates remain unintegrated**, including
+projectile/area/conditional phases; they are not labeled SR duplicates.
+Call Lightning still needs IWDEE/EET SKYBOLT BAMs. Slay Living and Sol's Searing
+Orb need the installed EET temporary weapons before their hit art can be bound.
+See [the full source review](sr_original_spell_animations/docs/FULL_SOURCE_AUDIT.it.md),
+[all IWD decisions](sr_original_spell_animations/docs/iwd_selection_recheck.csv),
+[all SR decisions](sr_original_spell_animations/docs/sr_source_selection.csv)
+and [every pending candidate](sr_original_spell_animations/docs/iwd_pending_candidates.csv).
 
 ## Validation and beta status
 
 WeiDU installation, reinstallation and byte-exact uninstallation passed in
-isolated fixtures, including the **36 real exported EET spells**. Assets were
+isolated fixtures, including the **42 real exported EET SPL files**. Assets were
 checked for hashes, frame bounds/RLE data, cycle references, VVC dependencies,
 phase indexes, private names and absence of external palettes/alpha BAMs/audio.
 
-An additional **22 regression cases** cover malformed layouts, an unused global
+An additional **28 regression cases** cover malformed layouts, an unused global
 index, conditional visual effects, wrong targets/delays, resource collisions
 and unsupported games. Source SR spell layouts and both EET/BG2EE synthetic
-profiles also passed. **44 further overlay cases** verify state and conditional
+profiles also passed. **54 further overlay cases** verify state and conditional
 duration preservation, recognized/custom layouts, safe skips and collisions.
+**12 child-spell cases** verify recognized, missing, detached, malformed and
+repurposed roots, unknown child visuals, reinstall and exact uninstall.
 Full details and retained results are in
 [the rigorous audit](sr_original_spell_animations/docs/RIGOROUS_AUDIT.md).
 
@@ -211,17 +230,20 @@ fixtures and exported resources; they do not load a complete game installation.
 
 ```sh
 python3 tests/verify_assets.py [path/to/extracted/spell_rev]
-python3 tests/verify_graphics_integrity.py [path/to/IWDEE-BAM-export]
+python3 tests/verify_graphics_integrity.py [path/to/IWDEE-BAM-export] [path/to/IWDEE-metadata]
 python3 tests/verify_installer.py /path/to/weidu [path/to/extracted/spell_rev]
 python3 tests/verify_regressions.py /path/to/weidu
 python3 tests/verify_iwd_on_export.py /path/to/EET-export /path/to/weidu /path/to/results
 python3 tests/verify_overlays.py /path/to/EET-export /path/to/weidu /path/to/results
+python3 tests/verify_child_visuals.py /path/to/EET-export /path/to/weidu /path/to/results
 ```
 
 Tests require Python 3 and WeiDU. Preview generation additionally needs Pillow:
 `python3 tools/render_bam_previews.py`. The IWD builder requires owner-supplied
 IWDEE metadata/BAM exports; it is unnecessary for installation. Source and
 installed hashes are retained in the asset manifests.
+The full source audit additionally requires NumPy:
+`python3 tools/audit_source_coverage.py IW_METADATA IW_BAMS EET_EXPORT SR_FOLDER OUTPUT`.
 
 ## Credits and asset terms
 

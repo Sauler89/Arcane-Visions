@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.2.0-beta.4 — full source review
+
+- Add six omitted IWD effects: Glitterdust, Web target overlay, Resilient Sphere,
+  Resurrection, Heal and Slow Poison. Preserve original gameplay and Web state.
+- Resolve source filename case and use the actual GLDUSTH/WEBC/#OTILUKE/RESURRH
+  controller phases. Guard both child patches by a live original-root cast link.
+- Count state overlays 153–158 when checking for unexpected additional visuals.
+- Audit all 246 IWD, 386 EET and 224 source SR BAMs; do not exclude distinct
+  colours just because shapes match, or entire BAMs because one cycle matches.
+- Verify 42 real EET SPLs, 54 overlay cases, 28 regressions and 12 child cases.
+- Retain full input inventories, graph paths, SR decisions and 46 pending IWD
+  candidates with explicit reasons. No additional active original-spell SR BAM found.
+- Add four actual BAM GIFs, bringing the README gallery to 14.
+
+
 ## v0.2.0-beta.3 — IWDEE persistent overlays
 
 - Add Sanctuary (`SANCTRY`), Protection from Arrows (`PFNMISC`), Minor Globe

@@ -7,13 +7,14 @@ from PIL import Image,ImageChops,ImageDraw,ImageFont
 ROOT=Path(__file__).resolve().parents[1];MOD=ROOT/'sr_original_spell_animations';OUT=ROOT/'docs/previews';OUT.mkdir(parents=True,exist_ok=True)
 DEMO=[('spmagglo','native/spmagglo','SPMAGGLO · shared protection aura',10,[0],True),('entangle','native/spentaai','Entangle · SPENTA AI',10,[0],True),('ghost-armor','custom/sraghst','Ghost Armor · GHARMOR',15,[0],True),('chromatic-orb','native/spchrorb','Chromatic Orb · SPCHRORB',15,[0],True),('mantle','custom/sramant','Mantle · DVMANTLE',10,[0],True),('blade-barrier','iwd/srioblt','Blade Barrier · BBARRH1',15,[0,1,1,2],False)]
 DEMO += [('sanctuary','iwd/sriosanc','Sanctuary · SANCTRY',15,[0],True),('protection-from-arrows','iwd/srioarrw','Protection from Arrows · PFNMISC',15,[0],True),('minor-globe','iwd/sriomglb','Minor Globe · MGOINVC',15,[0],True),('globe-of-invulnerability','iwd/sriogglb','Globe of Invulnerability · GOINVUC',15,[0],True)]
+DEMO += [('glitterdust','iwd/sriodust','Glitterdust · GLDUSTA',15,[1],True),('web','iwd/sriowebc','Web target overlay · WEBC',15,[0,1,1],True),('resilient-sphere','iwd/srioosph','Resilient Sphere · ORSPHEC',15,[0],True),('resurrection','iwd/srioress','Resurrection · RESURRH',15,[0],True)]
 
 def decode(path):
  b=path.read_bytes()
  if b[:4]==b'BAMC':
   expected=struct.unpack_from('<I',b,8)[0];b=zlib.decompress(b[12:]);assert len(b)==expected
  assert b[:8]==b'BAM V1  ';nf,nc,rle=struct.unpack_from('<HBB',b,8);fo,pal,look=struct.unpack_from('<III',b,12)
- rgb=[tuple(b[pal+i*4+j] for j in (2,1,0)) for i in range(256)];green=next((i for i,c in enumerate(rgb) if c==(0,255,0)),0)
+ rgb=[tuple(b[pal+i*4+j] for j in (2,1,0)) for i in range(256)];green=rle
  images=[]
  for i in range(nf):
   w,h,cx,cy,off=struct.unpack_from('<HHhhI',b,fo+i*12);pos=off&0x7fffffff;vals=[]

@@ -6,6 +6,8 @@ from pathlib import Path
 import ast,hashlib,json,re,struct,sys,zlib
 ROOT=Path(__file__).resolve().parents[1];MOD=ROOT/'sr_original_spell_animations';D=MOD/'docs'
 SOURCE=Path(sys.argv[1]).resolve() if len(sys.argv)>1 else None
+METADATA=Path(sys.argv[2]).resolve() if len(sys.argv)>2 else None
+metadata_files={p.name.upper():p for p in METADATA.iterdir() if p.is_file()} if METADATA else {}
 helper=ast.parse((ROOT/'tests/verify_assets.py').read_text())
 exec(compile(ast.Module(body=[n for n in helper.body if isinstance(n,ast.FunctionDef) and n.name=='bam'],type_ignores=[]),'<BAM checks>','exec'))
 sr=json.loads((D/'asset_manifest.json').read_text());iw=json.loads((D/'iwd_asset_manifest.json').read_text());allassets=sr+iw
@@ -19,6 +21,13 @@ for a in allassets:
   if SOURCE and a in iw:assert b==(SOURCE/a['source']).read_bytes()
  else:
   nvvc+=1;assert len(b)==492 and b[:8]==b'VVC V1.0';ref=b[8:16].split(b'\0')[0].decode().lower()+'.bam';assert ref in by
+  if METADATA and a in iw:
+   original=metadata_files[a['source'].split(' ')[0].upper()].read_bytes()
+   assert hashlib.sha256(original).hexdigest()==a['source_sha256']
+   expected=bytearray(original);expected[8:16]=p.stem.encode().ljust(8,b'\0');expected[96:104]=p.stem.encode().ljust(8,b'\0')
+   for o in (120,128,148):expected[o:o+8]=bytes(8)
+   struct.pack_into('<I',expected,92,0xffffffff)
+   assert b==expected,'source controller phases/placement/flags changed: '+str(p)
   assert all(b[o:o+8]==bytes(8) for o in (16,68,120,128,136,148))
   nf,cycles=bam((ROOT/by[ref]['destination']).read_bytes())
   assert all(struct.unpack_from('<I',b,o)[0] in (0,0xffffffff) or 1<=struct.unpack_from('<I',b,o)[0]<=len(cycles) for o in (104,108,144))
@@ -27,14 +36,15 @@ assert set(re.findall(r'~([^~]+\.(?:bam|vvc))~',guard))=={Path(a['destination'])
 for r in overlays:
  b=(MOD/'assets/iwd'/(r['private']+'.vvc')).read_bytes();assert struct.unpack_from('<I',b,32)[0]&1
  assert struct.unpack_from('<I',b,92)[0]==0xffffffff
- assert struct.unpack_from('<I',b,104)[0]==struct.unpack_from('<I',b,108)[0]==1
+ assert struct.unpack_from('<I',b,104)[0]==1
+ assert struct.unpack_from('<I',b,108)[0]==(2 if r['art']=='WEBC' else 1)
 core=json.loads((D/'test_config.json').read_text());rows=json.loads((D/'iwd_spell_mapping.json').read_text());iwd_roots={r[0] for r in rows}|{r['spell'] for r in overlays}
 assert not iwd_roots&{r[0] for r in core['spells']}
 previews=json.loads((ROOT/'docs/previews/manifest.json').read_text())
 for e in previews:
  assert hashlib.sha256((ROOT/e['asset']).read_bytes()).hexdigest()==e['asset_sha256']
  assert hashlib.sha256((ROOT/e['file']).read_bytes()).hexdigest()==e['gif_sha256']
-for p in (ROOT/'README.md',ROOT/'README.it.md',MOD/'README.md',ROOT/'CREDITS.md',D/'RIGOROUS_AUDIT.md',D/'IWD_SELECTION_RECHECK.it.md'):
+for p in (ROOT/'README.md',ROOT/'README.it.md',MOD/'README.md',ROOT/'CREDITS.md',D/'RIGOROUS_AUDIT.md',D/'IWD_SELECTION_RECHECK.it.md',D/'FULL_SOURCE_AUDIT.it.md'):
  for target in re.findall(r'\]\(([^)]+)\)',p.read_text()):
   if target.startswith(('https:','http:','#')):continue
   assert (p.parent/target.split('#')[0]).exists(),(p,target)

@@ -1,16 +1,16 @@
 # Arcane Visions — Spell Effect Animations
 
 **Animazioni degli effetti dopo il lancio delle spell originali di BG, per EET/BG2EE.**
-Versione **v0.2.0-beta.3**, di **Sauler89**. Spell Revisions e IWDification non servono.
+Versione **v0.2.0-beta.4**, di **Sauler89**. Spell Revisions e IWDification non servono.
 
 | Componente | Contenuto |
 |---|---|
 | **0 — SR** | 14 BAM e 12 VVC da SR; 16 SPL originali patchati, più sostituzioni di grafica nativa |
-| **10 — IWDEE** | 19 BAM e 19 VVC per 20 altre spell originali; duplicati e sagome condivise esclusi |
+| **10 — IWDEE** | 25 BAM e 25 VVC per 26 altre spell originali; duplicati grafici esclusi, varianti di colore distinte |
 
 Puoi installarli insieme o separatamente. Non si importano icone, nuove spell,
 meccaniche, proiettili, creature o armi. I dati non visivi delle spell restano
-quelli installati nel tuo gioco. La lista completa e le dieci anteprime GIF sono
+quelli installati nel tuo gioco. La lista completa e le 14 anteprime GIF sono
 nel [README principale](README.md#animation-examples).
 
 ## Installazione
@@ -33,20 +33,26 @@ Linux/macOS usa WeiDU nativo. Disinstalla con lo stesso installer.
   un altro mod interrompe quel componente senza sovrascriverne le risorse.
 - Le sequenze non ripetute possono finire; Barriera di lame, Mantello e
   Falsa alba conservano le rispettive regole di durata visiva.
-- La beta.3 aggiunge Sanctuary, Protection from Arrows e i due Globi IWDEE.
+- La beta.3 aveva aggiunto Sanctuary, Protection from Arrows e i due Globi IWDEE.
   Non si sovrappongono ai BAM SR o EET confrontati. Gli opcode di stato,
   le durate, condizioni e protezioni restano quelli della spell installata.
+- La beta.4 recupera Glitterdust, Ragnatela sul bersaglio, Sfera elastica di
+  Otiluke, Resurrezione, Guarigione e Rallentare veleno. Corregge le esclusioni
+  basate sulla sola sagoma. Restano 46 candidati distinti ancora da integrare.
 - Non sono importati tutti i BAM IWDEE. Call Lightning richiede ancora i BAM
   `SKYBOLT` IWDEE ed EET per verifica; altri candidati dipendono da proiettili,
   aree e sottospell. [Esclusioni e ricontrollo](sr_original_spell_animations/docs/IWD_SELECTION_RECHECK.it.md).
 
 ## Ricontrollo
 
-Verificati tutti i 33 BAM e 31 VVC. Passati i test WeiDU su 36 spell EET reali
+Verificati tutti i 39 BAM e 37 VVC. Passati i test WeiDU su 42 SPL EET reali (incluse due sottospell)
 esportate: installazione, reinstallazione stabile e disinstallazione con
-ripristino byte per byte. Passati anche 22 casi aggiuntivi di regressione e
-i test dei layout SR e dei profili EET/BG2EE. Aggiunti e superati 44 test
+ripristino byte per byte. Passati anche 28 casi aggiuntivi di regressione e
+i test dei layout SR e dei profili EET/BG2EE. Aggiunti e superati 54 test
 specifici degli overlay persistenti, comprese le condizioni di Sanctuary.
+Superati anche 12 casi delle sottospell: si modificano solo se richiamate dalla
+spell principale, conservando le condizioni e senza modificare la root.
+[Rapporto completo IWDEE e SR](sr_original_spell_animations/docs/FULL_SOURCE_AUDIT.it.md).
 
 Correzioni della beta.2: sequenza di Implosione non troncata, controller singoli
 lasciati terminare, indice globale inutilizzato accettato quando non ci sono

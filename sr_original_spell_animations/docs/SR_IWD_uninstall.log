@@ -12,7 +12,7 @@ SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2  0 10 Instal
 Removing [Arcane Visions: SR effects for original BG spells] (component #0)
 uninstall: sr_original_spell_animations/setup-sr_original_spell_animations.tp2 0
 We must temporarily uninstall [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 10
-Will uninstall  58 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 10.
+Will uninstall  76 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 10.
   Restoring backed-up [sr_original_spell_animations/backup/10/SPPR308.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPPR411.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPPR417.spl]
@@ -29,11 +29,17 @@ Will uninstall  58 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPE
   Restoring backed-up [sr_original_spell_animations/backup/10/SPWI715.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPWI812.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPWI922.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPWI224.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPWI413A.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPPR712A.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPPR607.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPPR212.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPPR109.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPWI311.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPWI406.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPWI602.spl]
-Uninstalled     58 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 10.
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPWI215.spl]
+Uninstalled     76 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 10.
 Will uninstall  42 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 0.
   Restoring backed-up [sr_original_spell_animations/backup/0/spentaai.bam]
   Restoring backed-up [sr_original_spell_animations/backup/0/spentaci.bam]

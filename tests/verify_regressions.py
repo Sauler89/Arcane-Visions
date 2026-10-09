@@ -57,6 +57,14 @@ try:
     o=eo+(idx+j)*48
     if opcode(b[o:o+48])==215:struct.pack_into('<'+fmt,v,o+field,value)
   p.write_bytes(v);before=snap();run(10);assert path('sppr308.spl').read_bytes()==v;run(10,False);assert snap()==before;results.append(label)
+ # State-bearing overlays are also visuals; never layer over an unknown one.
+ for overlay in range(153,159):
+  v=bytearray(b)
+  for i in range(n):
+   cnt,idx=struct.unpack_from('<HH',b,ao+i*40+30)
+   o=next(eo+(idx+j)*48 for j in range(cnt) if opcode(b[eo+(idx+j)*48:eo+(idx+j+1)*48])==142)
+   struct.pack_into('<H',v,o,overlay)
+  p=path('sppr308.spl');p.write_bytes(v);before=snap();run(10);assert path('sppr308.spl').read_bytes()==v;run(10,False);assert snap()==before;results.append('additional-overlay-'+str(overlay))
  # Collisions must fail before native resources or spells are modified.
  for comp,name in [(0,'sraghst.bam'),(10,'sriopara.vvc')]:
   (ov/name).write_bytes(b'another mod owns this name');(ov/'spmagglo.bam').write_bytes(b'native sentinel');before=snap();out=run(comp,success=False);assert 'private resource' in out;assert snap()==before;path(name).unlink();results.append('collision-component-'+str(comp))

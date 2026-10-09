@@ -131,5 +131,59 @@
     "preview_frame_delay_ms": 70,
     "screen_blending_approximation": true,
     "game_capture": false
+  },
+  {
+    "file": "docs/previews/glitterdust.gif",
+    "asset": "sr_original_spell_animations/assets/iwd/sriodust.bam",
+    "asset_sha256": "0b55399f1c832886dc9dfe8f7ad8ed84435073d617143524e88ab37826bc45f4",
+    "gif_sha256": "700bc91a78db1e4c3b15000b81596f810b0203192b2eba192425a88cbc56bbea",
+    "bam_cycles": [
+      1
+    ],
+    "frame_rate": 15,
+    "preview_frame_delay_ms": 70,
+    "screen_blending_approximation": true,
+    "game_capture": false
+  },
+  {
+    "file": "docs/previews/web.gif",
+    "asset": "sr_original_spell_animations/assets/iwd/sriowebc.bam",
+    "asset_sha256": "0712be46f930c6e88209bfda4e57fe5b68b4b43f9a34be7e8178d6099e876fc7",
+    "gif_sha256": "7097e478d5ab3c8da40708d22986096667c16ec5dbbaca1e995256cdea6c1928",
+    "bam_cycles": [
+      0,
+      1,
+      1
+    ],
+    "frame_rate": 15,
+    "preview_frame_delay_ms": 70,
+    "screen_blending_approximation": true,
+    "game_capture": false
+  },
+  {
+    "file": "docs/previews/resilient-sphere.gif",
+    "asset": "sr_original_spell_animations/assets/iwd/srioosph.bam",
+    "asset_sha256": "0b0af8ef31614cc2cd72cc4d0a3ef71644e9758e31f006d4cc26149543395d8b",
+    "gif_sha256": "ddc40f96b49cee0f70aeec57a9801df3eade1413f65f36c6250fb4511bb21709",
+    "bam_cycles": [
+      0
+    ],
+    "frame_rate": 15,
+    "preview_frame_delay_ms": 70,
+    "screen_blending_approximation": true,
+    "game_capture": false
+  },
+  {
+    "file": "docs/previews/resurrection.gif",
+    "asset": "sr_original_spell_animations/assets/iwd/srioress.bam",
+    "asset_sha256": "6cf6ba6fa7c5568d1a1b189a841e08276da9b294fb2f3b9ca986adb7cffaab8f",
+    "gif_sha256": "37938c139c0ca7abfb70948e27901ed7ee642e4084d754222e3490d264b4cdb2",
+    "bam_cycles": [
+      0
+    ],
+    "frame_rate": 15,
+    "preview_frame_delay_ms": 70,
+    "screen_blending_approximation": true,
+    "game_capture": false
   }
 ]

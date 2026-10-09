@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "cases": 12,
+  "checks": [
+    "SPWI413A: recognized chain",
+    "SPWI413A: root absent",
+    "SPWI413A: root detached",
+    "SPWI413A: same-name immunity is not a cast",
+    "SPWI413A: truncated root",
+    "SPWI413A: additional child visual",
+    "SPPR712A: recognized chain",
+    "SPPR712A: root absent",
+    "SPPR712A: root detached",
+    "SPPR712A: same-name immunity is not a cast",
+    "SPPR712A: truncated root",
+    "SPPR712A: additional child visual"
+  ],
+  "root_bytes_preserved": true,
+  "child_mechanics_conditions_and_timing_preserved": true,
+  "reinstall_stable": true,
+  "uninstall_byte_exact": true,
+  "game_rendering_tested": false
+}

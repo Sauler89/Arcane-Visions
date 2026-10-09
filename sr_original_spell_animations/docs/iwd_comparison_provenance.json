@@ -33,9 +33,12 @@
   ],
   "iwdee_bams": 246,
   "eet_bams": 386,
-  "sr_bams": 14,
-  "selected_iwdee_bams": 19,
-  "selected_original_spells": 20,
+  "sr_bams": 224,
+  "selected_iwdee_bams": 25,
+  "selected_original_spells": 26,
   "not_render_tested": true,
-  "selection_review": "iwd_selection_recheck.json"
+  "selection_review": "source_coverage_summary.json",
+  "selected_sr_bams": 14,
+  "version": "v0.2.0-beta.4",
+  "shape_is_not_duplicate_evidence": true
 }

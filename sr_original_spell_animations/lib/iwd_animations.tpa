@@ -29,7 +29,7 @@ BEGIN
     FOR (srio_j = 0; srio_j < srio_n; ++srio_j) BEGIN
      SET srio_e = srio_eo + (srio_idx + srio_j) * 48
      READ_SHORT srio_e srio_opcode
-     PATCH_IF srio_opcode = 141 OR srio_opcode = 215 BEGIN
+     PATCH_IF srio_opcode = 141 OR srio_opcode = 215 OR (srio_opcode >= 153 AND srio_opcode <= 158) BEGIN
       SET srio_visuals += 1
       READ_BYTE (srio_e + 2) srio_t
       READ_LONG (srio_e + 8) srio_param2
@@ -64,6 +64,43 @@ BEGIN
    END
   END ELSE BEGIN PATCH_PRINT ~IWD Spell Animations: %SOURCE_RES%.spl has an unsupported layout; skipped.~ END
  END ELSE BEGIN PATCH_PRINT ~IWD Spell Animations: truncated %SOURCE_RES%.spl, skipped.~ END
+END
+
+// Read the root without writing it. Never patch a detached, repurposed child.
+DEFINE_ACTION_FUNCTION srio_check_child
+ STR_VAR srio_root = ~~ srio_child = ~~
+ RET srio_linked
+BEGIN
+ OUTER_SET srio_linked = 0
+ ACTION_IF FILE_EXISTS_IN_GAME ~%srio_root%.spl~ BEGIN
+  COPY_EXISTING ~%srio_root%.spl~ ~override~
+   PATCH_IF SOURCE_SIZE >= 0x72 BEGIN
+    READ_ASCII 0 srio_sig (8)
+    READ_LONG 0x64 srio_ao
+    READ_SHORT 0x68 srio_ac
+    READ_LONG 0x6a srio_eo
+    SET srio_valid = (~%srio_sig%~ STRING_EQUAL_CASE ~SPL V1  ~) AND srio_ao >= 0x72 AND srio_ac > 0 AND srio_ao + srio_ac * 40 <= SOURCE_SIZE AND srio_eo >= srio_ao + srio_ac * 40 AND srio_eo <= SOURCE_SIZE
+    // Validate all ability blocks before accepting any link.
+    FOR (srio_i = 0; srio_i < srio_ac AND srio_valid; ++srio_i) BEGIN
+     READ_SHORT (srio_ao + srio_i * 40 + 30) srio_n
+     READ_SHORT (srio_ao + srio_i * 40 + 32) srio_idx
+     PATCH_IF srio_eo + (srio_idx + srio_n) * 48 > SOURCE_SIZE BEGIN SET srio_valid = 0 END
+    END
+    PATCH_IF srio_valid BEGIN
+     FOR (srio_i = 0; srio_i < srio_ac; ++srio_i) BEGIN
+      READ_SHORT (srio_ao + srio_i * 40 + 30) srio_n
+      READ_SHORT (srio_ao + srio_i * 40 + 32) srio_idx
+      FOR (srio_j = 0; srio_j < srio_n; ++srio_j) BEGIN
+       SET srio_e = srio_eo + (srio_idx + srio_j) * 48
+       READ_SHORT srio_e srio_opcode
+       READ_ASCII (srio_e + 20) srio_ref (8) NULL
+       PATCH_IF (srio_opcode = 146 OR srio_opcode = 148 OR srio_opcode = 232 OR srio_opcode = 259 OR srio_opcode = 326 OR srio_opcode = 333) AND (~%srio_ref%~ STRING_EQUAL_CASE ~%srio_child%~) BEGIN SET srio_linked = 1 END
+      END
+     END
+    END
+   END
+  BUT_ONLY_IF_IT_CHANGES
+ END
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~SPPR308.spl~ BEGIN
@@ -177,3 +214,46 @@ ACTION_IF FILE_EXISTS_IN_GAME ~SPWI922.spl~ BEGIN
       STR_VAR srio_old = ~SPDRGNBR~ srio_new = ~sriodrag~ END
   BUT_ONLY_IF_IT_CHANGES
 END ELSE BEGIN PRINT ~IWD Spell Animations: SPWI922.spl missing, skipped.~ END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~SPWI224.spl~ BEGIN
+  COPY_EXISTING ~SPWI224.spl~ ~override~
+    LPF srio_replace INT_VAR srio_op = 215 srio_p2 = 1 srio_target = 2 srio_loop = 0 srio_expected = 1
+      STR_VAR srio_old = ~GLDUSTH~ srio_new = ~sriodust~ END
+  BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~IWD Spell Animations: SPWI224.spl missing, skipped.~ END
+
+LAF srio_check_child STR_VAR srio_root = ~SPWI413~ srio_child = ~SPWI413A~ RET srio_linked END
+ACTION_IF srio_linked BEGIN
+
+ACTION_IF FILE_EXISTS_IN_GAME ~SPWI413A.spl~ BEGIN
+  COPY_EXISTING ~SPWI413A.spl~ ~override~
+    LPF srio_replace INT_VAR srio_op = 215 srio_p2 = 1 srio_target = 2 srio_loop = 1 srio_expected = 1
+      STR_VAR srio_old = ~MINORGLB~ srio_new = ~srioosph~ END
+  BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~IWD Spell Animations: SPWI413A.spl missing, skipped.~ END
+END ELSE BEGIN PRINT ~IWD Spell Animations: SPWI413.spl no longer calls SPWI413A.spl after casting; skipped.~ END
+
+LAF srio_check_child STR_VAR srio_root = ~SPPR712~ srio_child = ~SPPR712A~ RET srio_linked END
+ACTION_IF srio_linked BEGIN
+
+ACTION_IF FILE_EXISTS_IN_GAME ~SPPR712A.spl~ BEGIN
+  COPY_EXISTING ~SPPR712A.spl~ ~override~
+    LPF srio_replace INT_VAR srio_op = 215 srio_p2 = 0 srio_target = 2 srio_loop = 0 srio_expected = 1
+      STR_VAR srio_old = ~ICRAISEI~ srio_new = ~srioress~ END
+  BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~IWD Spell Animations: SPPR712A.spl missing, skipped.~ END
+END ELSE BEGIN PRINT ~IWD Spell Animations: SPPR712.spl no longer calls SPPR712A.spl after casting; skipped.~ END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~SPPR607.spl~ BEGIN
+  COPY_EXISTING ~SPPR607.spl~ ~override~
+    LPF srio_replace INT_VAR srio_op = 215 srio_p2 = 1 srio_target = 2 srio_loop = 0 srio_expected = 1
+      STR_VAR srio_old = ~SPHEALIN~ srio_new = ~srioheal~ END
+  BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~IWD Spell Animations: SPPR607.spl missing, skipped.~ END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~SPPR212.spl~ BEGIN
+  COPY_EXISTING ~SPPR212.spl~ ~override~
+    LPF srio_replace INT_VAR srio_op = 141 srio_p2 = 2 srio_target = 2 srio_loop = 0 srio_expected = 1
+      STR_VAR srio_old = ~~ srio_new = ~sriospoi~ END
+  BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~IWD Spell Animations: SPPR212.spl missing, skipped.~ END

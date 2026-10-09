@@ -1,11 +1,11 @@
 {
   "status": "PASS",
   "component": 10,
-  "spells": 20,
-  "persistent_overlay_spells": 4,
-  "bam_assets": 19,
-  "vvc_assets": 19,
-  "frames_validated": 687,
+  "spells": 26,
+  "persistent_overlay_spells": 5,
+  "bam_assets": 25,
+  "vvc_assets": 25,
+  "frames_validated": 935,
   "spell_checks": [
     {
       "spell": "SPPR308",
@@ -104,6 +104,36 @@
       "all_mechanics_and_conditions_preserved": true
     },
     {
+      "spell": "SPWI224",
+      "abilities": 1,
+      "visual_effects_replaced": 1,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
+      "spell": "SPWI413A",
+      "abilities": 1,
+      "visual_effects_replaced": 1,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
+      "spell": "SPPR712A",
+      "abilities": 1,
+      "visual_effects_replaced": 1,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
+      "spell": "SPPR607",
+      "abilities": 1,
+      "visual_effects_replaced": 1,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
+      "spell": "SPPR212",
+      "abilities": 1,
+      "visual_effects_replaced": 1,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
       "spell": "SPPR109",
       "abilities": 1,
       "visual_effects_replaced": 1,
@@ -125,6 +155,12 @@
       "spell": "SPWI602",
       "abilities": 9,
       "visual_effects_replaced": 9,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
+      "spell": "SPWI215",
+      "abilities": 1,
+      "visual_effects_replaced": 1,
       "all_mechanics_and_conditions_preserved": true
     }
   ],

@@ -1,7 +1,7 @@
-# Rigorous audit — Arcane Visions v0.2.0-beta.3
+# Rigorous audit — Arcane Visions v0.2.0-beta.4
 
-Reviewed on 2026-10-09 (Europe/Rome). Scope: all 64 graphics/controller assets,
-both installer components, source provenance, live exports, effect conditions,
+Reviewed on 2026-10-09 (Europe/Rome). Scope: all 76 graphics/controller assets,
+both installer components, all 856 source/comparison BAMs, source provenance, live exports, effect conditions,
 resource-name collisions, previews, documentation and install/uninstall behavior.
 
 ## Findings and corrections
@@ -18,6 +18,21 @@ resource-name collisions, previews, documentation and install/uninstall behavior
 | Persistent IWDEE overlays were missed by the 141/215-only selection | Sanctuary, Protection from Arrows and both IWDEE globes added; not SR overlaps |
 | README incorrectly generalized the exclusion of SR globe icons to IWDEE globe effects | Corrected; four new genuine BAM previews; SR icons still excluded |
 
+## Full source and omission review
+
+Beta.4 adds Glitterdust, Web target overlay, Resilient Sphere, Resurrection,
+Heal and Slow Poison. The real source controllers/phases are preserved.
+Web keeps opcode 157 and its existing state/duration/conditions. The two child
+SPLs are changed only when the original root still calls them after casting.
+The root bytes remain identical. The cue patcher now rejects additional
+state overlays 153–158. Case-insensitive source lookup prevents Linux filename
+omissions. Six BAMs previously lost through incomplete cue, child and shape
+selection are now included.
+
+[Full source review and exclusions](FULL_SOURCE_AUDIT.it.md) inventories every
+SR source BAM, all original-spell dependencies and 46 remaining IWD candidates.
+No additional demonstrated active original-spell SR artwork was found.
+
 ## Persistent overlay and selection review
 
 Beta.3 adds four byte-identical IWDEE BAMs and four isolated looping VVCs.
@@ -33,18 +48,19 @@ IWDEE/EET SKYBOLT BAMs; no exclusivity claim can be made for absent artwork.
 
 ## Asset checks
 
-- All **33 BAMs** are byte-identical to the supplied source artwork.
-- **1,011 total BAM frames** validated.
+- All **39 BAMs** are byte-identical to the supplied source artwork.
+- **1,259 total BAM frames** validated.
 - All frames, cycle lookups, offsets, dimensions and RLE data validated.
-- All **31 VVCs** have valid signatures, resolved BAM dependencies and valid
+- All **37 VVCs** have valid signatures, resolved BAM dependencies and valid
   one-based phase references (zero/default and -1 omissions handled).
 - No controller depends on an external bitmap palette, alpha BAM or audio file.
 - Source/installed hashes retained in both manifests. Private resource names
   are at most eight characters and unique case-insensitively.
-- The final 19 IWD BAMs have no complete, cropped-art, shape or emitted-RGB
-  cycle match against the 386 EET BAMs or 14 SR BAMs compared. Shared names
-  are not used as evidence of duplication; compression and alias names are ignored.
-- All ten README GIFs are rendered from bundled assets with retained provenance.
+- All 25 imported IWD BAMs have no full artwork match to the selected original-spell
+  SR BAMs. Source comparison covers all 224 SR BAMs, 246 IWD BAMs and 386 EET BAMs.
+  Heal and Slow Poison are distinct colour variants despite shared EET shapes.
+  Shape alone and a single shared cycle are not complete-duplicate evidence.
+- All 14 README GIFs are rendered from bundled assets with retained provenance.
   Frame anchors are retained; blending is illustrative, not an engine renderer.
 - The 17 supplied EET BMP headers were checked. None of the EET VVCs replaced
   by component 10 uses an external palette or alpha BAM.
@@ -56,21 +72,23 @@ IWDEE/EET SKYBOLT BAMs; no exclusivity claim can be made for absent artwork.
 | SR assets checked against actual v4.21 source bytes | PASS |
 | SR EET and BG2EE synthetic profiles: install, reinstall, uninstall | PASS |
 | Actual source SR SPL layouts patched and restored | PASS |
-| 16 real EET SR SPLs plus 20 real EET IWD SPLs: combined install | PASS |
+| 16 real EET SR SPLs plus 26 real EET IWD SPLs: combined install | PASS |
 | IWD component installed independently | PASS |
 | Reinstallation snapshot stable, standalone and combined | PASS |
 | Disinstallation restores all original resource bytes and removes new graphics | PASS |
 | SPL globals, icons, projectile indexes, levels and nonvisual effects retained | PASS |
 | IWD visual probability, save, target, power and resistance flags retained | PASS |
 | Unknown additional visual from another mod safely skipped by IWD component | PASS |
-| 22 extra regressions: invalid layouts, conditional visuals, collision guards and unsupported games | PASS |
-| 44 new persistent-overlay regressions: state/conditions/duration, custom modes, unknown visuals, collisions and bounds | PASS |
+| 28 extra regressions: invalid layouts, conditional visuals, collision guards and unsupported games | PASS |
+| 54 persistent-overlay regressions: state/conditions/duration, custom modes, unknown visuals, collisions and bounds | PASS |
+| 12 child-spell cases: recognized/missing/detached/malformed roots and unknown child visuals | PASS |
 | README local links and GIF/asset hash provenance | PASS |
 
-The 22 regressions include 13 malformed/unsupported SPL layouts, a legal
+The 28 regressions include 13 malformed/unsupported SPL layouts, a legal
 unused global index, a visual with non-default save/probability/resistance,
 wrong target, delayed or unexpectedly persistent cue, collisions in both
-components, and unsupported-game checks for both components.
+components, and unsupported-game checks for both components, plus six additional
+state-overlay guard cases (opcodes 153–158).
 
 The SR synthetic tests also exercise Mantle's protection-derived conditions,
 its old-aura and explicit 24-second fallbacks, missing native resources,
@@ -83,17 +101,17 @@ installation. WeiDU's derived ADD_SPELL.IDS cache is excluded from snapshot
 comparisons because WeiDU clears it independently of these components.
 
 Results: `IWD_validation.json`, `regression_validation.json`,
-`integrity_validation.json`, `overlay_validation.json`. Test programs are in the repository's `tests/`.
+`integrity_validation.json`, `overlay_validation.json`, `child_validation.json`. Test programs are in the repository's `tests/`.
 
 ## Scope and remaining limits
 
 Component 0 patches 16 selected SPLs, deliberately replacing their 141/215
-ability visuals. Component 10 patches 20 other SPLs only where the original
+ability visuals. Component 10 patches 26 other SPLs, including two child spells, only where the original
 visual configuration is recognized. It preserves effect order/counts and
 all nonvisual bytes. Missing or unfamiliar abilities are skipped and logged.
 The two root spell lists do not overlap. Persistent Sanctuary/globe state
 opcodes retain their behavior, and the original protections stay byte-exact.
-This is a selected import; 42 distinct candidate BAMs remain unintegrated.
+This is a selected import; 46 distinct candidate BAMs remain unintegrated.
 
 Native SPENTAAI/SPENTACI, SPCHRORB and SPMAGGLO replacements are shared
 resources; any other spell/item using them can receive the new artwork.

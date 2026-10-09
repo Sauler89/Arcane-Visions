@@ -29,7 +29,7 @@ BEGIN
     FOR (srio_j = 0; srio_j < srio_n; ++srio_j) BEGIN
      SET srio_e = srio_eo + (srio_idx + srio_j) * 48
      READ_SHORT srio_e srio_opcode
-     PATCH_IF srio_opcode = 141 OR srio_opcode = 215 BEGIN
+     PATCH_IF srio_opcode = 141 OR srio_opcode = 215 OR (srio_opcode >= 153 AND srio_opcode <= 158) BEGIN
       SET srio_visuals += 1
       READ_BYTE (srio_e + 2) srio_t
       READ_LONG (srio_e + 8) srio_param2

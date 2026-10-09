@@ -1,0 +1,225 @@
+﻿source_path,source_sha256,status,reason,active_direct_COPY,visual_references,icon_references
+shared/adscroll.bam,d01f6d90d5e0d698ac6b5b75eb24d3e9dedb483084f5d009aecc4afa1f0de56f,icon,spell/item icon field/naming; no world-effect binding found,True,,ADSCROLL.ITM: ability icon | ADSCROLL.ITM: memorized icon
+shared/dvelair.bam,e98b2e6aaef1e355125f4eee2068b422c28a2d99668083006ed7bcaf1cac9651,included,bundled original-spell animation,True,DVELAIR.VVC,
+shared/dveleart.bam,c76866bf0cdbf3d8de8c539f582dd2762b5a9b3b797d0059b9dcbd2cd81b2700,included,bundled original-spell animation,True,DVELEART.VVC,
+shared/dvelfire.bam,767bc300f487a2f3cea42e8f9fa80d5b8bacea520239d847be99a5bd3d61f622,included,bundled original-spell animation,True,DVELFIRE.VVC,
+shared/dvholya1.bam,978d9f26b09ac516e65b391e9271f60d7ac2570ac6c2556f2681a55cb3b3a758,unreferenced_or_inactive,Protection from Evil aura installation commented out,False,DVHOLYA1.VVC,
+shared/dvholya2.bam,83d4bf44088cd5a335671fbde9fdd9c1279d8f0c13563c15098104ea2fb23595,unreferenced_or_inactive,Protection from Evil aura installation commented out,False,DVHOLYA2.VVC,
+shared/dvsun.bam,7ed026d3cb435741b919ccf22cbd5f159e713fd78b1f461fc10cd15bd3e60cfc,included,bundled original-spell animation,True,DVSUN1.VVC | DVSUN2.VVC,
+shared/illush.bam,7b8449334559079ebbc001a873be96ed6a2d8829ebda66964c2c431d72f69045,included,bundled original-spell animation,True,ILLUSHVC.VVC,
+shared/spdimndr.bam,c0f54a5a69631fb08679045a11c96df65b01ef04fdf7eb13c2b2f1399d389b5e,unreferenced_or_inactive,archive BAM is not copied by active installer,False,SPWI109.SPL | SPWI109.SPL@SUB | SPWI402.SPL | SPWI402.SPL@SUB,
+shared/spentaai.bam,73b66e96127192bc1a9ad1a19ba7ab25fd95a8110079c2f75d111fc10d43c22a,included,bundled original-spell animation,True,,
+shared/spentaci.bam,ee2e54480a47a92a3014688cb4382433560c286c0bc637348e7f3d5eaefe34c3,included,bundled original-spell animation,True,DVSHILLE.SPL | DVSHILLE.SPL@SUB | DVSMOUND.SPL | DVSMOUND.SPL@SUB | SPPR105.SPL | SPPR105.SPL@SUB,
+shared/spmagglo.bam,86cb2ecd721fbb5e5ed05928b3666ff724492deb32b1da21d2d536767b73d9f6,included,bundled original-spell animation,True,SPMAGGLO.VVC,
+shared/wings/cwings01.bam,c26877a39118e79f911688b670dc75ff31ad5ff87047b6d4d1d06f424f93cc53,avatar_or_equipment,celestial wings/equipment artwork,False,,DVWINGS.ITM: item icon
+shared/wings/gwings01.bam,b810ee1846ca89b99ae1a575d55b2ba48ece320e41b03cdc5479d538c3ec43e2,avatar_or_equipment,celestial wings/equipment artwork,False,,DVWINGS.ITM: item icon
+shared/wings/wpmzwinv.bam,b97877ead1feff2c5197b04aa1548e9e9aa9e967b14ada81df541fbdd24a659c,avatar_or_equipment,celestial wings/equipment artwork,False,,
+shared/wings/wqmzwa1.bam,b0a9c580831fe0631902c87a54a13de187a45c6cc4741c1ed784173dd27f9611,avatar_or_equipment,celestial wings/equipment artwork,False,,
+shared/wings/wqmzwa2.bam,f10533a375a1bcd8759d14bbcfaa1ce95bf8cc80fa04dd10d5ff5e7ecb65e31f,avatar_or_equipment,celestial wings/equipment artwork,False,,
+shared/wings/wqmzwa3.bam,557336e7a75e8c87676bda6a060d399431eb9a02d8ba1308d6a0780ccec28e8d,avatar_or_equipment,celestial wings/equipment artwork,False,,
+shared/wings/wqmzwa4.bam,a21e96fd2b0d626213555fe73ad6d6b801feb1a1f01cdc06c62e4656b574b65c,avatar_or_equipment,celestial wings/equipment artwork,False,,
+shared/wings/wqmzwa5.bam,8dc99f2d3c7b1f7a6baf29e7e42361b00ed336bdf71c92f11b55730a7571fd25,avatar_or_equipment,celestial wings/equipment artwork,False,,
+shared/wings/wqmzwa6.bam,b920362a68b6ce588b1045747194027b9449639a9c687a8dcc6ae5250e81cbba,avatar_or_equipment,celestial wings/equipment artwork,False,,
+shared/wings/wqmzwa7.bam,58428c3d4da342cbbee2d624466d159918adf46545cbb6bcf05753cc07e756a6,avatar_or_equipment,celestial wings/equipment artwork,False,,
+shared/wings/wqmzwa8.bam,7302ed81635777e634ca989f224104899e08b853c6c2a47b9b23e582ae03027b,avatar_or_equipment,celestial wings/equipment artwork,False,,
+shared/wings/wqmzwa9.bam,882421276277482eed039632c236976d57c98c8f66eb7a017aaa10b9021eb8a1,avatar_or_equipment,celestial wings/equipment artwork,False,,
+shared/wings/wqmzwca.bam,5706ef8c153ea8750927e2f9d485970ce31a4da6e3fb5d8ba928ebd9d493ad66,avatar_or_equipment,celestial wings/equipment artwork,False,,
+shared/wings/wqmzwg1.bam,2bc97ea7d583ec8eb997f8dd01053bd1fac690cf02721fd3fa5e533e6fea5d84,avatar_or_equipment,celestial wings/equipment artwork,False,,
+shared/wings/wqmzwsa.bam,aa565de1981fb8ba51ad3c6be18b2278cc0322521a0478929d021a9ab7196362,avatar_or_equipment,celestial wings/equipment artwork,False,,
+shared/wings/wqmzwss.bam,b0a9c580831fe0631902c87a54a13de187a45c6cc4741c1ed784173dd27f9611,avatar_or_equipment,celestial wings/equipment artwork,False,,
+shared/wings/wqmzwsx.bam,82e762448eddbba2d04f1f23d3fc05b54ff388c393da54ab423c16183d35b32a,avatar_or_equipment,celestial wings/equipment artwork,False,,
+sppr1##/dvpr114a.bam,67f2812211c25ea087c36cfe98c9d096f71904e57903768f008421423bf5b6b3,icon,spell/item icon field/naming; no world-effect binding found,True,,
+sppr1##/dvpr114b.bam,aa5af53ceaec9872cf00783af0fd27a0bb33c2bae28803313ba29010ce7fcfa5,icon,spell/item icon field/naming; no world-effect binding found,True,,DVPR114F.SPL: ability icon | SPPR114.SPL: ability icon
+sppr1##/dvpr114c.bam,41454f2c079add41e87a936817ade08f5a7020d3a330778a307137e75554a912,icon,spell/item icon field/naming; no world-effect binding found,True,,DVPR114F.SPL: memorized icon | SPPR114.SPL: memorized icon
+sppr1##/dvpr115a.bam,5210cbbd144588f7d386d93b7d44af1e9cbf055fa036017a7ae3a6ef4e8b53dc,icon,spell/item icon field/naming; no world-effect binding found,True,,
+sppr1##/dvpr115b.bam,d80ce1e9db2b48d3120a0778ec5cddd6f6f66345bb6e50b8944e5a1f999e1f2d,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR115.SPL: ability icon
+sppr1##/dvpr115c.bam,210f4749ad667158895a6cc99cafa90881a4be316d7f87ce8f29d3fde7221980,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR115.SPL: memorized icon
+sppr1##/dvpr116a.bam,b77bd61ab39e30f94ee289e1dcdc3cf7de2456aabe6911e92e4fc93d1add7ab9,icon,spell/item icon field/naming; no world-effect binding found,True,,
+sppr1##/dvpr116b.bam,e3455faeb97a24c38d832181784f8b09bf3ee47128d5b35a58fc7584cdeab68d,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR116.SPL: ability icon
+sppr1##/dvpr116c.bam,1f684e43d8c59391bd0419c8fb382a93a681943b60761d1205e43ddaa057c696,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR116.SPL: memorized icon
+sppr1##/dvpr117a.bam,2c394e07032e8fa65e36a3e48dff5632301ed7b80335b41ebbc70ab5f96039b4,icon,spell/item icon field/naming; no world-effect binding found,True,,
+sppr1##/dvpr117b.bam,d90d181d504ddc8018b0c502a0bd72d3c32ef72ddba665b1c2ebf08b21f1a931,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR117.SPL: ability icon
+sppr1##/dvpr117c.bam,5af44505f027378096c5b4bb924f29395422561f8b46cb3ba2b5c1b726f8530d,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR117.SPL: memorized icon
+sppr1##/dvpr119a.bam,588776bcb158e672d5a9c0728ebb0985fd34840b3a00c6123ca4e05ed80b407a,icon,spell/item icon field/naming; no world-effect binding found,True,,
+sppr1##/dvpr119b.bam,40e5c13bb251546af1a548af6c95c3af3e07e04d47933136499f8d51b41c1617,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR119.SPL: ability icon
+sppr1##/dvpr119c.bam,c2c3a090a73dbc27bc94934dc76c1940b96b3fdbaf23df912ea2609a17382d9a,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR119.SPL: memorized icon
+sppr1##/dvpr120a.bam,736c517dbcaabc3d8be6213b517585fe054897539a790daa959397e9c16beec9,icon,spell/item icon field/naming; no world-effect binding found,True,,
+sppr1##/dvpr120b.bam,21cc902ec430ff47a738b3ea1b45c92718cdc630e2a75fc09d3bc42332eab40f,icon,spell/item icon field/naming; no world-effect binding found,True,,DVRSWARM.SPL: ability icon | SPPR120.SPL: ability icon
+sppr1##/dvpr120c.bam,1513472239aa275fc52e000522f28ed5cfb75fc9bdc1f0f5c5b5fa89554e5746,icon,spell/item icon field/naming; no world-effect binding found,True,,DVRSWARM.SPL: memorized icon | SPPR120.SPL: memorized icon
+sppr1##/dvpr121a.bam,6b3c04677dfc7de51ea8581c8b01369b6a0d5216d6505eb27302c26798bd385f,icon,spell/item icon field/naming; no world-effect binding found,True,,
+sppr1##/dvpr121b.bam,24f0c90da48ce2de3ab5e620071efb24cf30c9eadeed1845bbfbec5063e2f16c,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR121.SPL: ability icon
+sppr1##/dvpr121c.bam,39eeb8ccb9a3a5e2e2665fa26c12c81e5942f9d4f2cf6875a33bc1e3d175bc6c,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR121.SPL: memorized icon
+sppr1##/mstone.bam,5aae59c31896e76f383da28e9037c20f1d2dfc5412c2d17070e952af7956e7f4,new_spell_or_item,weapon/inventory artwork; no live world BAM field,True,,MSTONE.ITM: ability icon | MSTONE.ITM: memorized icon
+sppr2##/dvpr216a.bam,fa6b53f862b1049a7c25df246b29583ab5acc5dc7996e46244e2b951e82f8cd5,icon,spell/item icon field/naming; no world-effect binding found,True,,
+sppr2##/dvpr216b.bam,938d3defaa688ec2ea22f204b58a4c4250e9e774055c64db232e9489c05a7b20,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR216.SPL: ability icon
+sppr2##/dvpr216c.bam,f68f457c70d78cdcf036839b5b0d27f0845441939ae52cf882b44bcfd8ffa8b7,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR216.SPL: memorized icon
+sppr2##/dvpr217a.bam,fbd25d672f08df2bc007fe2601640117f9574cbd7106e3c293877c3d625b5501,icon,spell/item icon field/naming; no world-effect binding found,True,,
+sppr2##/dvpr217b.bam,4dc0373874e51740aabf6405545d550f0a73bf93f2aeb720d9d8ba5427856454,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR217.SPL: ability icon
+sppr2##/dvpr217c.bam,4d010a8b09a3b9c5f1759094c9ef4feacb9644bb4e2fa1a1cfd1f47722eb4a67,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR217.SPL: memorized icon
+sppr2##/dvpr219a.bam,398ddb36b6d7483825bda63aabff1f394a958f9beb1087da8615d24c7337424e,icon,spell/item icon field/naming; no world-effect binding found,True,,
+sppr2##/dvpr219b.bam,6683632dbc19064be22692090e89fb4a08eb1cb7dd81940c7be20840e252cf7e,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR219.SPL: ability icon
+sppr2##/dvpr219c.bam,24f2656f105e9ea5b822781bb4ab90712783a1f61c14cce8cc76ea36225b5eab,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR219.SPL: memorized icon
+sppr2##/dvpr220a.bam,8a6c1981bdf596f0aa7f126bee19743f9105a147b3a2feeeae3327087d1114e0,icon,spell/item icon field/naming; no world-effect binding found,True,,
+sppr2##/dvpr220b.bam,f830d2430c72ddc550de682f55c4b472e7a972fd06c36a90d652e2aacdd9bcc1,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR220.SPL: ability icon
+sppr2##/dvpr220c.bam,06b0417d896f329512cd1b308a80792ecd09e94c9a1572333b43246b81adfef2,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR220.SPL: memorized icon
+sppr2##/dvsburst.bam,6df08f6553b8075dc52aa8837226c125733f039b5d3cf293765ab444a2bcbfee,new_spell_or_item,Sound Burst replaces original Deafness,True,DVSBURST.VVC,
+sppr3##/dvpr318a.bam,00a23f83af4e357fa297a1c8de4e804f744951774f017e1a63d224cea0ca6211,icon,spell/item icon field/naming; no world-effect binding found,True,,
+sppr3##/dvpr318b.bam,910f3b3c89f3b631a38a3ba12dbe69ffb429f83adcb29a431bb52e89561d11e7,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR218.SPL: ability icon | SPPR318.SPL: ability icon
+sppr3##/dvpr318c.bam,acde128ead3d9ce6a2fd4c8667bdd024c72487c968fda905a7e212e517ff06b4,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR218.SPL: memorized icon | SPPR318.SPL: memorized icon
+sppr3##/dvpr320a.bam,6a210c0ed27e027e63fc7771375173396e0a2f8f4be67056991524bef0277d5c,icon,spell/item icon field/naming; no world-effect binding found,True,,
+sppr3##/dvpr320b.bam,e5c15bc5b008a9547b24571f801bd955b018ae3e6c527a617d026ce943a72a32,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR320.SPL: ability icon
+sppr3##/dvpr320c.bam,8e7f1bfa7bf98bf7c2add025039d71d20f1784949612a67fbdf962f3a254d4b1,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR320.SPL: memorized icon
+sppr3##/dvpr323a.bam,b0fd29cfb9acce04b17d8b401674618f27f315f1210720bd383c961deb392c02,icon,spell/item icon field/naming; no world-effect binding found,True,,
+sppr3##/dvpr323b.bam,a4abe2e5f7eee8c84980ef0f114cfc4f8bf23a4c33dc443b8107beed794f30ba,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR323.SPL: ability icon
+sppr3##/dvpr323c.bam,77278968dac539cc89724055705f9a9384606893b870e72701cc30499062503b,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR323.SPL: memorized icon
+sppr3##/dvpr324a.bam,0946e356a0c88ff849d2a02e7c9d7b46b6d78ec96803d9e67dad1b0ce9b1f92c,icon,spell/item icon field/naming; no world-effect binding found,True,,
+sppr3##/dvpr324b.bam,7affb52e14c63a93c3839bba7047258760ba9547f24bc2428f8d978181525370,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR324.SPL: ability icon
+sppr3##/dvpr324c.bam,778787e5f864d17cfcf07cef846ffa0af61380769e4a247ae9069a728186b701,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR324.SPL: memorized icon
+sppr3##/dvpr325a.bam,9c8cd13f5884dde3c6b9f3440b37cfe03e0a64a7649e897fcfab41c06e8794cb,icon,spell/item icon field/naming; no world-effect binding found,True,,
+sppr3##/dvpr325b.bam,4f5f9af83b9fa48688c0dd22636e249983a43a9d455a14a70549fa7e369dbe75,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR325.SPL: ability icon
+sppr3##/dvpr325c.bam,4ab43509d3014de3a50941c01b9e593e53222699b4fc0d41fffa907d6a6b9f4a,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR325.SPL: memorized icon
+sppr3##/dvpr326a.bam,c48e5adda8fdc9144a6b6b7d9399726653acb17db8cbbca3c4ffe3823876eb57,icon,spell/item icon field/naming; no world-effect binding found,True,,
+sppr3##/dvpr326b.bam,9cfbe9bda7989584addf645fd5e6cdea314d01879c16fdb332beb16e93ad094d,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR326.SPL: ability icon
+sppr3##/dvpr326c.bam,f94da417696aca1760de6c5208d9e501e73f3f81e8fb291c1cb5fa002c46b8b9,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR326.SPL: memorized icon
+sppr3##/icelance.bam,42db3b7506151d2a49bd06b127d9f5322008a360ab4a9345fe91ae9fe020330c,new_spell_or_item,new Icelance spell,True,DVICESPR.PRO,
+sppr3##/spstorms.bam,e694435a6b08f7b35246266fd12db7a5fc4ba8ed0de027b1f921190d87de1199,new_spell_or_item,new Storm Shield spell,True,SPSTORMS.VVC,
+sppr4##/dvpr419a.bam,b6e1b4948aaa1c204c0e790eebbda4480292cd04c9288ebfdc43d613ee29b99a,icon,spell/item icon field/naming; no world-effect binding found,True,,
+sppr4##/dvpr419b.bam,4493c04498af345ed20a719a2075427f0da63e0638f9fae65384f0dc6bf8ddff,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR419.SPL: ability icon
+sppr4##/dvpr419c.bam,16cc6f96f24e0ebe06a77b821379555745fd67b7699c8ad8a451bd123e465aef,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR419.SPL: memorized icon
+sppr4##/sppr402a.bam,78c46aa478f5d6835ba97a133acbc15500ce520ce9e6af4afaa5797b0486bb2b,icon,spell/item icon field/naming; no world-effect binding found,True,,
+sppr4##/sppr402b.bam,571685d8b6c30c4737ae855ed5e251c5fde7feb3dae065c7ca2370b96a3369f5,icon,spell/item icon field/naming; no world-effect binding found,True,,DVANPACK.SPL: ability icon | SPPR402.SPL: ability icon | SPRA304.SPL: ability icon
+sppr4##/sppr402c.bam,1b5fd8ef7ab35a3bd1aa274b886064e32eb1aa4a587710f22c61f362241959b0,icon,spell/item icon field/naming; no world-effect binding found,True,,DVANPACK.SPL: memorized icon | SPPR402.SPL: memorized icon | SPRA304.SPL: memorized icon
+sppr5##/dvpr524a.bam,f33611878f4a291cd3458404808e0f30e73239c6587db819cc7c146102098690,icon,spell/item icon field/naming; no world-effect binding found,True,,
+sppr5##/dvpr524b.bam,946d4c7511df0c1a535fc25d6dd40371bfeae9b50d610c1558f6210e417133c8,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR524.SPL: ability icon
+sppr5##/dvpr524c.bam,bf7f1fca14242b03e1c9a86cbe88649705e36c79862cc40875c0bb20eb155195,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR524.SPL: memorized icon
+sppr5##/dvpr525a.bam,0f55748cef24f485f216d46bd06ca16515ee016e77dd82fb2f8bcb34986f1e3a,icon,spell/item icon field/naming; no world-effect binding found,True,,
+sppr5##/dvpr525b.bam,1faa115d39dad65d58fea417b32496eda3a78838e242646a5a730be4a9b98c88,icon,spell/item icon field/naming; no world-effect binding found,True,,DVPR525D.SPL: ability icon | SPPR525.SPL: ability icon
+sppr5##/dvpr525c.bam,d8a9ce46118e0457c397e11ac34f999980f4f7d4dc6719839e31c55ebca0efe5,icon,spell/item icon field/naming; no world-effect binding found,True,,DVPR525D.SPL: memorized icon | SPPR525.SPL: memorized icon
+sppr5##/sppr501a.bam,19a6d1e23be4d87947b9338ef89ede422fb9193483c8be52c004949d734fd8e9,icon,spell/item icon field/naming; no world-effect binding found,True,,
+sppr5##/sppr501b.bam,148443b7c39a8ca0bcd9a469ef55c090c938c7c99b5b54ba8611ce0cdf92fa68,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR501.SPL: ability icon | SPRA305.SPL: ability icon
+sppr5##/sppr501c.bam,060e47ac4697b5ce13ea07e4a5b7cb6ebdc0ea81b01591f59bae5671813ee642,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR501.SPL: memorized icon | SPRA305.SPL: memorized icon
+sppr6##/dvpr620a.bam,3a8bcf94968ae953dab23ed7cf5eff889f7efb22ceca3f5cc3cf997de6b86b4f,icon,spell/item icon field/naming; no world-effect binding found,True,,
+sppr6##/dvpr620b.bam,b9a24115387d935577912d78fe31dd577f61eebac8ff56abe31647b8f2f48882,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR620.SPL: ability icon
+sppr6##/dvpr620c.bam,c7dfb89d8c791f605e1c7d4809d6a60e02fbb6befb2b4dfa0f4b065133e04519,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR620.SPL: memorized icon
+sppr6##/sppr602a.bam,f7fc8eeb7a28e3faf21587614a3958a4b2faf5d0c8362ce64dfcb8f356b13d90,icon,spell/item icon field/naming; no world-effect binding found,True,,
+sppr6##/sppr602b.bam,4c7b6a20d26e7304d34b6d65c1ddd05058c21edd680b906ef19ec654652878bf,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR602.SPL: ability icon | SPRA306.SPL: ability icon
+sppr6##/sppr602c.bam,520dae6c16e18f6f1830ed86804af8579803e02dd92e1dc65e348ac4eadfd82b,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR602.SPL: memorized icon | SPRA306.SPL: memorized icon
+sppr7##/a#shope.bam,bf50fbc7e09df5004899e199ada4e9c664f60307ca91f593a27df13943e90ca6,unreferenced_or_inactive,"copied for Symbol of Stunning, but no active SPL/EFF/PRO reference to its VVC",True,A#ISHOPE.VVC,
+sppr7##/a#spain.bam,4cc0ae8f7825653c4d39a94e4b9f237a3a358dde11531b74f74dbe0999b6bf2d,unreferenced_or_inactive,Symbol of Weakness replaces original Symbol of Fear; no live VVC binding,True,A#ISPAIN.VVC,
+sppr7##/dvimplo.bam,e2c66ed31a0087be92bde91422c6f3c43a63aa6657565574df91c7ce37be2de6,included,bundled original-spell animation,True,DVIMPLO.VVC,
+sppr7##/dvpr716a.bam,c8e28afa7c210321c7a8e0b9023bfb4cd054bfdf23af18e8f4e264edcd191af3,icon,spell/item icon field/naming; no world-effect binding found,True,,
+sppr7##/dvpr716b.bam,a17746bbc095beac84e6c3bde01eea02565673ac61f67a5295cfa92274a46bac,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR716.SPL: ability icon
+sppr7##/dvpr716c.bam,cace3218562c948049bb3d91b58b626ed66e3f11e8ad23989b8a12d18ba67949,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR716.SPL: memorized icon
+sppr7##/sppr702a.bam,36e3785c232a4cdc877231fd9818bfe28ecd2d573510b994b4c582d02cc8fe82,icon,spell/item icon field/naming; no world-effect binding found,True,,
+sppr7##/sppr702b.bam,7d7801486cb5c86b96f053e630cd899b4627890bd544a251e79158765d757df1,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR702.SPL: ability icon
+sppr7##/sppr702c.bam,4e43110c52376ee970e8389fa41f1990444361ddddb42cdd158bc2156d3ca0e9,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR702.SPL: memorized icon
+sppr7##/sppr711a.bam,dd60862dc0bad79d570c3d77fa81810a8e67ab0d0887fa0f29fa11e084f6086a,icon,spell/item icon field/naming; no world-effect binding found,True,,
+sppr7##/sppr711b.bam,be3fb7bf7bd99793665346ab2280c0f85c719ce74a12126fdcd5696b4b8df3c9,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR619.SPL: ability icon | SPPR711.SPL: ability icon
+sppr7##/sppr711c.bam,1a3e9892b9f08051c701ea57e34afde09dccae1d757078186600b7fb8ca72f93,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR619.SPL: memorized icon | SPPR711.SPL: memorized icon
+sppr7##/sppr719c.bam,b47159edb2c9efa5f6415b2730400a0235ae6e8cf889cf07ba082116ab1210a3,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR719.SPL: memorized icon | SPWI817.SPL: memorized icon | SPWI897.SPL: memorized icon
+spwi1##/dvwi106a.bam,6b3c04677dfc7de51ea8581c8b01369b6a0d5216d6505eb27302c26798bd385f,icon,spell/item icon field/naming; no world-effect binding found,True,,SCRL71.ITM: ability icon | SCRL71.ITM: memorized icon
+spwi1##/dvwi106b.bam,24f0c90da48ce2de3ab5e620071efb24cf30c9eadeed1845bbfbec5063e2f16c,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI106.SPL: ability icon
+spwi1##/dvwi106c.bam,39eeb8ccb9a3a5e2e2665fa26c12c81e5942f9d4f2cf6875a33bc1e3d175bc6c,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI106.SPL: memorized icon
+spwi1##/dvwi107a.bam,8fcc4caab71d8a3e89bae566535f4bb84d99e62665e2ae336ad38f01969f5952,icon,spell/item icon field/naming; no world-effect binding found,True,,SCRL72.ITM: ability icon | SCRL72.ITM: memorized icon
+spwi1##/dvwi107b.bam,8b16f51a11278085df7d9a44123182a5cb8b51f6f6af1dd7ef66ec2291eeea95,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI107.SPL: ability icon
+spwi1##/dvwi107c.bam,9abf9e129e4a163b7e85b8d8583d8b4e48a96987519a23bea222adc42c0a225b,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI107.SPL: memorized icon
+spwi1##/dvwi108a.bam,e68ae39bebc58cefa198373ae58f2ed91d6e28c828841c04dcb39689595627be,icon,spell/item icon field/naming; no world-effect binding found,True,,DVSCRL73.ITM: ability icon | DVSCRL73.ITM: memorized icon
+spwi1##/dvwi108b.bam,ecf98a4d5f646f3eaef8e53cbdc9dce69b47a9310d4fa338f9e97cd2357227ea,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI108.SPL: ability icon
+spwi1##/dvwi108c.bam,3614f54e57998a8bd12371663d192e31ef11346a3f188432ce9e1734b6a85b9d,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI108.SPL: memorized icon
+spwi1##/dvwi109a.bam,0943ee00dc430a460868d2ba9502807bb69a179356c54e039b6a003792d92d74,icon,spell/item icon field/naming; no world-effect binding found,True,,SCRL1V.ITM: ability icon | SCRL1V.ITM: memorized icon
+spwi1##/dvwi109b.bam,9f276182896e1686dbb55511bd6bb38b3b7de1177cbaaefc9cef6da9adac2d3f,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI109.SPL: ability icon
+spwi1##/dvwi109c.bam,0a9081fe085a04d2b2ad2861b886af475ff5c03d8ee12b669c524250a2e4fa34,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI109.SPL: memorized icon
+spwi1##/dvwi111a.bam,119440110dd51693e0d7fee29e0f8c0638f86a996ea8b5d3be560c67f524e32d,icon,spell/item icon field/naming; no world-effect binding found,True,,SCRL76.ITM: ability icon | SCRL76.ITM: memorized icon
+spwi1##/dvwi111b.bam,15ce381a8218a4ca6b741a7dddbe60dd9703d9eda2380c9aea867e08743c0836,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI111.SPL: ability icon
+spwi1##/dvwi111c.bam,c09d47916a504c0aee87b8f95cbce51dffdf1343b1000475f6ddddc9cfcf8f11,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI111.SPL: memorized icon
+spwi1##/spchrorb.bam,69df045c87341b3b19c636af807c5b46426878c74151d21ca6390d6a7b67f968,included,bundled original-spell animation,True,CHROMORB.PRO,
+spwi2##/dvpr210a.bam,ab6c9accf5f524a51a46c0fd1e0c04f7fce2f1a81012903c8c1da2fadc706956,icon,spell/item icon field/naming; no world-effect binding found,True,,SCRL86.ITM: ability icon | SCRL86.ITM: memorized icon
+spwi2##/dvsburst.bam,6df08f6553b8075dc52aa8837226c125733f039b5d3cf293765ab444a2bcbfee,new_spell_or_item,Sound Burst replaces original Deafness,True,DVSBURST.VVC,
+spwi2##/dvwi226a.bam,e8a12902076c8ee42fb2eb70b99bfd00fd2af97bbfc21c686a4d4e8b9127a04e,icon,spell/item icon field/naming; no world-effect binding found,True,,SCRL2A.ITM: ability icon | SCRL2A.ITM: memorized icon
+spwi2##/dvwi226b.bam,c11adb1d003f3c669226283759831b71332986434823eecc9236dc010c2d1045,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI226.SPL: ability icon
+spwi2##/dvwi226c.bam,62d874e51a297b7697210492afce67da4ae2afd7f319d51e02b3bfdbaf9e32a2,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI226.SPL: memorized icon
+spwi2##/spwi207a.bam,86f9d4a9bd6d664c155c18def930a8c40a5835cf76e14f473ce7aefdca246e10,icon,spell/item icon field/naming; no world-effect binding found,True,,SCRL91.ITM: ability icon | SCRL91.ITM: memorized icon
+spwi2##/spwi207b.bam,19a431f0d8b05c475c6a8b53052d968c13dd4b857ca0736947bdffca8312b0fd,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI207.SPL: ability icon
+spwi2##/spwi207c.bam,acbf94ca4d2b2d1aa569e0a7a9b0272ab45ad07b6f8d6fb1126cdfb77dbbb749,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI207.SPL: memorized icon
+spwi3##/dvwi327a.bam,c48e5adda8fdc9144a6b6b7d9399726653acb17db8cbbca3c4ffe3823876eb57,icon,spell/item icon field/naming; no world-effect binding found,True,,SCRL6I.ITM: ability icon | SCRL6I.ITM: memorized icon
+spwi3##/dvwi327b.bam,9cfbe9bda7989584addf645fd5e6cdea314d01879c16fdb332beb16e93ad094d,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI327.SPL: ability icon
+spwi3##/dvwi327c.bam,f94da417696aca1760de6c5208d9e501e73f3f81e8fb291c1cb5fa002c46b8b9,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI327.SPL: memorized icon
+spwi3##/gharmor.bam,5022298304f7ea077175013cfbfa98068e1cacbd43794f43eed763a9e51f6d06,included,bundled original-spell animation,True,GHARMOR.VVC,
+spwi3##/spwi309a.bam,e2ff9ca3cc2a5f2af1f2ba60cfe39167623f084696f089e394a13da8bc9f4e31,icon,spell/item icon field/naming; no world-effect binding found,True,,SCRL1L.ITM: ability icon | SCRL1L.ITM: memorized icon
+spwi3##/spwi309b.bam,84e8b73b27068c4a1282ee1f032309b71e1a280b3d5a70e2e1c6739c67973586,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI309.SPL: ability icon
+spwi3##/spwi309c.bam,778f423d28d86d5240876af0afadc3bd81db4c859cdc7efdbf42ec068ad5e17c,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI309.SPL: memorized icon
+spwi4##/dvvtrsph.bam,e77e883ea1d5555e22a0b229c53c3401d11b24b37c32eb1a01d1a2a0f8fad76b,new_spell_or_item,new Vitriolic Sphere spell,True,DVVTRSPH.VVC,
+spwi4##/dvvtrtra.bam,af748332147952016c46351e4bae60280e2f1fda019a7949da61b44e7c79f25d,new_spell_or_item,new Vitriolic Sphere projectile,True,DVVTRSPH.PRO,
+spwi4##/dvwi426a.bam,58e058806886cf5233ea5cefb08cc6c08435a76dfdc222b9bd2ab4147cd308a3,icon,spell/item icon field/naming; no world-effect binding found,True,,
+spwi4##/dvwi426b.bam,57875c3063a50418477b1503ec9534120956a10acfe7a0f31e06340be2866a7d,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI426.SPL: ability icon
+spwi4##/dvwi426c.bam,a1e3871ff174979765886f58079f74a15795d2064d93d719d05211399a33d6d1,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI426.SPL: memorized icon
+spwi4##/dvwi427a.bam,c973710095500573ce4de0a36b05573f6ca0a8a08f22e68fd21d39c0b0769805,icon,spell/item icon field/naming; no world-effect binding found,True,,SCRL6Y.ITM: memorized icon
+spwi4##/dvwi427b.bam,2c964a6f3dc4ea9f074343cb1c87b25ffb645b7f4c867618ac9ac955ea341738,icon,spell/item icon field/naming; no world-effect binding found,True,,SCRL6Y.ITM: ability icon | SPWI427.SPL: ability icon
+spwi4##/dvwi427c.bam,d46f88d18e4ef25409848e6aa82722906195c218c3d1e16fc3c7f5b7c452e6a2,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI427.SPL: memorized icon
+spwi4##/enchwp/istaf24.bam,8c990b4559d23e43539350a712cadf6dba75c9b2f1500b0ae364632a56c9691a,icon,spell/item icon field/naming; no world-effect binding found,False,,DVENSTAF.ITM: ability icon | DVENSTAF.ITM: memorized icon | DVENW44.SPL: ability icon | DVENW44.SPL: memorized icon
+spwi4##/sparmor.bam,80a49e0c34c3422c9f4170dbfe3378ba82a986425ee4bb71f0ee8bb06833d23b,included,bundled original-spell animation,True,SPARMOR.VVC,
+spwi4##/spwi406a.bam,a213851f82219768acadbb3c57338a3f715a893a943f2a9e56a457be5381a690,icon,spell/item icon field/naming; no world-effect binding found,True,,
+spwi4##/spwi406b.bam,b9418cb765e81e7ca550f4397f824f724076aa6c1093d999cc499e3ed43e1fd6,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI406.SPL: ability icon
+spwi4##/spwi406c.bam,0800451f9fab817114910d1d650fe1a0977d927583f8e0f5ef90c6739ad79ac3,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI406.SPL: memorized icon
+spwi4##/spwi417a.bam,694f8536b5e6569ef5ac0c377aebc1106890b3fc908eaf65da28928912e6c05b,icon,spell/item icon field/naming; no world-effect binding found,True,,SCRL6M.ITM: ability icon | SCRL6M.ITM: memorized icon
+spwi4##/spwi417b.bam,976e986ce1ef97a36f6df6ee4d8acb6641d9270cc86990653196cf93045b0be6,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI417.SPL: ability icon
+spwi4##/spwi417c.bam,89f55d3ced6c8e0177b061daf4492a9bc34e2eba72a55dbb3b1bc2873419c778,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI417.SPL: memorized icon
+spwi4##/spwi423a.bam,597e986bc92b37419939b3fc8a8c4526f665e6200cc8c922645f0c514a864761,icon,spell/item icon field/naming; no world-effect binding found,True,,SCRL6R.ITM: ability icon | SCRL6R.ITM: memorized icon
+spwi4##/spwi423b.bam,3a90feffda26e7de67a505a0d4ed02b4ab8bbf151d0ed0ce9552db3d62a3b1bb,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI423.SPL: ability icon
+spwi4##/spwi423c.bam,6acd8d4deb61d8046228d1051a2fb9fb3627aa758ed525c74df7ff7025d9052d,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI423.SPL: memorized icon
+spwi5##/dvsdoor.bam,f3d79fec03f62dcd769e8090a7623eac57800da8057514d2cb0cecaeedca1fdc,included,bundled original-spell animation,True,DVSDOOR.VVC,
+spwi5##/dvwi526a.bam,4133ef3518af7229b30d130423144a14d3110b4d37de68a9dd40e9795d061259,icon,spell/item icon field/naming; no world-effect binding found,True,,
+spwi5##/dvwi526b.bam,145975a38a0a7658a771dcfc6fa70ba1d45c2251b7aa77ef1ed871f109e15cb2,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI526.SPL: ability icon
+spwi5##/dvwi526c.bam,0c8eadecb050cb01ea8c5e72e4a92b92a3f195690908d6d6ed60344d5100ba21,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI526.SPL: memorized icon
+spwi5##/mestsh.bam,c2f618a862bf2ad4f16ef1114d9bdad2f2865a5b39f44e425de3f2146aafdd72,new_spell_or_item,Mestil Acid Sheath replaces original blue Fire Shield,True,MESTSH.VVC,
+spwi5##/spccoldl.bam,6b671cb45d95f575937c04d5ca7598a1c80404c6bdccf9a92edf94078158dce9,unreferenced_or_inactive,COPY_EXISTING edits game BAM; archive variant is not copied,False,,
+spwi5##/spwi504a.bam,0ae7ba786def0e46add57fa0c1b7a4ee6262f33bf7c8e2f3a49e2bf7baba8441,icon,spell/item icon field/naming; no world-effect binding found,True,,SCRL2G.ITM: ability icon | SCRL2G.ITM: memorized icon
+spwi5##/spwi504b.bam,a183b162622e404b923bd75bb56b76d972bdeb632b27307ca29a7c65c3e9c7ab,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI504.SPL: ability icon
+spwi5##/spwi504c.bam,792593505e5afd392dda0f11ffe2f2ce7678d68d9b3479038d644f574ff8f304,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI504.SPL: memorized icon
+spwi5##/spwi508a.bam,32988436f720ed22b10b3f827ab0df32947dd02d5ec7cbc64e48ae5621af0693,icon,spell/item icon field/naming; no world-effect binding found,True,,SCRL5P.ITM: ability icon | SCRL5P.ITM: memorized icon
+spwi5##/spwi508b.bam,1f745822ebd39131e8f422cad1b50f6ae799000c5f4bf5bb3db957ed9dbbffae,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI508.SPL: ability icon
+spwi5##/spwi508c.bam,5e9b41088cfbaddb0ed22cc06d57cf22326041663d7562bd561c6c5c15365920,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI508.SPL: memorized icon
+spwi5##/spwi519a.bam,8b4e12c217184a6bba4169ea441d7371c7bb9a4a79696ccacb686bd5ce8fd88d,icon,spell/item icon field/naming; no world-effect binding found,True,,SCRL8X.ITM: ability icon | SCRL8X.ITM: memorized icon
+spwi5##/spwi519b.bam,fc1519d13da1bd54c1747735b476cc44d258bb93b47ff8bd38c1b36faf20742e,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI519.SPL: ability icon
+spwi5##/spwi519c.bam,760b9eaae22e714e54af5bcae059d2d0396be66e0709e64b9d18da3d56b26471,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI519.SPL: memorized icon
+spwi5##/spwi522a.bam,306e2a9a29cf8050e50d4e1fc3eb5b3b75cf16b7c0a39ccc5bb91bf1286c9540,icon,spell/item icon field/naming; no world-effect binding found,True,,SCRL7D.ITM: ability icon | SCRL7D.ITM: memorized icon | SCRL7V.ITM: ability icon
+spwi5##/spwi522b.bam,7b6ec8027ed0de529e76ea5148fb76a05d8309a8afe6829a5a05b38241f8c498,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI522.SPL: ability icon | SPWI618.SPL: ability icon
+spwi5##/spwi522c.bam,2075e2bb6c6717bedcaedcd2c26f93d1230ec822bbd77500c22a2c9bd0aa721b,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI522.SPL: memorized icon | SPWI618.SPL: memorized icon
+spwi6##/dvwi605a.bam,3a8bcf94968ae953dab23ed7cf5eff889f7efb22ceca3f5cc3cf997de6b86b4f,icon,spell/item icon field/naming; no world-effect binding found,True,,SCRL7I.ITM: ability icon | SCRL7I.ITM: memorized icon
+spwi6##/dvwi605b.bam,b9a24115387d935577912d78fe31dd577f61eebac8ff56abe31647b8f2f48882,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI605.SPL: ability icon
+spwi6##/dvwi605c.bam,c7dfb89d8c791f605e1c7d4809d6a60e02fbb6befb2b4dfa0f4b065133e04519,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI605.SPL: memorized icon
+spwi6##/dvwi619a.bam,cb706f42efb6ab0c2f54d0544bca0737fdfbc7712a31ba3ab7562e6a048e87b1,icon,spell/item icon field/naming; no world-effect binding found,True,,SCRL7W.ITM: ability icon | SCRL7W.ITM: memorized icon
+spwi6##/dvwi619b.bam,4eaa7b7ac5888e905d7f670c82186f6771799e3283ac13ca2f2f1c86a59b62bf,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI619.SPL: ability icon
+spwi6##/dvwi619c.bam,8e387d9a5d271022e204ad32c86f4d18c038eb4c72a4d21c7f58f44fe85e7a50,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI619.SPL: memorized icon
+spwi6##/spwi501a.bam,ca557335dd538a80332c4e3405897286e0abfaf723f55ae819254f71dba717a2,icon,spell/item icon field/naming; no world-effect binding found,True,,SCRL8A.ITM: ability icon | SCRL8A.ITM: memorized icon
+spwi6##/spwi501b.bam,0e0108520c521dbee42f1603db02b7775c4d7db6043eec32b371251f319f5ea0,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR623.SPL: ability icon | SPWI623.SPL: ability icon
+spwi6##/spwi501c.bam,6c62d4cfd942b43b36907080009965a6b77f4f3935765e92305e90ed1ff3e927,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR623.SPL: memorized icon | SPWI623.SPL: memorized icon
+spwi6##/spwi602a.bam,a1525081b16615d2dadfc9167182f91e6fdd2907e9109ad7b9b66d6135030144,icon,spell/item icon field/naming; no world-effect binding found,True,,SCRL7F.ITM: ability icon | SCRL7F.ITM: memorized icon
+spwi6##/spwi602b.bam,06064f814c89eb4331a834db0b13b91ebd0fa0c7a080ec84f37c224bc33f47a3,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI602.SPL: ability icon
+spwi6##/spwi602c.bam,63fe57db8e77a805d12e68d40c9716992b4ab3a7971d8ada061056ccf6ac984e,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI602.SPL: memorized icon
+spwi7##/dvmantle.bam,b516a63a3a6de6d879f44adefd19e61222b332c70e1c1460e86752dea968dcce,included,bundled original-spell animation,True,DVMANTLE.VVC,
+spwi7##/dvwi707a.bam,9dc57334cb54869cca6fb3c88c5cd503882ec4a8a19bad63100193b020a142fe,icon,spell/item icon field/naming; no world-effect binding found,True,,SCRL8I.ITM: ability icon | SCRL8I.ITM: memorized icon
+spwi7##/dvwi707b.bam,247493ca1691ecd9af31cd6bddea33a8e6824229dadb72435155717cae13dea2,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR703.SPL: ability icon | SPWI707.SPL: ability icon
+spwi7##/dvwi707c.bam,9cdf4328101899eb8ff8d21118e5b078a18043f57b90358344797bfca451077c,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR703.SPL: memorized icon | SPWI707.SPL: memorized icon
+spwi7##/dvwi711a.bam,eead0366e6356fb6216f81fbd1bfe4bbb45cab1c33e08a26dec975132eb226e7,icon,spell/item icon field/naming; no world-effect binding found,True,,SCRL8M.ITM: ability icon | SCRL8M.ITM: memorized icon
+spwi7##/dvwi711b.bam,719f2296a2abc2f85d280b910d26bf5711f1c7c0d5f2aef020533ee5067b73a8,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR709.SPL: ability icon | SPWI711.SPL: ability icon
+spwi7##/dvwi711c.bam,7360d59b26bd92afb8d57f202499698c40ec71ab73278fb59821d823c18a7b52,icon,spell/item icon field/naming; no world-effect binding found,True,,SPPR709.SPL: memorized icon | SPWI711.SPL: memorized icon
+spwi7##/dvwi724a.bam,e6238918e24652495fb6f5464cce3b9f74eba5041523ee120a51161923bb8f51,icon,spell/item icon field/naming; no world-effect binding found,True,,
+spwi7##/dvwi724b.bam,fa2eb03607ab5dc860e3a57a67f2eadc9abceebc8ff495012bb3ebd0008fcb01,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI724.SPL: ability icon
+spwi7##/dvwi724c.bam,ccb9d7fb0b0868bc1b4b657a957b31a803dccb0c6ff49a6c9ea3e3b648933b70,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI724.SPL: memorized icon
+spwi7##/spwi701a.bam,ee1f3f1e74232fbf75d293d6002555116dd4b76bbd0f3120d133305b89ed9d93,icon,spell/item icon field/naming; no world-effect binding found,True,,SCRL7V.ITM: ability icon | SCRL8D.ITM: ability icon | SCRL8D.ITM: memorized icon
+spwi7##/spwi701b.bam,909881d5a8d0396f32d95278c2dcd48fbab67f235d5c1cc55587aa8981009cb1,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI701.SPL: ability icon
+spwi7##/spwi701c.bam,2a045a67b43f840caa3874fae7f102699b358b646afefa1d4940f85f6b0525c7,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI701.SPL: memorized icon
+spwi8##/dvwi808a.bam,763642d984fdc647108ffd67b2e016fad44bdb499364ae6e3bca44b521244b85,icon,spell/item icon field/naming; no world-effect binding found,True,,SCRL9C.ITM: ability icon | SCRL9C.ITM: memorized icon
+spwi8##/dvwi808b.bam,c3ebeb8c9f8f069ebc7c7b8b17813f0abdbcec538f75597bfd892aa2eff5be3f,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI808.SPL: ability icon
+spwi8##/dvwi808c.bam,0c8c47afdcb08a13e5cc16e865a8473aca8d731e82c60942bef8248c1ffc8b5b,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI808.SPL: memorized icon
+spwi8##/dvwi819a.bam,8394e11c98b943f5357f2db235e75851aa328e7753a266cacf82f8e1c0545611,icon,spell/item icon field/naming; no world-effect binding found,True,,
+spwi8##/dvwi819b.bam,8efe083e73e3571eedb7b009464a8f301633ee3a240e859b681bad05884d12d2,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI819.SPL: ability icon
+spwi8##/dvwi819c.bam,62127c1f47dffd4980cd3a9804c6673dcb6e2c1eb8e94f4bffa266422426b9ce,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI819.SPL: memorized icon
+spwi8##/spwi802a.bam,84ca43db943b232d16c3ac5e2b43c4267abbc77206989d9437550e1d2960ea0f,icon,spell/item icon field/naming; no world-effect binding found,True,,
+spwi8##/spwi802b.bam,a8b7f407dfd4b634416eb248533eb09de9abc74ca5bc6e281b95771cd35403e3,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI802.SPL: ability icon
+spwi8##/spwi802c.bam,3c61349f4bf8017778108e8298f01e3afc199fd856a6a6e16f72deacc633f03b,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI802.SPL: memorized icon
+spwi9##/dvwi906a.bam,98888ac2627f155d1ef6c68dd5a120512eb482ce29397e8d224a9eb6daeca05f,icon,spell/item icon field/naming; no world-effect binding found,False,,DVWI906S.ITM: ability icon | DVWI906S.ITM: memorized icon
+spwi9##/dvwi906b.bam,f3b14b6e1c69a28cf946802aa312d226f92f87a693305291df7ea233080d1017,icon,spell/item icon field/naming; no world-effect binding found,False,,SPWI906.SPL: ability icon
+spwi9##/dvwi906c.bam,d501c1928603c81c21e68220d5294d7287ba9955a437ec3f0cffd5a9c9cdcefc,icon,spell/item icon field/naming; no world-effect binding found,False,,SPWI906.SPL: memorized icon
+tobex_redist/override/toolscrl.bam,cb20d5eb7ffd5769a821c660b65bcd276f6452541d208c9e6650938c5507e360,item_or_unused,no world-effect BAM field in supplied SPL/EFF/VVC/PRO graph,False,,

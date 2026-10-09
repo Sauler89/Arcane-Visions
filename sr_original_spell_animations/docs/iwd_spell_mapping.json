@@ -151,5 +151,50 @@
     1,
     2,
     false
+  ],
+  [
+    "SPWI224",
+    "GLDUSTA",
+    "dust",
+    "GLDUSTH",
+    2,
+    1,
+    false
+  ],
+  [
+    "SPWI413A",
+    "ORSPHEC",
+    "osph",
+    "MINORGLB",
+    2,
+    1,
+    true
+  ],
+  [
+    "SPPR712A",
+    "RESURRH",
+    "ress",
+    "ICRAISEI",
+    2,
+    0,
+    false
+  ],
+  [
+    "SPPR607",
+    "HEALH",
+    "heal",
+    "SPHEALIN",
+    2,
+    1,
+    false
+  ],
+  [
+    "SPPR212",
+    "SPOISOH",
+    "spoi",
+    141,
+    2,
+    2,
+    false
   ]
 ]

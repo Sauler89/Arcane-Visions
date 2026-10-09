@@ -20,6 +20,10 @@ wrappers based on IWDEE's `#PRONM.VVC`; Protection from Arrows and the major
 globe retain their source looping controller layouts. Manifests record
 source/installed hashes and names.
 
+Beta.4 additionally retains the original GLDUSTH, WEBC, #OTILUKE, RESURRH,
+HEALH and SPOISOH controller layouts and phases. Those six additional BAMs
+are also byte-identical to IWDEE. No new artwork is generated or claimed.
+
 Technical references:
 
 - [IESDP BAM V1](https://gibberlings3.github.io/iesdp/file_formats/ie_formats/bam_v1.htm)
@@ -29,5 +33,6 @@ Technical references:
 - [WeiDU](https://github.com/WeiDUorg/weidu)
 
 WeiDU 251 Windows executable and [its own license](sr_original_spell_animations/docs/WEIDU-COPYING.txt) are included. Python tools use
-standard libraries; preview rendering uses Pillow. GIFs are generated from
+standard libraries for installation checks; source-image comparison uses NumPy
+and preview rendering uses Pillow. GIFs are generated from
 the actual bundled assets and do not depict a launched game.
