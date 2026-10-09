@@ -1,5 +1,5 @@
 {
-  "version": "v0.2.0-beta.4",
+  "version": "v0.2.0-beta.5",
   "inputs": {
     "IWDEE": 246,
     "EET": 386,
@@ -12,8 +12,8 @@
   },
   "IWDEE_statuses": {
     "EET_exact_graphic_match": 163,
-    "distinct_candidate_not_integrated": 46,
-    "included": 25,
+    "distinct_candidate_not_integrated": 45,
+    "included": 26,
     "no_original_BG_spell_mapping": 6,
     "SR_spell_overlap": 5,
     "EET_all_visible_cycle_art_match": 1

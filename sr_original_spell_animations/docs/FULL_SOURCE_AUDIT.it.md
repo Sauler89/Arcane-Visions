@@ -1,7 +1,8 @@
-# Ricontrollo completo delle sorgenti — v0.2.0-beta.4
+# Ricontrollo completo delle sorgenti — v0.2.0-beta.5
 
 Ricontrollo del 9 ottobre 2026. Il controllo precedente aveva davvero omesso
-alcuni effetti IWDEE. Questo passaggio corregge altre sei omissioni e distingue
+alcuni effetti IWDEE. La beta.4 ha corretto sei omissioni; la beta.5 ne corregge altre quattro
+nei collegamenti alle spell. Il rapporto distingue
 i duplicati dalle varianti di colore e dalle fasi ancora da integrare.
 
 ## Sorgenti controllate
@@ -23,7 +24,7 @@ Il grafo distingue effetti di lancio e dopo il lancio, sottospell, EFF,
 VVC/VEF, proiettili e armi temporanee. Conserva i nomi originali senza supporre
 che uno stesso numero di projectile significhi la stessa risorsa nei due giochi.
 
-## Altre sei omissioni corrette
+## Sei omissioni corrette nella beta.4
 
 | Spell originale | BAM IWDEE | Risorsa EET modificata | Motivo dell'omissione precedente |
 |---|---|---|---|
@@ -48,8 +49,45 @@ principale le richiama ancora attraverso un opcode di lancio riconosciuto.
 Le spell principali restano byte-identiche. I BAM delle aree di Web non sono
 inclusi da questa aggiunta: cambia l'overlay sul bersaglio.
 
-La beta.4 contiene **39 BAM, 37 VVC e 1.259 frame fisici**, con **42 SPL EET
-patchate** nei test: 16 SR e 26 IWDEE, incluse le due sottospell.
+La beta.5 contiene **40 BAM, 38 VVC e 1.279 frame fisici**, con **46 SPL EET
+patchate** nei test: 16 SR e 30 IWDEE, incluse le due sottospell.
+
+## Ulteriore controllo: quattro binding recuperati nella beta.5
+
+| Spell originale | BAM IWDEE | Risorsa EET modificata | Omissione |
+|---|---|---|---|
+| Miscast Magic | `MMAGICH` | `SPPR310.SPL` | Cue diretto 215 classificato erroneamente come fase PRO; variante di colore distinta |
+| Confusion sacerdotale | `CONFUSH` | `SPPR709.SPL` | BAM incluso per Sphere of Chaos, ma questa spell non era collegata |
+| Confusion arcana | `CONFUSH` | `SPWI401.SPL` | Stessa omissione del binding |
+| Chaos | `CONFUSH` | `SPWI508.SPL` | Stessa omissione; due cue per abilità, con condizioni separate |
+
+Non sono overlap SR. `MMAGICH` è un nuovo BAM incluso, identico alla sorgente;
+`CONFUSH` viene riutilizzato senza aggiungere copie ridondanti. Miscast Magic
+sostituisce il cue EET 141/9. Per le altre tre spell si modificano solo gli
+otto byte del resref dei cue 215: timing, durata, bersaglio, probabilità,
+salvezza e tutti gli effetti meccanici restano identici. Il controller
+IWDEE `CONFUSH.VVC` resta non ripetuto: cambia l'aspetto rispetto alla
+vecchia animazione persistente EET, senza rimuovere lo stato di confusione.
+
+Il patcher ora riconosce anche una coppia dello stesso cue. Una coppia con
+un secondo visuale sconosciuto, un solo cue, un terzo visuale, un secondo
+cue ritardato o un bersaglio diverso viene saltata. Sei regressioni aggiunte
+verificano questi casi e condizioni indipendenti per i due cue.
+
+Controllati anche i BAM già inclusi per cercare spell senza collegamento,
+e i resref grafici presenti in tutte le SPL/EFF fornite, oltre al grafo.
+I riferimenti 296 sono immunità al visuale, non richiami di animazioni;
+i nomi residui negli opcode di colore/testo non sono binding grafici.
+I riferimenti omonimi 177/232 e quelli degli oggetti vengono risolti nel
+loro tipo di risorsa, senza trattarli come BAM. Non è emerso un altro BAM
+SR attivo da aggiungere alle spell originali nella selezione tracciata.
+
+Il generatore produce ora le motivazioni dei candidati dal percorso reale
+ed elenca separatamente [i binding mancanti di BAM già inclusi](iwd_unbound_included_art.csv).
+Rimane `HEALH` nella fase aggiuntiva differita di Regeneration IWDEE:
+la baseline EET ha solo il cue iniziale già sostituito con `REGENERH`.
+La fase aggiuntiva non viene introdotta senza un binding corrispondente.
+Le 45 risorse candidate non esauriscono ogni possibile fase ancora assente.
 
 ## Errori del filtro e del codice
 
@@ -57,7 +95,8 @@ patchate** nei test: 16 SR e 26 IWDEE, incluse le due sottospell.
   aveva escluso dieci BAM con sagome condivise ma colori/grafica differenti:
   `CLOUDKX`, `FIREBAA`, `FIREBAR`, `FIREBAT`, `FIREBAX`, `GREASEX`, `HEALH`,
   `MMAGICH`, `SPOISOH`, `SSORBT`. Heal e Slow Poison sono ora integrati;
-  gli altri otto restano candidati, senza essere etichettati come duplicati.
+  Miscast Magic viene integrato nella beta.5; gli altri sette restano
+  candidati, senza essere etichettati come duplicati.
 - **Un ciclo condiviso non basta a escludere tutti gli altri cicli del BAM.**
   Il nuovo confronto separa file/grafica completa, tutti i cicli visibili,
   corrispondenze parziali e sagome puramente diagnostiche.
@@ -75,16 +114,16 @@ patchate** nei test: 16 SR e 26 IWDEE, incluse le due sottospell.
 
 | Esito | BAM |
 |---|---:|
-| Inclusi | 25 |
+| Inclusi | 26 |
 | File o grafica completa già presenti in EET | 163 |
 | Tutti i cicli visibili con la stessa grafica, senza richiedere gli stessi ancoraggi | 1 |
 | Spell già coperta da SR, variante IWDEE non selezionata | 5 |
 | Nessuna corrispondenza dopo il lancio con una spell BG originale tracciata | 6 |
-| Candidati distinti ancora da integrare | 46 |
+| Candidati distinti ancora da integrare | 45 |
 
 Il precedente conteggio di 42 candidati non era definitivo: vengono
-riammessi dieci BAM esclusi per sagoma e integrati sei, quindi restano **46**.
-Questi 46 **non sono esclusi per overlap con SR**. Sono documentati uno per
+riammessi dieci BAM esclusi per sagoma e integrati sei nella beta.4, quindi erano 46. Con Miscast Magic nella beta.5
+restano **45**. Questi 45 **non sono esclusi per overlap con SR**. Sono documentati uno per
 uno, con root, percorso e motivo, in
 [iwd_pending_candidates.csv](iwd_pending_candidates.csv).
 
@@ -149,9 +188,10 @@ con indici non confermati restano segnalati come tali.
 
 ## Verifiche e limiti
 
-- PASS sui 42 SPL EET esportati, componente IWDEE indipendente e insieme a SR:
+- PASS sui 46 SPL EET esportati, componente IWDEE indipendente e insieme a SR:
   reinstallazione stabile, ripristino byte per byte dopo disinstallazione.
-- PASS: 54 casi degli overlay, 28 regressioni generali e 12 casi delle
+- PASS: sei nuovi casi della coppia Chaos, 54 casi degli overlay,
+  28 regressioni generali e 12 casi delle
   sottospell, comprese root assenti, scollegate, troncate o riproposte come
   immunità anziché lancio.
 - PASS: byte delle condizioni/meccaniche, effetti globali, icone, indici

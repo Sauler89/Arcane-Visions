@@ -22,6 +22,7 @@ BEGIN
    PATCH_IF srio_n > 0 BEGIN SET srio_end = srio_idx + srio_n END
   END
   PATCH_IF srio_valid BEGIN
+   SET srio_same = srio_expected = 2 AND (~%srio_old%~ STRING_EQUAL_CASE ~%srio_old2%~)
    FOR (srio_i = 0; srio_i < srio_ac; ++srio_i) BEGIN
     READ_SHORT (srio_ao + srio_i * 40 + 30) srio_n
     READ_SHORT (srio_ao + srio_i * 40 + 32) srio_idx
@@ -39,14 +40,16 @@ BEGIN
       SET srio_time_ok = (srio_loop AND srio_time = 0 AND srio_duration > 0) OR (!srio_loop AND (srio_time = 1 OR (srio_time = 0 AND srio_duration <= 6)))
       PATCH_IF srio_opcode = srio_op AND srio_param2 = srio_p2 AND srio_t = srio_target AND srio_time_ok BEGIN
        PATCH_IF (~%srio_ref%~ STRING_EQUAL_CASE ~%srio_old%~) BEGIN
-        SET srio_hits += 1 SET srio_first = srio_e
+        SET srio_hits += 1
+        PATCH_IF srio_hits = 1 BEGIN SET srio_first = srio_e END
+        ELSE PATCH_IF srio_same BEGIN SET srio_second = srio_e END
        END ELSE PATCH_IF srio_expected = 2 AND (~%srio_ref%~ STRING_EQUAL_CASE ~%srio_old2%~) BEGIN
         SET srio_hits2 += 1 SET srio_second = srio_e
        END
       END
      END
     END
-    PATCH_IF srio_visuals = srio_expected AND srio_hits = 1 AND (srio_expected = 1 OR srio_hits2 = 1) BEGIN
+    PATCH_IF srio_visuals = srio_expected AND ((srio_same AND srio_hits = 2 AND srio_hits2 = 0) OR (!srio_same AND srio_hits = 1 AND (srio_expected = 1 OR srio_hits2 = 1))) BEGIN
      FOR (srio_k = 0; srio_k < srio_expected; ++srio_k) BEGIN
       PATCH_IF srio_k = 0 BEGIN SET srio_e = srio_first SPRINT srio_ref_new ~%srio_new%~ END ELSE BEGIN SET srio_e = srio_second SPRINT srio_ref_new ~%srio_new2%~ END
       WRITE_SHORT srio_e 215
@@ -257,3 +260,31 @@ ACTION_IF FILE_EXISTS_IN_GAME ~SPPR212.spl~ BEGIN
       STR_VAR srio_old = ~~ srio_new = ~sriospoi~ END
   BUT_ONLY_IF_IT_CHANGES
 END ELSE BEGIN PRINT ~IWD Spell Animations: SPPR212.spl missing, skipped.~ END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~SPPR310.spl~ BEGIN
+  COPY_EXISTING ~SPPR310.spl~ ~override~
+    LPF srio_replace INT_VAR srio_op = 141 srio_p2 = 9 srio_target = 2 srio_loop = 0 srio_expected = 1
+      STR_VAR srio_old = ~~ srio_new = ~sriomisc~ END
+  BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~IWD Spell Animations: SPPR310.spl missing, skipped.~ END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~SPPR709.spl~ BEGIN
+  COPY_EXISTING ~SPPR709.spl~ ~override~
+    LPF srio_replace INT_VAR srio_op = 215 srio_p2 = 1 srio_target = 2 srio_loop = 1 srio_expected = 1
+      STR_VAR srio_old = ~SPCONFUS~ srio_new = ~srioconf~ END
+  BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~IWD Spell Animations: SPPR709.spl missing, skipped.~ END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~SPWI401.spl~ BEGIN
+  COPY_EXISTING ~SPWI401.spl~ ~override~
+    LPF srio_replace INT_VAR srio_op = 215 srio_p2 = 1 srio_target = 2 srio_loop = 1 srio_expected = 1
+      STR_VAR srio_old = ~SPCONFUS~ srio_new = ~srioconf~ END
+  BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~IWD Spell Animations: SPWI401.spl missing, skipped.~ END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~SPWI508.spl~ BEGIN
+  COPY_EXISTING ~SPWI508.spl~ ~override~
+    LPF srio_replace INT_VAR srio_op = 215 srio_p2 = 1 srio_target = 2 srio_loop = 1 srio_expected = 2
+      STR_VAR srio_old = ~SPCONFUS~ srio_new = ~srioconf~ srio_old2 = ~SPCONFUS~ srio_new2 = ~srioconf~ END
+  BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~IWD Spell Animations: SPWI508.spl missing, skipped.~ END

@@ -196,5 +196,50 @@
     2,
     2,
     false
+  ],
+  [
+    "SPPR310",
+    "MMAGICH",
+    "misc",
+    141,
+    2,
+    9,
+    false
+  ],
+  [
+    "SPPR709",
+    "CONFUSH",
+    "conf",
+    "SPCONFUS",
+    2,
+    1,
+    true
+  ],
+  [
+    "SPWI401",
+    "CONFUSH",
+    "conf",
+    "SPCONFUS",
+    2,
+    1,
+    true
+  ],
+  [
+    "SPWI508",
+    "CONFUSH",
+    "conf",
+    "SPCONFUS",
+    2,
+    1,
+    true
+  ],
+  [
+    "SPWI508",
+    "CONFUSH",
+    "conf",
+    "SPCONFUS",
+    2,
+    1,
+    true
   ]
 ]

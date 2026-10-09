@@ -175,6 +175,35 @@ for a in decoded['IWDEE']:
   if (complete or same_art) and s['path'].upper() in included_sr:sr_selected.append(s['path'])
  decisions.append(dict(iwdee_bam=a['name'],source_sha256=a['sha256'],status=status,BG_roots=' | '.join(sorted(bg)),casting_roots=' | '.join(sorted(cast_roots[a['name']])),EET_complete=' | '.join(full),EET_all_cycle_art=' | '.join(art),EET_partial_art=' | '.join(partial),EET_shape_only_diagnostic=' | '.join(shape),SR_complete_all_archive=' | '.join(sr_full),SR_all_cycle_art_all_archive=' | '.join(sr_art),SR_matches_selected_original_spell_art=' | '.join(sr_selected)))
 csvwrite('iwd_selection_recheck.csv',decisions)
+# Classify pending phases from their actual paths, never assume every candidate
+# is a projectile. This prevents a direct cue such as MMAGICH being overlooked.
+pending=[]
+for a in decisions:
+ if a['status']!='distinct_candidate_not_integrated':continue
+ evidence=[p for p in paths if p['asset']==a['iwdee_bam'] and p['phase']=='postcast']
+ direct=[p for p in evidence if '.PRO (' not in p['path']]
+ if a['iwdee_bam'] in ('GREASEB.BAM','GREASEC.BAM'):
+  reason='Conditional IWDEE child visual has no matching EET child; existing EET uses opcode 158; condition-aware binding not implemented'
+ elif a['iwdee_bam'] in ('MAGICSTN.BAM','SLIVINH.BAM','SSORBH.BAM','SSORBT.BAM'):
+  reason='Installed EET weapon/item or travel binding differs; inspect the temporary weapon and actual hit route before importing art'
+ elif direct:
+  reason='Direct postcast cue requires review of the matching installed EET cue; not a projectile-only candidate'
+ else:
+  reason='Declared PRO travel/area/nested phase; installed binding and flag/controller/palette/timing compatibility not yet verified'
+ pending.append(dict(bam=a['iwdee_bam'],BG_roots=a['BG_roots'],reason=reason,representative_IWDEE_path=' | '.join(p['path'] for p in (direct or evidence)[:2]),SR_overlap=False))
+csvwrite('iwd_pending_candidates.csv',pending,['bam','BG_roots','reason','representative_IWDEE_path','SR_overlap'])
+# A selected BAM can still have unbound uses in other original spells.
+parents=json.loads((DOC/'iwd_child_mapping.json').read_text());bindings=defaultdict(set)
+for r in json.loads((DOC/'iwd_spell_mapping.json').read_text()):bindings[r[1]+'.BAM'].add(parents.get(r[0],r[0]))
+for r in json.loads((DOC/'iwd_overlay_mapping.json').read_text()):bindings[r['art']+'.BAM'].add(r['spell'])
+unbound=[]
+for a in decisions:
+ if a['status']!='included':continue
+ for root in sorted(iw_roots[a['iwdee_bam']]-bindings[a['iwdee_bam']]):
+  for p in paths:
+   if p['phase']=='postcast' and p['bg_spell']==root and p['asset']==a['iwdee_bam']:
+    unbound.append(dict(bam=a['iwdee_bam'],bg_spell=root,path=p['path'],reason='BAM included for other bindings; this source phase is not installed'))
+csvwrite('iwd_unbound_included_art.csv',unbound,['bam','bg_spell','path','reason'])
 active_text='\n'.join(p.read_text(errors='replace') for p in SR.rglob('*') if p.suffix.lower() in ('.tpa','.tp2','.tph'))
 active_text=re.sub(r'/\*.*?\*/','',active_text,flags=re.S);active_text=re.sub(r'//[^\n]*','',active_text)
 sr_rows=[]
@@ -220,6 +249,6 @@ for root in sorted({r['bg_spell'] for r in roots}):
  for n,path in ge.walk(root+'.SPL').items():
   if n.removesuffix('@SUB') not in eetfiles:eet_missing.append(dict(bg_spell=root,asset=n,path=path))
 csvwrite('missing_EET_dependencies.csv',eet_missing,['bg_spell','asset','path'])
-summary=dict(version='v0.2.0-beta.4',inputs={k:len(v) for k,v in decoded.items()},physical_frames={k:sum(x['frames'] for x in v) for k,v in decoded.items()},IWDEE_statuses=dict(Counter(r['status'] for r in decisions)),SR_statuses=dict(Counter(r['status'] for r in sr_rows)),SR_unclassified=[r for r in sr_rows if r['status']=='needs_review'],missing_IWDEE_asset_names=sorted({r['asset'] for r in missing}),included_IWD_SR_matches=[r for r in decisions if r['status']=='included' and r['SR_matches_selected_original_spell_art']],shape_is_not_duplicate_evidence=True,partial_cycle_is_not_full_duplicate_evidence=True,graph_PRO_activation_is_not_assumed=True,complete_IWDEE_import=False,game_rendering_tested=False)
+summary=dict(version='v0.2.0-beta.5',inputs={k:len(v) for k,v in decoded.items()},physical_frames={k:sum(x['frames'] for x in v) for k,v in decoded.items()},IWDEE_statuses=dict(Counter(r['status'] for r in decisions)),SR_statuses=dict(Counter(r['status'] for r in sr_rows)),SR_unclassified=[r for r in sr_rows if r['status']=='needs_review'],missing_IWDEE_asset_names=sorted({r['asset'] for r in missing}),included_IWD_SR_matches=[r for r in decisions if r['status']=='included' and r['SR_matches_selected_original_spell_art']],shape_is_not_duplicate_evidence=True,partial_cycle_is_not_full_duplicate_evidence=True,graph_PRO_activation_is_not_assumed=True,complete_IWDEE_import=False,game_rendering_tested=False)
 (OUT/'source_coverage_summary.json').write_text(json.dumps(summary,indent=2)+'\n')
 print(json.dumps(summary,indent=2))

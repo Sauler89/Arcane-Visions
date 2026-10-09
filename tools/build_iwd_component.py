@@ -5,7 +5,7 @@ This does not regenerate or change the SR component.
 from pathlib import Path
 import csv,hashlib,json,struct,sys
 ROOT=Path(__file__).resolve().parents[1];MOD=ROOT/'sr_original_spell_animations'
-# BG root, IWD art, replacement identifier, expected old visual, expected target, old parameter2, sustained
+# BG root, IWD art, replacement identifier, expected old visual, expected target, old parameter2, preserve installed timed cue
 ROWS=[
 ('SPPR308','RPARALH','para','SPRMCURS',2,1,False),
 ('SPPR411','POISONH','pois','POISON',2,1,False),
@@ -29,6 +29,11 @@ ROWS=[
 ('SPPR712A','RESURRH','ress','ICRAISEI',2,0,False),
 ('SPPR607','HEALH','heal','SPHEALIN',2,1,False),
 ('SPPR212','SPOISOH','spoi',141,2,2,False),
+('SPPR310','MMAGICH','misc',141,2,9,False),
+('SPPR709','CONFUSH','conf','SPCONFUS',2,1,True),
+('SPWI401','CONFUSH','conf','SPCONFUS',2,1,True),
+('SPWI508','CONFUSH','conf','SPCONFUS',2,1,True),
+('SPWI508','CONFUSH','conf','SPCONFUS',2,1,True),
 ]
 CONTROLLERS={'GLDUSTA':'GLDUSTH','ORSPHEC':'#OTILUKE'}
 # Only patch children when the original root still calls that child after casting.

@@ -78,7 +78,35 @@ try:
  struct.pack_into('<H',b,off,215);b[off+20:off+28]=b'UNKNOWN\0';p.write_bytes(b);unknown=bytes(b)
  run(['--force-install-list','10'],'IWD_unknown_visual_guard');assert p.read_bytes()==unknown
  run(['--force-uninstall-list','10'],'IWD_guard_uninstall');p.write_bytes(originals['SPPR308']);assert snap()==before
+ # Chaos has two copies of the same visual with separate application conditions.
+ # Both must change together; an unknown second cue must never be erased.
+ repeated_cases=[];chaos=originals['SPWI508'];ao,n,eo=struct.unpack_from('<IHI',chaos,100);pairs=[];other=[]
+ for i in range(n):
+  cnt,idx=struct.unpack_from('<HH',chaos,ao+40*i+30);offsets=[eo+48*(idx+j) for j in range(cnt)]
+  pair=[o for o in offsets if opcode(chaos[o:o+48])==215];assert len(pair)==2;pairs.append(pair)
+  other.append(next(o for o in offsets if opcode(chaos[o:o+48]) not in (141,215) and not 153<=opcode(chaos[o:o+48])<=158))
+ for label in ('separate-conditions','unknown-second','one-cue-only','third-cue','delayed-second','wrong-second-target'):
+  data=bytearray(chaos)
+  for pair,o in zip(pairs,other):
+   first,second=pair
+   if label=='separate-conditions':
+    for k,off in enumerate(pair):
+     data[off+18:off+20]=bytes([83-30*k,17+10*k]);struct.pack_into('<Ii',data,off+36,1<<k,-3-k)
+   elif label=='unknown-second':data[second+20:second+28]=b'UNKNOWN\0'
+   elif label=='one-cue-only':struct.pack_into('<H',data,second,142)
+   elif label=='third-cue':struct.pack_into('<H',data,o,215);data[o+20:o+28]=b'UNKNOWN\0'
+   elif label=='delayed-second':data[second+12]=4
+   else:data[second+2]=1
+  p=resource('spwi508.spl');p.write_bytes(data);snapshot=snap();run(['--force-install-list','10'],'IWD_chaos_'+label);new=p.read_bytes()
+  if label=='separate-conditions':
+   allowed={o+j for pair in pairs for o in pair for j in range(20,28)}
+   assert new!=data and all(a==b for i,(a,b) in enumerate(zip(data,new)) if i not in allowed)
+   assert all(new[o+20:o+28]==b'srioconf' for pair in pairs for o in pair)
+  else:assert new==data,label+' unexpectedly replaced an unrecognized pair'
+  run(['--force-uninstall-list','10'],'IWD_chaos_'+label+'_uninstall');assert snap()==snapshot
+  p.write_bytes(chaos);assert snap()==before;repeated_cases.append(label)
  assert (game/'dialog.tlk').read_bytes()==tlk
  result=dict(status='PASS',component=10,spells=len(originals),persistent_overlay_spells=len(OVERLAYS),bam_assets=len(manifest)//2,vvc_assets=len(manifest)//2,frames_validated=frames,spell_checks=report,standalone_install=True,combined_with_SR=True,reinstall_stable=True,uninstall_byte_exact=True,unknown_visual_skipped=True,icons_projectiles_globals_nonvisual_effects_and_conditions_preserved=True,game_rendering_tested=False,baseline='owner-supplied modded EET exports; isolated fixture with synthetic KEY/TLK',excluded_framework_cache='ADD_SPELL.IDS')
+ result['repeated_visual_cases']=repeated_cases
  (OUT/'IWD_validation.json').write_text(json.dumps(result,indent=2)+'\n');print('PASS:',len(originals),'real EET spells;',len(manifest)//2,'BAM/VVC pairs; standalone/combined install, stable reinstall, full uninstall, unknown-visual guard. No game rendering test.')
 finally:shutil.rmtree(game)

@@ -1,4 +1,4 @@
-# Ricontrollo delle esclusioni IWDEE — aggiornamento beta.4
+# Ricontrollo delle esclusioni IWDEE — aggiornamento beta.5
 
 Il pacchetto precedente **non importava tutti gli effetti distinti IWDEE**.
 I 15 BAM erano una selezione di cue diretti riconosciuti nelle spell EET.
@@ -68,12 +68,24 @@ La beta.4 aggiunge anche `GLDUSTA`, `WEBC`, `ORSPHEC`, `RESURRH`, `HEALH` e
 ricolorate. [Rapporto completo](FULL_SOURCE_AUDIT.it.md).
 
 La tabella beta.3 di esclusioni è stata sostituita: la sola sagoma non prova
-un duplicato. Su 246 BAM: 25 inclusi, 163 corrispondenze grafiche complete EET,
+un duplicato. Su 246 BAM: 26 inclusi, 163 corrispondenze grafiche complete EET,
 1 corrispondenza di tutti i cicli visibili, 5 spell già coperte da SR,
-6 senza root originale tracciata e **46 candidati ancora da integrare**.
-Questi 46 non sono esclusi per overlap SR. [Tutte le decisioni](iwd_selection_recheck.csv),
+6 senza root originale tracciata e **45 candidati ancora da integrare**.
+Questi 45 non sono esclusi per overlap SR. [Tutte le decisioni](iwd_selection_recheck.csv),
 [candidati e motivi](iwd_pending_candidates.csv), [tutti i BAM SR](sr_source_selection.csv).
 
-PASS: 42 SPL EET reali, 54 casi overlay, 28 regressioni e 12 casi sottospell.
+PASS: 46 SPL EET reali, 54 casi overlay, 28 regressioni e 12 casi sottospell.
 Nessun test visivo dentro una partita. Vedere il rapporto completo per le
 richieste mirate di file e i limiti dei riferimenti PRO dichiarati.
+
+## Ulteriore controllo beta.5
+
+Aggiunto `MMAGICH` per Miscast Magic: era un cue diretto erroneamente
+classificato come fase PRO. `CONFUSH`, già incluso per Sphere of Chaos,
+ora copre anche Confusion sacerdotale e arcana e Chaos. Chaos conserva
+due cue con condizioni separate e la durata/timing EET. Sei casi aggiuntivi
+verificano la coppia riconosciuta e il salto delle coppie sconosciute.
+
+Il rapporto distingue anche BAM inclusi da binding ancora assenti:
+[iwd_unbound_included_art.csv](iwd_unbound_included_art.csv). Vi resta la
+fase HEALH differita di Regeneration, priva di un cue corrispondente EET.

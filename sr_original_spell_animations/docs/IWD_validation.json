@@ -1,11 +1,11 @@
 {
   "status": "PASS",
   "component": 10,
-  "spells": 26,
+  "spells": 30,
   "persistent_overlay_spells": 5,
-  "bam_assets": 25,
-  "vvc_assets": 25,
-  "frames_validated": 935,
+  "bam_assets": 26,
+  "vvc_assets": 26,
+  "frames_validated": 955,
   "spell_checks": [
     {
       "spell": "SPPR308",
@@ -134,6 +134,30 @@
       "all_mechanics_and_conditions_preserved": true
     },
     {
+      "spell": "SPPR310",
+      "abilities": 1,
+      "visual_effects_replaced": 1,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
+      "spell": "SPPR709",
+      "abilities": 4,
+      "visual_effects_replaced": 4,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
+      "spell": "SPWI401",
+      "abilities": 4,
+      "visual_effects_replaced": 4,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
+      "spell": "SPWI508",
+      "abilities": 4,
+      "visual_effects_replaced": 8,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
       "spell": "SPPR109",
       "abilities": 1,
       "visual_effects_replaced": 1,
@@ -172,5 +196,13 @@
   "icons_projectiles_globals_nonvisual_effects_and_conditions_preserved": true,
   "game_rendering_tested": false,
   "baseline": "owner-supplied modded EET exports; isolated fixture with synthetic KEY/TLK",
-  "excluded_framework_cache": "ADD_SPELL.IDS"
+  "excluded_framework_cache": "ADD_SPELL.IDS",
+  "repeated_visual_cases": [
+    "separate-conditions",
+    "unknown-second",
+    "one-cue-only",
+    "third-cue",
+    "delayed-second",
+    "wrong-second-target"
+  ]
 }

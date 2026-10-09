@@ -154,6 +154,20 @@
     "synthesized_controller": false
   },
   {
+    "source": "MMAGICH.BAM",
+    "destination": "sr_original_spell_animations/assets/iwd/sriomisc.bam",
+    "installed_sha256": "afc72ef914063d8dbeee9e9d8ca799d4ee2ef468f0afe0be00fc081c464c2536",
+    "source_sha256": "afc72ef914063d8dbeee9e9d8ca799d4ee2ef468f0afe0be00fc081c464c2536",
+    "synthesized_controller": false
+  },
+  {
+    "source": "MMAGICH.VVC",
+    "destination": "sr_original_spell_animations/assets/iwd/sriomisc.vvc",
+    "installed_sha256": "1b4a8597c6792b719064857ae7ce4a07ea3819522c4ae1f3dab46b5225d93e33",
+    "source_sha256": "746dfb2ab4428b2a993eb2a115b534c80e8a284edc7900c74bfb5b2d14a94a3e",
+    "synthesized_controller": false
+  },
+  {
     "source": "ORSPHEC.BAM",
     "destination": "sr_original_spell_animations/assets/iwd/srioosph.bam",
     "installed_sha256": "0b0af8ef31614cc2cd72cc4d0a3ef71644e9758e31f006d4cc26149543395d8b",

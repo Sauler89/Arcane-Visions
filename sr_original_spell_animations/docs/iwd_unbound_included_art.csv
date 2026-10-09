@@ -1,0 +1,2 @@
+﻿bam,bg_spell,path,reason
+HEALH.BAM,SPPR711,SPPR711.SPL -> HEALH.VVC (ability 9 opcode 215) -> HEALH.BAM (VVC main),BAM included for other bindings; this source phase is not installed
