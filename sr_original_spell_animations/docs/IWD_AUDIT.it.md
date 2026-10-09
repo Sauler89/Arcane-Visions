@@ -1,4 +1,4 @@
-> Historical review of the previous beta. For the current installer see [RIGOROUS_AUDIT.md](RIGOROUS_AUDIT.md).
+> Historical review of beta.1. The overlay exclusions below are superseded by beta.3: see [IWD_SELECTION_RECHECK.it.md](IWD_SELECTION_RECHECK.it.md) and [RIGOROUS_AUDIT.md](RIGOROUS_AUDIT.md).
 
 # Componente IWDEE: ricontrollo e integrazione
 

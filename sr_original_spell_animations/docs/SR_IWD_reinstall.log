@@ -9,10 +9,10 @@ Using Language [English]
 SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2  0  0 Installed
 SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2  0 10 Installed
 
-Removing old installation of [SR post-cast effect animations for original BG2 spells] first ...
+Removing old installation of [Arcane Visions: SR effects for original BG spells] first ...
 uninstall: sr_original_spell_animations/setup-sr_original_spell_animations.tp2 0
 We must temporarily uninstall [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 10
-Will uninstall  46 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 10.
+Will uninstall  58 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 10.
   Restoring backed-up [sr_original_spell_animations/backup/10/SPPR308.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPPR411.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPPR417.spl]
@@ -29,7 +29,11 @@ Will uninstall  46 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPE
   Restoring backed-up [sr_original_spell_animations/backup/10/SPWI715.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPWI812.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPWI922.spl]
-Uninstalled     46 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 10.
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPPR109.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPWI311.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPWI406.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPWI602.spl]
+Uninstalled     58 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 10.
 Will uninstall  42 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 0.
   Restoring backed-up [sr_original_spell_animations/backup/0/spentaai.bam]
   Restoring backed-up [sr_original_spell_animations/backup/0/spentaci.bam]
@@ -54,10 +58,10 @@ Will uninstall  42 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPE
   Restoring backed-up [sr_original_spell_animations/backup/0/SPWI622.spl]
 Uninstalled     42 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 0.
 
-SUCCESSFULLY REMOVED OLD [SR post-cast effect animations for original BG2 spells]
+SUCCESSFULLY REMOVED OLD [Arcane Visions: SR effects for original BG spells]
 
 
-Installing [SR post-cast effect animations for original BG2 spells] [v0.2.0-beta.2]
+Installing [Arcane Visions: SR effects for original BG spells] [v0.2.0-beta.3]
 Copying 1 file ...
 Copying 1 file ...
 Copying 1 file ...
@@ -90,8 +94,12 @@ uninstall: sr_original_spell_animations/setup-sr_original_spell_animations.tp2 1
 SUCCESSFULLY REMOVED OLD [Distinct IWDEE post-cast effects for original BG spells]
 
 
-Installing [Distinct IWDEE post-cast effects for original BG spells] [v0.2.0-beta.2]
+Installing [Distinct IWDEE post-cast effects for original BG spells] [v0.2.0-beta.3]
 Copying 1 file ...
+Copying and patching 1 file ...
+Copying and patching 1 file ...
+Copying and patching 1 file ...
+Copying and patching 1 file ...
 Copying and patching 1 file ...
 Copying and patching 1 file ...
 Copying and patching 1 file ...
@@ -113,10 +121,10 @@ Copying and patching 1 file ...
 Saving This Log:
 SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2  0  0 Permanently_Uninstalled
 SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2  0 10 Permanently_Uninstalled
-SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2  0  0 Installed ~SR post-cast effect animations for original BG2 spells~
+SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2  0  0 Installed ~Arcane Visions: SR effects for original BG spells~
 SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2  0 10 Installed ~Distinct IWDEE post-cast effects for original BG spells~
 [sr_original_spell_animations/languages/english/setup.tra] has 3 translation strings
 
-SUCCESSFULLY INSTALLED      SR post-cast effect animations for original BG2 spells
+SUCCESSFULLY INSTALLED      Arcane Visions: SR effects for original BG spells
 
 SUCCESSFULLY INSTALLED      Distinct IWDEE post-cast effects for original BG spells

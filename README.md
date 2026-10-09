@@ -7,7 +7,7 @@ Spell Revisions or Icewind Dale: Enhanced Edition. It replaces the artwork
 shown after a spell is cast, while retaining the installed spell's mechanics.
 **Spell Revisions and IWDification are not required.**
 
-Current version: **v0.2.0-beta.2**, by **Sauler89**.
+Current version: **v0.2.0-beta.3**, by **Sauler89**.
 [Italian instructions](README.it.md) · [Affected spells](#affected-spells) ·
 [Audit and validation](sr_original_spell_animations/docs/RIGOROUS_AUDIT.md)
 
@@ -26,21 +26,28 @@ orientation and timing. Entangle shows an individual animated tendril.
 |:---:|:---:|:---:|
 | ![Chromatic Orb animation](docs/previews/chromatic-orb.gif) | ![Mantle animation](docs/previews/mantle.gif) | ![Blade Barrier animation](docs/previews/blade-barrier.gif) |
 
-**Globe of Invulnerability and Minor Globe of Invulnerability are not included.**
-The SR files named `spwi406a/b/c` and `spwi602a/b/c` are spell icons, not new
-post-cast animations. Their existing globe visuals are retained. The blue
-`SPMAGGLO` preview above represents the shared deflection/protection overlay.
+| Sanctuary — `SANCTRY` | Protection from Arrows — `PFNMISC` |
+|:---:|:---:|
+| ![Sanctuary animation](docs/previews/sanctuary.gif) | ![Protection from Arrows animation](docs/previews/protection-from-arrows.gif) |
+
+| Minor Globe of Invulnerability — `MGOINVC` | Globe of Invulnerability — `GOINVUC` |
+|:---:|:---:|
+| ![Minor Globe animation](docs/previews/minor-globe.gif) | ![Globe of Invulnerability animation](docs/previews/globe-of-invulnerability.gif) |
+
+The two globe previews are **IWDEE effect animations**, added in beta.3.
+The similarly named SR files `spwi406a/b/c` and `spwi602a/b/c` remain excluded
+because they are icons. `SPMAGGLO` is a separate shared protection overlay.
 
 ## Components
 
 | Component | Content | Assets |
 |---|---|---|
 | **0** | SR effect animations for selected original spells | 14 BAMs, 12 VVCs |
-| **10** | Distinct IWDEE effects for 16 other original spells | 15 BAMs, 15 VVCs |
+| **10** | Distinct IWDEE effects for 20 other original spells | 19 BAMs, 19 VVCs |
 
 Components can be installed independently or together. Their targeted spell
-lists are disjoint. The complete package contains **29 animation BAMs and
-27 visual-controller VVCs**, and patches **32 original SPL files** in the
+lists are disjoint. The complete package contains **33 animation BAMs and
+31 visual-controller VVCs**, and patches **36 original SPL files** in the
 supplied EET baseline. Additional spells use the replaced native graphics.
 
 No spellbook/action-bar/portrait icons, new spells, revised spell descriptions,
@@ -124,6 +131,10 @@ resource names; other consumers of those BAMs receive the replacement art.
 | Power Word Stun | `SPWI715` | `PWSTUNH` |
 | Abi-Dalzim's Horrid Wilting | `SPWI812` | `ADHWILH` |
 | Dragon's Breath | `SPWI922` | `SPDRGNBR` |
+| Sanctuary | `SPPR109` | `SANCTRY` |
+| Protection from Normal Missiles / Arrows | `SPWI311` | `PFNMISC` |
+| Minor Globe of Invulnerability | `SPWI406` | `MGOINVC` |
+| Globe of Invulnerability | `SPWI602` | `GOINVUC` |
 
 
 Storm of Vengeance replaces its existing direct visual cue only; its weather,
@@ -131,6 +142,12 @@ area and projectiles remain installed as before. Sphere of Chaos replaces its
 direct hit cue, not the persistent Confusion/Chaos status indicator. Blade
 Barrier preserves the existing duration of both visual layers. Dito/Finger of
 Death variants and Storm of Vengeance share one isolated `FODEATH` copy.
+
+The four persistent overlays retain their existing state opcodes, duration,
+conditions and protections. Only the recognized graphic reference/mode changes.
+Both globes use private resources, so minor and major can show different art
+without replacing `MINORGLB` globally. Sanctuary's state is retained; it is
+never replaced with a graphics-only effect.
 
 ## Compatibility and graphics handling
 
@@ -155,22 +172,34 @@ the replaced visual effects.
 IWD selection was compared against **246 IWDEE BAMs, 386 exported EET BAMs,
 and the 14 SR BAMs**. The supplied EET already contains IWDification, SCS and
 other spell packs. Identical files, identical decompressed/rendered content,
-shared cycles and recolored shared shapes were excluded. The final 15 IWD BAMs
+shared cycles and recolored shared shapes were excluded. The final 19 IWD BAMs
 have no complete/cropped-art/shape/emitted-RGB cycle match in those comparison
 sets. This establishes distinctness against the supplied baseline, not every
 BAM in every possible game installation or modlist.
 
+**This is a selected import, not all IWDEE BAMs.** The beta.3 review found that
+Sanctuary, Protection from Arrows and both globes had been omitted because the
+original patcher handled direct 141/215 cues, not persistent engine overlays.
+Their omission was **not** due to SR overlap. Other distinct candidates still
+require integration of their projectile, area, status or subspell routes.
+Call Lightning is pending missing IWDEE/EET `SKYBOLT.BAM` exports; its vertical
+bolt was not in the supplied BAM set. See the
+[selection and exclusion review](sr_original_spell_animations/docs/IWD_SELECTION_RECHECK.it.md)
+and [all 246 BAM classifications](sr_original_spell_animations/docs/iwd_selection_recheck.csv).
+
 ## Validation and beta status
 
 WeiDU installation, reinstallation and byte-exact uninstallation passed in
-isolated fixtures, including the **32 real exported EET spells**. Assets were
+isolated fixtures, including the **36 real exported EET spells**. Assets were
 checked for hashes, frame bounds/RLE data, cycle references, VVC dependencies,
 phase indexes, private names and absence of external palettes/alpha BAMs/audio.
 
 An additional **22 regression cases** cover malformed layouts, an unused global
 index, conditional visual effects, wrong targets/delays, resource collisions
 and unsupported games. Source SR spell layouts and both EET/BG2EE synthetic
-profiles also passed. Full details and retained results are in
+profiles also passed. **44 further overlay cases** verify state and conditional
+duration preservation, recognized/custom layouts, safe skips and collisions.
+Full details and retained results are in
 [the rigorous audit](sr_original_spell_animations/docs/RIGOROUS_AUDIT.md).
 
 **The mod has not yet been visually tested in a launched EET game.** Position,
@@ -182,9 +211,11 @@ fixtures and exported resources; they do not load a complete game installation.
 
 ```sh
 python3 tests/verify_assets.py [path/to/extracted/spell_rev]
+python3 tests/verify_graphics_integrity.py [path/to/IWDEE-BAM-export]
 python3 tests/verify_installer.py /path/to/weidu [path/to/extracted/spell_rev]
 python3 tests/verify_regressions.py /path/to/weidu
 python3 tests/verify_iwd_on_export.py /path/to/EET-export /path/to/weidu /path/to/results
+python3 tests/verify_overlays.py /path/to/EET-export /path/to/weidu /path/to/results
 ```
 
 Tests require Python 3 and WeiDU. Preview generation additionally needs Pillow:

@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.2.0-beta.3 — IWDEE persistent overlays
+
+- Add Sanctuary (`SANCTRY`), Protection from Arrows (`PFNMISC`), Minor Globe
+  (`MGOINVC`) and Globe of Invulnerability (`GOINVUC`) to component 10.
+- Fix the earlier omission of engine overlays: redirect their graphic mode and
+  resource while retaining existing state opcodes, duration, conditions and
+  protections. Do not replace Sanctuary's state with opcode 215.
+- Keep minor/major globe artwork isolated; do not replace MINORGLB globally.
+- Add four real BAM previews, bringing the README gallery to ten GIFs.
+- Verify all 36 EET SPLs and add 44 persistent-overlay regression cases.
+- Reclassify all 246 supplied IWDEE BAMs and document distinct candidates that
+  are still unintegrated. Do not mislabel technical exclusions as SR overlap.
+- Mark Call Lightning pending missing IWDEE/EET SKYBOLT BAMs; do not substitute
+  Lightning Bolt/Chain Lightning art or import IWDEE chain/damage mechanics.
+
 ## v0.2.0-beta.2 — rigorous review
 
 - Let non-looping SR visuals finish their BAM sequence, fixing the 1-second

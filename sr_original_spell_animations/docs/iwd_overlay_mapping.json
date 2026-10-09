@@ -1,0 +1,38 @@
+[
+  {
+    "spell": "SPPR109",
+    "art": "SANCTRY",
+    "private": "sriosanc",
+    "opcode": 153,
+    "target": 1,
+    "default_resource": "SANCTRY",
+    "iwd_reference": "SANCTRY"
+  },
+  {
+    "spell": "SPWI311",
+    "art": "PFNMISC",
+    "private": "srioarrw",
+    "opcode": 156,
+    "target": 2,
+    "default_resource": "SPSHIELD",
+    "iwd_reference": "#PRONM"
+  },
+  {
+    "spell": "SPWI406",
+    "art": "MGOINVC",
+    "private": "sriomglb",
+    "opcode": 155,
+    "target": 1,
+    "default_resource": "MINORGLB",
+    "iwd_reference": "MGOINVC"
+  },
+  {
+    "spell": "SPWI602",
+    "art": "GOINVUC",
+    "private": "sriogglb",
+    "opcode": 155,
+    "target": 1,
+    "default_resource": "MINORGLB",
+    "iwd_reference": "#GLOBINV"
+  }
+]

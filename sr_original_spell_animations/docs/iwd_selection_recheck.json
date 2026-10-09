@@ -1,0 +1,86 @@
+{
+  "version": "v0.2.0-beta.3",
+  "inputs": {
+    "IWDEE_BAM": 246,
+    "EET_BAM": 386,
+    "SR_BAM": 14
+  },
+  "statuses": {
+    "EET_graphic_or_shape_match": 174,
+    "distinct_candidate_not_integrated": 42,
+    "included": 19,
+    "no_original_BG_spell_mapping": 6,
+    "SR_spell_overlap": 5
+  },
+  "complete_IWDEE_import": false,
+  "baseline": "owner-supplied exported modded EET BAMs and bundled SR artwork; not all game/mod versions",
+  "overlay_assets": [
+    {
+      "iwdee_bam": "GOINVUC.BAM",
+      "source_sha256": "8af982e992385a6132941616316de2dccb8e418d0afb79f432404e76d1f9b124",
+      "status": "included",
+      "BG_roots": "SPWI602",
+      "SR_roots": "",
+      "EET_complete": "",
+      "EET_art": "",
+      "EET_shape": "",
+      "SR_complete": "",
+      "SR_art": "",
+      "SR_shape": ""
+    },
+    {
+      "iwdee_bam": "MGOINVC.BAM",
+      "source_sha256": "663abe22f67e82a09b4cb0938b752069fde7e953db20db4c7ae44d45f221ef70",
+      "status": "included",
+      "BG_roots": "SPWI406",
+      "SR_roots": "",
+      "EET_complete": "",
+      "EET_art": "",
+      "EET_shape": "",
+      "SR_complete": "",
+      "SR_art": "",
+      "SR_shape": ""
+    },
+    {
+      "iwdee_bam": "PFNMISC.BAM",
+      "source_sha256": "646b4337407f8ccc7f50e209dcd325c6d63ad858fd297effc1fb17b0004882ea",
+      "status": "included",
+      "BG_roots": "SPWI311",
+      "SR_roots": "",
+      "EET_complete": "",
+      "EET_art": "",
+      "EET_shape": "",
+      "SR_complete": "",
+      "SR_art": "",
+      "SR_shape": ""
+    },
+    {
+      "iwdee_bam": "SANCTRY.BAM",
+      "source_sha256": "35f0f7544cb35c516f2ec31e2066312bb30edf6fdc749e7b40332297f23f3594",
+      "status": "included",
+      "BG_roots": "SPPR109",
+      "SR_roots": "",
+      "EET_complete": "",
+      "EET_art": "",
+      "EET_shape": "",
+      "SR_complete": "",
+      "SR_art": "",
+      "SR_shape": ""
+    }
+  ],
+  "call_lightning": {
+    "spell": "SPPR302",
+    "IWDEE_ability_projectiles": "85..91 (MISSILE values); no exported matching PRO/visual resource",
+    "EET_ability_projectiles": "81..85 (MISSILE values)",
+    "IWDEE_SKYBOLT_BAM_available": false,
+    "EET_SKYBOLT_BAM_available": false,
+    "EET_CHITIN_KEY_has_SKYBOLT_BAM": true,
+    "not_excluded_for_SR_overlap": true,
+    "needed_files": [
+      "IWDEE/SKYBOLT.BAM",
+      "EET/SKYBOLT.BAM",
+      "IWDEE/SPCALLLI.BAM if present"
+    ]
+  },
+  "game_rendering_tested": false
+}

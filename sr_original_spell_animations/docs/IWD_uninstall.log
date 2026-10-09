@@ -10,7 +10,7 @@ SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2  0 10 Instal
 
 Removing [Distinct IWDEE post-cast effects for original BG spells] (component #10)
 uninstall: sr_original_spell_animations/setup-sr_original_spell_animations.tp2 10
-Will uninstall  46 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 10.
+Will uninstall  58 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 10.
   Restoring backed-up [sr_original_spell_animations/backup/10/SPPR308.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPPR411.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPPR417.spl]
@@ -27,7 +27,11 @@ Will uninstall  46 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPE
   Restoring backed-up [sr_original_spell_animations/backup/10/SPWI715.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPWI812.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPWI922.spl]
-Uninstalled     46 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 10.
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPPR109.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPWI311.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPWI406.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPWI602.spl]
+Uninstalled     58 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 10.
 
 
 SUCCESSFULLY REMOVED [Distinct IWDEE post-cast effects for original BG spells] (component #10)

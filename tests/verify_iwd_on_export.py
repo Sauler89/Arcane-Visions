@@ -8,6 +8,8 @@ ROOT=Path(__file__).resolve().parents[1];MOD=ROOT/'sr_original_spell_animations'
 SOURCE=Path(sys.argv[1]).resolve();WEIDU=Path(sys.argv[2]).resolve()
 OUT=Path(sys.argv[3]).resolve() if len(sys.argv)>3 else Path(tempfile.mkdtemp(prefix='sra-iwd-results-'));OUT.mkdir(parents=True,exist_ok=True)
 ROWS=json.loads((MOD/'docs/iwd_spell_mapping.json').read_text());CORE=json.loads((MOD/'docs/test_config.json').read_text())
+OVERLAYS=json.loads((MOD/'docs/iwd_overlay_mapping.json').read_text())
+OVERLAY_BY={r['spell']:r for r in OVERLAYS}
 helper=ast.parse((ROOT/'tests/verify_installer.py').read_text())
 exec(compile(ast.Module(body=[n for n in helper.body if isinstance(n,ast.FunctionDef) and n.name in ('parse','opcode','assert_preserved')],type_ignores=[]),'<checks>','exec'))
 asset_helper=ast.parse((ROOT/'tests/verify_assets.py').read_text())
@@ -32,7 +34,7 @@ try:
   files=[p for p in ov.iterdir() if p.name.lower()!='add_spell.ids'];result={p.name.lower():hashlib.sha256(p.read_bytes()).hexdigest() for p in files};assert len(result)==len(files),'case-colliding game filenames';return result
  def run(args,label):
   p=subprocess.run([str(WEIDU),'sr_original_spell_animations/setup-sr_original_spell_animations.tp2','--noautoupdate','--language','0','--no-exit-pause',*args],cwd=game,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT);(OUT/(label+'.log')).write_text(p.stdout);assert p.returncode==0,p.stdout[-10000:]
- originals={r[0]:resource(r[0]+'.spl').read_bytes() for r in ROWS};before=snap();tlk=(game/'dialog.tlk').read_bytes()
+ originals={s:resource(s+'.spl').read_bytes() for s in dict.fromkeys([r[0] for r in ROWS]+list(OVERLAY_BY))};before=snap();tlk=(game/'dialog.tlk').read_bytes()
  def check_iwd():
   report=[]
   for spell in originals:
@@ -40,20 +42,23 @@ try:
    ao,n,eo=struct.unpack_from('<IHI',old,100);assert old[:eo]==new[:eo],spell+' header/icon/projectile change'
    gidx,gcount=struct.unpack_from('<HH',old,110);assert old[eo+gidx*48:eo+(gidx+gcount)*48]==new[eo+gidx*48:eo+(gidx+gcount)*48]
    og,oh=parse(old);ng,nh=parse(new);assert og==ng
-   spell_rows=[r for r in ROWS if r[0]==spell];names={'srio'+r[2] for r in spell_rows}
+   spell_rows=[r for r in ROWS if r[0]==spell];overlay=OVERLAY_BY.get(spell);names={overlay['private']} if overlay else {'srio'+r[2] for r in spell_rows}
    count=0
    for (_,fx),(_,fy) in zip(oh,nh):
     assert len(fx)==len(fy)
     for e,f in zip(fx,fy):
      if e==f:continue
-     assert opcode(e) in (141,215) and opcode(f)==215
+     if overlay:
+      assert opcode(e)==opcode(f)==overlay['opcode']
+     else:assert opcode(e) in (141,215) and opcode(f)==215
      assert f[20:28].split(b'\0')[0].decode() in names
      allowed=set(range(20,28))
-     if opcode(e)==141:allowed|={0,1}|set(range(8,12))
-     if not spell_rows[0][6]:allowed|=set(range(12,13))|set(range(14,18))
+     if overlay:allowed|=set(range(8,12));assert struct.unpack_from('<I',f,8)[0]==1
+     elif opcode(e)==141:allowed|={0,1}|set(range(8,12))
+     if not overlay and not spell_rows[0][6]:allowed|=set(range(12,13))|set(range(14,18))
      assert all(a==b for i,(a,b) in enumerate(zip(e,f)) if i not in allowed),spell+' changed conditions or gameplay'
      count+=1
-   assert count==n*len(spell_rows),(spell,count,n)
+   assert count==n*(1 if overlay else len(spell_rows)),(spell,count,n)
    report.append(dict(spell=spell,abilities=n,visual_effects_replaced=count,all_mechanics_and_conditions_preserved=True))
   return report
  run(['--force-install-list','10'],'IWD_install');report=check_iwd();installed=snap()
@@ -74,6 +79,6 @@ try:
  run(['--force-install-list','10'],'IWD_unknown_visual_guard');assert p.read_bytes()==unknown
  run(['--force-uninstall-list','10'],'IWD_guard_uninstall');p.write_bytes(originals['SPPR308']);assert snap()==before
  assert (game/'dialog.tlk').read_bytes()==tlk
- result=dict(status='PASS',component=10,spells=len(originals),bam_assets=len(manifest)//2,vvc_assets=len(manifest)//2,frames_validated=frames,spell_checks=report,standalone_install=True,combined_with_SR=True,reinstall_stable=True,uninstall_byte_exact=True,unknown_visual_skipped=True,icons_projectiles_globals_nonvisual_effects_and_conditions_preserved=True,game_rendering_tested=False,baseline='owner-supplied modded EET exports; isolated fixture with synthetic KEY/TLK',excluded_framework_cache='ADD_SPELL.IDS')
+ result=dict(status='PASS',component=10,spells=len(originals),persistent_overlay_spells=len(OVERLAYS),bam_assets=len(manifest)//2,vvc_assets=len(manifest)//2,frames_validated=frames,spell_checks=report,standalone_install=True,combined_with_SR=True,reinstall_stable=True,uninstall_byte_exact=True,unknown_visual_skipped=True,icons_projectiles_globals_nonvisual_effects_and_conditions_preserved=True,game_rendering_tested=False,baseline='owner-supplied modded EET exports; isolated fixture with synthetic KEY/TLK',excluded_framework_cache='ADD_SPELL.IDS')
  (OUT/'IWD_validation.json').write_text(json.dumps(result,indent=2)+'\n');print('PASS:',len(originals),'real EET spells;',len(manifest)//2,'BAM/VVC pairs; standalone/combined install, stable reinstall, full uninstall, unknown-visual guard. No game rendering test.')
 finally:shutil.rmtree(game)

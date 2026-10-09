@@ -15,7 +15,10 @@ included; the game, its mechanics and complete game data are not distributed.
 All animation BAMs are byte-identical to the supplied source assets. Visual
 controllers are retargeted, stripped of audio, and (for IWD) normalized to let
 the SPL effect control duration. Three direct IWD BAM references receive a
-non-looping VVC wrapper. Manifests record source/installed hashes and names.
+non-looping VVC wrapper. Two new single-cycle persistent BAMs receive looping
+wrappers based on IWDEE's `#PRONM.VVC`; Protection from Arrows and the major
+globe retain their source looping controller layouts. Manifests record
+source/installed hashes and names.
 
 Technical references:
 

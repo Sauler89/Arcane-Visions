@@ -79,5 +79,57 @@
     "preview_frame_delay_ms": 70,
     "screen_blending_approximation": false,
     "game_capture": false
+  },
+  {
+    "file": "docs/previews/sanctuary.gif",
+    "asset": "sr_original_spell_animations/assets/iwd/sriosanc.bam",
+    "asset_sha256": "35f0f7544cb35c516f2ec31e2066312bb30edf6fdc749e7b40332297f23f3594",
+    "gif_sha256": "6b958dffb4168343ec8302877f3306afef0c931e01df2aefbe22a59066b0bbf7",
+    "bam_cycles": [
+      0
+    ],
+    "frame_rate": 15,
+    "preview_frame_delay_ms": 70,
+    "screen_blending_approximation": true,
+    "game_capture": false
+  },
+  {
+    "file": "docs/previews/protection-from-arrows.gif",
+    "asset": "sr_original_spell_animations/assets/iwd/srioarrw.bam",
+    "asset_sha256": "646b4337407f8ccc7f50e209dcd325c6d63ad858fd297effc1fb17b0004882ea",
+    "gif_sha256": "012cee1ed9c54d9a01c18aed402fa0d33f0d4fb4f7caf952293b19818565eb07",
+    "bam_cycles": [
+      0
+    ],
+    "frame_rate": 15,
+    "preview_frame_delay_ms": 70,
+    "screen_blending_approximation": true,
+    "game_capture": false
+  },
+  {
+    "file": "docs/previews/minor-globe.gif",
+    "asset": "sr_original_spell_animations/assets/iwd/sriomglb.bam",
+    "asset_sha256": "663abe22f67e82a09b4cb0938b752069fde7e953db20db4c7ae44d45f221ef70",
+    "gif_sha256": "fef15f987ba34975a27c6781aa6e3c5c7dd9041d730c274349d964a7809b4eb7",
+    "bam_cycles": [
+      0
+    ],
+    "frame_rate": 15,
+    "preview_frame_delay_ms": 70,
+    "screen_blending_approximation": true,
+    "game_capture": false
+  },
+  {
+    "file": "docs/previews/globe-of-invulnerability.gif",
+    "asset": "sr_original_spell_animations/assets/iwd/sriogglb.bam",
+    "asset_sha256": "8af982e992385a6132941616316de2dccb8e418d0afb79f432404e76d1f9b124",
+    "gif_sha256": "d56601d9de4a4134f9917b4ae7956a3a6122a5936f582dd09bf00cbd9b11ba37",
+    "bam_cycles": [
+      0
+    ],
+    "frame_rate": 15,
+    "preview_frame_delay_ms": 70,
+    "screen_blending_approximation": true,
+    "game_capture": false
   }
 ]

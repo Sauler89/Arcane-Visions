@@ -34,7 +34,8 @@
   "iwdee_bams": 246,
   "eet_bams": 386,
   "sr_bams": 14,
-  "selected_iwdee_bams": 15,
-  "selected_original_spells": 16,
-  "not_render_tested": true
+  "selected_iwdee_bams": 19,
+  "selected_original_spells": 20,
+  "not_render_tested": true,
+  "selection_review": "iwd_selection_recheck.json"
 }

@@ -1,15 +1,17 @@
 {
   "status": "PASS",
-  "bam": 29,
-  "vvc": 27,
-  "total_frames": 947,
-  "preview_gifs": 6,
+  "bam": 33,
+  "vvc": 31,
+  "total_frames": 1011,
+  "preview_gifs": 10,
   "core_spells": 16,
-  "iwd_spells": 16,
+  "iwd_spells": 20,
   "exact_BAM_source_bytes": true,
   "no_icons_or_gameplay_imports": true,
   "private_names_unique": true,
   "all_controller_dependencies_resolved": true,
-  "IWD_no_shared_EET_SR_art_or_shapes": true,
-  "README_local_links_valid": true
+  "all_IWD_private_names_guarded": true,
+  "persistent_controllers_loop": true,
+  "README_local_links_valid": true,
+  "game_rendering_tested": false
 }

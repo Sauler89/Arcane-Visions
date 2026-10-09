@@ -1,10 +1,11 @@
 {
   "status": "PASS",
   "component": 10,
-  "spells": 16,
-  "bam_assets": 15,
-  "vvc_assets": 15,
-  "frames_validated": 623,
+  "spells": 20,
+  "persistent_overlay_spells": 4,
+  "bam_assets": 19,
+  "vvc_assets": 19,
+  "frames_validated": 687,
   "spell_checks": [
     {
       "spell": "SPPR308",
@@ -100,6 +101,30 @@
       "spell": "SPWI922",
       "abilities": 1,
       "visual_effects_replaced": 1,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
+      "spell": "SPPR109",
+      "abilities": 1,
+      "visual_effects_replaced": 1,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
+      "spell": "SPWI311",
+      "abilities": 1,
+      "visual_effects_replaced": 1,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
+      "spell": "SPWI406",
+      "abilities": 14,
+      "visual_effects_replaced": 14,
+      "all_mechanics_and_conditions_preserved": true
+    },
+    {
+      "spell": "SPWI602",
+      "abilities": 9,
+      "visual_effects_replaced": 9,
       "all_mechanics_and_conditions_preserved": true
     }
   ],

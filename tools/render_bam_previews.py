@@ -6,6 +6,7 @@ import hashlib,json,struct,zlib
 from PIL import Image,ImageChops,ImageDraw,ImageFont
 ROOT=Path(__file__).resolve().parents[1];MOD=ROOT/'sr_original_spell_animations';OUT=ROOT/'docs/previews';OUT.mkdir(parents=True,exist_ok=True)
 DEMO=[('spmagglo','native/spmagglo','SPMAGGLO · shared protection aura',10,[0],True),('entangle','native/spentaai','Entangle · SPENTA AI',10,[0],True),('ghost-armor','custom/sraghst','Ghost Armor · GHARMOR',15,[0],True),('chromatic-orb','native/spchrorb','Chromatic Orb · SPCHRORB',15,[0],True),('mantle','custom/sramant','Mantle · DVMANTLE',10,[0],True),('blade-barrier','iwd/srioblt','Blade Barrier · BBARRH1',15,[0,1,1,2],False)]
+DEMO += [('sanctuary','iwd/sriosanc','Sanctuary · SANCTRY',15,[0],True),('protection-from-arrows','iwd/srioarrw','Protection from Arrows · PFNMISC',15,[0],True),('minor-globe','iwd/sriomglb','Minor Globe · MGOINVC',15,[0],True),('globe-of-invulnerability','iwd/sriogglb','Globe of Invulnerability · GOINVUC',15,[0],True)]
 
 def decode(path):
  b=path.read_bytes()
@@ -50,7 +51,7 @@ def main():
   with Image.open(gif) as check:assert check.size==(336,252) and check.n_frames>0
   manifest.append(dict(file='docs/previews/'+gif.name,asset=str(p.relative_to(ROOT)),asset_sha256=hashlib.sha256(p.read_bytes()).hexdigest(),gif_sha256=hashlib.sha256(gif.read_bytes()).hexdigest(),bam_cycles=which,frame_rate=fps,preview_frame_delay_ms=delay,screen_blending_approximation=blend,game_capture=False))
   thumb=max(frames,key=lambda im:sum(i*n for i,n in enumerate(im.convert('L').histogram())));thumbs.append(thumb)
- sheet=Image.new('RGB',(1008,504))
+ sheet=Image.new('RGB',(1008,252*((len(thumbs)+2)//3)))
  for i,im in enumerate(thumbs):sheet.paste(im,((i%3)*336,(i//3)*252))
- sheet.save(OUT/'contact-sheet.png');(OUT/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n');print('Rendered six verified previews of shipped BAMs; no Globe of Invulnerability icon.')
+ sheet.save(OUT/'contact-sheet.png');(OUT/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n');print('Rendered',len(DEMO),'verified previews of shipped animation BAMs; no icons.')
 if __name__=='__main__':main()
