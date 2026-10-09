@@ -1,5 +1,6 @@
 // Read the root without writing it. Never patch a detached, repurposed child.
 DEFINE_ACTION_FUNCTION srio_check_child
+ INT_VAR srio_item_link = 0
  STR_VAR srio_root = ~~ srio_child = ~~
  RET srio_linked
 BEGIN
@@ -26,7 +27,16 @@ BEGIN
        SET srio_e = srio_eo + (srio_idx + srio_j) * 48
        READ_SHORT srio_e srio_opcode
        READ_ASCII (srio_e + 20) srio_ref (8) NULL
-       PATCH_IF (srio_opcode = 146 OR srio_opcode = 148 OR srio_opcode = 232 OR srio_opcode = 259 OR srio_opcode = 326 OR srio_opcode = 333) AND (~%srio_ref%~ STRING_EQUAL_CASE ~%srio_child%~) BEGIN SET srio_linked = 1 END
+       SET srio_item_link_ok = 0
+       PATCH_IF srio_item_link AND srio_opcode = 111 BEGIN
+        READ_BYTE (srio_e + 2) srio_t
+        READ_LONG (srio_e + 4) srio_p1
+        READ_LONG (srio_e + 8) srio_p2
+        READ_BYTE (srio_e + 12) srio_time
+        READ_LONG (srio_e + 14) srio_duration
+        SET srio_item_link_ok = srio_t = 1 AND srio_p1 = 1 AND srio_p2 = 0 AND srio_time = 0 AND srio_duration > 0
+       END
+       PATCH_IF ((!srio_item_link AND (srio_opcode = 146 OR srio_opcode = 148 OR srio_opcode = 232 OR srio_opcode = 259 OR srio_opcode = 326 OR srio_opcode = 333)) OR srio_item_link_ok) AND (~%srio_ref%~ STRING_EQUAL_CASE ~%srio_child%~) BEGIN SET srio_linked = 1 END
       END
      END
     END

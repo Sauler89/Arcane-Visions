@@ -1,0 +1,121 @@
+{
+  "version": "v0.2.0-beta.8",
+  "game_rendering_tested": false,
+  "SPCALLLI": {
+    "IWDEE": {
+      "name": "SPCALLLI.BAM",
+      "bytes": 19945,
+      "sha256": "6890848ddaa3ba24b4e23d56727ab865a0ef3ee20fc86b25fa32608addd2ec3c",
+      "raw_sha256": "0ac7a4f43da661ab4cdf0137697201f49845eb17ac8222750ee828d563740f31",
+      "frames": 18,
+      "cycles": 1,
+      "max_width": 41,
+      "max_height": 155,
+      "render_sha256": "683a038113f9d5bf19abab41fbbbf1800842c69e813a966ae386b52be9a0b6bc",
+      "cycle_data": [
+        {
+          "index": 0,
+          "frames": 18,
+          "hash": "fa6d2e9cc85ceaf147a97bccf2fb884309009f69b4590aad6d716039ffb4e49e",
+          "art_hash": "97dfa8200100e77e71d7b2e61f212d1bae576c0c1902ac0477b66fe38ed7e4d5",
+          "shape_hash": "79b821a7b4ff53de348a32d0f9f13c095be2ddf0a700a0470cd5001e409feebb",
+          "emissive_hash": "97dfa8200100e77e71d7b2e61f212d1bae576c0c1902ac0477b66fe38ed7e4d5",
+          "visible": true
+        }
+      ],
+      "visible": true
+    },
+    "EET": {
+      "name": "SPCALLLI.BAM",
+      "bytes": 19945,
+      "sha256": "6890848ddaa3ba24b4e23d56727ab865a0ef3ee20fc86b25fa32608addd2ec3c",
+      "raw_sha256": "0ac7a4f43da661ab4cdf0137697201f49845eb17ac8222750ee828d563740f31",
+      "frames": 18,
+      "cycles": 1,
+      "max_width": 41,
+      "max_height": 155,
+      "render_sha256": "683a038113f9d5bf19abab41fbbbf1800842c69e813a966ae386b52be9a0b6bc",
+      "cycle_data": [
+        {
+          "index": 0,
+          "frames": 18,
+          "hash": "fa6d2e9cc85ceaf147a97bccf2fb884309009f69b4590aad6d716039ffb4e49e",
+          "art_hash": "97dfa8200100e77e71d7b2e61f212d1bae576c0c1902ac0477b66fe38ed7e4d5",
+          "shape_hash": "79b821a7b4ff53de348a32d0f9f13c095be2ddf0a700a0470cd5001e409feebb",
+          "emissive_hash": "97dfa8200100e77e71d7b2e61f212d1bae576c0c1902ac0477b66fe38ed7e4d5",
+          "visible": true
+        }
+      ],
+      "visible": true
+    },
+    "byte_identical": true,
+    "traced_SPPR302_binding": false
+  },
+  "SKYBOLT": {
+    "IWDEE": {
+      "name": "SKYBOLT.BAM",
+      "bytes": 389014,
+      "sha256": "3c2f26c8eaa99779b4aa0fac6d41e11b212e190cc64f42d7bd15c9816db92474",
+      "raw_sha256": "385801c2959c1d46c50968c0d7f1586f9c440ddf828958a98f2a22493af94a9b",
+      "frames": 23,
+      "cycles": 1,
+      "max_width": 142,
+      "max_height": 478,
+      "render_sha256": "161acf059ee9b65cdab50a412a032176efdee89ba085fb2db5019c20628887c7",
+      "cycle_data": [
+        {
+          "index": 0,
+          "frames": 23,
+          "hash": "98fd54d0c1821c986c40e3826be647f093ddfb2db3033ada86c2aedf81089e8b",
+          "art_hash": "b86098535131abc9612f76509e775bac97741151c7be41bb68325a544188bbff",
+          "shape_hash": "a94384ba8db39c698ad88f6f61779e3f44ce5e6313d43426b9fad86901f0bd27",
+          "emissive_hash": "b86098535131abc9612f76509e775bac97741151c7be41bb68325a544188bbff",
+          "visible": true
+        }
+      ],
+      "visible": true
+    },
+    "EET": {
+      "name": "SKYBOLT.BAM",
+      "bytes": 87634,
+      "sha256": "cc3f75d03b11a68250811ee5b34d04a4edde69896ba09ffdedd228084a4910d4",
+      "raw_sha256": "c258f5363e3acdf256972b040a9b049f354bffa25fd055531493f980301ce1e5",
+      "frames": 6,
+      "cycles": 1,
+      "max_width": 78,
+      "max_height": 500,
+      "render_sha256": "b01d93c00be56510e46d9a2d848405af55d078452d86bd5d5fea2299e9d8e7ab",
+      "cycle_data": [
+        {
+          "index": 0,
+          "frames": 6,
+          "hash": "1dbb64dea6c5c59363029da0dcd9ba62fe4c63d5d2dbebac3fa933c7d404eb5c",
+          "art_hash": "db64877962539671862332ce3fa504458f2199590d324576868ab53599f1b1d5",
+          "shape_hash": "9145cb3c025413430c842ddd8a596d4ac8cadd6ac46be05f918f1a61c3c26803",
+          "emissive_hash": "db64877962539671862332ce3fa504458f2199590d324576868ab53599f1b1d5",
+          "visible": true
+        }
+      ],
+      "visible": true
+    },
+    "integrated": false,
+    "raw_IWDEE_reference_found": false,
+    "attribution": "IESDP identifies SKYBOLT as Call Lightning; hardcoded chain link is engine inference, not a raw-resource graph edge"
+  },
+  "temporary_weapons": [
+    {
+      "root": "SPPR511",
+      "item": "SLAYLIVE.ITM",
+      "source_art": "SLIVINH.BAM",
+      "installed_art": "sriosliv.bam",
+      "root_unchanged": true
+    },
+    {
+      "root": "SPPR614",
+      "item": "SORB.ITM",
+      "source_art": "SSORBH.BAM",
+      "installed_art": "sriossor.bam",
+      "root_unchanged": true
+    }
+  ]
+}

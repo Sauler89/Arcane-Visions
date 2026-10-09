@@ -1,20 +1,20 @@
 {
-  "version": "v0.2.0-beta.7",
+  "version": "v0.2.0-beta.8",
   "inputs": {
-    "IWDEE": 246,
-    "EET": 386,
+    "IWDEE": 248,
+    "EET": 387,
     "SR": 224
   },
   "physical_frames": {
-    "IWDEE": 10243,
-    "EET": 17848,
+    "IWDEE": 10284,
+    "EET": 17854,
     "SR": 3661
   },
   "IWDEE_statuses": {
-    "EET_exact_graphic_match": 163,
-    "distinct_candidate_not_integrated": 41,
+    "EET_exact_graphic_match": 164,
+    "distinct_candidate_not_integrated": 40,
     "excluded_by_user": 6,
-    "included": 24,
+    "included": 26,
     "no_original_BG_spell_mapping": 6,
     "SR_spell_overlap": 5,
     "EET_all_visible_cycle_art_match": 1

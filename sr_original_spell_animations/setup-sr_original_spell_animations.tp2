@@ -1,6 +1,6 @@
 BACKUP ~sr_original_spell_animations/backup~
 AUTHOR ~Sauler89~
-VERSION ~v0.2.0-beta.7~
+VERSION ~v0.2.0-beta.8~
 README ~sr_original_spell_animations/README.md~
 LANGUAGE ~English~ ~english~ ~sr_original_spell_animations/languages/english/setup.tra~
 LANGUAGE ~Italiano~ ~italian~ ~sr_original_spell_animations/languages/italian/setup.tra~
@@ -20,7 +20,7 @@ BEGIN @10
 DESIGNATED 10
 LABEL ~sra-iwd-original-spell-effect-animations~
 REQUIRE_PREDICATE (GAME_IS ~eet bg2ee~) @1
-ACTION_FOR_EACH av_private IN ~srioblt.bam~ ~srioblt.vvc~ ~srioblb.bam~ ~srioblb.vvc~ ~sriocrit.bam~ ~sriocrit.vvc~ ~srioconf.bam~ ~srioconf.vvc~ ~sriodead.bam~ ~sriodead.vvc~ ~sriodeth.bam~ ~sriodeth.vvc~ ~sriodust.bam~ ~sriodust.vvc~ ~sriogres.bam~ ~sriogres.vvc~ ~srioheal.bam~ ~srioheal.vvc~ ~sriolres.bam~ ~sriolres.vvc~ ~sriomisc.bam~ ~sriomisc.vvc~ ~srioosph.bam~ ~srioosph.vvc~ ~sriopois.bam~ ~sriopois.vvc~ ~sriopwsi.bam~ ~sriopwsi.vvc~ ~sriopwst.bam~ ~sriopwst.vvc~ ~srioregn.bam~ ~srioregn.vvc~ ~srioress.bam~ ~srioress.vvc~ ~sriopara.bam~ ~sriopara.vvc~ ~sriodrag.bam~ ~sriodrag.vvc~ ~sriospoi.bam~ ~sriospoi.vvc~ ~sriosanc.bam~ ~sriosanc.vvc~ ~srioarrw.bam~ ~srioarrw.vvc~ ~sriomglb.bam~ ~sriomglb.vvc~ ~sriogglb.bam~ ~sriogglb.vvc~ BEGIN
+ACTION_FOR_EACH av_private IN ~srioblt.bam~ ~srioblt.vvc~ ~srioblb.bam~ ~srioblb.vvc~ ~sriocrit.bam~ ~sriocrit.vvc~ ~srioconf.bam~ ~srioconf.vvc~ ~sriodead.bam~ ~sriodead.vvc~ ~sriodeth.bam~ ~sriodeth.vvc~ ~sriodust.bam~ ~sriodust.vvc~ ~sriogres.bam~ ~sriogres.vvc~ ~srioheal.bam~ ~srioheal.vvc~ ~sriolres.bam~ ~sriolres.vvc~ ~sriomisc.bam~ ~sriomisc.vvc~ ~srioosph.bam~ ~srioosph.vvc~ ~sriopois.bam~ ~sriopois.vvc~ ~sriopwsi.bam~ ~sriopwsi.vvc~ ~sriopwst.bam~ ~sriopwst.vvc~ ~srioregn.bam~ ~srioregn.vvc~ ~srioress.bam~ ~srioress.vvc~ ~sriopara.bam~ ~sriopara.vvc~ ~sriosliv.bam~ ~sriosliv.vvc~ ~sriodrag.bam~ ~sriodrag.vvc~ ~sriospoi.bam~ ~sriospoi.vvc~ ~sriossor.bam~ ~sriossor.vvc~ ~sriosanc.bam~ ~sriosanc.vvc~ ~srioarrw.bam~ ~srioarrw.vvc~ ~sriomglb.bam~ ~sriomglb.vvc~ ~sriogglb.bam~ ~sriogglb.vvc~ BEGIN
   ACTION_IF FILE_EXISTS_IN_GAME ~%av_private%~ BEGIN
     FAIL ~Arcane Visions: private resource %av_private% already exists; component skipped to avoid overwriting another mod.~
   END

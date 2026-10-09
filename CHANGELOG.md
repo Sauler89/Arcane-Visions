@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.2.0-beta.8 — verified temporary-weapon impacts
+
+- Add SLIVINH/SSORBH at the actual Slay Living and Sol Searing Orb weapon hits.
+- Preserve root SPLs, weapon gameplay, projectiles and all effect conditions;
+  skip detached roots and unknown/malformed hit layouts. No source ITM import.
+- Validate 44 exported SPLs and two ITMs, plus 30 weapon guard cases.
+- Compare new SKYBOLT exports (23 vs 6 frames); retain as a pending hardcoded
+  candidate. SPCALLLI is identical between IWDEE/EET, with no SPPR302 binding.
+- Inventory 859 BAMs: 248 IWDEE, 387 EET, 224 SR. Web/Horrid Wilting stay excluded.
+
 ## v0.2.0-beta.4 — full source review
 
 - Add six omitted IWD effects: Glitterdust, Web target overlay, Resilient Sphere,

@@ -8,6 +8,7 @@ ROOT=Path(__file__).resolve().parents[1];MOD=ROOT/'sr_original_spell_animations'
 SOURCE=Path(sys.argv[1]).resolve();WEIDU=Path(sys.argv[2]).resolve()
 OUT=Path(sys.argv[3]).resolve() if len(sys.argv)>3 else Path(tempfile.mkdtemp(prefix='sra-iwd-results-'));OUT.mkdir(parents=True,exist_ok=True)
 ROWS=json.loads((MOD/'docs/iwd_spell_mapping.json').read_text());CORE=json.loads((MOD/'docs/test_config.json').read_text())
+ITEMS=json.loads((MOD/'docs/iwd_item_mapping.json').read_text())
 OVERLAYS=json.loads((MOD/'docs/iwd_overlay_mapping.json').read_text())
 OVERLAY_BY={r['spell']:r for r in OVERLAYS}
 helper=ast.parse((ROOT/'tests/verify_installer.py').read_text())
@@ -27,7 +28,7 @@ game=Path(tempfile.mkdtemp(prefix='sra-iwd-eet-'))
 try:
  shutil.copytree(ROOT,game,dirs_exist_ok=True);ov=game/'override';ov.mkdir()
  for p in SOURCE.iterdir():
-  if p.is_file() and p.suffix.upper() in ('.SPL','.EFF','.PRO','.VVC','.VEF','.BAM','.BMP','.IDS'):shutil.copy2(p,ov/p.name)
+  if p.is_file() and p.suffix.upper() in ('.SPL','.EFF','.PRO','.VVC','.VEF','.BAM','.BMP','.IDS','.ITM'):shutil.copy2(p,ov/p.name)
  (ov/'eet.flag').write_bytes(b'Fixture');(game/'chitin.key').write_bytes(b'KEY V1  '+struct.pack('<IIII',0,0,24,24));(game/'dialog.tlk').write_bytes(b'TLK V1  '+struct.pack('<HII',0,1,44)+bytes(26))
  def resource(name):return next(p for p in ov.iterdir() if p.name.lower()==name.lower())
  def snap():
@@ -35,12 +36,30 @@ try:
  def run(args,label):
   p=subprocess.run([str(WEIDU),'sr_original_spell_animations/setup-sr_original_spell_animations.tp2','--noautoupdate','--language','0','--no-exit-pause',*args],cwd=game,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT);(OUT/(label+'.log')).write_text(p.stdout);assert p.returncode==0,p.stdout[-10000:]
  originals={s:resource(s+'.spl').read_bytes() for s in dict.fromkeys([r[0] for r in ROWS]+list(OVERLAY_BY))};before=snap();tlk=(game/'dialog.tlk').read_bytes()
+ item_originals={r[1]:resource(r[1]+'.itm').read_bytes() for r in ITEMS}
+ item_roots={r[0]:resource(r[0]+'.spl').read_bytes() for r in ITEMS}
  exclusions=json.loads((MOD/'docs/iwd_user_exclusions.json').read_text())
  excluded_originals={r['spell']:resource(r['spell']+'.spl').read_bytes() for r in exclusions}
  def check_iwd():
   for s,data in excluded_originals.items():assert resource(s+'.spl').read_bytes()==data,s+' was excluded but modified'
   assert not any(name.startswith('srioweb') for name in snap()),'removed Web resources were installed'
   assert not any(name.startswith('sriowilt') for name in snap()),'removed Horrid Wilting resources were installed'
+  for root,data in item_roots.items():assert resource(root+'.spl').read_bytes()==data,'temporary-weapon root modified'
+  for root,item,art,code,old,p2 in ITEMS:
+   a=item_originals[item];b=resource(item+'.itm').read_bytes();assert len(a)==len(b) and a!=b
+   ao,n,eo=struct.unpack_from('<IHI',a,100);assert a[:eo]==b[:eo],item+' header/icon/projectile change'
+   allowed=set();hits=0
+   for i in range(n):
+    cnt,idx=struct.unpack_from('<HH',a,ao+i*56+30)
+    for j in range(cnt):
+     off=eo+(idx+j)*48
+     if a[off:off+48]==b[off:off+48]:continue
+     assert opcode(a[off:off+48])==(141 if old==141 else 215) and opcode(b[off:off+48])==215
+     assert b[off+20:off+28]==('srio'+code).encode().ljust(8,b'\0')
+     allowed.update(off+k for k in range(20,28))
+     if old==141:allowed.update(off+k for k in [0,1,8,9,10,11]);assert struct.unpack_from('<I',b,off+8)[0]==0
+     hits+=1
+   assert hits==n and all(x==y for i,(x,y) in enumerate(zip(a,b)) if i not in allowed),item+' gameplay changed'
   report=[]
   for spell in originals:
    old=originals[spell];new=resource(spell+'.spl').read_bytes();assert len(old)==len(new);assert new!=old,spell
@@ -67,12 +86,12 @@ try:
    report.append(dict(spell=spell,abilities=n,visual_effects_replaced=count,all_mechanics_and_conditions_preserved=True))
   return report
  run(['--force-install-list','10'],'IWD_install');report=check_iwd();installed=snap()
- assert {x for x in before if before[x]!=installed[x]}=={x.lower()+'.spl' for x in originals}
+ assert {x for x in before if before[x]!=installed[x]}=={x.lower()+'.spl' for x in originals}|{r[1].lower()+'.itm' for r in ITEMS}
  run(['--force-install-list','10'],'IWD_reinstall');assert snap()==installed
  run(['--force-uninstall-list','10'],'IWD_uninstall');assert snap()==before
  run(['--force-install-list','0','10'],'SR_IWD_install');check_iwd()
  for spell,*_ in CORE['spells']:assert_preserved((SOURCE/(spell+'.SPL')).read_bytes(),resource(spell+'.spl').read_bytes(),spell)
- both=snap();allowed={x.lower()+'.spl' for x in originals}|{r[0].lower()+'.spl' for r in CORE['spells']}|{'spentaai.bam','spentaci.bam','spchrorb.bam','spmagglo.bam','spmagglo.vvc'}
+ both=snap();allowed={x.lower()+'.spl' for x in originals}|{r[0].lower()+'.spl' for r in CORE['spells']}|{r[1].lower()+'.itm' for r in ITEMS}|{'spentaai.bam','spentaci.bam','spchrorb.bam','spmagglo.bam','spmagglo.vvc'}
  assert {x for x in before if before[x]!=both[x]}<=allowed
  run(['--force-install-list','0','10'],'SR_IWD_reinstall');assert snap()==both
  run(['--force-uninstall-list','10','0'],'SR_IWD_uninstall');assert snap()==before
@@ -113,6 +132,8 @@ try:
  assert (game/'dialog.tlk').read_bytes()==tlk
  result=dict(status='PASS',component=10,spells=len(originals),persistent_overlay_spells=len(OVERLAYS),bam_assets=len(manifest)//2,vvc_assets=len(manifest)//2,frames_validated=frames,spell_checks=report,standalone_install=True,combined_with_SR=True,reinstall_stable=True,uninstall_byte_exact=True,unknown_visual_skipped=True,icons_projectiles_globals_nonvisual_effects_and_conditions_preserved=True,game_rendering_tested=False,baseline='owner-supplied modded EET exports; isolated fixture with synthetic KEY/TLK',excluded_framework_cache='ADD_SPELL.IDS')
  result['repeated_visual_cases']=repeated_cases
+ result['temporary_weapon_checks']=[r[1] for r in ITEMS]
+ result['temporary_weapon_roots_unchanged']=True
  result['excluded_spell_checks']=list(excluded_originals)
  (OUT/'IWD_validation.json').write_text(json.dumps(result,indent=2)+'\n');print('PASS:',len(originals),'real EET spells;',len(manifest)//2,'BAM/VVC pairs; standalone/combined install, stable reinstall, full uninstall, unknown-visual guard. No game rendering test.')
 finally:shutil.rmtree(game)

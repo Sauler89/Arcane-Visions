@@ -34,6 +34,12 @@ ROWS=[
 ('SPWI508','CONFUSH','conf','SPCONFUS',2,1,True),
 ('SPWI508','CONFUSH','conf','SPCONFUS',2,1,True),
 ]
+# Root, installed temporary weapon, source hit art, private code, old cue, old p2.
+# Patch only the installed hit animation, never import an IWD weapon or cast cue.
+ITEM_ROWS=[
+('SPPR511','SLAYLIVE','SLIVINH','sliv',141,39),
+('SPPR614','SORB','SSORBH','ssor','ICFIRSDI',0),
+]
 CONTROLLERS={'GLDUSTA':'GLDUSTH','ORSPHEC':'#OTILUKE'}
 # Only patch children when the original root still calls that child after casting.
 PARENTS={'SPWI413A':'SPWI413','SPPR712A':'SPPR712'}
@@ -53,7 +59,7 @@ def main():
  for p in assets.iterdir():
   if p.suffix in ('.bam','.vvc'):p.unlink()
  manifest=[]
- for art,code in sorted({(r[1],r[2]) for r in ROWS}):
+ for art,code in sorted({(r[1],r[2]) for r in ROWS}|{(r[2],r[3]) for r in ITEM_ROWS}):
   name='srio'+code;original=bam_files[art+'.BAM'].read_bytes();(assets/(name+'.bam')).write_bytes(original)
   controller_name=CONTROLLERS.get(art,art)
   vpath=source_files.get(controller_name+'.VVC');synth=vpath is None
@@ -97,6 +103,10 @@ def main():
   tpa+=f'\nACTION_IF FILE_EXISTS_IN_GAME ~{spell}.spl~ BEGIN\n  COPY_EXISTING ~{spell}.spl~ ~override~\n    LPF srio_replace INT_VAR srio_op = {op} srio_p2 = {r[5]} srio_target = {r[4]} srio_loop = {int(r[6])} srio_expected = {len(rows)}\n      STR_VAR srio_old = ~{old}~ srio_new = ~srio{r[2]}~{extra} END\n  BUT_ONLY_IF_IT_CHANGES\nEND ELSE BEGIN PRINT ~IWD Spell Animations: {spell}.spl missing, skipped.~ END\n'
   if parent:tpa+=f'END ELSE BEGIN PRINT ~IWD Spell Animations: {parent}.spl no longer calls {spell}.spl after casting; skipped.~ END\n'
  (MOD/'docs/iwd_child_mapping.json').write_text(json.dumps(PARENTS,indent=2)+'\n')
+ for root,item,art,code,old,p2 in ITEM_ROWS:
+  op=141 if old==141 else 215;ref='' if old==141 else old
+  tpa+=f'\nLAF srio_check_child INT_VAR srio_item_link = 1 STR_VAR srio_root = ~{root}~ srio_child = ~{item}~ RET srio_linked END\nACTION_IF srio_linked AND FILE_EXISTS_IN_GAME ~{item}.itm~ BEGIN\n  COPY_EXISTING ~{item}.itm~ ~override~\n    LPF srio_replace INT_VAR srio_item = 1 srio_hardcoded_p2 = 0 srio_op = {op} srio_p2 = {p2} srio_target = 2\n      STR_VAR srio_old = ~{ref}~ srio_new = ~srio{code}~ END\n  BUT_ONLY_IF_IT_CHANGES\nEND ELSE BEGIN PRINT ~IWD Spell Animations: {root}.spl temporary weapon {item}.itm missing or detached; skipped.~ END\n'
+ (MOD/'docs/iwd_item_mapping.json').write_text(json.dumps(ITEM_ROWS,indent=2)+'\n')
  (MOD/'lib/iwd_animations.tpa').write_text(tpa)
  overlay=(ROOT/'tools/iwd_overlay_template.tpa').read_text()
  for r in overlay_manifest:
@@ -108,5 +118,5 @@ def main():
  pairs=' '.join('~'+Path(a['destination']).name+'~' for a in manifest)
  start=text.index('BEGIN @10');text=text[:start]+re.sub(r'(ACTION_FOR_EACH av_private IN ).*?( BEGIN)',lambda m:m[1]+pairs+m[2],text[start:],count=1)
  tp2.write_text(text)
- print(len(set(r[0] for r in ROWS))+len(OVERLAYS),'spells;',len(manifest)//2,'BAMs + same number VVCs')
+ print(len(set(r[0] for r in ROWS))+len(OVERLAYS)+len(ITEM_ROWS),'spells;',len(manifest)//2,'BAMs + same number VVCs')
 if __name__=='__main__':main()

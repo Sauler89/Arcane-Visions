@@ -252,6 +252,20 @@
     "synthesized_controller": false
   },
   {
+    "source": "SLIVINH.BAM",
+    "destination": "sr_original_spell_animations/assets/iwd/sriosliv.bam",
+    "installed_sha256": "dffe35282f0207bce37d0927abbd051c5ade6e4d86654722b542f639e346e7cf",
+    "source_sha256": "dffe35282f0207bce37d0927abbd051c5ade6e4d86654722b542f639e346e7cf",
+    "synthesized_controller": false
+  },
+  {
+    "source": "SLIVINH.VVC",
+    "destination": "sr_original_spell_animations/assets/iwd/sriosliv.vvc",
+    "installed_sha256": "16ecddf264502f483a12a88e77298275e559100be94ff8adbb7b70b7c29c562b",
+    "source_sha256": "590f6b09f43b22b450d74cf468e87726b54a96916fce5ccf96bde719b14dd0b6",
+    "synthesized_controller": false
+  },
+  {
     "source": "SPDRGNBR.BAM",
     "destination": "sr_original_spell_animations/assets/iwd/sriodrag.bam",
     "installed_sha256": "781a0224c495b06fa145f3997a04de95efe35a0b7d5c94eb9d9854724d9cc82a",
@@ -277,6 +291,20 @@
     "destination": "sr_original_spell_animations/assets/iwd/sriospoi.vvc",
     "installed_sha256": "2686a1313cf62ac4a74cc1809b944d3bc76a656cd161ad584aadcc65e3b113b5",
     "source_sha256": "a725cc04651842c5d1805d04c362a494fbb5142d4a8be75c0d2a25b6b300a4db",
+    "synthesized_controller": false
+  },
+  {
+    "source": "SSORBH.BAM",
+    "destination": "sr_original_spell_animations/assets/iwd/sriossor.bam",
+    "installed_sha256": "6106207c684fb9d206889da9f3973dd66919b79459f8777477524cffd7dc5474",
+    "source_sha256": "6106207c684fb9d206889da9f3973dd66919b79459f8777477524cffd7dc5474",
+    "synthesized_controller": false
+  },
+  {
+    "source": "SSORBH.VVC",
+    "destination": "sr_original_spell_animations/assets/iwd/sriossor.vvc",
+    "installed_sha256": "cb54fe912c8acfbcd587c837c91680a00958d8ebb5f76819afef10c730683d79",
+    "source_sha256": "11d347d3c65e4a642d7e6ba71d1dd83141ad1967c8f9943a99a4b0016da4a485",
     "synthesized_controller": false
   },
   {

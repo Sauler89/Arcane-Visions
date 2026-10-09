@@ -3,9 +3,9 @@
   "component": 10,
   "spells": 28,
   "persistent_overlay_spells": 4,
-  "bam_assets": 24,
-  "vvc_assets": 24,
-  "frames_validated": 891,
+  "bam_assets": 26,
+  "vvc_assets": 26,
+  "frames_validated": 992,
   "spell_checks": [
     {
       "spell": "SPPR308",
@@ -193,6 +193,11 @@
     "delayed-second",
     "wrong-second-target"
   ],
+  "temporary_weapon_checks": [
+    "SLAYLIVE",
+    "SORB"
+  ],
+  "temporary_weapon_roots_unchanged": true,
   "excluded_spell_checks": [
     "SPWI215",
     "SPWI812"

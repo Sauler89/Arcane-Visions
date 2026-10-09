@@ -166,6 +166,8 @@ for a in decoded['IWDEE']:
   elif any(x in sc for x in ac):partial.append(s['name'])
   if any(x['visible'] and y['visible'] and x['shape_hash']==y['shape_hash'] for x in a['cycle_data'] for y in s['cycle_data']):shape.append(s['name'])
  bg=iw_roots[a['name']]
+ # Document an engine inference, not a fabricated raw-resource graph edge.
+ if a['name']=='SKYBOLT.BAM':bg.add('SPPR302')
  status='excluded_by_user' if a['name'] in excluded_art else 'included' if a['name'] in included_iw else 'EET_exact_graphic_match' if full else 'EET_all_visible_cycle_art_match' if art else 'no_original_BG_spell_mapping' if not bg else 'SR_spell_overlap' if bg<=sr_root_set else 'distinct_candidate_not_integrated'
  sr_full=[];sr_art=[];sr_selected=[]
  for s in decoded['SR']:
@@ -186,6 +188,10 @@ for a in decisions:
  direct=[p for p in evidence if '.PRO (' not in p['path']]
  if a['iwdee_bam'] in ('GREASEB.BAM','GREASEC.BAM'):
   reason='Conditional IWDEE child visual has no matching EET child; existing EET uses opcode 158; condition-aware binding not implemented'
+ elif a['iwdee_bam']=='SKYBOLT.BAM':
+  reason='Distinct hardcoded Call Lightning artwork; IESDP identification, absent raw IWDEE binding; shared engine routing and timing not runtime-verified'
+ elif a['iwdee_bam']=='SSORBT.BAM':
+  reason='Sol Searing Orb target art included; source travel differs from installed EET projectile; flags/cycles/timing not verified'
  elif a['iwdee_bam'] in ('MAGICSTN.BAM','SLIVINH.BAM','SSORBH.BAM','SSORBT.BAM'):
   reason='Installed EET weapon/item or travel binding differs; inspect the temporary weapon and actual hit route before importing art'
  elif direct:
@@ -198,6 +204,7 @@ csvwrite('iwd_pending_candidates.csv',pending,['bam','BG_roots','reason','repres
 parents=json.loads((DOC/'iwd_child_mapping.json').read_text());bindings=defaultdict(set)
 for r in json.loads((DOC/'iwd_spell_mapping.json').read_text()):bindings[r[1]+'.BAM'].add(parents.get(r[0],r[0]))
 for r in json.loads((DOC/'iwd_overlay_mapping.json').read_text()):bindings[r['art']+'.BAM'].add(r['spell'])
+for root,item,art,code,old,p2 in json.loads((DOC/'iwd_item_mapping.json').read_text()):bindings[art+'.BAM'].add(root)
 unbound=[]
 for a in decisions:
  if a['status']!='included':continue
@@ -261,6 +268,6 @@ for root in sorted({r['bg_spell'] for r in roots}):
  for n,path in ge.walk(root+'.SPL').items():
   if n.removesuffix('@SUB') not in eetfiles:eet_missing.append(dict(bg_spell=root,asset=n,path=path))
 csvwrite('missing_EET_dependencies.csv',eet_missing,['bg_spell','asset','path'])
-summary=dict(version='v0.2.0-beta.7',inputs={k:len(v) for k,v in decoded.items()},physical_frames={k:sum(x['frames'] for x in v) for k,v in decoded.items()},IWDEE_statuses=dict(Counter(r['status'] for r in decisions)),SR_statuses=dict(Counter(r['status'] for r in sr_rows)),SR_unclassified=[r for r in sr_rows if r['status']=='needs_review'],missing_IWDEE_asset_names=sorted({r['asset'] for r in missing}),included_IWD_SR_matches=[r for r in decisions if r['status']=='included' and r['SR_matches_selected_original_spell_art']],shape_is_not_duplicate_evidence=True,partial_cycle_is_not_full_duplicate_evidence=True,graph_PRO_activation_is_not_assumed=True,complete_IWDEE_import=False,game_rendering_tested=False)
+summary=dict(version='v0.2.0-beta.8',inputs={k:len(v) for k,v in decoded.items()},physical_frames={k:sum(x['frames'] for x in v) for k,v in decoded.items()},IWDEE_statuses=dict(Counter(r['status'] for r in decisions)),SR_statuses=dict(Counter(r['status'] for r in sr_rows)),SR_unclassified=[r for r in sr_rows if r['status']=='needs_review'],missing_IWDEE_asset_names=sorted({r['asset'] for r in missing}),included_IWD_SR_matches=[r for r in decisions if r['status']=='included' and r['SR_matches_selected_original_spell_art']],shape_is_not_duplicate_evidence=True,partial_cycle_is_not_full_duplicate_evidence=True,graph_PRO_activation_is_not_assumed=True,complete_IWDEE_import=False,game_rendering_tested=False)
 (OUT/'source_coverage_summary.json').write_text(json.dumps(summary,indent=2)+'\n')
 print(json.dumps(summary,indent=2))

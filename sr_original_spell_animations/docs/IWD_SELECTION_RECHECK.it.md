@@ -1,4 +1,4 @@
-# Ricontrollo delle esclusioni IWDEE — aggiornamento beta.7
+# Ricontrollo delle esclusioni IWDEE — aggiornamento beta.8
 
 Il pacchetto precedente **non importava tutti gli effetti distinti IWDEE**.
 I 15 BAM erano una selezione di cue diretti riconosciuti nelle spell EET.
@@ -14,7 +14,7 @@ SR, ma non giustificava l'esclusione delle loro vere animazioni IWDEE.
 | Protection from Arrows / Normal Missiles, `SPWI311` | `PFNMISC` | Nessuna | Incluso come `srioarrw`; opcode 156 mantenuto |
 | Minor Globe of Invulnerability, `SPWI406` | `MGOINVC` | Nessuna | Incluso come `sriomglb`; opcode 155 mantenuto |
 | Globe of Invulnerability, `SPWI602` | `GOINVUC` | Nessuna | Incluso come `sriogglb`; opcode 155 EET o 215 preesistente mantenuto |
-| Call Lightning, `SPPR302` | Fulmine verticale da identificare/confrontare | Non determinabile: BAM assente dagli export | In attesa dei BAM IWDEE/EET `SKYBOLT`; non escluso per overlap SR |
+| Call Lightning, `SPPR302` | `SKYBOLT` | Distinto (nuovi export beta.8) | Non ancora importato: catena hard-coded e tempi da verificare nel gioco |
 
 Il confronto beta.3 comprendeva 246 BAM IWDEE, 386 EET e 14 SR;
 la beta.4 ricontrolla tutti i 224 BAM dell'archivio SR. I quattro BAM aggiunti
@@ -41,25 +41,19 @@ I controller girano finché dura l'effetto già installato. I due Globi hanno
 risorse private distinte; `MINORGLB`, gli oggetti e altre spell non vengono
 sovrascritti globalmente. Una configurazione sconosciuta viene saltata.
 
-## Call Lightning: cosa manca
+## Call Lightning: nuovi export beta.8
 
-Le SPL IWDEE esportate usano i valori projectile 85–91; quelle EET 81–85.
-Sono le catene hard-coded di Call Lightning, non i proiettili di Lightning
-Bolt (`LIGHTNT`) o Chain Lightning (`CLIGHTT`). Gli export non contengono un
-PRO risolto per queste catene, né i BAM IWDEE `SKYBOLT`/`SPCALLLI`.
-L'EET esportata contiene `SKYBOLT.PRO`, il cui campo grafico punta a
-`SKYBOLT.BAM`; il CHITIN.KEY EET conferma il nome, ma il BAM non è stato
-esportato. `SPCALLLI.BAM` EET è invece già disponibile.
+Sono arrivati entrambi i `SKYBOLT`: IWDEE ha 23 frame, EET 6; le animazioni
+sono diverse, non duplicati SR/EET. Le SPL usano le catene hard-coded 85–91
+(IWDEE) e 81–85 (EET), senza PRO corrispondenti esportabili per quelle catene.
+`SKYBOLT.PRO` EET richiama il BAM, ma non è il projectile direttamente
+selezionato in `SPPR302`. IESDP identifica SKYBOLT con Call Lightning;
+la sostituzione condivisa e la sincronizzazione richiedono prova nel motore.
+Non vengono cambiati numero di fulmini, ritardi, bersagli o danni.
 
-Per completare il confronto servono, in cartelle separate:
-
-- **IWDEE:** `SKYBOLT.BAM`; anche `SPCALLLI.BAM` se presente.
-- **EET:** `SKYBOLT.BAM`.
-
-I nomi sono candidati da verificare nell'installazione IWDEE; il fatto che
-SKYBOLT sia presente nel KEY EET non prova che la catena IWDEE usi lo stesso
-asset o che sia esclusivo. Non viene forzata un'animazione senza tale prova.
-Non si importano numero di fulmini, ritardi, selezione dei bersagli o danni IWDEE.
+`SPCALLLI` non risulta collegato a `SPPR302`: è identico nei due giochi,
+18 frame; è richiamato da AMCALL/CALLLIGH e da altri effetti EET.
+Resta escluso come duplicato EET. [Dettagli e hash](NEW_EXPORT_REVIEW.it.md).
 
 ## Ricontrollo completo beta.4
 
@@ -68,13 +62,13 @@ La beta.4 aggiunge anche `GLDUSTA`, `ORSPHEC`, `RESURRH`, `HEALH` e
 ricolorate. [Rapporto completo](FULL_SOURCE_AUDIT.it.md).
 
 La tabella beta.3 di esclusioni è stata sostituita: la sola sagoma non prova
-un duplicato. Su 246 BAM: 24 inclusi, 163 corrispondenze grafiche complete EET,
+un duplicato. Su 248 BAM: 26 inclusi, 164 corrispondenze grafiche complete EET,
 1 corrispondenza di tutti i cicli visibili, 5 spell già coperte da SR,
-6 senza root originale tracciata, 6 esclusi su richiesta e **41 candidati ancora da integrare**.
-Questi 41 non sono esclusi per overlap SR. [Tutte le decisioni](iwd_selection_recheck.csv),
+6 senza root originale tracciata, 6 esclusi su richiesta e **40 candidati ancora da integrare**.
+Questi 40 non sono esclusi per overlap SR. [Tutte le decisioni](iwd_selection_recheck.csv),
 [candidati e motivi](iwd_pending_candidates.csv), [tutti i BAM SR](sr_source_selection.csv).
 
-PASS: 44 SPL EET reali, 44 casi overlay, 28 regressioni e 12 casi sottospell.
+PASS: 44 SPL e 2 ITM EET reali, 30 casi delle armi temporanee, 44 casi overlay, 28 regressioni e 12 casi sottospell.
 Nessun test visivo dentro una partita. Vedere il rapporto completo per le
 richieste mirate di file e i limiti dei riferimenti PRO dichiarati.
 
@@ -109,3 +103,9 @@ in BG2EE/EET. Rimossi il cue privato `sriowilt`, il relativo BAM/VVC e la
 patch. `ADHWILH`, `ADHWILA` e `ADHWILX` sono esclusioni del proprietario,
 non omissioni. I test verificano che la SPL resti byte-identica sia col
 componente IWDEE da solo, sia insieme al componente SR.
+
+## Nuovi impatti beta.8
+
+SLIVINH e SSORBH inclusi in SLAYLIVE.ITM e SORB.ITM, con root SPL invariata,
+solo se ancora richiamati dalla spell originale. I BAM/VVC sono privati;
+nessuna arma IWDEE viene importata. SSORBT in viaggio resta non integrato.

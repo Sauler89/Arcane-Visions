@@ -38,7 +38,7 @@ for r in overlays:
  assert struct.unpack_from('<I',b,92)[0]==0xffffffff
  assert struct.unpack_from('<I',b,104)[0]==1
  assert struct.unpack_from('<I',b,108)[0]==1
-core=json.loads((D/'test_config.json').read_text());rows=json.loads((D/'iwd_spell_mapping.json').read_text());iwd_roots={r[0] for r in rows}|{r['spell'] for r in overlays}
+core=json.loads((D/'test_config.json').read_text());rows=json.loads((D/'iwd_spell_mapping.json').read_text());items=json.loads((D/'iwd_item_mapping.json').read_text());iwd_roots={r[0] for r in rows}|{r['spell'] for r in overlays}|{r[0] for r in items}
 assert not iwd_roots&{r[0] for r in core['spells']}
 exclusions=json.loads((D/'iwd_user_exclusions.json').read_text())
 assert not {r['spell'] for r in exclusions}&(iwd_roots|{r[0] for r in core['spells']})
@@ -53,5 +53,5 @@ for p in (ROOT/'README.md',ROOT/'README.it.md',MOD/'README.md',ROOT/'CREDITS.md'
   if target.startswith(('https:','http:','#')):continue
   assert (p.parent/target.split('#')[0]).exists(),(p,target)
 assert not any(p.suffix.lower() in ('.spl','.eff','.pro','.cre','.itm','.bcs') for p in (MOD/'assets').rglob('*') if p.is_file())
-result=dict(status='PASS',bam=nbam,vvc=nvvc,total_frames=frames,preview_gifs=len(previews),core_spells=len(core['spells']),iwd_spells=len(iwd_roots),exact_BAM_source_bytes=True,no_icons_or_gameplay_imports=True,private_names_unique=True,all_controller_dependencies_resolved=True,all_IWD_private_names_guarded=True,persistent_controllers_loop=True,README_local_links_valid=True,game_rendering_tested=False)
+result=dict(status='PASS',bam=nbam,vvc=nvvc,total_frames=frames,preview_gifs=len(previews),core_spells=len(core['spells']),iwd_spells=len(iwd_roots),iwd_patched_SPLs=len(iwd_roots)-len(items),iwd_patched_ITMs=len(items),exact_BAM_source_bytes=True,no_icons_or_gameplay_imports=True,private_names_unique=True,all_controller_dependencies_resolved=True,all_IWD_private_names_guarded=True,persistent_controllers_loop=True,README_local_links_valid=True,game_rendering_tested=False)
 print(json.dumps(result,indent=2))

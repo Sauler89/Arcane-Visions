@@ -1,4 +1,4 @@
-# Ricontrollo completo delle sorgenti — v0.2.0-beta.7
+# Ricontrollo completo delle sorgenti — v0.2.0-beta.8
 
 Ricontrollo del 9 ottobre 2026. Il controllo precedente aveva davvero omesso
 alcuni effetti IWDEE. La beta.4 ha corretto sei omissioni; la beta.5 ne corregge altre quattro
@@ -7,15 +7,15 @@ i duplicati dalle varianti di colore e dalle fasi ancora da integrare.
 
 ## Sorgenti controllate
 
-Verificati i sei ZIP forniti: SR v4.21, export degli effetti IWDEE, due pacchetti
-BAM IWDEE e due pacchetti EET. Il confronto con i CRC degli ZIP conferma
-**9.600 risorse locali identiche alle sorgenti**, comprese le risorse SR di
+Verificati gli otto ZIP forniti: SR v4.21, export degli effetti IWDEE, due pacchetti
+BAM IWDEE, due pacchetti EET e i due nuovi archivi mirati. Il confronto con i CRC degli ZIP conferma
+**9.605 risorse locali identiche alle sorgenti**, comprese le risorse SR di
 supporto. Le sorgenti non sono state modificate né copiate nel gioco.
 
 | Sorgente | BAM decodificati | Frame fisici |
 |---|---:|---:|
-| IWDEE | 246 | 10.243 |
-| EET esportata | 386 | 17.848 |
+| IWDEE | 248 | 10.284 |
+| EET esportata | 387 | 17.854 |
 | Archivio SR completo | 224 | 3.661 |
 
 Inventario e hash: [source_archive_inventory.json](source_archive_inventory.json),
@@ -46,8 +46,9 @@ privati e audio rimosso. Le due sottospell vengono patchate solo se la spell
 principale le richiama ancora attraverso un opcode di lancio riconosciuto.
 Le spell principali restano byte-identiche.
 
-La beta.7 contiene **38 BAM, 36 VVC e 1.215 frame fisici**, con **44 SPL EET
-patchate** nei test: 16 SR e 28 IWDEE, incluse le due sottospell.
+La beta.8 contiene **40 BAM, 38 VVC e 1.316 frame fisici**, con **44 SPL EET
+patchate** nei test: 16 SR e 28 IWDEE, incluse le due sottospell,
+più i cue di impatto di **2 ITM** (Slay Living e Sol’s Searing Orb).
 
 ## Ulteriore controllo: quattro binding recuperati nella beta.5
 
@@ -158,13 +159,13 @@ installata. Le altre animazioni selezionate restano incluse.
 
 | Esito | BAM |
 |---|---:|
-| Inclusi | 24 |
-| File o grafica completa già presenti in EET | 163 |
+| Inclusi | 26 |
+| File o grafica completa già presenti in EET | 164 |
 | Tutti i cicli visibili con la stessa grafica, senza richiedere gli stessi ancoraggi | 1 |
 | Spell già coperta da SR, variante IWDEE non selezionata | 5 |
 | Nessuna corrispondenza dopo il lancio con una spell BG originale tracciata | 6 |
 | Esclusi su richiesta: Web e Orrido avvizzimento, area e bersaglio | 6 |
-| Candidati distinti ancora da integrare | 41 |
+| Candidati distinti ancora da integrare | 40 |
 
 Il precedente conteggio di 42 candidati non era definitivo: vengono
 riammessi dieci BAM esclusi per sagoma e integrati sei nella beta.4, quindi erano 46. Con Miscast Magic nella beta.5
@@ -172,7 +173,9 @@ erano **45**. Nella beta.6 i due candidati di area Web vengono esclusi
 su richiesta, insieme al suo BAM sul bersaglio già incluso: restano
 **43 candidati**. Nella beta.7 vengono esclusi anche i due candidati di area
 di Orrido avvizzimento, insieme al suo BAM sul bersaglio già incluso:
-restano **41 candidati**, non esclusi per overlap SR. Sono documentati uno per
+restavano **41 candidati**. La beta.8 integra due BAM di impatto e aggiunge
+SKYBOLT alla valutazione: restano **40 candidati**, non esclusi per overlap SR.
+Sono documentati uno per
 uno, con root, percorso e motivo, in
 [iwd_pending_candidates.csv](iwd_pending_candidates.csv).
 
@@ -190,7 +193,7 @@ creano armi temporanee: `SLIVINH` e `SSORBH/T` non vanno messi sul caster
 al posto dell'effetto del colpo. La fase Heal aggiuntiva/differita di
 Regeneration resta una fase non importata; `HEALH` è ora usato da Heal.
 
-Tutte le 246 decisioni e i confronti contro l'intero archivio SR sono in
+Tutte le 248 decisioni e i confronti contro l'intero archivio SR sono in
 [iwd_selection_recheck.csv](iwd_selection_recheck.csv). Una corrispondenza
 con un'icona o una nuova spell SR non equivale all'overlap con il componente SR.
 Le esclusioni senza root includono risorse orfane o di magie IWDEE non BG;
@@ -223,12 +226,14 @@ La copia `dvsburst` compare in due cartelle, entrambe inventariate.
 
 ## File ancora utili
 
-- **Call Lightning:** IWDEE `SKYBOLT.BAM` e `SPCALLLI.BAM` se presenti;
-  EET `SKYBOLT.BAM`. Il BAM EET `SPCALLLI` è già disponibile. La catena è
-  hard-coded e non si confonde con Lightning Bolt o Chain Lightning.
-- **Effetti di colpo delle armi temporanee:** EET `SLAYLIVE.ITM` e `SORB.ITM`.
-  Dopo la lettura potranno essere richieste solo le loro eventuali dipendenze
-  effettive. Non servono altre esportazioni generiche di tutte le SPL/PRO.
+I due nuovi archivi contengono esattamente i cinque file richiesti. Sono stati
+verificati e confrontati; non servono altre esportazioni per queste tre spell.
+`SPCALLLI` è identico nei due giochi, senza binding tracciato a `SPPR302`.
+`SKYBOLT` è distinto ma non ancora sostituito: rimane da verificare la catena
+hard-coded nel gioco e la sincronizzazione del BAM più lungo.
+`SLIVINH` e `SSORBH` sono ora inclusi sull'impatto delle armi EET;
+`SSORBT` in viaggio usa un PRO diverso e resta da integrare.
+[Verifica dei nuovi export](NEW_EXPORT_REVIEW.it.md).
 
 Gli [export mancanti nel grafo EET](missing_EET_dependencies.csv) e
 [IWDEE](missing_IWDEE_dependencies.csv) includono anche oggetti e riferimenti
@@ -237,9 +242,9 @@ con indici non confermati restano segnalati come tali.
 
 ## Verifiche e limiti
 
-- PASS sui 44 SPL EET esportati, componente IWDEE indipendente e insieme a SR:
+- PASS sui 44 SPL EET e 2 ITM esportati, componente IWDEE indipendente e insieme a SR:
   reinstallazione stabile, ripristino byte per byte dopo disinstallazione.
-- PASS: sei nuovi casi della coppia Chaos, 44 casi degli overlay,
+- PASS: 30 casi delle armi temporanee e sei nuovi casi della coppia Chaos, 44 casi degli overlay,
   28 regressioni generali e 12 casi delle
   sottospell, comprese root assenti, scollegate, troncate o riproposte come
   immunità anziché lancio.

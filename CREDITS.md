@@ -14,7 +14,7 @@ included; the game, its mechanics and complete game data are not distributed.
 
 All animation BAMs are byte-identical to the supplied source assets. Visual
 controllers are retargeted, stripped of audio, and (for IWD) normalized to let
-the SPL effect control duration. Three direct IWD BAM references receive a
+the installed SPL/ITM effect control duration. Three direct IWD BAM references receive a
 non-looping VVC wrapper. Two new single-cycle persistent BAMs receive looping
 wrappers based on IWDEE's `#PRONM.VVC`; Protection from Arrows and the major
 globe retain their source looping controller layouts. Manifests record
@@ -24,7 +24,9 @@ Beta.4 additionally retains the original GLDUSTH, #OTILUKE, RESURRH,
 HEALH and SPOISOH controller layouts and phases. Those five retained additional BAMs
 are also byte-identical to IWDEE. Beta.5 adds the original MMAGICH controller
 and artwork. Web artwork/controllers were removed in beta.6 at the owner's
-request. No new artwork is generated or claimed.
+request. Beta.8 adds byte-identical SLIVINH/SSORBH and their source VVC
+layouts for temporary-weapon impacts. SKYBOLT/SPCALLLI are compared but not
+shipped. No new artwork is generated or claimed.
 
 Technical references:
 

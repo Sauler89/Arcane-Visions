@@ -102,5 +102,26 @@
       ".log": 2
     },
     "local_bytes_match_ZIP_CRC": true
+  },
+  {
+    "archive": "files EET.zip",
+    "sha256": "c53afad078484db3ee7b3bb0d3a7ae169216eb81b525276c98aa3ecba56fdc22",
+    "bytes": 88431,
+    "resource_files_verified": 3,
+    "extension_counts": {
+      ".bam": 1,
+      ".itm": 2
+    },
+    "local_bytes_match_ZIP_CRC": true
+  },
+  {
+    "archive": "files IWDEE.zip",
+    "sha256": "6d35931dcacd564114d6bcdac3c3aaee9ea1d675fc8b460645b5f0c9a8fff192",
+    "bytes": 409251,
+    "resource_files_verified": 2,
+    "extension_counts": {
+      ".bam": 2
+    },
+    "local_bytes_match_ZIP_CRC": true
   }
 ]

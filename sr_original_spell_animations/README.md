@@ -7,7 +7,7 @@ Spell Revisions or Icewind Dale: Enhanced Edition. It replaces the artwork
 shown after a spell is cast, while retaining the installed spell's mechanics.
 **Spell Revisions and IWDification are not required.**
 
-Current version: **v0.2.0-beta.7**, by **Sauler89**.
+Current version: **v0.2.0-beta.8**, by **Sauler89**.
 [Italian instructions](../README.it.md) · [Affected spells](#affected-spells) ·
 [Audit and validation](docs/RIGOROUS_AUDIT.md)
 
@@ -51,12 +51,12 @@ because they are icons. `SPMAGGLO` is a separate shared protection overlay.
 | Component | Content | Assets |
 |---|---|---|
 | **0** | SR effect animations for selected original spells | 14 BAMs, 12 VVCs |
-| **10** | Distinct IWDEE effects for 28 other original spells | 24 BAMs, 24 VVCs |
+| **10** | IWDEE effects: 28 SPL resources and two temporary-weapon hits | 26 BAMs, 26 VVCs |
 
 Components can be installed independently or together. Their targeted spell
-lists are disjoint. The complete package contains **38 animation BAMs and
-36 visual-controller VVCs**, and patches **44 SPL files (including two child spells)** in the
-supplied EET baseline. Additional spells use the replaced native graphics.
+lists are disjoint. The complete package contains **40 animation BAMs and
+38 visual-controller VVCs**, and patches **44 SPL files (including two child spells)** in the
+supplied EET baseline, plus the hit cues in **two temporary-weapon ITMs**. Additional spells use the replaced native graphics.
 
 No spellbook/action-bar/portrait icons, new spells, revised spell descriptions,
 IWDEE or SR gameplay, source SPL/EFF/PRO files, creature avatars or weapons
@@ -151,6 +151,8 @@ resource names; other consumers of those BAMs receive the replacement art.
 | Confusion (cleric) | `SPPR709` | `CONFUSH` |
 | Confusion (wizard) | `SPWI401` | `CONFUSH` |
 | Chaos | `SPWI508` | `CONFUSH` |
+| Slay Living (weapon hit) | `SPPR511` → `SLAYLIVE.ITM` | `SLIVINH` |
+| Sol's Searing Orb (weapon hit) | `SPPR614` → `SORB.ITM` | `SSORBH` |
 
 
 Storm of Vengeance replaces its existing direct visual cue only; its weather,
@@ -187,11 +189,11 @@ opcode 67's resource fields. The IWD component preserves effect order/counts,
 all nonvisual bytes and the probability/save/resistance/target conditions of
 the replaced visual effects.
 
-The complete source review compares **246 IWDEE BAMs, 386 exported EET BAMs,
+The complete source review compares **248 IWDEE BAMs, 387 exported EET BAMs,
 and all 224 BAMs in the SR archive**. Only exact graphics and all-visible-cycle
 art matches are duplicate evidence; partial matches and shared/recolored shapes
 are diagnostics. Heal and Slow Poison are retained despite shared EET shapes.
-All 24 imported IWD BAMs have no full-art match to the selected original-spell
+All 26 imported IWD BAMs have no full-art match to the selected original-spell
 SR artwork. The comparison concerns the supplied exports, not every modlist.
 
 **This is a selected import, not all IWDEE BAMs.** Beta.4 adds Glitterdust,
@@ -203,7 +205,7 @@ timing/duration remains unchanged for these three CONFUSH bindings. The source
 controller is non-looping. Child spells are patched only
 when the original root still calls them. The root bytes are unchanged.
 The full archive review found no additional demonstrated active original-spell
-SR artwork to add. **41 distinct IWD candidates remain unintegrated**, including
+SR artwork to add. **40 distinct IWD candidates remain unintegrated**, including
 projectile/area/conditional phases; they are not labeled SR duplicates.
 Included BAMs are also checked for uncovered spell bindings: the extra delayed
 HEALH phase in IWD Regeneration has no matching direct cue in this EET baseline
@@ -216,12 +218,16 @@ included artwork, not two new BAMs.
 **Web is excluded at the owner's request in beta.6**, including area and target
 artwork. No Web SPL or PRO is patched and no private Web asset is shipped.
 WEBA/WEBC/WEBX are classified as user exclusions in the source inventory,
-separately from the 41 pending candidates.
+separately from the 40 pending candidates.
 **Abi-Dalzim's Horrid Wilting is also excluded in beta.7**: SPWI812 retains
 its installed BG2EE/EET visual cue. ADHWILH and its private controller are
 removed; ADHWILA/ADHWILX area phases are excluded from future candidates too.
-Call Lightning still needs IWDEE/EET SKYBOLT BAMs. Slay Living and Sol's Searing
-Orb need the installed EET temporary weapons before their hit art can be bound.
+Beta.8 uses the newly supplied EET weapons to bind SLIVINH and SSORBH at
+their actual impacts. Both root SPLs and all weapon gameplay bytes remain
+unchanged. SSORBT travel is still unintegrated. The new SKYBOLT exports differ
+(23 IWDEE frames versus 6 EET frames); engine routing/timing needs runtime
+verification before replacement. SPCALLLI is byte-identical in both exports
+and has no traced SPPR302 binding. See [the new export review](docs/NEW_EXPORT_REVIEW.it.md).
 See [the full source review](docs/FULL_SOURCE_AUDIT.it.md),
 [all IWD decisions](docs/iwd_selection_recheck.csv),
 [all SR decisions](docs/sr_source_selection.csv)
@@ -230,7 +236,7 @@ and [every pending candidate](docs/iwd_pending_candidates.csv).
 ## Validation and beta status
 
 WeiDU installation, reinstallation and byte-exact uninstallation passed in
-isolated fixtures, including the **44 real exported EET SPL files**. Assets were
+isolated fixtures, including the **44 real exported EET SPL files and two ITMs**. Assets were
 checked for hashes, frame bounds/RLE data, cycle references, VVC dependencies,
 phase indexes, private names and absence of external palettes/alpha BAMs/audio.
 
@@ -249,6 +255,10 @@ blending and synchronization of the effects require in-game confirmation.
 The GIFs do not replace that test. Install/uninstall tests use minimal KEY/TLK
 fixtures and exported resources; they do not load a complete game installation.
 
+The temporary-weapon patcher also passed **30 cases** for recognized/conditional
+hits, missing/detached/repurposed roots, unknown visuals, delayed cues and
+malformed items, with stable reinstall and byte-exact uninstall.
+
 ## Development
 
 ```sh
@@ -259,6 +269,7 @@ python3 tests/verify_regressions.py /path/to/weidu
 python3 tests/verify_iwd_on_export.py /path/to/EET-export /path/to/weidu /path/to/results
 python3 tests/verify_overlays.py /path/to/EET-export /path/to/weidu /path/to/results
 python3 tests/verify_child_visuals.py /path/to/EET-export /path/to/weidu /path/to/results
+python3 tests/verify_item_visuals.py /path/to/EET-export /path/to/weidu /path/to/results
 ```
 
 Tests require Python 3 and WeiDU. Preview generation additionally needs Pillow:

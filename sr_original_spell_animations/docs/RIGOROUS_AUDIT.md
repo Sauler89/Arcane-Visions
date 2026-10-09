@@ -1,7 +1,7 @@
-# Rigorous audit — Arcane Visions v0.2.0-beta.7
+# Rigorous audit — Arcane Visions v0.2.0-beta.8
 
-Reviewed on 2026-10-09 (Europe/Rome). Scope: all 74 graphics/controller assets,
-both installer components, all 856 source/comparison BAMs, source provenance, live exports, effect conditions,
+Reviewed on 2026-10-09 (Europe/Rome). Scope: all 78 graphics/controller assets,
+both installer components, all 859 source/comparison BAMs, source provenance, live exports, effect conditions,
 resource-name collisions, previews, documentation and install/uninstall behavior.
 
 ## Findings and corrections
@@ -62,7 +62,7 @@ omissions. Five BAMs recovered through cue, child and shape selection
 remain included; the sixth, Web, was removed in beta.6 at the owner's request.
 
 [Full source review and exclusions](FULL_SOURCE_AUDIT.it.md) inventories every
-SR source BAM, all original-spell dependencies and 41 remaining IWD candidates.
+SR source BAM, all original-spell dependencies and 40 remaining IWD candidates.
 No additional demonstrated active original-spell SR artwork was found.
 
 ## Persistent overlay and selection review
@@ -74,22 +74,23 @@ byte of the effect are preserved. A preexisting recognized major-globe
 opcode 215 stays opcode 215. No MINORGLB global replacement is used.
 
 [Detailed review and all exclusions](IWD_SELECTION_RECHECK.it.md). The
-complete 246-BAM classification distinguishes duplication, SR spell overlap
-and distinct unintegrated candidates. Call Lightning still needs its missing
-IWDEE/EET SKYBOLT BAMs; no exclusivity claim can be made for absent artwork.
+complete 248-BAM classification distinguishes duplication, SR spell overlap
+and distinct unintegrated candidates. New SKYBOLT exports are distinct, but hardcoded routing/timing remains
+unverified at runtime. SPCALLLI is identical in both games and has no
+traced SPPR302 binding. See [new export review](NEW_EXPORT_REVIEW.it.md).
 
 ## Asset checks
 
-- All **38 BAMs** are byte-identical to the supplied source artwork.
-- **1,215 total BAM frames** validated.
+- All **40 BAMs** are byte-identical to the supplied source artwork.
+- **1,316 total BAM frames** validated.
 - All frames, cycle lookups, offsets, dimensions and RLE data validated.
-- All **36 VVCs** have valid signatures, resolved BAM dependencies and valid
+- All **38 VVCs** have valid signatures, resolved BAM dependencies and valid
   one-based phase references (zero/default and -1 omissions handled).
 - No controller depends on an external bitmap palette, alpha BAM or audio file.
 - Source/installed hashes retained in both manifests. Private resource names
   are at most eight characters and unique case-insensitively.
-- All 24 imported IWD BAMs have no full artwork match to the selected original-spell
-  SR BAMs. Source comparison covers all 224 SR BAMs, 246 IWD BAMs and 386 EET BAMs.
+- All 26 imported IWD BAMs have no full artwork match to the selected original-spell
+  SR BAMs. Source comparison covers all 224 SR BAMs, 248 IWD BAMs and 387 EET BAMs.
   Heal and Slow Poison are distinct colour variants despite shared EET shapes.
   Shape alone and a single shared cycle are not complete-duplicate evidence.
 - All 13 README GIFs are rendered from bundled assets with retained provenance.
@@ -104,7 +105,7 @@ IWDEE/EET SKYBOLT BAMs; no exclusivity claim can be made for absent artwork.
 | SR assets checked against actual v4.21 source bytes | PASS |
 | SR EET and BG2EE synthetic profiles: install, reinstall, uninstall | PASS |
 | Actual source SR SPL layouts patched and restored | PASS |
-| 16 real EET SR SPLs plus 28 real EET IWD SPLs: combined install | PASS |
+| 16 real EET SR SPLs plus 28 real EET IWD SPLs and two ITMs: combined install | PASS |
 | IWD component installed independently | PASS |
 | Reinstallation snapshot stable, standalone and combined | PASS |
 | Disinstallation restores all original resource bytes and removes new graphics | PASS |
@@ -116,6 +117,7 @@ IWDEE/EET SKYBOLT BAMs; no exclusivity claim can be made for absent artwork.
 | 12 child-spell cases: recognized/missing/detached/malformed roots and unknown child visuals | PASS |
 | Web and Horrid Wilting excluded: both original SPLs byte-identical; no private assets | PASS |
 | Six repeated-cue Chaos cases, with separate conditions and all-or-nothing guards | PASS |
+| 30 temporary-weapon cases: links, conditions, unknown visuals, bounds, reinstall/uninstall | PASS |
 | README local links and GIF/asset hash provenance | PASS |
 
 The 28 regressions include 13 malformed/unsupported SPL layouts, a legal
@@ -135,17 +137,18 @@ installation. WeiDU's derived ADD_SPELL.IDS cache is excluded from snapshot
 comparisons because WeiDU clears it independently of these components.
 
 Results: `IWD_validation.json`, `regression_validation.json`,
-`integrity_validation.json`, `overlay_validation.json`, `child_validation.json`. Test programs are in the repository's `tests/`.
+`integrity_validation.json`, `overlay_validation.json`, `child_validation.json`, `item_validation.json`. Test programs are in the repository's `tests/`.
 
 ## Scope and remaining limits
 
 Component 0 patches 16 selected SPLs, deliberately replacing their 141/215
 ability visuals. Component 10 patches 28 other SPLs, including two child spells, only where the original
-visual configuration is recognized. It preserves effect order/counts and
+visual configuration is recognized. It also patches two recognized temporary-weapon
+hit cues while keeping their roots byte-identical. It preserves effect order/counts and
 all nonvisual bytes. Missing or unfamiliar abilities are skipped and logged.
 The two root spell lists do not overlap. Persistent Sanctuary/globe state
 opcodes retain their behavior, and the original protections stay byte-exact.
-This is a selected import; 41 distinct candidate BAMs remain unintegrated.
+This is a selected import; 40 distinct candidate BAMs remain unintegrated.
 
 Native SPENTAAI/SPENTACI, SPCHRORB and SPMAGGLO replacements are shared
 resources; any other spell/item using them can receive the new artwork.
@@ -163,3 +166,13 @@ listed in CHITIN.KEY or every resource from every future modlist.
 
 Source SR provenance, credits and its supplied consent notice remain retained.
 No third-party graphics ownership or new redistribution license is claimed.
+
+## Beta.8 temporary-weapon hits
+
+SLIVINH and SSORBH now replace recognized impacts in installed SLAYLIVE.ITM
+and SORB.ITM, only while their original roots still create those weapons.
+No source ITM is imported; roots, weapon headers/projectiles, nonvisual effects
+and conditions stay byte-identical. The parser validates ITM signatures,
+56-byte headers and disjoint effect blocks. Full export install/reinstall/
+uninstall checks include both items; [30 item guard cases](item_validation.json)
+pass. SKYBOLT and SSORBT remain unintegrated.

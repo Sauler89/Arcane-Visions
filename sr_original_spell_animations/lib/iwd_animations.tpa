@@ -1,7 +1,7 @@
 // Isolated graphics only; retain every gameplay byte and all effect conditions.
 COPY ~sr_original_spell_animations/assets/iwd~ ~override~
 DEFINE_PATCH_FUNCTION srio_replace
- INT_VAR srio_op = 215 srio_p2 = 1 srio_target = 2 srio_loop = 0 srio_expected = 1
+ INT_VAR srio_op = 215 srio_p2 = 1 srio_target = 2 srio_loop = 0 srio_expected = 1 srio_item = 0 srio_hardcoded_p2 = 1
  STR_VAR srio_old = ~~ srio_new = ~~ srio_old2 = ~~ srio_new2 = ~~
 BEGIN
  PATCH_IF SOURCE_SIZE >= 0x72 BEGIN
@@ -11,21 +11,24 @@ BEGIN
   READ_LONG 0x6a srio_eo
   READ_SHORT 0x6e srio_gi
   READ_SHORT 0x70 srio_gc
-  SET srio_valid = (~%srio_sig%~ STRING_EQUAL_CASE ~SPL V1  ~) AND srio_ao >= 0x72 AND srio_ac > 0 AND srio_ao + srio_ac * 40 <= SOURCE_SIZE AND srio_eo >= srio_ao + srio_ac * 40 AND (srio_gc = 0 OR srio_eo + (srio_gi + srio_gc) * 48 <= SOURCE_SIZE)
+  SET srio_stride = 40
+  PATCH_IF srio_item BEGIN SET srio_stride = 56 END
+  SET srio_signature_ok = (!srio_item AND (~%srio_sig%~ STRING_EQUAL_CASE ~SPL V1  ~)) OR (srio_item AND (~%srio_sig%~ STRING_EQUAL_CASE ~ITM V1  ~))
+  SET srio_valid = srio_signature_ok AND srio_ao >= 0x72 AND srio_ac > 0 AND srio_ao + srio_ac * srio_stride <= SOURCE_SIZE AND srio_eo >= srio_ao + srio_ac * srio_stride AND (srio_gc = 0 OR srio_eo + (srio_gi + srio_gc) * 48 <= SOURCE_SIZE)
   // Ordered, disjoint blocks ensure global casting effects cannot be edited.
   SET srio_end = 0
   PATCH_IF srio_gc > 0 BEGIN SET srio_end = srio_gi + srio_gc END
   FOR (srio_i = 0; srio_i < srio_ac AND srio_valid; ++srio_i) BEGIN
-   READ_SHORT (srio_ao + srio_i * 40 + 30) srio_n
-   READ_SHORT (srio_ao + srio_i * 40 + 32) srio_idx
+   READ_SHORT (srio_ao + srio_i * srio_stride + 30) srio_n
+   READ_SHORT (srio_ao + srio_i * srio_stride + 32) srio_idx
    PATCH_IF srio_eo + (srio_idx + srio_n) * 48 > SOURCE_SIZE OR (srio_n > 0 AND srio_idx < srio_end) BEGIN SET srio_valid = 0 END
    PATCH_IF srio_n > 0 BEGIN SET srio_end = srio_idx + srio_n END
   END
   PATCH_IF srio_valid BEGIN
    SET srio_same = srio_expected = 2 AND (~%srio_old%~ STRING_EQUAL_CASE ~%srio_old2%~)
    FOR (srio_i = 0; srio_i < srio_ac; ++srio_i) BEGIN
-    READ_SHORT (srio_ao + srio_i * 40 + 30) srio_n
-    READ_SHORT (srio_ao + srio_i * 40 + 32) srio_idx
+    READ_SHORT (srio_ao + srio_i * srio_stride + 30) srio_n
+    READ_SHORT (srio_ao + srio_i * srio_stride + 32) srio_idx
     SET srio_visuals = 0 SET srio_hits = 0 SET srio_hits2 = 0
     FOR (srio_j = 0; srio_j < srio_n; ++srio_j) BEGIN
      SET srio_e = srio_eo + (srio_idx + srio_j) * 48
@@ -53,8 +56,8 @@ BEGIN
      FOR (srio_k = 0; srio_k < srio_expected; ++srio_k) BEGIN
       PATCH_IF srio_k = 0 BEGIN SET srio_e = srio_first SPRINT srio_ref_new ~%srio_new%~ END ELSE BEGIN SET srio_e = srio_second SPRINT srio_ref_new ~%srio_new2%~ END
       WRITE_SHORT srio_e 215
-      // Attachment retained for old VVCs; hard-coded hit cues become attached VVCs.
-      PATCH_IF srio_op = 141 BEGIN WRITE_LONG (srio_e + 8) 1 END
+      // Retain old VVC attachment. Caller chooses attachment for hard-coded cues.
+      PATCH_IF srio_op = 141 BEGIN WRITE_LONG (srio_e + 8) srio_hardcoded_p2 END
       WRITE_ASCIIE (srio_e + 20) ~%srio_ref_new%~ #8
       PATCH_IF !srio_loop BEGIN
        WRITE_BYTE (srio_e + 12) 1
@@ -62,15 +65,16 @@ BEGIN
       END
      END
     END ELSE BEGIN
-     PATCH_PRINT ~IWD Spell Animations: %SOURCE_RES%.spl ability %srio_i% has an unrecognized visual layout; skipped.~
+     PATCH_PRINT ~IWD Spell Animations: %SOURCE_RES% ability %srio_i% has an unrecognized visual layout; skipped.~
     END
    END
-  END ELSE BEGIN PATCH_PRINT ~IWD Spell Animations: %SOURCE_RES%.spl has an unsupported layout; skipped.~ END
- END ELSE BEGIN PATCH_PRINT ~IWD Spell Animations: truncated %SOURCE_RES%.spl, skipped.~ END
+  END ELSE BEGIN PATCH_PRINT ~IWD Spell Animations: %SOURCE_RES% has an unsupported layout; skipped.~ END
+ END ELSE BEGIN PATCH_PRINT ~IWD Spell Animations: truncated %SOURCE_RES%, skipped.~ END
 END
 
 // Read the root without writing it. Never patch a detached, repurposed child.
 DEFINE_ACTION_FUNCTION srio_check_child
+ INT_VAR srio_item_link = 0
  STR_VAR srio_root = ~~ srio_child = ~~
  RET srio_linked
 BEGIN
@@ -97,7 +101,16 @@ BEGIN
        SET srio_e = srio_eo + (srio_idx + srio_j) * 48
        READ_SHORT srio_e srio_opcode
        READ_ASCII (srio_e + 20) srio_ref (8) NULL
-       PATCH_IF (srio_opcode = 146 OR srio_opcode = 148 OR srio_opcode = 232 OR srio_opcode = 259 OR srio_opcode = 326 OR srio_opcode = 333) AND (~%srio_ref%~ STRING_EQUAL_CASE ~%srio_child%~) BEGIN SET srio_linked = 1 END
+       SET srio_item_link_ok = 0
+       PATCH_IF srio_item_link AND srio_opcode = 111 BEGIN
+        READ_BYTE (srio_e + 2) srio_t
+        READ_LONG (srio_e + 4) srio_p1
+        READ_LONG (srio_e + 8) srio_p2
+        READ_BYTE (srio_e + 12) srio_time
+        READ_LONG (srio_e + 14) srio_duration
+        SET srio_item_link_ok = srio_t = 1 AND srio_p1 = 1 AND srio_p2 = 0 AND srio_time = 0 AND srio_duration > 0
+       END
+       PATCH_IF ((!srio_item_link AND (srio_opcode = 146 OR srio_opcode = 148 OR srio_opcode = 232 OR srio_opcode = 259 OR srio_opcode = 326 OR srio_opcode = 333)) OR srio_item_link_ok) AND (~%srio_ref%~ STRING_EQUAL_CASE ~%srio_child%~) BEGIN SET srio_linked = 1 END
       END
      END
     END
@@ -281,3 +294,19 @@ ACTION_IF FILE_EXISTS_IN_GAME ~SPWI508.spl~ BEGIN
       STR_VAR srio_old = ~SPCONFUS~ srio_new = ~srioconf~ srio_old2 = ~SPCONFUS~ srio_new2 = ~srioconf~ END
   BUT_ONLY_IF_IT_CHANGES
 END ELSE BEGIN PRINT ~IWD Spell Animations: SPWI508.spl missing, skipped.~ END
+
+LAF srio_check_child INT_VAR srio_item_link = 1 STR_VAR srio_root = ~SPPR511~ srio_child = ~SLAYLIVE~ RET srio_linked END
+ACTION_IF srio_linked AND FILE_EXISTS_IN_GAME ~SLAYLIVE.itm~ BEGIN
+  COPY_EXISTING ~SLAYLIVE.itm~ ~override~
+    LPF srio_replace INT_VAR srio_item = 1 srio_hardcoded_p2 = 0 srio_op = 141 srio_p2 = 39 srio_target = 2
+      STR_VAR srio_old = ~~ srio_new = ~sriosliv~ END
+  BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~IWD Spell Animations: SPPR511.spl temporary weapon SLAYLIVE.itm missing or detached; skipped.~ END
+
+LAF srio_check_child INT_VAR srio_item_link = 1 STR_VAR srio_root = ~SPPR614~ srio_child = ~SORB~ RET srio_linked END
+ACTION_IF srio_linked AND FILE_EXISTS_IN_GAME ~SORB.itm~ BEGIN
+  COPY_EXISTING ~SORB.itm~ ~override~
+    LPF srio_replace INT_VAR srio_item = 1 srio_hardcoded_p2 = 0 srio_op = 215 srio_p2 = 0 srio_target = 2
+      STR_VAR srio_old = ~ICFIRSDI~ srio_new = ~sriossor~ END
+  BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~IWD Spell Animations: SPPR614.spl temporary weapon SORB.itm missing or detached; skipped.~ END
