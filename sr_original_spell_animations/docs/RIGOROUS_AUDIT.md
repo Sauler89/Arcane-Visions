@@ -1,6 +1,6 @@
-# Rigorous audit — Arcane Visions v0.2.0-beta.5
+# Rigorous audit — Arcane Visions v0.2.0-beta.6
 
-Reviewed on 2026-10-09 (Europe/Rome). Scope: all 78 graphics/controller assets,
+Reviewed on 2026-10-09 (Europe/Rome). Scope: all 76 graphics/controller assets,
 both installer components, all 856 source/comparison BAMs, source provenance, live exports, effect conditions,
 resource-name collisions, previews, documentation and install/uninstall behavior.
 
@@ -31,21 +31,31 @@ The non-looping source CONFUSH controller is retained.
 
 The audit now generates pending reasons from actual dependency paths and
 reports included artwork with unbound roots in
-[iwd_unbound_included_art.csv](iwd_unbound_included_art.csv). Only the additional
-delayed HEALH phase of Regeneration remains there; no matching EET cue exists.
+[iwd_unbound_included_art.csv](iwd_unbound_included_art.csv). The additional
+delayed HEALH phase of Regeneration has no matching EET cue. Beta.6 also
+records GLDUSTA spread/ring fields in IWD GLDUST.PRO: they were hidden by
+one-path-per-BAM traversal although its target cue was already included.
+Those two area phases remain unbound in EET, whose shared SPARGONP.PRO has
+no spread/ring fields and uses a different explosion mode.
+
+Web is explicitly excluded at the owner's request in beta.6. Its target
+patch, private BAM/VVC and GIF were removed; area candidates WEBA/WEBX
+are excluded too. Export tests confirm SPWI215 remains byte-identical
+with either component combination and no private Web resource is installed.
+The source inventory retains all three as user exclusions, not omissions.
 
 
-Beta.4 adds Glitterdust, Web target overlay, Resilient Sphere, Resurrection,
+Beta.4 added Glitterdust, Resilient Sphere, Resurrection,
 Heal and Slow Poison. The real source controllers/phases are preserved.
-Web keeps opcode 157 and its existing state/duration/conditions. The two child
+The two child
 SPLs are changed only when the original root still calls them after casting.
 The root bytes remain identical. The cue patcher now rejects additional
 state overlays 153–158. Case-insensitive source lookup prevents Linux filename
-omissions. Six BAMs previously lost through incomplete cue, child and shape
-selection are now included.
+omissions. Five BAMs recovered through cue, child and shape selection
+remain included; the sixth, Web, was removed in beta.6 at the owner's request.
 
 [Full source review and exclusions](FULL_SOURCE_AUDIT.it.md) inventories every
-SR source BAM, all original-spell dependencies and 45 remaining IWD candidates.
+SR source BAM, all original-spell dependencies and 43 remaining IWD candidates.
 No additional demonstrated active original-spell SR artwork was found.
 
 ## Persistent overlay and selection review
@@ -63,19 +73,19 @@ IWDEE/EET SKYBOLT BAMs; no exclusivity claim can be made for absent artwork.
 
 ## Asset checks
 
-- All **40 BAMs** are byte-identical to the supplied source artwork.
-- **1,279 total BAM frames** validated.
+- All **39 BAMs** are byte-identical to the supplied source artwork.
+- **1,247 total BAM frames** validated.
 - All frames, cycle lookups, offsets, dimensions and RLE data validated.
-- All **38 VVCs** have valid signatures, resolved BAM dependencies and valid
+- All **37 VVCs** have valid signatures, resolved BAM dependencies and valid
   one-based phase references (zero/default and -1 omissions handled).
 - No controller depends on an external bitmap palette, alpha BAM or audio file.
 - Source/installed hashes retained in both manifests. Private resource names
   are at most eight characters and unique case-insensitively.
-- All 26 imported IWD BAMs have no full artwork match to the selected original-spell
+- All 25 imported IWD BAMs have no full artwork match to the selected original-spell
   SR BAMs. Source comparison covers all 224 SR BAMs, 246 IWD BAMs and 386 EET BAMs.
   Heal and Slow Poison are distinct colour variants despite shared EET shapes.
   Shape alone and a single shared cycle are not complete-duplicate evidence.
-- All 14 README GIFs are rendered from bundled assets with retained provenance.
+- All 13 README GIFs are rendered from bundled assets with retained provenance.
   Frame anchors are retained; blending is illustrative, not an engine renderer.
 - The 17 supplied EET BMP headers were checked. None of the EET VVCs replaced
   by component 10 uses an external palette or alpha BAM.
@@ -87,7 +97,7 @@ IWDEE/EET SKYBOLT BAMs; no exclusivity claim can be made for absent artwork.
 | SR assets checked against actual v4.21 source bytes | PASS |
 | SR EET and BG2EE synthetic profiles: install, reinstall, uninstall | PASS |
 | Actual source SR SPL layouts patched and restored | PASS |
-| 16 real EET SR SPLs plus 30 real EET IWD SPLs: combined install | PASS |
+| 16 real EET SR SPLs plus 29 real EET IWD SPLs: combined install | PASS |
 | IWD component installed independently | PASS |
 | Reinstallation snapshot stable, standalone and combined | PASS |
 | Disinstallation restores all original resource bytes and removes new graphics | PASS |
@@ -95,8 +105,9 @@ IWDEE/EET SKYBOLT BAMs; no exclusivity claim can be made for absent artwork.
 | IWD visual probability, save, target, power and resistance flags retained | PASS |
 | Unknown additional visual from another mod safely skipped by IWD component | PASS |
 | 28 extra regressions: invalid layouts, conditional visuals, collision guards and unsupported games | PASS |
-| 54 persistent-overlay regressions: state/conditions/duration, custom modes, unknown visuals, collisions and bounds | PASS |
+| 44 persistent-overlay regressions: state/conditions/duration, custom modes, unknown visuals, collisions and bounds | PASS |
 | 12 child-spell cases: recognized/missing/detached/malformed roots and unknown child visuals | PASS |
+| Web excluded: original SPL retained byte-for-byte; no private Web asset | PASS |
 | Six repeated-cue Chaos cases, with separate conditions and all-or-nothing guards | PASS |
 | README local links and GIF/asset hash provenance | PASS |
 
@@ -122,12 +133,12 @@ Results: `IWD_validation.json`, `regression_validation.json`,
 ## Scope and remaining limits
 
 Component 0 patches 16 selected SPLs, deliberately replacing their 141/215
-ability visuals. Component 10 patches 30 other SPLs, including two child spells, only where the original
+ability visuals. Component 10 patches 29 other SPLs, including two child spells, only where the original
 visual configuration is recognized. It preserves effect order/counts and
 all nonvisual bytes. Missing or unfamiliar abilities are skipped and logged.
 The two root spell lists do not overlap. Persistent Sanctuary/globe state
 opcodes retain their behavior, and the original protections stay byte-exact.
-This is a selected import; 45 distinct candidate BAMs remain unintegrated.
+This is a selected import; 43 distinct candidate BAMs remain unintegrated.
 
 Native SPENTAAI/SPENTACI, SPCHRORB and SPMAGGLO replacements are shared
 resources; any other spell/item using them can receive the new artwork.

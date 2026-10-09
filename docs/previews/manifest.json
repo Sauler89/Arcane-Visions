@@ -146,21 +146,6 @@
     "game_capture": false
   },
   {
-    "file": "docs/previews/web.gif",
-    "asset": "sr_original_spell_animations/assets/iwd/sriowebc.bam",
-    "asset_sha256": "0712be46f930c6e88209bfda4e57fe5b68b4b43f9a34be7e8178d6099e876fc7",
-    "gif_sha256": "7097e478d5ab3c8da40708d22986096667c16ec5dbbaca1e995256cdea6c1928",
-    "bam_cycles": [
-      0,
-      1,
-      1
-    ],
-    "frame_rate": 15,
-    "preview_frame_delay_ms": 70,
-    "screen_blending_approximation": true,
-    "game_capture": false
-  },
-  {
     "file": "docs/previews/resilient-sphere.gif",
     "asset": "sr_original_spell_animations/assets/iwd/srioosph.bam",
     "asset_sha256": "0b0af8ef31614cc2cd72cc4d0a3ef71644e9758e31f006d4cc26149543395d8b",

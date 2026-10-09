@@ -1,2 +1,4 @@
-﻿bam,bg_spell,path,reason
-HEALH.BAM,SPPR711,SPPR711.SPL -> HEALH.VVC (ability 9 opcode 215) -> HEALH.BAM (VVC main),BAM included for other bindings; this source phase is not installed
+﻿bam,bg_spell,scope,path,reason
+HEALH.BAM,SPPR711,unbound root,SPPR711.SPL -> HEALH.VVC (ability 9 opcode 215) -> HEALH.BAM (VVC main),BAM included for other bindings; this source phase is not installed
+GLDUSTA.BAM,SPWI224,unbound PRO phase,SPWI224.SPL -> GLDUST.PRO (ability 1 projectile [MISSILE-1]) -> GLDUSTA.BAM (PRO ring [activation not assumed]),"Artwork included for a target cue, but this declared projectile phase is not patched; installed EET binding differs"
+GLDUSTA.BAM,SPWI224,unbound PRO phase,SPWI224.SPL -> GLDUST.PRO (ability 1 projectile [MISSILE-1]) -> GLDUSTA.BAM (PRO spread [activation not assumed]),"Artwork included for a target cue, but this declared projectile phase is not patched; installed EET binding differs"

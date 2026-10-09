@@ -45,7 +45,6 @@ OVERLAYS=[
 ('SPWI311','PFNMISC','arrw',156,2,'#PRONM'),
 ('SPWI406','MGOINVC','mglb',155,1,'#PRONM'),
 ('SPWI602','GOINVUC','gglb',155,1,'#GLOBINV'),
-('SPWI215','WEBC','webc',157,2,'WEBC'),
 ]
 
 def main():
@@ -84,9 +83,9 @@ def main():
   struct.pack_into('<I',v,92,0xffffffff)
   (assets/(name+'.vvc')).write_bytes(v)
   for ext,data,source_data in [('bam',original,original),('vvc',v,controller)]:
-   synthesized=ext=='vvc' and art not in ('PFNMISC','GOINVUC','WEBC')
+   synthesized=ext=='vvc' and art not in ('PFNMISC','GOINVUC')
    manifest.append(dict(source=art+'.BAM' if ext=='bam' else controller_name+'.VVC'+(' (loop template for '+art+'.BAM)' if synthesized else ''),destination='sr_original_spell_animations/assets/iwd/'+name+'.'+ext,installed_sha256=hashlib.sha256(data).hexdigest(),source_sha256=hashlib.sha256(source_data).hexdigest(),synthesized_controller=synthesized))
-  overlay_manifest.append(dict(spell=spell,art=art,private=name,opcode=op,target=target,default_resource={153:'SANCTRY',155:'MINORGLB',156:'SPSHIELD',157:'WEBENTD'}[op],iwd_reference={153:'SANCTRY',156:'#PRONM',157:'WEBC',155:'MGOINVC' if spell=='SPWI406' else '#GLOBINV'}[op]))
+  overlay_manifest.append(dict(spell=spell,art=art,private=name,opcode=op,target=target,default_resource={153:'SANCTRY',155:'MINORGLB',156:'SPSHIELD'}[op],iwd_reference={153:'SANCTRY',156:'#PRONM',155:'MGOINVC' if spell=='SPWI406' else '#GLOBINV'}[op]))
  (MOD/'docs/iwd_asset_manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
  (MOD/'docs/iwd_overlay_mapping.json').write_text(json.dumps(overlay_manifest,indent=2)+'\n')
  tpa=(ROOT/'tools/iwd_patch_template.tpa').read_text()+'\n'+(ROOT/'tools/iwd_dependency_template.tpa').read_text()

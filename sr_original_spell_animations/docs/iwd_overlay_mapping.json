@@ -34,14 +34,5 @@
     "target": 1,
     "default_resource": "MINORGLB",
     "iwd_reference": "#GLOBINV"
-  },
-  {
-    "spell": "SPWI215",
-    "art": "WEBC",
-    "private": "sriowebc",
-    "opcode": 157,
-    "target": 2,
-    "default_resource": "WEBENTD",
-    "iwd_reference": "WEBC"
   }
 ]

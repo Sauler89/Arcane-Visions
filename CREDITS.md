@@ -20,9 +20,11 @@ wrappers based on IWDEE's `#PRONM.VVC`; Protection from Arrows and the major
 globe retain their source looping controller layouts. Manifests record
 source/installed hashes and names.
 
-Beta.4 additionally retains the original GLDUSTH, WEBC, #OTILUKE, RESURRH,
-HEALH and SPOISOH controller layouts and phases. Those six additional BAMs
-are also byte-identical to IWDEE. No new artwork is generated or claimed.
+Beta.4 additionally retains the original GLDUSTH, #OTILUKE, RESURRH,
+HEALH and SPOISOH controller layouts and phases. Those five retained additional BAMs
+are also byte-identical to IWDEE. Beta.5 adds the original MMAGICH controller
+and artwork. Web artwork/controllers were removed in beta.6 at the owner's
+request. No new artwork is generated or claimed.
 
 Technical references:
 

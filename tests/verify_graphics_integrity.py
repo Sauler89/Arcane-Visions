@@ -37,9 +37,13 @@ for r in overlays:
  b=(MOD/'assets/iwd'/(r['private']+'.vvc')).read_bytes();assert struct.unpack_from('<I',b,32)[0]&1
  assert struct.unpack_from('<I',b,92)[0]==0xffffffff
  assert struct.unpack_from('<I',b,104)[0]==1
- assert struct.unpack_from('<I',b,108)[0]==(2 if r['art']=='WEBC' else 1)
+ assert struct.unpack_from('<I',b,108)[0]==1
 core=json.loads((D/'test_config.json').read_text());rows=json.loads((D/'iwd_spell_mapping.json').read_text());iwd_roots={r[0] for r in rows}|{r['spell'] for r in overlays}
 assert not iwd_roots&{r[0] for r in core['spells']}
+exclusions=json.loads((D/'iwd_user_exclusions.json').read_text())
+assert not {r['spell'] for r in exclusions}&(iwd_roots|{r[0] for r in core['spells']})
+assert not {b for r in exclusions for b in r['bam_resources']}&{a['source'] for a in iw}
+assert not (ROOT/'docs/previews/web.gif').exists()
 previews=json.loads((ROOT/'docs/previews/manifest.json').read_text())
 for e in previews:
  assert hashlib.sha256((ROOT/e['asset']).read_bytes()).hexdigest()==e['asset_sha256']

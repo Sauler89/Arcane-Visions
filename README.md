@@ -7,7 +7,7 @@ Spell Revisions or Icewind Dale: Enhanced Edition. It replaces the artwork
 shown after a spell is cast, while retaining the installed spell's mechanics.
 **Spell Revisions and IWDification are not required.**
 
-Current version: **v0.2.0-beta.5**, by **Sauler89**.
+Current version: **v0.2.0-beta.6**, by **Sauler89**.
 [Italian instructions](README.it.md) · [Affected spells](#affected-spells) ·
 [Audit and validation](sr_original_spell_animations/docs/RIGOROUS_AUDIT.md)
 
@@ -34,9 +34,9 @@ orientation and timing. Entangle shows an individual animated tendril.
 |:---:|:---:|
 | ![Minor Globe animation](docs/previews/minor-globe.gif) | ![Globe of Invulnerability animation](docs/previews/globe-of-invulnerability.gif) |
 
-| Glitterdust — `GLDUSTA`, VVC phase 2 | Web target overlay — `WEBC` |
-|:---:|:---:|
-| ![Glitterdust animation](docs/previews/glitterdust.gif) | ![Web animation](docs/previews/web.gif) |
+| Glitterdust — `GLDUSTA`, VVC phase 2 |
+|:---:|
+| ![Glitterdust animation](docs/previews/glitterdust.gif) |
 
 | Otiluke's Resilient Sphere — `ORSPHEC` | Resurrection — `RESURRH` |
 |:---:|:---:|
@@ -51,11 +51,11 @@ because they are icons. `SPMAGGLO` is a separate shared protection overlay.
 | Component | Content | Assets |
 |---|---|---|
 | **0** | SR effect animations for selected original spells | 14 BAMs, 12 VVCs |
-| **10** | Distinct IWDEE effects for 30 other original spells | 26 BAMs, 26 VVCs |
+| **10** | Distinct IWDEE effects for 29 other original spells | 25 BAMs, 25 VVCs |
 
 Components can be installed independently or together. Their targeted spell
-lists are disjoint. The complete package contains **40 animation BAMs and
-38 visual-controller VVCs**, and patches **46 SPL files (including two child spells)** in the
+lists are disjoint. The complete package contains **39 animation BAMs and
+37 visual-controller VVCs**, and patches **45 SPL files (including two child spells)** in the
 supplied EET baseline. Additional spells use the replaced native graphics.
 
 No spellbook/action-bar/portrait icons, new spells, revised spell descriptions,
@@ -144,7 +144,6 @@ resource names; other consumers of those BAMs receive the replacement art.
 | Minor Globe of Invulnerability | `SPWI406` | `MGOINVC` |
 | Globe of Invulnerability | `SPWI602` | `GOINVUC` |
 | Glitterdust | `SPWI224` | `GLDUSTA` |
-| Web (target overlay) | `SPWI215` | `WEBC` |
 | Otiluke's Resilient Sphere | `SPWI413` → `SPWI413A` | `ORSPHEC` |
 | Resurrection | `SPPR712` → `SPPR712A` | `RESURRH` |
 | Heal | `SPPR607` | `HEALH` |
@@ -163,7 +162,7 @@ and visual effect timing/duration are retained. Blade
 Barrier preserves the existing duration of both visual layers. Dito/Finger of
 Death variants and Storm of Vengeance share one isolated `FODEATH` copy.
 
-The five state overlays retain their existing state opcodes, duration,
+The four state overlays retain their existing state opcodes, duration,
 conditions and protections. Only the recognized graphic reference/mode changes.
 Both globes use private resources, so minor and major can show different art
 without replacing `MINORGLB` globally. Sanctuary's state is retained; it is
@@ -193,23 +192,32 @@ The complete source review compares **246 IWDEE BAMs, 386 exported EET BAMs,
 and all 224 BAMs in the SR archive**. Only exact graphics and all-visible-cycle
 art matches are duplicate evidence; partial matches and shared/recolored shapes
 are diagnostics. Heal and Slow Poison are retained despite shared EET shapes.
-All 26 imported IWD BAMs have no full-art match to the selected original-spell
+All 25 imported IWD BAMs have no full-art match to the selected original-spell
 SR artwork. The comparison concerns the supplied exports, not every modlist.
 
 **This is a selected import, not all IWDEE BAMs.** Beta.4 adds Glitterdust,
-Web's target overlay, Otiluke's Resilient Sphere, Resurrection, Heal and Slow
+Otiluke's Resilient Sphere, Resurrection, Heal and Slow
 Poison. Beta.5 also adds Miscast Magic and binds the already included
 CONFUSH artwork to both Confusion spells and Chaos. Chaos retains both
 visual effect instances and their separate conditions; the existing effect
 timing/duration remains unchanged for these three CONFUSH bindings. The source
-controller is non-looping. The original Web state is retained, and child spells are patched only
+controller is non-looping. Child spells are patched only
 when the original root still calls them. The root bytes are unchanged.
 The full archive review found no additional demonstrated active original-spell
-SR artwork to add. **45 distinct IWD candidates remain unintegrated**, including
+SR artwork to add. **43 distinct IWD candidates remain unintegrated**, including
 projectile/area/conditional phases; they are not labeled SR duplicates.
 Included BAMs are also checked for uncovered spell bindings: the extra delayed
 HEALH phase in IWD Regeneration has no matching direct cue in this EET baseline
 and remains unbound. The initial REGENERH cue is included.
+The review also found two unbound GLDUSTA area phases (spread/ring) in IWD
+Glitterdust: its target cue is included, while the installed EET shared
+projectile has different bindings. These are additional phases of already
+included artwork, not two new BAMs.
+
+**Web is excluded at the owner's request in beta.6**, including area and target
+artwork. No Web SPL or PRO is patched and no private Web asset is shipped.
+WEBA/WEBC/WEBX are classified as user exclusions in the source inventory,
+separately from the 43 pending candidates.
 Call Lightning still needs IWDEE/EET SKYBOLT BAMs. Slay Living and Sol's Searing
 Orb need the installed EET temporary weapons before their hit art can be bound.
 See [the full source review](sr_original_spell_animations/docs/FULL_SOURCE_AUDIT.it.md),
@@ -220,14 +228,14 @@ and [every pending candidate](sr_original_spell_animations/docs/iwd_pending_cand
 ## Validation and beta status
 
 WeiDU installation, reinstallation and byte-exact uninstallation passed in
-isolated fixtures, including the **46 real exported EET SPL files**. Assets were
+isolated fixtures, including the **45 real exported EET SPL files**. Assets were
 checked for hashes, frame bounds/RLE data, cycle references, VVC dependencies,
 phase indexes, private names and absence of external palettes/alpha BAMs/audio.
 
 An additional **28 regression cases** cover malformed layouts, an unused global
 index, conditional visual effects, wrong targets/delays, resource collisions
 and unsupported games. Source SR spell layouts and both EET/BG2EE synthetic
-profiles also passed. **54 further overlay cases** verify state and conditional
+profiles also passed. **44 further overlay cases** verify state and conditional
 duration preservation, recognized/custom layouts, safe skips and collisions.
 **12 child-spell cases** verify recognized, missing, detached, malformed and
 repurposed roots, unknown child visuals, reinstall and exact uninstall.

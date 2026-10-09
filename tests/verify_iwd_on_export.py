@@ -35,7 +35,11 @@ try:
  def run(args,label):
   p=subprocess.run([str(WEIDU),'sr_original_spell_animations/setup-sr_original_spell_animations.tp2','--noautoupdate','--language','0','--no-exit-pause',*args],cwd=game,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT);(OUT/(label+'.log')).write_text(p.stdout);assert p.returncode==0,p.stdout[-10000:]
  originals={s:resource(s+'.spl').read_bytes() for s in dict.fromkeys([r[0] for r in ROWS]+list(OVERLAY_BY))};before=snap();tlk=(game/'dialog.tlk').read_bytes()
+ exclusions=json.loads((MOD/'docs/iwd_user_exclusions.json').read_text())
+ excluded_originals={r['spell']:resource(r['spell']+'.spl').read_bytes() for r in exclusions}
  def check_iwd():
+  for s,data in excluded_originals.items():assert resource(s+'.spl').read_bytes()==data,s+' was excluded but modified'
+  assert not any(name.startswith('srioweb') for name in snap()),'removed Web resources were installed'
   report=[]
   for spell in originals:
    old=originals[spell];new=resource(spell+'.spl').read_bytes();assert len(old)==len(new);assert new!=old,spell
@@ -108,5 +112,6 @@ try:
  assert (game/'dialog.tlk').read_bytes()==tlk
  result=dict(status='PASS',component=10,spells=len(originals),persistent_overlay_spells=len(OVERLAYS),bam_assets=len(manifest)//2,vvc_assets=len(manifest)//2,frames_validated=frames,spell_checks=report,standalone_install=True,combined_with_SR=True,reinstall_stable=True,uninstall_byte_exact=True,unknown_visual_skipped=True,icons_projectiles_globals_nonvisual_effects_and_conditions_preserved=True,game_rendering_tested=False,baseline='owner-supplied modded EET exports; isolated fixture with synthetic KEY/TLK',excluded_framework_cache='ADD_SPELL.IDS')
  result['repeated_visual_cases']=repeated_cases
+ result['excluded_spell_checks']=list(excluded_originals)
  (OUT/'IWD_validation.json').write_text(json.dumps(result,indent=2)+'\n');print('PASS:',len(originals),'real EET spells;',len(manifest)//2,'BAM/VVC pairs; standalone/combined install, stable reinstall, full uninstall, unknown-visual guard. No game rendering test.')
 finally:shutil.rmtree(game)

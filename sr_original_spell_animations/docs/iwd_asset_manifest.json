@@ -348,19 +348,5 @@
     "installed_sha256": "01f8fc6f0ef4e6c23b980e589bce81a5af116eea3703dfdc9d676cf3b8f01ebf",
     "source_sha256": "39fbfce742a8331542e912d8c34f229c047b767f37accb046a582efd4045f51c",
     "synthesized_controller": false
-  },
-  {
-    "source": "WEBC.BAM",
-    "destination": "sr_original_spell_animations/assets/iwd/sriowebc.bam",
-    "installed_sha256": "0712be46f930c6e88209bfda4e57fe5b68b4b43f9a34be7e8178d6099e876fc7",
-    "source_sha256": "0712be46f930c6e88209bfda4e57fe5b68b4b43f9a34be7e8178d6099e876fc7",
-    "synthesized_controller": false
-  },
-  {
-    "source": "WEBC.VVC",
-    "destination": "sr_original_spell_animations/assets/iwd/sriowebc.vvc",
-    "installed_sha256": "93c6b0b225e82194b2e7c7f9a3870348ee2a0c31c5b4a83a0b98121acdb178bb",
-    "source_sha256": "47e6356c674396484cd7de0ebc85edaefb0de028c87f9f39b12d6bab35525ff4",
-    "synthesized_controller": false
   }
 ]

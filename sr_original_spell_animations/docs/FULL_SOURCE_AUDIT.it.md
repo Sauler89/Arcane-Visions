@@ -1,4 +1,4 @@
-# Ricontrollo completo delle sorgenti — v0.2.0-beta.5
+# Ricontrollo completo delle sorgenti — v0.2.0-beta.6
 
 Ricontrollo del 9 ottobre 2026. Il controllo precedente aveva davvero omesso
 alcuni effetti IWDEE. La beta.4 ha corretto sei omissioni; la beta.5 ne corregge altre quattro
@@ -24,33 +24,30 @@ Il grafo distingue effetti di lancio e dopo il lancio, sottospell, EFF,
 VVC/VEF, proiettili e armi temporanee. Conserva i nomi originali senza supporre
 che uno stesso numero di projectile significhi la stessa risorsa nei due giochi.
 
-## Sei omissioni corrette nella beta.4
+## Correzioni della beta.4 mantenute nella selezione attuale
 
 | Spell originale | BAM IWDEE | Risorsa EET modificata | Motivo dell'omissione precedente |
 |---|---|---|---|
 | Glitterdust | `GLDUSTA` | `SPWI224.SPL` | Controller `GLDUSTH.VVC` distinto dal nome del BAM; selezione incompleta |
-| Web / Ragnatela sul bersaglio | `WEBC` | `SPWI215.SPL` | Overlay di stato 157, non un semplice effetto 141/215 |
 | Otiluke's Resilient Sphere | `ORSPHEC` | `SPWI413A.SPL`, richiamata da `SPWI413` | Animazione in una sottospell |
 | Resurrection | `RESURRH` | `SPPR712A.SPL`, richiamata da `SPPR712` | Animazione in una sottospell |
 | Heal / Guarigione | `HEALH` | `SPPR607.SPL` | Variante di colore esclusa erroneamente per sagoma condivisa |
 | Slow Poison / Rallentare veleno | `SPOISOH` | `SPPR212.SPL` | Variante di colore esclusa erroneamente per sagoma condivisa |
 
-Sono sei BAM byte-identici a quelli IWDEE e sei VVC privati. **Non sono
+Sono cinque BAM byte-identici a quelli IWDEE e cinque VVC privati.
+Il sesto, Web, è stato rimosso nella beta.6 su richiesta. **Non sono
 duplicati dei BAM SR selezionati per le spell originali.** Non si importano
 le SPL IWDEE, né nuove spell o meccaniche. I quattro overlay della beta.3
 (Sanctuary, Protection from Arrows e i due Globi) restano inclusi.
 
-Glitterdust conserva la fase 2 del vero controller IWDEE. Web conserva
-introduzione 1 e ciclo ripetuto 2 del suo `WEBC.VVC`; l'opcode 157, lo stato
-di immobilizzazione, durata, salvezza e condizioni EET restano invariati.
+Glitterdust conserva la fase 2 del vero controller IWDEE.
 La Sfera usa `#OTILUKE.VVC` e Resurrezione usa `RESURRH.VVC`, con riferimenti
 privati e audio rimosso. Le due sottospell vengono patchate solo se la spell
 principale le richiama ancora attraverso un opcode di lancio riconosciuto.
-Le spell principali restano byte-identiche. I BAM delle aree di Web non sono
-inclusi da questa aggiunta: cambia l'overlay sul bersaglio.
+Le spell principali restano byte-identiche.
 
-La beta.5 contiene **40 BAM, 38 VVC e 1.279 frame fisici**, con **46 SPL EET
-patchate** nei test: 16 SR e 30 IWDEE, incluse le due sottospell.
+La beta.6 contiene **39 BAM, 37 VVC e 1.247 frame fisici**, con **45 SPL EET
+patchate** nei test: 16 SR e 29 IWDEE, incluse le due sottospell.
 
 ## Ulteriore controllo: quattro binding recuperati nella beta.5
 
@@ -87,7 +84,40 @@ ed elenca separatamente [i binding mancanti di BAM già inclusi](iwd_unbound_inc
 Rimane `HEALH` nella fase aggiuntiva differita di Regeneration IWDEE:
 la baseline EET ha solo il cue iniziale già sostituito con `REGENERH`.
 La fase aggiuntiva non viene introdotta senza un binding corrispondente.
-Le 45 risorse candidate non esauriscono ogni possibile fase ancora assente.
+Le risorse candidate non esauriscono ogni possibile fase ancora assente.
+
+## Ricontrollo beta.6: fasi aggiuntive e rimozione Web
+
+Il controllo ora considera ogni riferimento grafico dei PRO raggiungibili,
+anche quando uno stesso BAM è già stato trovato attraverso un cue sul bersaglio.
+Sono emerse due fasi non integrate di Glitterdust: `GLDUST.PRO` IWDEE usa
+`GLDUSTA` sia a `0x228` (diffusione), sia a `0x230` (anello), con explosion
+type 254. Il mod finora include solo il cue sul bersaglio `GLDUSTH.VVC`.
+
+Nell'export EET `SPWI224` usa `SPARGONP.PRO`: explosion type 255,
+diffusione/anello vuoti e proiettili secondari. Quel PRO è condiviso da 18 SPL nell'export fornito, comprese
+Confusion e Chaos.
+Non esiste un riferimento grafico corrispondente da sostituire direttamente:
+le due fasi restano documentate come non integrate, senza modificare il
+proiettile condiviso o aggiungere copie di `GLDUSTA`. **Non sono overlap SR.**
+Insieme alla fase differita HEALH di Regeneration, compaiono in
+[iwd_unbound_included_art.csv](iwd_unbound_included_art.csv).
+
+Ricontrollati anche i campi secondari dei 427 VVC IWDEE: tutti hanno vuoti
+il resref BAM inutilizzato e quello alpha. I trail PRO omonimi dei controller
+non introducono un altro BAM distinto. Le cinque esclusioni per spell SR
+sono state ricondotte ai loro binding di Intralciare/Globo cromatico;
+nessun BAM classificato come icona SR ha un richiamo grafico nel grafo.
+Non è emerso un altro BAM SR attivo da includere per le root originali tracciate.
+
+**Web e il suo overlay sul bersaglio sono esclusi su richiesta del proprietario.**
+Rimossi `sriowebc.bam`, `sriowebc.vvc`, patch `SPWI215`, guard dei nomi,
+GIF e anteprima nella tavola. Anche `WEBA` e `WEBX` escono dalla lista dei
+candidati da integrare. Le tre sorgenti restano solo nell'inventario completo,
+classificate come `excluded_by_user`; non vengono presentate come omissioni.
+La selezione è conservata in [iwd_user_exclusions.json](iwd_user_exclusions.json).
+I test verificano che `SPWI215.SPL` resti byte-identica e che non vengano
+installate risorse private Web, sia col componente IWDEE da solo sia insieme a SR.
 
 ## Errori del filtro e del codice
 
@@ -114,16 +144,19 @@ Le 45 risorse candidate non esauriscono ogni possibile fase ancora assente.
 
 | Esito | BAM |
 |---|---:|
-| Inclusi | 26 |
+| Inclusi | 25 |
 | File o grafica completa già presenti in EET | 163 |
 | Tutti i cicli visibili con la stessa grafica, senza richiedere gli stessi ancoraggi | 1 |
 | Spell già coperta da SR, variante IWDEE non selezionata | 5 |
 | Nessuna corrispondenza dopo il lancio con una spell BG originale tracciata | 6 |
-| Candidati distinti ancora da integrare | 45 |
+| Esclusi su richiesta: Web, area e bersaglio | 3 |
+| Candidati distinti ancora da integrare | 43 |
 
 Il precedente conteggio di 42 candidati non era definitivo: vengono
 riammessi dieci BAM esclusi per sagoma e integrati sei nella beta.4, quindi erano 46. Con Miscast Magic nella beta.5
-restano **45**. Questi 45 **non sono esclusi per overlap con SR**. Sono documentati uno per
+erano **45**. Nella beta.6 i due candidati di area Web vengono esclusi
+su richiesta, insieme al suo BAM sul bersaglio già incluso: restano
+**43 candidati**, non esclusi per overlap SR. Sono documentati uno per
 uno, con root, percorso e motivo, in
 [iwd_pending_candidates.csv](iwd_pending_candidates.csv).
 
@@ -188,9 +221,9 @@ con indici non confermati restano segnalati come tali.
 
 ## Verifiche e limiti
 
-- PASS sui 46 SPL EET esportati, componente IWDEE indipendente e insieme a SR:
+- PASS sui 45 SPL EET esportati, componente IWDEE indipendente e insieme a SR:
   reinstallazione stabile, ripristino byte per byte dopo disinstallazione.
-- PASS: sei nuovi casi della coppia Chaos, 54 casi degli overlay,
+- PASS: sei nuovi casi della coppia Chaos, 44 casi degli overlay,
   28 regressioni generali e 12 casi delle
   sottospell, comprese root assenti, scollegate, troncate o riproposte come
   immunità anziché lancio.
@@ -198,7 +231,7 @@ con indici non confermati restano segnalati come tali.
   dei proiettili; tutti i BAM identici alle sorgenti e tutte le dipendenze
   VVC risolte. Fasi, coordinate e flag dei VVC IWDEE conservati dalle sorgenti.
 - PASS: SR originale, profili sintetici EET/BG2EE, nomi privati, RLE/cicli,
-  14 GIF e relativi hash, collegamenti locali dei README.
+  13 GIF e relativi hash, collegamenti locali dei README.
 
 Una risorsa dell'export EET, `CDDETECT.SPL`, ha una firma `ITM V1  `:
 segnalata nel CSV degli input, ma estranea al mod e non modificata.

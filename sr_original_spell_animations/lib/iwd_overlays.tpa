@@ -81,10 +81,3 @@ ACTION_IF FILE_EXISTS_IN_GAME ~SPWI602.spl~ BEGIN
       STR_VAR srio_default = ~MINORGLB~ srio_iwd = ~#GLOBINV~ srio_art = ~GOINVUC~ srio_new = ~sriogglb~ END
   BUT_ONLY_IF_IT_CHANGES
 END ELSE BEGIN PRINT ~IWD Spell Animations: SPWI602.spl missing, skipped.~ END
-
-ACTION_IF FILE_EXISTS_IN_GAME ~SPWI215.spl~ BEGIN
-  COPY_EXISTING ~SPWI215.spl~ ~override~
-    LPF srio_overlay INT_VAR srio_op = 157 srio_target = 2 srio_allow_vvc = 0
-      STR_VAR srio_default = ~WEBENTD~ srio_iwd = ~WEBC~ srio_art = ~WEBC~ srio_new = ~sriowebc~ END
-  BUT_ONLY_IF_IT_CHANGES
-END ELSE BEGIN PRINT ~IWD Spell Animations: SPWI215.spl missing, skipped.~ END
