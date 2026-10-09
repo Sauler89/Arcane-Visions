@@ -1,19 +1,5 @@
 [
   {
-    "source": "ADHWILH.BAM",
-    "destination": "sr_original_spell_animations/assets/iwd/sriowilt.bam",
-    "installed_sha256": "9769280b48b9b4c62a8216619134c3acec5523dccd881b6b88c251f9cb9aa3b6",
-    "source_sha256": "9769280b48b9b4c62a8216619134c3acec5523dccd881b6b88c251f9cb9aa3b6",
-    "synthesized_controller": false
-  },
-  {
-    "source": "ADHWILH.VVC",
-    "destination": "sr_original_spell_animations/assets/iwd/sriowilt.vvc",
-    "installed_sha256": "c1d3b9e988aba3e50dd57ca91b4ce9050ca86c8afa3210bafa8a61420bc41e25",
-    "source_sha256": "50bd9e8e88d1b1dea05e559c53abc8a6f665b1bfcfaa30229917ab599cd47c18",
-    "synthesized_controller": false
-  },
-  {
     "source": "BBARRH1.BAM",
     "destination": "sr_original_spell_animations/assets/iwd/srioblt.bam",
     "installed_sha256": "1fb418510caa7ada4bf6fb9efd3fbc6e3dc25f2b4c0fa2d25c39c713fea6c857",

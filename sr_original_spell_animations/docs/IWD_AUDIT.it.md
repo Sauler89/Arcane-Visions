@@ -1,3 +1,5 @@
+> Aggiornamento beta.7: Orrido avvizzimento (`SPWI812`) è escluso su richiesta.
+
 > Rapporto storico della prima selezione. La beta.4 corregge anche le
 > esclusioni per sagoma: [ricontrollo completo aggiornato](FULL_SOURCE_AUDIT.it.md).
 
@@ -50,7 +52,6 @@ a tutti i BAM di tutte le installazioni e di tutti i mod possibili.
 | Sfera del caos | `SPWI711` | `CONFUSH` |
 | Dito della morte (arcano) | `SPWI713` | `FODEATH` |
 | Parola del potere: stordimento | `SPWI715` | `PWSTUNH` |
-| Orrido avvizzimento di Abi-Dalzim | `SPWI812` | `ADHWILH` |
 | Soffio del drago | `SPWI922` | `SPDRGNBR` |
 
 I 15 BAM sono copiati senza modificare un byte; Dito della morte divino,

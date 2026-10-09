@@ -22,7 +22,6 @@ ROWS=[
 ('SPWI711','CONFUSH','conf',141,2,6,False),
 ('SPWI713','FODEATH','deth',141,2,39,False),
 ('SPWI715','PWSTUNH','pwst','SPPOWWRD',2,1,False),
-('SPWI812','ADHWILH','wilt',141,2,2,False),
 ('SPWI922','SPDRGNBR','drag','SPDRGNBR',1,2,False),
 ('SPWI224','GLDUSTA','dust','GLDUSTH',2,1,False),
 ('SPWI413A','ORSPHEC','osph','MINORGLB',2,1,True),

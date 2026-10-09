@@ -1,12 +1,12 @@
 # Arcane Visions — Spell Effect Animations
 
 **Animazioni degli effetti dopo il lancio delle spell originali di BG, per EET/BG2EE.**
-Versione **v0.2.0-beta.6**, di **Sauler89**. Spell Revisions e IWDification non servono.
+Versione **v0.2.0-beta.7**, di **Sauler89**. Spell Revisions e IWDification non servono.
 
 | Componente | Contenuto |
 |---|---|
 | **0 — SR** | 14 BAM e 12 VVC da SR; 16 SPL originali patchati, più sostituzioni di grafica nativa |
-| **10 — IWDEE** | 25 BAM e 25 VVC per 29 altre spell originali; duplicati grafici esclusi, varianti di colore distinte |
+| **10 — IWDEE** | 24 BAM e 24 VVC per 28 altre spell originali; duplicati grafici esclusi, varianti di colore distinte |
 
 Puoi installarli insieme o separatamente. Non si importano icone, nuove spell,
 meccaniche, proiettili, creature o armi. I dati non visivi delle spell restano
@@ -38,12 +38,15 @@ Linux/macOS usa WeiDU nativo. Disinstalla con lo stesso installer.
   le durate, condizioni e protezioni restano quelli della spell installata.
 - La beta.4 recupera Glitterdust, Sfera elastica di
   Otiluke, Resurrezione, Guarigione e Rallentare veleno. Corregge le esclusioni
-  basate sulla sola sagoma. Restano 43 candidati distinti ancora da integrare.
+  basate sulla sola sagoma. Restano 41 candidati distinti ancora da integrare.
 - La beta.5 aggiunge Miscast Magic (`MMAGICH`) e collega `CONFUSH`, già incluso,
   alle due Confusion e a Chaos. Per Chaos conserva entrambi i cue, con
   condizioni separate; durata e timing esistenti restano invariati.
 - Nella beta.6 Web è escluso su richiesta: rimossi overlay sul bersaglio,
   asset privati, patch e anteprima. Anche le varianti di area restano escluse.
+- Nella beta.7 è escluso anche Orrido avvizzimento di Abi-Dalzim (`SPWI812`):
+  conserva la grafica già installata in BG2EE/EET. Rimossi `ADHWILH` e il
+  controller privato; anche le fasi di area IWDEE restano escluse.
 - Il nuovo controllo per fase rileva due fasi di area Glitterdust non importate
   (diffusione e anello), benché il BAM sia già incluso per il bersaglio.
 - Non sono importati tutti i BAM IWDEE. Call Lightning richiede ancora i BAM
@@ -52,7 +55,7 @@ Linux/macOS usa WeiDU nativo. Disinstalla con lo stesso installer.
 
 ## Ricontrollo
 
-Verificati tutti i 39 BAM e 37 VVC. Passati i test WeiDU su 45 SPL EET reali (incluse due sottospell)
+Verificati tutti i 38 BAM e 36 VVC. Passati i test WeiDU su 44 SPL EET reali (incluse due sottospell)
 esportate: installazione, reinstallazione stabile e disinstallazione con
 ripristino byte per byte. Passati anche 28 casi aggiuntivi di regressione e
 i test dei layout SR e dei profili EET/BG2EE. Aggiunti e superati 44 test

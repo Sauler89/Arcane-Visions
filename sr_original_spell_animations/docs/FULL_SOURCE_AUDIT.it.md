@@ -1,4 +1,4 @@
-# Ricontrollo completo delle sorgenti — v0.2.0-beta.6
+# Ricontrollo completo delle sorgenti — v0.2.0-beta.7
 
 Ricontrollo del 9 ottobre 2026. Il controllo precedente aveva davvero omesso
 alcuni effetti IWDEE. La beta.4 ha corretto sei omissioni; la beta.5 ne corregge altre quattro
@@ -46,8 +46,8 @@ privati e audio rimosso. Le due sottospell vengono patchate solo se la spell
 principale le richiama ancora attraverso un opcode di lancio riconosciuto.
 Le spell principali restano byte-identiche.
 
-La beta.6 contiene **39 BAM, 37 VVC e 1.247 frame fisici**, con **45 SPL EET
-patchate** nei test: 16 SR e 29 IWDEE, incluse le due sottospell.
+La beta.7 contiene **38 BAM, 36 VVC e 1.215 frame fisici**, con **44 SPL EET
+patchate** nei test: 16 SR e 28 IWDEE, incluse le due sottospell.
 
 ## Ulteriore controllo: quattro binding recuperati nella beta.5
 
@@ -119,6 +119,20 @@ La selezione è conservata in [iwd_user_exclusions.json](iwd_user_exclusions.jso
 I test verificano che `SPWI215.SPL` resti byte-identica e che non vengano
 installate risorse private Web, sia col componente IWDEE da solo sia insieme a SR.
 
+## Esclusione richiesta nella beta.7: Orrido avvizzimento
+
+`SPWI812` conserva l'animazione già installata in BG2EE/EET. Rimossi
+`sriowilt.bam`, `sriowilt.vvc`, la patch della spell e i riferimenti
+nell'installer e nella tabella delle spell modificate. Le tre risorse
+IWDEE `ADHWILH`, `ADHWILA` e `ADHWILX` sono classificate come esclusioni
+richieste dal proprietario: anche le fasi di area escono dai candidati.
+Non si tratta di overlap SR o di omissioni da recuperare.
+
+I test sul vero export verificano `SPWI812.SPL` e `SPWI215.SPL`
+byte-identiche prima/dopo l'installazione, sia col componente IWDEE da
+solo, sia insieme a SR. Nessuna risorsa privata delle due spell viene
+installata. Le altre animazioni selezionate restano incluse.
+
 ## Errori del filtro e del codice
 
 - **Una sagoma comune non prova una grafica duplicata.** Il vecchio filtro
@@ -144,19 +158,21 @@ installate risorse private Web, sia col componente IWDEE da solo sia insieme a S
 
 | Esito | BAM |
 |---|---:|
-| Inclusi | 25 |
+| Inclusi | 24 |
 | File o grafica completa già presenti in EET | 163 |
 | Tutti i cicli visibili con la stessa grafica, senza richiedere gli stessi ancoraggi | 1 |
 | Spell già coperta da SR, variante IWDEE non selezionata | 5 |
 | Nessuna corrispondenza dopo il lancio con una spell BG originale tracciata | 6 |
-| Esclusi su richiesta: Web, area e bersaglio | 3 |
-| Candidati distinti ancora da integrare | 43 |
+| Esclusi su richiesta: Web e Orrido avvizzimento, area e bersaglio | 6 |
+| Candidati distinti ancora da integrare | 41 |
 
 Il precedente conteggio di 42 candidati non era definitivo: vengono
 riammessi dieci BAM esclusi per sagoma e integrati sei nella beta.4, quindi erano 46. Con Miscast Magic nella beta.5
 erano **45**. Nella beta.6 i due candidati di area Web vengono esclusi
 su richiesta, insieme al suo BAM sul bersaglio già incluso: restano
-**43 candidati**, non esclusi per overlap SR. Sono documentati uno per
+**43 candidati**. Nella beta.7 vengono esclusi anche i due candidati di area
+di Orrido avvizzimento, insieme al suo BAM sul bersaglio già incluso:
+restano **41 candidati**, non esclusi per overlap SR. Sono documentati uno per
 uno, con root, percorso e motivo, in
 [iwd_pending_candidates.csv](iwd_pending_candidates.csv).
 
@@ -221,7 +237,7 @@ con indici non confermati restano segnalati come tali.
 
 ## Verifiche e limiti
 
-- PASS sui 45 SPL EET esportati, componente IWDEE indipendente e insieme a SR:
+- PASS sui 44 SPL EET esportati, componente IWDEE indipendente e insieme a SR:
   reinstallazione stabile, ripristino byte per byte dopo disinstallazione.
 - PASS: sei nuovi casi della coppia Chaos, 44 casi degli overlay,
   28 regressioni generali e 12 casi delle

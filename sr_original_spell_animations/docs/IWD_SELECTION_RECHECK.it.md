@@ -1,4 +1,4 @@
-# Ricontrollo delle esclusioni IWDEE — aggiornamento beta.6
+# Ricontrollo delle esclusioni IWDEE — aggiornamento beta.7
 
 Il pacchetto precedente **non importava tutti gli effetti distinti IWDEE**.
 I 15 BAM erano una selezione di cue diretti riconosciuti nelle spell EET.
@@ -68,13 +68,13 @@ La beta.4 aggiunge anche `GLDUSTA`, `ORSPHEC`, `RESURRH`, `HEALH` e
 ricolorate. [Rapporto completo](FULL_SOURCE_AUDIT.it.md).
 
 La tabella beta.3 di esclusioni è stata sostituita: la sola sagoma non prova
-un duplicato. Su 246 BAM: 25 inclusi, 163 corrispondenze grafiche complete EET,
+un duplicato. Su 246 BAM: 24 inclusi, 163 corrispondenze grafiche complete EET,
 1 corrispondenza di tutti i cicli visibili, 5 spell già coperte da SR,
-6 senza root originale tracciata, 3 esclusi su richiesta e **43 candidati ancora da integrare**.
-Questi 43 non sono esclusi per overlap SR. [Tutte le decisioni](iwd_selection_recheck.csv),
+6 senza root originale tracciata, 6 esclusi su richiesta e **41 candidati ancora da integrare**.
+Questi 41 non sono esclusi per overlap SR. [Tutte le decisioni](iwd_selection_recheck.csv),
 [candidati e motivi](iwd_pending_candidates.csv), [tutti i BAM SR](sr_source_selection.csv).
 
-PASS: 45 SPL EET reali, 44 casi overlay, 28 regressioni e 12 casi sottospell.
+PASS: 44 SPL EET reali, 44 casi overlay, 28 regressioni e 12 casi sottospell.
 Nessun test visivo dentro una partita. Vedere il rapporto completo per le
 richieste mirate di file e i limiti dei riferimenti PRO dichiarati.
 
@@ -101,3 +101,11 @@ Il ricontrollo rileva due campi di area `GLDUSTA` in IWDEE `GLDUST.PRO`
 (diffusione e anello). Il cue sul bersaglio è incluso; quelle fasi non
 lo sono. EET usa invece `SPARGONP.PRO`, condiviso e con campi grafici diversi.
 Non è emerso un altro BAM SR attivo da aggiungere alle spell tracciate.
+
+## Esclusione richiesta nella beta.7
+
+Orrido avvizzimento di Abi-Dalzim (`SPWI812`) mantiene la grafica installata
+in BG2EE/EET. Rimossi il cue privato `sriowilt`, il relativo BAM/VVC e la
+patch. `ADHWILH`, `ADHWILA` e `ADHWILX` sono esclusioni del proprietario,
+non omissioni. I test verificano che la SPL resti byte-identica sia col
+componente IWDEE da solo, sia insieme al componente SR.

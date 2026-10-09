@@ -40,6 +40,7 @@ try:
  def check_iwd():
   for s,data in excluded_originals.items():assert resource(s+'.spl').read_bytes()==data,s+' was excluded but modified'
   assert not any(name.startswith('srioweb') for name in snap()),'removed Web resources were installed'
+  assert not any(name.startswith('sriowilt') for name in snap()),'removed Horrid Wilting resources were installed'
   report=[]
   for spell in originals:
    old=originals[spell];new=resource(spell+'.spl').read_bytes();assert len(old)==len(new);assert new!=old,spell

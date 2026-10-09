@@ -204,13 +204,6 @@ ACTION_IF FILE_EXISTS_IN_GAME ~SPWI715.spl~ BEGIN
   BUT_ONLY_IF_IT_CHANGES
 END ELSE BEGIN PRINT ~IWD Spell Animations: SPWI715.spl missing, skipped.~ END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~SPWI812.spl~ BEGIN
-  COPY_EXISTING ~SPWI812.spl~ ~override~
-    LPF srio_replace INT_VAR srio_op = 141 srio_p2 = 2 srio_target = 2 srio_loop = 0 srio_expected = 1
-      STR_VAR srio_old = ~~ srio_new = ~sriowilt~ END
-  BUT_ONLY_IF_IT_CHANGES
-END ELSE BEGIN PRINT ~IWD Spell Animations: SPWI812.spl missing, skipped.~ END
-
 ACTION_IF FILE_EXISTS_IN_GAME ~SPWI922.spl~ BEGIN
   COPY_EXISTING ~SPWI922.spl~ ~override~
     LPF srio_replace INT_VAR srio_op = 215 srio_p2 = 2 srio_target = 1 srio_loop = 0 srio_expected = 1

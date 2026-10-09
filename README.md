@@ -7,7 +7,7 @@ Spell Revisions or Icewind Dale: Enhanced Edition. It replaces the artwork
 shown after a spell is cast, while retaining the installed spell's mechanics.
 **Spell Revisions and IWDification are not required.**
 
-Current version: **v0.2.0-beta.6**, by **Sauler89**.
+Current version: **v0.2.0-beta.7**, by **Sauler89**.
 [Italian instructions](README.it.md) · [Affected spells](#affected-spells) ·
 [Audit and validation](sr_original_spell_animations/docs/RIGOROUS_AUDIT.md)
 
@@ -51,11 +51,11 @@ because they are icons. `SPMAGGLO` is a separate shared protection overlay.
 | Component | Content | Assets |
 |---|---|---|
 | **0** | SR effect animations for selected original spells | 14 BAMs, 12 VVCs |
-| **10** | Distinct IWDEE effects for 29 other original spells | 25 BAMs, 25 VVCs |
+| **10** | Distinct IWDEE effects for 28 other original spells | 24 BAMs, 24 VVCs |
 
 Components can be installed independently or together. Their targeted spell
-lists are disjoint. The complete package contains **39 animation BAMs and
-37 visual-controller VVCs**, and patches **45 SPL files (including two child spells)** in the
+lists are disjoint. The complete package contains **38 animation BAMs and
+36 visual-controller VVCs**, and patches **44 SPL files (including two child spells)** in the
 supplied EET baseline. Additional spells use the replaced native graphics.
 
 No spellbook/action-bar/portrait icons, new spells, revised spell descriptions,
@@ -137,7 +137,6 @@ resource names; other consumers of those BAMs receive the replacement art.
 | Sphere of Chaos | `SPWI711` | `CONFUSH` |
 | Finger of Death | `SPWI713` | `FODEATH` |
 | Power Word Stun | `SPWI715` | `PWSTUNH` |
-| Abi-Dalzim's Horrid Wilting | `SPWI812` | `ADHWILH` |
 | Dragon's Breath | `SPWI922` | `SPDRGNBR` |
 | Sanctuary | `SPPR109` | `SANCTRY` |
 | Protection from Normal Missiles / Arrows | `SPWI311` | `PFNMISC` |
@@ -192,7 +191,7 @@ The complete source review compares **246 IWDEE BAMs, 386 exported EET BAMs,
 and all 224 BAMs in the SR archive**. Only exact graphics and all-visible-cycle
 art matches are duplicate evidence; partial matches and shared/recolored shapes
 are diagnostics. Heal and Slow Poison are retained despite shared EET shapes.
-All 25 imported IWD BAMs have no full-art match to the selected original-spell
+All 24 imported IWD BAMs have no full-art match to the selected original-spell
 SR artwork. The comparison concerns the supplied exports, not every modlist.
 
 **This is a selected import, not all IWDEE BAMs.** Beta.4 adds Glitterdust,
@@ -204,7 +203,7 @@ timing/duration remains unchanged for these three CONFUSH bindings. The source
 controller is non-looping. Child spells are patched only
 when the original root still calls them. The root bytes are unchanged.
 The full archive review found no additional demonstrated active original-spell
-SR artwork to add. **43 distinct IWD candidates remain unintegrated**, including
+SR artwork to add. **41 distinct IWD candidates remain unintegrated**, including
 projectile/area/conditional phases; they are not labeled SR duplicates.
 Included BAMs are also checked for uncovered spell bindings: the extra delayed
 HEALH phase in IWD Regeneration has no matching direct cue in this EET baseline
@@ -217,7 +216,10 @@ included artwork, not two new BAMs.
 **Web is excluded at the owner's request in beta.6**, including area and target
 artwork. No Web SPL or PRO is patched and no private Web asset is shipped.
 WEBA/WEBC/WEBX are classified as user exclusions in the source inventory,
-separately from the 43 pending candidates.
+separately from the 41 pending candidates.
+**Abi-Dalzim's Horrid Wilting is also excluded in beta.7**: SPWI812 retains
+its installed BG2EE/EET visual cue. ADHWILH and its private controller are
+removed; ADHWILA/ADHWILX area phases are excluded from future candidates too.
 Call Lightning still needs IWDEE/EET SKYBOLT BAMs. Slay Living and Sol's Searing
 Orb need the installed EET temporary weapons before their hit art can be bound.
 See [the full source review](sr_original_spell_animations/docs/FULL_SOURCE_AUDIT.it.md),
@@ -228,7 +230,7 @@ and [every pending candidate](sr_original_spell_animations/docs/iwd_pending_cand
 ## Validation and beta status
 
 WeiDU installation, reinstallation and byte-exact uninstallation passed in
-isolated fixtures, including the **45 real exported EET SPL files**. Assets were
+isolated fixtures, including the **44 real exported EET SPL files**. Assets were
 checked for hashes, frame bounds/RLE data, cycle references, VVC dependencies,
 phase indexes, private names and absence of external palettes/alpha BAMs/audio.
 

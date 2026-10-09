@@ -4,5 +4,11 @@
     "name": "Web",
     "bam_resources": ["WEBA.BAM", "WEBC.BAM", "WEBX.BAM"],
     "reason": "Excluded at the owner's request on 2026-10-09: area and target animations are outside the current selection."
+  },
+  {
+    "spell": "SPWI812",
+    "name": "Abi-Dalzim's Horrid Wilting",
+    "bam_resources": ["ADHWILH.BAM", "ADHWILA.BAM", "ADHWILX.BAM"],
+    "reason": "Excluded at the owner's request on 2026-10-09: keep the existing BG2EE/EET animation, including target and area phases."
   }
 ]
