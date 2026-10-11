@@ -3,9 +3,9 @@
   "component": 10,
   "spells": 28,
   "persistent_overlay_spells": 4,
-  "bam_assets": 26,
+  "bam_assets": 28,
   "vvc_assets": 26,
-  "frames_validated": 992,
+  "frames_validated": 1105,
   "spell_checks": [
     {
       "spell": "SPPR308",
@@ -193,6 +193,12 @@
     "delayed-second",
     "wrong-second-target"
   ],
+  "projectile_checks": {
+    "SORB_private_clone_mechanics_preserved": true,
+    "SKYBOLT_shared_art_only": true,
+    "SPPR302_bytes_preserved": true,
+    "original_PROs_preserved": true
+  },
   "temporary_weapon_checks": [
     "SLAYLIVE",
     "SORB"

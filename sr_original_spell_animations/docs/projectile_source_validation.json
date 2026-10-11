@@ -1,0 +1,99 @@
+{
+  "version": "v0.2.0-beta.9",
+  "CALLLIH": {
+    "name": "CALLLIH.BAM",
+    "bytes": 389014,
+    "sha256": "3c2f26c8eaa99779b4aa0fac6d41e11b212e190cc64f42d7bd15c9816db92474",
+    "raw_sha256": "385801c2959c1d46c50968c0d7f1586f9c440ddf828958a98f2a22493af94a9b",
+    "frames": 23,
+    "cycles": 1,
+    "max_width": 142,
+    "max_height": 478,
+    "render_sha256": "161acf059ee9b65cdab50a412a032176efdee89ba085fb2db5019c20628887c7",
+    "cycle_data": [
+      {
+        "index": 0,
+        "frames": 23,
+        "hash": "98fd54d0c1821c986c40e3826be647f093ddfb2db3033ada86c2aedf81089e8b",
+        "art_hash": "b86098535131abc9612f76509e775bac97741151c7be41bb68325a544188bbff",
+        "shape_hash": "a94384ba8db39c698ad88f6f61779e3f44ce5e6313d43426b9fad86901f0bd27",
+        "emissive_hash": "b86098535131abc9612f76509e775bac97741151c7be41bb68325a544188bbff",
+        "visible": true
+      }
+    ],
+    "visible": true
+  },
+  "SPFIRSED": {
+    "name": "SPFIRSED.BAM",
+    "bytes": 17809,
+    "sha256": "ac7873cc665f02412e3362937ca534d35bb848077b75661d0cdd88188a3cd661",
+    "raw_sha256": "8ff5cbcd6a33262e0d9882d454bcc2321d378f4f33d64066fe4be8f56212ffb2",
+    "frames": 50,
+    "cycles": 5,
+    "max_width": 38,
+    "max_height": 30,
+    "render_sha256": "b442f752be43741e39faef149e92ab62a35dafd9c1dfdb85d64342b51c1f046f",
+    "cycle_data": [
+      {
+        "index": 0,
+        "frames": 11,
+        "hash": "fd6e07f9716cdcf2e4ebb7022402bf3471cbc66b86d769112edab318631bac5d",
+        "art_hash": "854a32e36f76f8dac0b875300174976472d3d831ad4202ab94bcd302ab5af1e5",
+        "shape_hash": "c19d5a52e2c900c524cc6416e0f10f28a08194f6c05ddc0a193da169ddcc4e47",
+        "emissive_hash": "854a32e36f76f8dac0b875300174976472d3d831ad4202ab94bcd302ab5af1e5",
+        "visible": true
+      },
+      {
+        "index": 1,
+        "frames": 11,
+        "hash": "fd0089353905e71e2d7b28b2b86f9990ea432c9de54c21980b0eb543095d47c7",
+        "art_hash": "a2019130b3664f83670b7e3919bca736cb9793e9b99bb8457f6513db8645effb",
+        "shape_hash": "8373c5fb9a4bc338bd2a8c7d89c0ce07e67a72a77d383c8c01b2d9d50329932c",
+        "emissive_hash": "a2019130b3664f83670b7e3919bca736cb9793e9b99bb8457f6513db8645effb",
+        "visible": true
+      },
+      {
+        "index": 2,
+        "frames": 11,
+        "hash": "581f5fe2e59717ce3f69fc8d1f45db095fe1cab07421b837f3921c6841562951",
+        "art_hash": "f8c2b6c0cc57880736dd3035258a4121feab3ba0d2ac9d0a62a75f10a7f7fdbd",
+        "shape_hash": "69fa21094e43186b9ccfb8796c5f989df04acabae003f16b0e757b4b8a07c430",
+        "emissive_hash": "d15e85d7ca4eff7f2f0a345ad8142d8ff16f3b10bc3a9657a7c1ea829012c433",
+        "visible": true
+      },
+      {
+        "index": 3,
+        "frames": 11,
+        "hash": "6d60347afcafd99a862acf7eaca2dd28f7573d982b0d0bb69dab192da2d41571",
+        "art_hash": "2a809e5a316f4a63333b12bd99090903aefc1d786b84e0ef690031b885ccfd93",
+        "shape_hash": "7704926eabc715a9a015267184f0777f10e5ace5db4975d04a84f50bd384fca3",
+        "emissive_hash": "2a809e5a316f4a63333b12bd99090903aefc1d786b84e0ef690031b885ccfd93",
+        "visible": true
+      },
+      {
+        "index": 4,
+        "frames": 6,
+        "hash": "efaab58e363cb8ebe184a8fbbe4ef17ab00ac261ce2f12c37b237e247f183347",
+        "art_hash": "9c839c1ee7da7d85d6bc55639b49a29162cb1a4dc35f43829469c211e755c79a",
+        "shape_hash": "9f0a9d0deb0fae61dd97ea944afea244d29ce515b51045588761bf5f84a97d55",
+        "emissive_hash": "d9c2bb6d5e526d19882a899c73c7487041fe97c8db912768e435477d46faa2b5",
+        "visible": true
+      }
+    ],
+    "visible": true
+  },
+  "CALLLIH_equals_previously_supplied_IWDEE_SKYBOLT": true,
+  "source_alias_shipped_once": true,
+  "Call_Lightning_native_destination": "SKYBOLT.BAM",
+  "Call_Lightning_chain_runtime_tested": false,
+  "Sol_travel_source": "SSORBT.BAM",
+  "Sol_travel_installed_clone": "SRIOSORB.PRO",
+  "source_PRO_imported": false,
+  "clone_graphic_offsets_modified": [
+    256,
+    260,
+    307
+  ],
+  "source_PRO_gameplay_and_audio_bytes_preserved": true,
+  "game_rendering_tested": false
+}

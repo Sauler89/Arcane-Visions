@@ -167,8 +167,9 @@ for a in decoded['IWDEE']:
   if any(x['visible'] and y['visible'] and x['shape_hash']==y['shape_hash'] for x in a['cycle_data'] for y in s['cycle_data']):shape.append(s['name'])
  bg=iw_roots[a['name']]
  # Document an engine inference, not a fabricated raw-resource graph edge.
- if a['name']=='SKYBOLT.BAM':bg.add('SPPR302')
- status='excluded_by_user' if a['name'] in excluded_art else 'included' if a['name'] in included_iw else 'EET_exact_graphic_match' if full else 'EET_all_visible_cycle_art_match' if art else 'no_original_BG_spell_mapping' if not bg else 'SR_spell_overlap' if bg<=sr_root_set else 'distinct_candidate_not_integrated'
+ if a['name'] in ('SKYBOLT.BAM','CALLLIH.BAM'):bg.add('SPPR302')
+ selected_alias=any(a['sha256']==x['installed_sha256'] for x in iwmanifest if x['destination'].endswith('.bam'))
+ status='excluded_by_user' if a['name'] in excluded_art else 'included' if a['name'] in included_iw else 'included_art_alias' if selected_alias else 'EET_exact_graphic_match' if full else 'EET_all_visible_cycle_art_match' if art else 'no_original_BG_spell_mapping' if not bg else 'SR_spell_overlap' if bg<=sr_root_set else 'distinct_candidate_not_integrated'
  sr_full=[];sr_art=[];sr_selected=[]
  for s in decoded['SR']:
   complete=a['raw_sha256']==s['raw_sha256'] or (a['visible'] and a['render_sha256']==s['render_sha256'])
@@ -205,6 +206,7 @@ parents=json.loads((DOC/'iwd_child_mapping.json').read_text());bindings=defaultd
 for r in json.loads((DOC/'iwd_spell_mapping.json').read_text()):bindings[r[1]+'.BAM'].add(parents.get(r[0],r[0]))
 for r in json.loads((DOC/'iwd_overlay_mapping.json').read_text()):bindings[r['art']+'.BAM'].add(r['spell'])
 for root,item,art,code,old,p2 in json.loads((DOC/'iwd_item_mapping.json').read_text()):bindings[art+'.BAM'].add(root)
+bindings['SSORBT.BAM'].add('SPPR614');bindings['CALLLIH.BAM'].add('SPPR302')
 unbound=[]
 for a in decisions:
  if a['status']!='included':continue
@@ -220,7 +222,7 @@ for r in roots:
  for parent in sorted(reached):
   if not parent.endswith('.PRO'):continue
   for child,why in sorted(gi.edges.get(parent,[])):
-   if child not in included_iw:continue
+   if child not in included_iw or (child=='SSORBT.BAM' and r['bg_spell']=='SPPR614'):continue
    unbound.append(dict(bam=child,bg_spell=r['bg_spell'],scope='unbound PRO phase',path=reached[parent]+' -> '+child+' ('+why+')',reason='Artwork included for a target cue, but this declared projectile phase is not patched; installed EET binding differs'))
 csvwrite('iwd_unbound_included_art.csv',unbound,['bam','bg_spell','scope','path','reason'])
 active_text='\n'.join(p.read_text(errors='replace') for p in SR.rglob('*') if p.suffix.lower() in ('.tpa','.tp2','.tph'))
@@ -268,6 +270,6 @@ for root in sorted({r['bg_spell'] for r in roots}):
  for n,path in ge.walk(root+'.SPL').items():
   if n.removesuffix('@SUB') not in eetfiles:eet_missing.append(dict(bg_spell=root,asset=n,path=path))
 csvwrite('missing_EET_dependencies.csv',eet_missing,['bg_spell','asset','path'])
-summary=dict(version='v0.2.0-beta.8',inputs={k:len(v) for k,v in decoded.items()},physical_frames={k:sum(x['frames'] for x in v) for k,v in decoded.items()},IWDEE_statuses=dict(Counter(r['status'] for r in decisions)),SR_statuses=dict(Counter(r['status'] for r in sr_rows)),SR_unclassified=[r for r in sr_rows if r['status']=='needs_review'],missing_IWDEE_asset_names=sorted({r['asset'] for r in missing}),included_IWD_SR_matches=[r for r in decisions if r['status']=='included' and r['SR_matches_selected_original_spell_art']],shape_is_not_duplicate_evidence=True,partial_cycle_is_not_full_duplicate_evidence=True,graph_PRO_activation_is_not_assumed=True,complete_IWDEE_import=False,game_rendering_tested=False)
+summary=dict(version='v0.2.0-beta.9',inputs={k:len(v) for k,v in decoded.items()},physical_frames={k:sum(x['frames'] for x in v) for k,v in decoded.items()},IWDEE_statuses=dict(Counter(r['status'] for r in decisions)),SR_statuses=dict(Counter(r['status'] for r in sr_rows)),SR_unclassified=[r for r in sr_rows if r['status']=='needs_review'],missing_IWDEE_asset_names=sorted({r['asset'] for r in missing}),included_IWD_SR_matches=[r for r in decisions if r['status']=='included' and r['SR_matches_selected_original_spell_art']],shape_is_not_duplicate_evidence=True,partial_cycle_is_not_full_duplicate_evidence=True,graph_PRO_activation_is_not_assumed=True,complete_IWDEE_import=False,game_rendering_tested=False,hardcoded_Call_Lightning_binding_is_engine_inference=True,shipped_IWD_BAM_count=len(included_iw))
 (OUT/'source_coverage_summary.json').write_text(json.dumps(summary,indent=2)+'\n')
 print(json.dumps(summary,indent=2))

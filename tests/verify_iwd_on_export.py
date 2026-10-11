@@ -38,17 +38,31 @@ try:
  originals={s:resource(s+'.spl').read_bytes() for s in dict.fromkeys([r[0] for r in ROWS]+list(OVERLAY_BY))};before=snap();tlk=(game/'dialog.tlk').read_bytes()
  item_originals={r[1]:resource(r[1]+'.itm').read_bytes() for r in ITEMS}
  item_roots={r[0]:resource(r[0]+'.spl').read_bytes() for r in ITEMS}
+ lightning_original=resource('sppr302.spl').read_bytes();sky_pro=resource('skybolt.pro').read_bytes();orb_pro=resource('pfire3.pro').read_bytes()
  exclusions=json.loads((MOD/'docs/iwd_user_exclusions.json').read_text())
  excluded_originals={r['spell']:resource(r['spell']+'.spl').read_bytes() for r in exclusions}
  def check_iwd():
+  assert resource('sppr302.spl').read_bytes()==lightning_original
+  assert resource('skybolt.pro').read_bytes()==sky_pro and resource('pfire3.pro').read_bytes()==orb_pro
+  assert resource('skybolt.bam').read_bytes()==(MOD/'assets/iwd_native/skybolt.bam').read_bytes()
   for s,data in excluded_originals.items():assert resource(s+'.spl').read_bytes()==data,s+' was excluded but modified'
   assert not any(name.startswith('srioweb') for name in snap()),'removed Web resources were installed'
   assert not any(name.startswith('sriowilt') for name in snap()),'removed Horrid Wilting resources were installed'
   for root,data in item_roots.items():assert resource(root+'.spl').read_bytes()==data,'temporary-weapon root modified'
   for root,item,art,code,old,p2 in ITEMS:
    a=item_originals[item];b=resource(item+'.itm').read_bytes();assert len(a)==len(b) and a!=b
-   ao,n,eo=struct.unpack_from('<IHI',a,100);assert a[:eo]==b[:eo],item+' header/icon/projectile change'
+   ao,n,eo=struct.unpack_from('<IHI',a,100)
+   if item!='SORB':assert a[:eo]==b[:eo],item+' header/icon/projectile change'
    allowed=set();hits=0
+   if item=='SORB':
+    allowed.update(range(ao+42,ao+44))
+    pf=resource('pfire3.pro').read_bytes();clone=resource('sriosorb.pro').read_bytes();expected=bytearray(pf)
+    struct.pack_into('<I',expected,256,0x280);expected[260:268]=b'srioorbt';expected[307]=9
+    assert clone==expected,'installed projectile mechanics/audio changed'
+    number=struct.unpack_from('<H',b,ao+42)[0];assert number!=struct.unpack_from('<H',a,ao+42)[0]
+    assert str(number-1)+' sriosorb' in resource('projectl.ids').read_text().lower()
+    # Only the projectile reference in the otherwise preserved header changes.
+    assert a[:ao+42]==b[:ao+42] and a[ao+44:eo]==b[ao+44:eo]
    for i in range(n):
     cnt,idx=struct.unpack_from('<HH',a,ao+i*56+30)
     for j in range(cnt):
@@ -86,12 +100,12 @@ try:
    report.append(dict(spell=spell,abilities=n,visual_effects_replaced=count,all_mechanics_and_conditions_preserved=True))
   return report
  run(['--force-install-list','10'],'IWD_install');report=check_iwd();installed=snap()
- assert {x for x in before if before[x]!=installed[x]}=={x.lower()+'.spl' for x in originals}|{r[1].lower()+'.itm' for r in ITEMS}
+ assert {x for x in before if before[x]!=installed[x]}=={x.lower()+'.spl' for x in originals}|{r[1].lower()+'.itm' for r in ITEMS}|{'projectl.ids','missile.ids','skybolt.bam'}
  run(['--force-install-list','10'],'IWD_reinstall');assert snap()==installed
  run(['--force-uninstall-list','10'],'IWD_uninstall');assert snap()==before
  run(['--force-install-list','0','10'],'SR_IWD_install');check_iwd()
  for spell,*_ in CORE['spells']:assert_preserved((SOURCE/(spell+'.SPL')).read_bytes(),resource(spell+'.spl').read_bytes(),spell)
- both=snap();allowed={x.lower()+'.spl' for x in originals}|{r[0].lower()+'.spl' for r in CORE['spells']}|{r[1].lower()+'.itm' for r in ITEMS}|{'spentaai.bam','spentaci.bam','spchrorb.bam','spmagglo.bam','spmagglo.vvc'}
+ both=snap();allowed={x.lower()+'.spl' for x in originals}|{r[0].lower()+'.spl' for r in CORE['spells']}|{r[1].lower()+'.itm' for r in ITEMS}|{'projectl.ids','missile.ids','skybolt.bam','spentaai.bam','spentaci.bam','spchrorb.bam','spmagglo.bam','spmagglo.vvc'}
  assert {x for x in before if before[x]!=both[x]}<=allowed
  run(['--force-install-list','0','10'],'SR_IWD_reinstall');assert snap()==both
  run(['--force-uninstall-list','10','0'],'SR_IWD_uninstall');assert snap()==before
@@ -130,10 +144,11 @@ try:
   run(['--force-uninstall-list','10'],'IWD_chaos_'+label+'_uninstall');assert snap()==snapshot
   p.write_bytes(chaos);assert snap()==before;repeated_cases.append(label)
  assert (game/'dialog.tlk').read_bytes()==tlk
- result=dict(status='PASS',component=10,spells=len(originals),persistent_overlay_spells=len(OVERLAYS),bam_assets=len(manifest)//2,vvc_assets=len(manifest)//2,frames_validated=frames,spell_checks=report,standalone_install=True,combined_with_SR=True,reinstall_stable=True,uninstall_byte_exact=True,unknown_visual_skipped=True,icons_projectiles_globals_nonvisual_effects_and_conditions_preserved=True,game_rendering_tested=False,baseline='owner-supplied modded EET exports; isolated fixture with synthetic KEY/TLK',excluded_framework_cache='ADD_SPELL.IDS')
+ result=dict(status='PASS',component=10,spells=len(originals),persistent_overlay_spells=len(OVERLAYS),bam_assets=sum(a['destination'].endswith('.bam') for a in manifest),vvc_assets=sum(a['destination'].endswith('.vvc') for a in manifest),frames_validated=frames,spell_checks=report,standalone_install=True,combined_with_SR=True,reinstall_stable=True,uninstall_byte_exact=True,unknown_visual_skipped=True,icons_projectiles_globals_nonvisual_effects_and_conditions_preserved=True,game_rendering_tested=False,baseline='owner-supplied modded EET exports; isolated fixture with synthetic KEY/TLK',excluded_framework_cache='ADD_SPELL.IDS')
  result['repeated_visual_cases']=repeated_cases
+ result['projectile_checks']={'SORB_private_clone_mechanics_preserved':True,'SKYBOLT_shared_art_only':True,'SPPR302_bytes_preserved':True,'original_PROs_preserved':True}
  result['temporary_weapon_checks']=[r[1] for r in ITEMS]
  result['temporary_weapon_roots_unchanged']=True
  result['excluded_spell_checks']=list(excluded_originals)
- (OUT/'IWD_validation.json').write_text(json.dumps(result,indent=2)+'\n');print('PASS:',len(originals),'real EET spells;',len(manifest)//2,'BAM/VVC pairs; standalone/combined install, stable reinstall, full uninstall, unknown-visual guard. No game rendering test.')
+ (OUT/'IWD_validation.json').write_text(json.dumps(result,indent=2)+'\n');print('PASS:',len(originals),'real EET spells;',sum(a['destination'].endswith('.bam') for a in manifest),'BAMs;',sum(a['destination'].endswith('.vvc') for a in manifest),'VVCs; standalone/combined install, stable reinstall, full uninstall, unknown-visual guard. No game rendering test.')
 finally:shutil.rmtree(game)

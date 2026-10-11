@@ -1,7 +1,12 @@
-# Rigorous audit — Arcane Visions v0.2.0-beta.8
+> Aggiornamento beta.9: [Sol’s Searing Orb e Call Lightning sono ora inclusi](PROJECTILE_IMPORT.it.md).
+> 42 BAM, 38 VVC, 1.429 frame; 249 BAM IWDEE, 388 EET e 224 SR confrontati.
+> Restano 38 candidati distinti; SKYBOLT IWDEE è un alias di CALLLIH, incluso una sola volta.
+> Le sezioni storiche beta.8 riportano i limiti precedenti, superati dal rapporto linkato.
 
-Reviewed on 2026-10-09 (Europe/Rome). Scope: all 78 graphics/controller assets,
-both installer components, all 859 source/comparison BAMs, source provenance, live exports, effect conditions,
+# Rigorous audit — Arcane Visions v0.2.0-beta.9
+
+Reviewed on 2026-10-09 (Europe/Rome). Scope: all 80 graphics/controller assets,
+both installer components, all 861 source/comparison BAMs, source provenance, live exports, effect conditions,
 resource-name collisions, previews, documentation and install/uninstall behavior.
 
 ## Findings and corrections
@@ -62,7 +67,7 @@ omissions. Five BAMs recovered through cue, child and shape selection
 remain included; the sixth, Web, was removed in beta.6 at the owner's request.
 
 [Full source review and exclusions](FULL_SOURCE_AUDIT.it.md) inventories every
-SR source BAM, all original-spell dependencies and 40 remaining IWD candidates.
+SR source BAM, all original-spell dependencies and 38 remaining IWD candidates.
 No additional demonstrated active original-spell SR artwork was found.
 
 ## Persistent overlay and selection review
@@ -74,26 +79,27 @@ byte of the effect are preserved. A preexisting recognized major-globe
 opcode 215 stays opcode 215. No MINORGLB global replacement is used.
 
 [Detailed review and all exclusions](IWD_SELECTION_RECHECK.it.md). The
-complete 248-BAM classification distinguishes duplication, SR spell overlap
-and distinct unintegrated candidates. New SKYBOLT exports are distinct, but hardcoded routing/timing remains
-unverified at runtime. SPCALLLI is identical in both games and has no
-traced SPPR302 binding. See [new export review](NEW_EXPORT_REVIEW.it.md).
+complete 249-BAM classification distinguishes duplication, SR spell overlap
+and distinct unintegrated candidates. Beta.9 includes CALLLIH (identical to
+IWDEE SKYBOLT) as shared native SKYBOLT art. Hardcoded chain rendering remains
+unverified at runtime. SPCALLLI is identical in both games and remains
+excluded. See [projectile import review](PROJECTILE_IMPORT.it.md).
 
 ## Asset checks
 
-- All **40 BAMs** are byte-identical to the supplied source artwork.
-- **1,316 total BAM frames** validated.
+- All **42 BAMs** are byte-identical to the supplied source artwork.
+- **1,429 total BAM frames** validated.
 - All frames, cycle lookups, offsets, dimensions and RLE data validated.
 - All **38 VVCs** have valid signatures, resolved BAM dependencies and valid
   one-based phase references (zero/default and -1 omissions handled).
 - No controller depends on an external bitmap palette, alpha BAM or audio file.
 - Source/installed hashes retained in both manifests. Private resource names
   are at most eight characters and unique case-insensitively.
-- All 26 imported IWD BAMs have no full artwork match to the selected original-spell
-  SR BAMs. Source comparison covers all 224 SR BAMs, 248 IWD BAMs and 387 EET BAMs.
+- All 28 imported IWD BAMs have no full artwork match to the selected original-spell
+  SR BAMs. Source comparison covers all 224 SR BAMs, 249 IWD BAMs and 388 EET BAMs.
   Heal and Slow Poison are distinct colour variants despite shared EET shapes.
   Shape alone and a single shared cycle are not complete-duplicate evidence.
-- All 13 README GIFs are rendered from bundled assets with retained provenance.
+- All 15 README GIFs are rendered from bundled assets with retained provenance.
   Frame anchors are retained; blending is illustrative, not an engine renderer.
 - The 17 supplied EET BMP headers were checked. None of the EET VVCs replaced
   by component 10 uses an external palette or alpha BAM.
@@ -136,7 +142,7 @@ packs. Test fixtures use a synthetic minimal KEY/TLK, not the owner's full
 installation. WeiDU's derived ADD_SPELL.IDS cache is excluded from snapshot
 comparisons because WeiDU clears it independently of these components.
 
-Results: `IWD_validation.json`, `regression_validation.json`,
+Results: `projectile_validation.json`, `IWD_validation.json`, `regression_validation.json`,
 `integrity_validation.json`, `overlay_validation.json`, `child_validation.json`, `item_validation.json`. Test programs are in the repository's `tests/`.
 
 ## Scope and remaining limits
@@ -148,7 +154,7 @@ hit cues while keeping their roots byte-identical. It preserves effect order/cou
 all nonvisual bytes. Missing or unfamiliar abilities are skipped and logged.
 The two root spell lists do not overlap. Persistent Sanctuary/globe state
 opcodes retain their behavior, and the original protections stay byte-exact.
-This is a selected import; 40 distinct candidate BAMs remain unintegrated.
+This is a selected import; 38 distinct candidate BAMs remain unintegrated.
 
 Native SPENTAAI/SPENTACI, SPCHRORB and SPMAGGLO replacements are shared
 resources; any other spell/item using them can receive the new artwork.
@@ -175,4 +181,15 @@ No source ITM is imported; roots, weapon headers/projectiles, nonvisual effects
 and conditions stay byte-identical. The parser validates ITM signatures,
 56-byte headers and disjoint effect blocks. Full export install/reinstall/
 uninstall checks include both items; [30 item guard cases](item_validation.json)
-pass. SKYBOLT and SSORBT remain unintegrated.
+pass. Beta.9 additionally integrates SSORBT travel and shared native CALLLIH/
+SKYBOLT artwork; 21 projectile guard cases and full install/uninstall pass.
+
+## Beta.9 projectile graphics
+
+SORB uses an ADD_PROJECTILE-registered copy of installed PFIRE3 with only BAM
+flags/resref/mirroring changed. Its ability index points to the clone;
+original PRO/root SPL, speed, sound and nonvisual fields remain identical.
+Call Lightning only replaces shared SKYBOLT.BAM after recognized root/PRO
+checks. Chain indexes and all SPL/PRO bytes are untouched. 21 guard cases
+verify missing/unknown/malformed resources, installed speed/audio, collision,
+reinstall stability and exact uninstall. No EET engine session was run.

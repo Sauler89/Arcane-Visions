@@ -170,5 +170,31 @@
     "preview_frame_delay_ms": 70,
     "screen_blending_approximation": true,
     "game_capture": false
+  },
+  {
+    "file": "docs/previews/sols-searing-orb-travel.gif",
+    "asset": "sr_original_spell_animations/assets/iwd/srioorbt.bam",
+    "asset_sha256": "a17b8ecef456c9fdf08e8a1c1cfa586edda7314e715671998a76cf351769008a",
+    "gif_sha256": "f8f9d5859b591cfd70e87ba6c18f956038346a321be44500602f8b4a993411fe",
+    "bam_cycles": [
+      0
+    ],
+    "frame_rate": 15,
+    "preview_frame_delay_ms": 70,
+    "screen_blending_approximation": true,
+    "game_capture": false
+  },
+  {
+    "file": "docs/previews/call-lightning.gif",
+    "asset": "sr_original_spell_animations/assets/iwd_native/skybolt.bam",
+    "asset_sha256": "3c2f26c8eaa99779b4aa0fac6d41e11b212e190cc64f42d7bd15c9816db92474",
+    "gif_sha256": "78e676d39be30a83dfc18e2877853a571aa09947d935384c900a29be802d6928",
+    "bam_cycles": [
+      0
+    ],
+    "frame_rate": 15,
+    "preview_frame_delay_ms": 70,
+    "screen_blending_approximation": true,
+    "game_capture": false
   }
 ]

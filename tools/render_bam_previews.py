@@ -9,6 +9,8 @@ DEMO=[('spmagglo','native/spmagglo','SPMAGGLO · shared protection aura',10,[0],
 DEMO += [('sanctuary','iwd/sriosanc','Sanctuary · SANCTRY',15,[0],True),('protection-from-arrows','iwd/srioarrw','Protection from Arrows · PFNMISC',15,[0],True),('minor-globe','iwd/sriomglb','Minor Globe · MGOINVC',15,[0],True),('globe-of-invulnerability','iwd/sriogglb','Globe of Invulnerability · GOINVUC',15,[0],True)]
 DEMO += [('glitterdust','iwd/sriodust','Glitterdust · GLDUSTA',15,[1],True),('resilient-sphere','iwd/srioosph','Resilient Sphere · ORSPHEC',15,[0],True),('resurrection','iwd/srioress','Resurrection · RESURRH',15,[0],True)]
 
+DEMO += [('sols-searing-orb-travel','iwd/srioorbt',"Sol's Searing Orb · SSORBT",15,[0],True),('call-lightning','iwd_native/skybolt','Call Lightning · CALLLIH',15,[0],True)]
+
 def decode(path):
  b=path.read_bytes()
  if b[:4]==b'BAMC':

@@ -1,3 +1,5 @@
+> Rapporto storico beta.8. Le integrazioni successive sono in [PROJECTILE_IMPORT.it.md](PROJECTILE_IMPORT.it.md): SSORBT e CALLLIH/SKYBOLT sono inclusi dalla beta.9.
+
 # Nuovi export EET/IWDEE — beta.8
 
 Controllati i due ZIP del 9 ottobre 2026: tre risorse EET e due BAM IWDEE,

@@ -362,5 +362,19 @@
     "installed_sha256": "01f8fc6f0ef4e6c23b980e589bce81a5af116eea3703dfdc9d676cf3b8f01ebf",
     "source_sha256": "39fbfce742a8331542e912d8c34f229c047b767f37accb046a582efd4045f51c",
     "synthesized_controller": false
+  },
+  {
+    "source": "SSORBT.BAM",
+    "destination": "sr_original_spell_animations/assets/iwd/srioorbt.bam",
+    "installed_sha256": "a17b8ecef456c9fdf08e8a1c1cfa586edda7314e715671998a76cf351769008a",
+    "source_sha256": "a17b8ecef456c9fdf08e8a1c1cfa586edda7314e715671998a76cf351769008a",
+    "synthesized_controller": false
+  },
+  {
+    "source": "CALLLIH.BAM",
+    "destination": "sr_original_spell_animations/assets/iwd_native/skybolt.bam",
+    "installed_sha256": "3c2f26c8eaa99779b4aa0fac6d41e11b212e190cc64f42d7bd15c9816db92474",
+    "source_sha256": "3c2f26c8eaa99779b4aa0fac6d41e11b212e190cc64f42d7bd15c9816db92474",
+    "synthesized_controller": false
   }
 ]

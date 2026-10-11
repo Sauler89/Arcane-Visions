@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.2.0-beta.9 — Sol orb travel and native lightning
+
+- Add SSORBT travel through a private clone of the installed PFIRE3 projectile.
+  Preserve speed/audio/gameplay; register the clone and retarget SORB only.
+- Add CALLLIH as shared native SKYBOLT artwork after recognized layout guards.
+  Preserve all SPL/PRO bytes and chain indexes. The IWDEE SKYBOLT source is
+  byte-identical to CALLLIH and is not shipped twice. In-game test remains pending.
+- Pass 21 projectile guard cases and full combined install/reinstall/uninstall.
+- Include 42 BAMs, 38 VVCs and 15 actual BAM previews; compare all 861 source BAMs.
+- Keep Web and Abi-Dalzim excluded.
+
 ## v0.2.0-beta.8 — verified temporary-weapon impacts
 
 - Add SLIVINH/SSORBH at the actual Slay Living and Sol Searing Orb weapon hits.

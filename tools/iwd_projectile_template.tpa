@@ -1,0 +1,117 @@
+// Clone the installed Sol's Searing Orb travel projectile, never import an IWD PRO.
+LAF srio_check_child INT_VAR srio_item_link = 1 STR_VAR srio_root = ~SPPR614~ srio_child = ~SORB~ RET srio_linked END
+OUTER_SET srio_orb_ready = 0
+OUTER_SET srio_orb_old = 0
+ACTION_IF FILE_EXISTS_IN_GAME ~PROJECTL.ids~ BEGIN OUTER_SET srio_orb_old = IDS_OF_SYMBOL (~PROJECTL~ ~PFIRE3~) + 1 END
+ACTION_IF srio_linked AND srio_orb_old > 1 AND FILE_EXISTS_IN_GAME ~SORB.itm~ AND FILE_EXISTS_IN_GAME ~PFIRE3.pro~ BEGIN
+ COPY_EXISTING ~SORB.itm~ ~override~
+  PATCH_IF SOURCE_SIZE >= 0x72 BEGIN
+   READ_ASCII 0 srio_sig (8)
+   READ_LONG 0x64 srio_a
+   READ_SHORT 0x68 srio_n
+   READ_LONG 0x6a srio_e
+   PATCH_IF (~%srio_sig%~ STRING_EQUAL_CASE ~ITM V1  ~) AND srio_n = 1 AND srio_a >= 0x72 AND srio_a + 56 <= SOURCE_SIZE AND srio_e >= srio_a + 56 BEGIN
+    READ_SHORT srio_a srio_type
+    READ_BYTE (srio_a + 12) srio_target
+    READ_SHORT (srio_a + 42) srio_proj
+    READ_SHORT (srio_a + 30) srio_count
+    READ_SHORT (srio_a + 32) srio_idx
+    READ_SHORT 0x6e srio_gi
+    READ_SHORT 0x70 srio_gc
+    SET srio_layout = srio_type = 2 AND srio_target = 1 AND srio_proj = srio_orb_old AND srio_e + (srio_idx + srio_count) * 48 <= SOURCE_SIZE AND (srio_gc = 0 OR (srio_idx >= srio_gi + srio_gc AND srio_e + (srio_gi + srio_gc) * 48 <= SOURCE_SIZE))
+    PATCH_IF srio_layout BEGIN
+     SET srio_visuals = 0 SET srio_hits = 0
+     FOR (srio_j = 0; srio_j < srio_count; ++srio_j) BEGIN
+      SET srio_o = srio_e + (srio_idx + srio_j) * 48
+      READ_SHORT srio_o srio_op
+      PATCH_IF srio_op = 141 OR srio_op = 215 OR (srio_op >= 153 AND srio_op <= 158) BEGIN
+       SET srio_visuals += 1
+       READ_ASCII (srio_o + 20) srio_ref (8) NULL
+       PATCH_IF srio_op = 215 AND (~%srio_ref%~ STRING_EQUAL_CASE ~sriossor~) BEGIN SET srio_hits += 1 END
+      END
+     END
+     PATCH_IF srio_visuals = 1 AND srio_hits = 1 BEGIN SET srio_orb_ready = 1 END
+    END
+   END
+  END
+ BUT_ONLY_IF_IT_CHANGES
+ ACTION_IF srio_orb_ready BEGIN
+  OUTER_SET srio_orb_ready = 0
+  COPY_EXISTING ~PFIRE3.pro~ ~override~
+   PATCH_IF SOURCE_SIZE = 512 BEGIN
+    READ_ASCII 0 srio_sig (8)
+    READ_SHORT 8 srio_type
+    READ_SHORT 10 srio_speed
+    READ_LONG 0x2c srio_ext
+    READ_LONG 0x100 srio_flags
+    READ_ASCII 0x104 srio_bam (8) NULL
+    READ_ASCII 0x20 srio_source (8) NULL
+    READ_ASCII 0x44 srio_fail (8) NULL
+    READ_ASCII 0x4c srio_success (8) NULL
+    READ_ASCII 0x10c srio_shadow (8) NULL
+    READ_ASCII 0x11c srio_palette (8) NULL
+    READ_ASCII 0x136 srio_trail1 (8) NULL
+    READ_ASCII 0x13e srio_trail2 (8) NULL
+    READ_ASCII 0x146 srio_trail3 (8) NULL
+    READ_BYTE 0x114 srio_seq
+    READ_BYTE 0x133 srio_face
+    PATCH_IF (~%srio_sig%~ STRING_EQUAL_CASE ~PRO V1.0~) AND srio_type = 2 AND srio_speed > 0 AND srio_ext = 0 AND srio_flags = 0xc6 AND srio_seq = 0 AND srio_face = 5 AND (~%srio_bam%~ STRING_EQUAL_CASE ~SPFIRSED~) AND (~%srio_source%~ STRING_EQUAL ~~) AND (~%srio_fail%~ STRING_EQUAL ~~) AND (~%srio_success%~ STRING_EQUAL ~~) AND (~%srio_shadow%~ STRING_EQUAL ~~) AND (~%srio_palette%~ STRING_EQUAL ~~) AND (~%srio_trail1%~ STRING_EQUAL ~~) AND (~%srio_trail2%~ STRING_EQUAL ~~) AND (~%srio_trail3%~ STRING_EQUAL ~~) BEGIN
+     SET srio_orb_ready = 1
+    END
+   END
+  BUT_ONLY_IF_IT_CHANGES
+ END
+END
+ACTION_IF srio_orb_ready BEGIN
+ // ADD_PROJECTILE registers an installed-data clone; only graphical fields differ.
+ COPY_EXISTING ~PFIRE3.pro~ ~sr_original_spell_animations/backup/sriosorb.pro~
+  WRITE_LONG 0x100 0x280
+  WRITE_ASCII 0x104 ~srioorbt~ #8
+  WRITE_BYTE 0x133 9
+ ADD_PROJECTILE ~sr_original_spell_animations/backup/sriosorb.pro~
+ COPY_EXISTING ~SORB.itm~ ~override~
+  READ_LONG 0x64 srio_a
+  WRITE_SHORT (srio_a + 42) sriosorb
+ BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~IWD Spell Animations: Sol Searing Orb travel layout missing, detached or unrecognized; skipped.~ END
+
+// The shared native lightning BAM is also used by other consumers of SKYBOLT.
+// Keep all SPL/PRO bytes and hardcoded chain indexes unchanged.
+OUTER_SET srio_call_ready = 0
+OUTER_SET srio_call_index = 0
+ACTION_IF FILE_EXISTS_IN_GAME ~PROJECTL.ids~ BEGIN OUTER_SET srio_call_index = IDS_OF_SYMBOL (~PROJECTL~ ~SKYBOLT~) END
+ACTION_IF srio_call_index = 22 AND FILE_EXISTS_IN_GAME ~SPPR302.spl~ AND FILE_EXISTS_IN_GAME ~SKYBOLT.pro~ AND FILE_EXISTS_IN_GAME ~SKYBOLT.bam~ BEGIN
+ COPY_EXISTING ~SPPR302.spl~ ~override~
+  PATCH_IF SOURCE_SIZE >= 0x72 BEGIN
+   READ_ASCII 0 srio_sig (8)
+   READ_LONG 0x64 srio_a
+   READ_SHORT 0x68 srio_n
+   READ_LONG 0x6a srio_e
+   PATCH_IF (~%srio_sig%~ STRING_EQUAL_CASE ~SPL V1  ~) AND srio_a >= 0x72 AND srio_n > 0 AND srio_a + srio_n * 40 <= SOURCE_SIZE AND srio_e >= srio_a + srio_n * 40 AND srio_e <= SOURCE_SIZE BEGIN
+    SET srio_call_ready = 1
+    FOR (srio_i = 0; srio_i < srio_n; ++srio_i) BEGIN
+     READ_SHORT (srio_a + srio_i * 40 + 38) srio_proj
+     PATCH_IF srio_proj < 81 OR srio_proj > 91 BEGIN SET srio_call_ready = 0 END
+    END
+   END
+  END
+ BUT_ONLY_IF_IT_CHANGES
+ ACTION_IF srio_call_ready BEGIN
+  OUTER_SET srio_call_ready = 0
+  COPY_EXISTING ~SKYBOLT.pro~ ~override~
+   PATCH_IF SOURCE_SIZE = 512 BEGIN
+    READ_ASCII 0 srio_sig (8)
+    READ_SHORT 8 srio_type
+    READ_LONG 0x2c srio_ext
+    READ_LONG 0x100 srio_flags
+    READ_ASCII 0x104 srio_bam (8) NULL
+    READ_BYTE 0x114 srio_seq
+    READ_BYTE 0x133 srio_face
+    PATCH_IF (~%srio_sig%~ STRING_EQUAL_CASE ~PRO V1.0~) AND srio_type = 2 AND srio_ext = 0x88 AND srio_flags = 0x280 AND srio_seq = 0 AND srio_face = 1 AND (~%srio_bam%~ STRING_EQUAL_CASE ~SKYBOLT~) BEGIN SET srio_call_ready = 1 END
+   END
+  BUT_ONLY_IF_IT_CHANGES
+ END
+END
+ACTION_IF srio_call_ready BEGIN
+ COPY ~sr_original_spell_animations/assets/iwd_native/skybolt.bam~ ~override/skybolt.bam~
+END ELSE BEGIN PRINT ~IWD Spell Animations: Call Lightning chain/native projectile layout missing or unrecognized; shared BAM replacement skipped.~ END

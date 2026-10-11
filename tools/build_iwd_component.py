@@ -93,6 +93,11 @@ def main():
   overlay_manifest.append(dict(spell=spell,art=art,private=name,opcode=op,target=target,default_resource={153:'SANCTRY',155:'MINORGLB',156:'SPSHIELD'}[op],iwd_reference={153:'SANCTRY',156:'#PRONM',155:'MGOINVC' if spell=='SPWI406' else '#GLOBINV'}[op]))
  (MOD/'docs/iwd_asset_manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
  (MOD/'docs/iwd_overlay_mapping.json').write_text(json.dumps(overlay_manifest,indent=2)+'\n')
+ for art,name,folder in [('SSORBT','srioorbt','iwd'),('CALLLIH','skybolt','iwd_native')]:
+  dest=MOD/'assets'/folder;dest.mkdir(exist_ok=True)
+  data=bam_files[art+'.BAM'].read_bytes();(dest/(name+'.bam')).write_bytes(data)
+  manifest.append(dict(source=art+'.BAM',destination='sr_original_spell_animations/assets/'+folder+'/'+name+'.bam',installed_sha256=hashlib.sha256(data).hexdigest(),source_sha256=hashlib.sha256(data).hexdigest(),synthesized_controller=False))
+ (MOD/'docs/iwd_asset_manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
  tpa=(ROOT/'tools/iwd_patch_template.tpa').read_text()+'\n'+(ROOT/'tools/iwd_dependency_template.tpa').read_text()
  for spell in dict.fromkeys(r[0] for r in ROWS):
   rows=[r for r in ROWS if r[0]==spell];r=rows[0];op=141 if r[3]==141 else 215;old='' if op==141 else r[3]
@@ -112,11 +117,12 @@ def main():
  for r in overlay_manifest:
   overlay+=f'\nACTION_IF FILE_EXISTS_IN_GAME ~{r["spell"]}.spl~ BEGIN\n  COPY_EXISTING ~{r["spell"]}.spl~ ~override~\n    LPF srio_overlay INT_VAR srio_op = {r["opcode"]} srio_target = {r["target"]} srio_allow_vvc = {int(r["spell"]=="SPWI602")}\n      STR_VAR srio_default = ~{r["default_resource"]}~ srio_iwd = ~{r["iwd_reference"]}~ srio_art = ~{r["art"]}~ srio_new = ~{r["private"]}~ END\n  BUT_ONLY_IF_IT_CHANGES\nEND ELSE BEGIN PRINT ~IWD Spell Animations: {r["spell"]}.spl missing, skipped.~ END\n'
  (MOD/'lib/iwd_overlays.tpa').write_text(overlay)
+ (MOD/'lib/iwd_projectiles.tpa').write_text((ROOT/'tools/iwd_projectile_template.tpa').read_text())
  # Keep the collision guard in sync with every generated private pair.
  tp2=MOD/'setup-sr_original_spell_animations.tp2';text=tp2.read_text()
  import re
- pairs=' '.join('~'+Path(a['destination']).name+'~' for a in manifest)
+ pairs=' '.join('~'+Path(a['destination']).name+'~' for a in manifest if '/iwd_native/' not in a['destination'])+' ~sriosorb.pro~'
  start=text.index('BEGIN @10');text=text[:start]+re.sub(r'(ACTION_FOR_EACH av_private IN ).*?( BEGIN)',lambda m:m[1]+pairs+m[2],text[start:],count=1)
  tp2.write_text(text)
- print(len(set(r[0] for r in ROWS))+len(OVERLAYS)+len(ITEM_ROWS),'spells;',len(manifest)//2,'BAMs + same number VVCs')
+ print(len(set(r[0] for r in ROWS))+len(OVERLAYS)+len(ITEM_ROWS)+1,'affected resources;' ,sum(a['destination'].endswith('.bam') for a in manifest),'BAMs;',sum(a['destination'].endswith('.vvc') for a in manifest),'VVCs')
 if __name__=='__main__':main()

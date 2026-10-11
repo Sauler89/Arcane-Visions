@@ -1,16 +1,16 @@
 # Arcane Visions — Spell Effect Animations
 
 **Animazioni degli effetti dopo il lancio delle spell originali di BG, per EET/BG2EE.**
-Versione **v0.2.0-beta.8**, di **Sauler89**. Spell Revisions e IWDification non servono.
+Versione **v0.2.0-beta.9**, di **Sauler89**. Spell Revisions e IWDification non servono.
 
 | Componente | Contenuto |
 |---|---|
 | **0 — SR** | 14 BAM e 12 VVC da SR; 16 SPL originali patchati, più sostituzioni di grafica nativa |
-| **10 — IWDEE** | 26 BAM e 26 VVC per 30 risorse di spell originali (28 SPL e 2 armi temporanee); duplicati grafici esclusi, varianti di colore distinte |
+| **10 — IWDEE** | 28 BAM e 26 VVC: 28 SPL, 2 armi temporanee e il fulmine nativo condiviso; duplicati grafici esclusi, varianti di colore distinte |
 
 Puoi installarli insieme o separatamente. Non si importano icone, nuove spell,
 meccaniche, proiettili, creature o armi. I dati non visivi delle spell restano
-quelli installati nel tuo gioco. La lista completa e le 13 anteprime GIF sono
+quelli installati nel tuo gioco. La lista completa e le 15 anteprime GIF sono
 nel [README principale](README.md#animation-examples).
 
 ## Installazione
@@ -38,7 +38,7 @@ Linux/macOS usa WeiDU nativo. Disinstalla con lo stesso installer.
   le durate, condizioni e protezioni restano quelli della spell installata.
 - La beta.4 recupera Glitterdust, Sfera elastica di
   Otiluke, Resurrezione, Guarigione e Rallentare veleno. Corregge le esclusioni
-  basate sulla sola sagoma. Restano 40 candidati distinti ancora da integrare.
+  basate sulla sola sagoma. Restano 38 candidati distinti ancora da integrare.
 - La beta.5 aggiunge Miscast Magic (`MMAGICH`) e collega `CONFUSH`, già incluso,
   alle due Confusion e a Chaos. Per Chaos conserva entrambi i cue, con
   condizioni separate; durata e timing esistenti restano invariati.
@@ -49,18 +49,20 @@ Linux/macOS usa WeiDU nativo. Disinstalla con lo stesso installer.
   controller privato; anche le fasi di area IWDEE restano escluse.
 - Il nuovo controllo per fase rileva due fasi di area Glitterdust non importate
   (diffusione e anello), benché il BAM sia già incluso per il bersaglio.
-- La beta.8 aggiunge `SLIVINH` e `SSORBH` al colpo delle armi temporanee
-  di Slay Living e Sol’s Searing Orb; le root SPL e le meccaniche restano identiche.
-  `SSORBT` in viaggio resta da integrare. I nuovi `SKYBOLT` sono distinti
-  (23 frame IWDEE contro 6 EET), ma la catena hard-coded richiede verifica nel gioco.
-  `SPCALLLI` è identico nei due giochi e non è collegato a `SPPR302` negli export.
-  [Verifica dei nuovi file](sr_original_spell_animations/docs/NEW_EXPORT_REVIEW.it.md).
+- La beta.8 aggiunge gli impatti SLIVINH e SSORBH. La beta.9 aggiunge
+  SSORBT in viaggio tramite clone privato del proiettile EET e CALLLIH
+  come sostituzione del BAM nativo SKYBOLT, condiviso con altri effetti.
+  Le SPL principali e i PRO originali restano identici; solo SORB cambia
+  indice verso il proprio clone, conservando velocità, suoni e meccaniche.
+  CALLLIH e SKYBOLT IWDEE sono identici: viene distribuita una sola copia.
+  La resa delle catene hard-coded richiede ancora un test nel gioco.
+  [Verifica dei proiettili](sr_original_spell_animations/docs/PROJECTILE_IMPORT.it.md).
 - Non sono importati tutti i BAM IWDEE; altri candidati dipendono da proiettili,
   aree e sottospell. [Esclusioni e ricontrollo](sr_original_spell_animations/docs/IWD_SELECTION_RECHECK.it.md).
 
 ## Ricontrollo
 
-Verificati tutti i 40 BAM e 38 VVC. Passati i test WeiDU su 44 SPL EET reali (incluse due sottospell)
+Verificati tutti i 42 BAM e 38 VVC. Passati i test WeiDU su 44 SPL EET reali (incluse due sottospell)
 e due ITM esportate: installazione, reinstallazione stabile e disinstallazione con
 ripristino byte per byte. Passati anche 28 casi aggiuntivi di regressione e
 i test dei layout SR e dei profili EET/BG2EE. Aggiunti e superati 44 test
@@ -68,7 +70,7 @@ specifici degli overlay persistenti, comprese le condizioni di Sanctuary.
 Superati sei nuovi casi per i cue doppi di Chaos, incluse configurazioni
 sconosciute che devono essere saltate. Superati anche 12 casi delle sottospell: si modificano solo se richiamate dalla
 spell principale, conservando le condizioni e senza modificare la root.
-Superati 30 casi specifici delle armi temporanee.
+Superati 30 casi specifici delle armi temporanee e 21 dei proiettili.
 [Rapporto completo IWDEE e SR](sr_original_spell_animations/docs/FULL_SOURCE_AUDIT.it.md).
 
 Correzioni della beta.2: sequenza di Implosione non troncata, controller singoli

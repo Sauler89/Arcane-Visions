@@ -1,3 +1,8 @@
+> Aggiornamento beta.9: [Sol’s Searing Orb e Call Lightning sono ora inclusi](PROJECTILE_IMPORT.it.md).
+> 42 BAM, 38 VVC, 1.429 frame; 249 BAM IWDEE, 388 EET e 224 SR confrontati.
+> Restano 38 candidati distinti; SKYBOLT IWDEE è un alias di CALLLIH, incluso una sola volta.
+> Le sezioni storiche beta.8 riportano i limiti precedenti, superati dal rapporto linkato.
+
 # Ricontrollo delle esclusioni IWDEE — aggiornamento beta.8
 
 Il pacchetto precedente **non importava tutti gli effetti distinti IWDEE**.
@@ -14,7 +19,7 @@ SR, ma non giustificava l'esclusione delle loro vere animazioni IWDEE.
 | Protection from Arrows / Normal Missiles, `SPWI311` | `PFNMISC` | Nessuna | Incluso come `srioarrw`; opcode 156 mantenuto |
 | Minor Globe of Invulnerability, `SPWI406` | `MGOINVC` | Nessuna | Incluso come `sriomglb`; opcode 155 mantenuto |
 | Globe of Invulnerability, `SPWI602` | `GOINVUC` | Nessuna | Incluso come `sriogglb`; opcode 155 EET o 215 preesistente mantenuto |
-| Call Lightning, `SPPR302` | `SKYBOLT` | Distinto (nuovi export beta.8) | Non ancora importato: catena hard-coded e tempi da verificare nel gioco |
+| Call Lightning, `SPPR302` | `SKYBOLT` | Distinto (nuovi export beta.8) | Incluso nella beta.9 come BAM nativo condiviso; catena da verificare nel gioco |
 
 Il confronto beta.3 comprendeva 246 BAM IWDEE, 386 EET e 14 SR;
 la beta.4 ricontrolla tutti i 224 BAM dell'archivio SR. I quattro BAM aggiunti
@@ -62,10 +67,10 @@ La beta.4 aggiunge anche `GLDUSTA`, `ORSPHEC`, `RESURRH`, `HEALH` e
 ricolorate. [Rapporto completo](FULL_SOURCE_AUDIT.it.md).
 
 La tabella beta.3 di esclusioni è stata sostituita: la sola sagoma non prova
-un duplicato. Su 248 BAM: 26 inclusi, 164 corrispondenze grafiche complete EET,
+un duplicato. Su 249 BAM: 28 inclusi, 1 alias byte-identico già incluso, 164 corrispondenze grafiche complete EET,
 1 corrispondenza di tutti i cicli visibili, 5 spell già coperte da SR,
-6 senza root originale tracciata, 6 esclusi su richiesta e **40 candidati ancora da integrare**.
-Questi 40 non sono esclusi per overlap SR. [Tutte le decisioni](iwd_selection_recheck.csv),
+6 senza root originale tracciata, 6 esclusi su richiesta e **38 candidati ancora da integrare**.
+Questi 38 non sono esclusi per overlap SR. [Tutte le decisioni](iwd_selection_recheck.csv),
 [candidati e motivi](iwd_pending_candidates.csv), [tutti i BAM SR](sr_source_selection.csv).
 
 PASS: 44 SPL e 2 ITM EET reali, 30 casi delle armi temporanee, 44 casi overlay, 28 regressioni e 12 casi sottospell.
@@ -108,4 +113,4 @@ componente IWDEE da solo, sia insieme al componente SR.
 
 SLIVINH e SSORBH inclusi in SLAYLIVE.ITM e SORB.ITM, con root SPL invariata,
 solo se ancora richiamati dalla spell originale. I BAM/VVC sono privati;
-nessuna arma IWDEE viene importata. SSORBT in viaggio resta non integrato.
+nessuna arma IWDEE viene importata. SSORBT in viaggio è incluso nella beta.9 tramite clone privato del PRO EET.

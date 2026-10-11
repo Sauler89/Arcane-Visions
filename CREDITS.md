@@ -25,8 +25,9 @@ HEALH and SPOISOH controller layouts and phases. Those five retained additional 
 are also byte-identical to IWDEE. Beta.5 adds the original MMAGICH controller
 and artwork. Web artwork/controllers were removed in beta.6 at the owner's
 request. Beta.8 adds byte-identical SLIVINH/SSORBH and their source VVC
-layouts for temporary-weapon impacts. SKYBOLT/SPCALLLI are compared but not
-shipped. No new artwork is generated or claimed.
+layouts for temporary-weapon impacts. Beta.9 adds SSORBT and CALLLIH: native destination SKYBOLT uses CALLLIH
+bytes, identical to the other supplied IWDEE SKYBOLT, shipped only once.
+SPCALLLI remains a comparison-only EET duplicate. No new artwork is generated or claimed.
 
 Technical references:
 
