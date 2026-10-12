@@ -196,5 +196,44 @@
     "preview_frame_delay_ms": 70,
     "screen_blending_approximation": true,
     "game_capture": false
+  },
+  {
+    "file": "docs/previews/conjure-fire-elemental.gif",
+    "asset": "sr_original_spell_animations/assets/custom/sraelfir.bam",
+    "asset_sha256": "767bc300f487a2f3cea42e8f9fa80d5b8bacea520239d847be99a5bd3d61f622",
+    "gif_sha256": "04f05354b9e06f583b14e32dcdbbc8a8897afd6bb16bbe2472debf0798ae77d5",
+    "bam_cycles": [
+      0
+    ],
+    "frame_rate": 15,
+    "preview_frame_delay_ms": 70,
+    "screen_blending_approximation": true,
+    "game_capture": false
+  },
+  {
+    "file": "docs/previews/conjure-air-elemental.gif",
+    "asset": "sr_original_spell_animations/assets/custom/sraelair.bam",
+    "asset_sha256": "e98b2e6aaef1e355125f4eee2068b422c28a2d99668083006ed7bcaf1cac9651",
+    "gif_sha256": "2efec548c841f9148459973a0e48cea58fd4e49388f286d388be30cb3f0cf500",
+    "bam_cycles": [
+      0
+    ],
+    "frame_rate": 15,
+    "preview_frame_delay_ms": 70,
+    "screen_blending_approximation": true,
+    "game_capture": false
+  },
+  {
+    "file": "docs/previews/conjure-earth-elemental.gif",
+    "asset": "sr_original_spell_animations/assets/custom/sraelear.bam",
+    "asset_sha256": "c76866bf0cdbf3d8de8c539f582dd2762b5a9b3b797d0059b9dcbd2cd81b2700",
+    "gif_sha256": "60cb77593141d151e7ce9df096ee97d726942f4f5e52a9a71ad607e0d4ce29b3",
+    "bam_cycles": [
+      0
+    ],
+    "frame_rate": 15,
+    "preview_frame_delay_ms": 70,
+    "screen_blending_approximation": true,
+    "game_capture": false
   }
 ]

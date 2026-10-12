@@ -46,6 +46,14 @@ orientation and timing. Entangle shows an individual animated tendril.
 |:---:|:---:|
 | ![Sol orb travel](docs/previews/sols-searing-orb-travel.gif) | ![Call Lightning](docs/previews/call-lightning.gif) |
 
+| Conjure Fire Elemental — `dvelfire` | Conjure Air Elemental — `dvelair` | Conjure Earth Elemental — `dveleart` |
+|:---:|:---:|:---:|
+| ![Conjure Fire Elemental SR animation](docs/previews/conjure-fire-elemental.gif) | ![Conjure Air Elemental SR animation](docs/previews/conjure-air-elemental.gif) | ![Conjure Earth Elemental SR animation](docs/previews/conjure-earth-elemental.gif) |
+
+These three **Spell Revisions summoning effects** are also used by the
+corresponding Conjure Lesser Elemental spells. They show the summoning animation;
+the elemental creatures keep their installed appearance.
+
 The two globe previews are **IWDEE effect animations**, added in beta.3.
 The similarly named SR files `spwi406a/b/c` and `spwi602a/b/c` remain excluded
 because they are icons. `SPMAGGLO` is a separate shared protection overlay.

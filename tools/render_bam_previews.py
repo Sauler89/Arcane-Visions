@@ -10,6 +10,7 @@ DEMO += [('sanctuary','iwd/sriosanc','Sanctuary · SANCTRY',15,[0],True),('prote
 DEMO += [('glitterdust','iwd/sriodust','Glitterdust · GLDUSTA',15,[1],True),('resilient-sphere','iwd/srioosph','Resilient Sphere · ORSPHEC',15,[0],True),('resurrection','iwd/srioress','Resurrection · RESURRH',15,[0],True)]
 
 DEMO += [('sols-searing-orb-travel','iwd/srioorbt',"Sol's Searing Orb · SSORBT",15,[0],True),('call-lightning','iwd_native/skybolt','Call Lightning · CALLLIH',15,[0],True)]
+DEMO += [('conjure-fire-elemental','custom/sraelfir','Conjure Fire Elemental · DVELFIRE',15,[0],True),('conjure-air-elemental','custom/sraelair','Conjure Air Elemental · DVELAIR',15,[0],True),('conjure-earth-elemental','custom/sraelear','Conjure Earth Elemental · DVELEART',15,[0],True)]
 
 def decode(path):
  b=path.read_bytes()
