@@ -126,7 +126,11 @@ resource names; other consumers of those BAMs receive the replacement art.
 
 ### Component 10 — IWDEE artwork
 
-| Original BG spell | SPL | IWDEE animation BAM |
+The table lists the BAMs actually installed for the selected visual phases.
+It does not list every animation used by each spell; other phases keep their
+installed graphics.
+
+| Original BG spell / phase changed | SPL | IWDEE animation BAM installed |
 |---|---|---|
 | Remove Paralysis | `SPPR308` | `RPARALH` |
 | Poison | `SPPR411` | `POISONH` |
@@ -134,12 +138,12 @@ resource names; other consumers of those BAMs receive the replacement art.
 | Cure Critical Wounds | `SPPR502` | `CCWOUNH` |
 | Blade Barrier | `SPPR603` | `BBARRH1`, `BBARRH2` |
 | Finger of Death | `SPPR708` | `FODEATH` |
-| Regeneration | `SPPR711` | `REGENERH` |
+| Regeneration — initial cue | `SPPR711` | `REGENERH` |
 | Greater Restoration | `SPPR713` | `GRESTORH` |
-| Storm of Vengeance | `SPPR722` | `FODEATH` |
-| Death Spell | `SPWI605` | `DSPELLH` |
+| Storm of Vengeance — direct target cue | `SPPR722` | `FODEATH` |
+| Death Spell — target cue | `SPWI605` | `DSPELLH` |
 | Power Word Silence | `SPWI612` | `PWSILEH` |
-| Sphere of Chaos | `SPWI711` | `CONFUSH` |
+| Sphere of Chaos — selected direct cue | `SPWI711` | `CONFUSH` |
 | Finger of Death | `SPWI713` | `FODEATH` |
 | Power Word Stun | `SPWI715` | `PWSTUNH` |
 | Dragon's Breath | `SPWI922` | `SPDRGNBR` |
@@ -147,7 +151,7 @@ resource names; other consumers of those BAMs receive the replacement art.
 | Protection from Normal Missiles / Arrows | `SPWI311` | `PFNMISC` |
 | Minor Globe of Invulnerability | `SPWI406` | `MGOINVC` |
 | Globe of Invulnerability | `SPWI602` | `GOINVUC` |
-| Glitterdust | `SPWI224` | `GLDUSTA` |
+| Glitterdust — target cue | `SPWI224` | `GLDUSTA` |
 | Otiluke's Resilient Sphere | `SPWI413` → `SPWI413A` | `ORSPHEC` |
 | Resurrection | `SPPR712` → `SPPR712A` | `RESURRH` |
 | Heal | `SPPR607` | `HEALH` |
@@ -161,8 +165,14 @@ resource names; other consumers of those BAMs receive the replacement art.
 | Call Lightning (shared native graphics) | `SPPR302`; `SKYBOLT.BAM` | `CALLLIH` (alias of IWDEE `SKYBOLT`) |
 
 
-Storm of Vengeance replaces its existing direct visual cue only; its weather,
-area and projectiles remain installed as before. Sphere of Chaos replaces its
+Storm of Vengeance really shares the `FODEATH` target artwork with Finger of
+Death in the supplied IWDEE files: `SPPR722.SPL` contains opcode 215 pointing
+to `FODEATH.VVC`, whose main BAM is `FODEATH`. In the EET export the matching
+cue points to `SPFINGER.VVC`/`SPFDEATH.BAM`; only that cue is redirected.
+The storm projectile `STRMVENG.PRO` uses `SPSTRMVA.BAM`, which is byte-identical
+in the supplied IWDEE and EET exports, so no redundant replacement is shipped.
+Weather, area, projectiles and damage retain their installed behavior.
+Sphere of Chaos replaces its
 direct hit cue. The separate Confusion/Chaos spells now use the same IWDEE
 artwork for their recognized status visuals; their mechanical confusion state
 and visual effect timing/duration are retained. Blade

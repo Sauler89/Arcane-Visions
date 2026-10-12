@@ -26,6 +26,10 @@ Linux/macOS usa WeiDU nativo. Disinstalla con lo stesso installer.
 - `SPMAGGLO` è una grafica condivisa: cambia anche l'aspetto di spell/oggetti
   di altri mod che la usano. Lo stesso vale per i BAM nativi di Intralciare
   e Globo cromatico.
+- Le assegnazioni della tabella indicano i BAM delle fasi modificate, non tutte
+  le animazioni della spell. Storm of Vengeance usa davvero FODEATH per il cue
+  diretto sul bersaglio, come Finger of Death. La tempesta usa SPSTRMVA,
+  già byte-identico fra IWDEE ed EET, e conserva la sua grafica installata.
 - Il componente IWD salta le abilità con una configurazione visiva diversa
   da quella riconosciuta e lo segnala. Quello SR sostituisce i visuali 141/215
   delle spell selezionate, conservando gli effetti non visivi.
