@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.2.0-beta.10 — full repository recheck
+
+- Reject SRIOSORB symbol collisions in PROJECTL.IDS and MISSILE.IDS before
+  writes, including absent-PRO collisions that previously left SORB pointing
+  to a missing projectile. Add three mixed-case IDS collision regressions.
+- Verify both component orders, English/Italiano and partial uninstall while
+  retaining the other component. All 24 projectile and existing suites pass.
+- Recheck every shipped asset and all 861 source BAMs; selection is unchanged.
+- Align version/count/date reports and install-order guidance; clarify the
+  private SORB clone exception and the pending in-game lightning verification.
+
 ## v0.2.0-beta.9 — Sol orb travel and native lightning
 
 - Add SSORBT travel through a private clone of the installed PFIRE3 projectile.

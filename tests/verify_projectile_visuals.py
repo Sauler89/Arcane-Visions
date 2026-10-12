@@ -64,13 +64,21 @@ try:
   else:assert 'SKYBOLT.BAM' not in after
   run();assert snap()==after;run(False);assert snap()==before
   checks.append(label)
- # A generated-PRO collision must abort before any writes.
- for p in list(ov.iterdir()):
-  if p.name.lower()!='eet.flag':p.unlink()
- for n,b in original.items():(ov/n.lower()).write_bytes(b)
- (ov/'sriosorb.pro').write_bytes(b'foreign resource');before=snap()
- r=subprocess.run([str(WEIDU),MOD+'/setup-sr_original_spell_animations.tp2','--noautoupdate','--language','0','--no-exit-pause','--force-install-list','10'],cwd=game,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
- assert r.returncode!=0 and snap()==before,'private PRO collision changed resources';checks.append('private-PRO-collision')
- result=dict(status='PASS',cases=len(checks),checks=checks,installed_PRO_gameplay_and_audio_preserved=True,original_PROs_and_root_SPLs_byte_identical=True,only_SORB_projectile_reference_and_hit_art_changed=True,SKYBOLT_shared_BAM_only=True,reinstall_stable=True,uninstall_byte_exact=True,game_rendering_tested=False)
+ # File and IDS-only collisions must abort before any resource write.
+ for collision in ['private-PRO-collision','PROJECTL-symbol-only-collision','MISSILE-symbol-only-collision','both-IDS-symbol-collision']:
+  for p in list(ov.iterdir()):
+   if p.name.lower()!='eet.flag':p.unlink()
+  for n,b in original.items():(ov/n.lower()).write_bytes(b)
+  if collision=='private-PRO-collision':(ov/'sriosorb.pro').write_bytes(b'foreign resource')
+  else:
+   tables=['PROJECTL'] if collision.startswith('PROJECTL') else ['MISSILE'] if collision.startswith('MISSILE') else ['PROJECTL','MISSILE']
+   for table in tables:
+    with file(table+'.IDS').open('a') as f:f.write('\n7777 sRiOsOrB\n')
+  before=snap()
+  r=subprocess.run([str(WEIDU),MOD+'/setup-sr_original_spell_animations.tp2','--noautoupdate','--language','0','--no-exit-pause','--force-install-list','10'],cwd=game,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+  assert r.returncode!=0 and snap()==before,(collision,'collision changed resources')
+  assert 'already exists' in r.stdout and ('private projectile symbol' in r.stdout if collision!='private-PRO-collision' else 'private resource' in r.stdout)
+  checks.append(collision)
+ result=dict(status='PASS',cases=len(checks),checks=checks,installed_PRO_gameplay_and_audio_preserved=True,original_PROs_and_root_SPLs_byte_identical=True,only_SORB_projectile_reference_and_hit_art_changed=True,SKYBOLT_shared_BAM_only=True,reinstall_stable=True,uninstall_byte_exact=True,game_rendering_tested=False,IDS_symbol_collisions_checked_before_writes=True)
  (OUT/'projectile_validation.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))
 finally:shutil.rmtree(game)

@@ -3,9 +3,9 @@
 > Restano 38 candidati distinti; SKYBOLT IWDEE è un alias di CALLLIH, incluso una sola volta.
 > Le sezioni storiche beta.8 riportano i limiti precedenti, superati dal rapporto linkato.
 
-# Rigorous audit — Arcane Visions v0.2.0-beta.9
+# Rigorous audit — Arcane Visions v0.2.0-beta.10
 
-Reviewed on 2026-10-09 (Europe/Rome). Scope: all 80 graphics/controller assets,
+Reviewed on 2026-10-12 (Europe/Rome). Scope: all 80 graphics/controller assets,
 both installer components, all 861 source/comparison BAMs, source provenance, live exports, effect conditions,
 resource-name collisions, previews, documentation and install/uninstall behavior.
 
@@ -162,7 +162,9 @@ SPMAGGLO visibility depends on the installed spell effects and overlay
 suppression settings. The installer does not force a suppressed overlay on.
 
 No source SPL/EFF/PRO/ITM/CRE/BCS, new spell, icon, creature or mechanic is
-imported. Elemental spawn rules and existing projectiles are unchanged.
+imported. Elemental spawn rules and existing PRO resources are unchanged. SORB alone
+uses a registered clone of installed PFIRE3; its projectile reference changes
+while the clone retains installed speed/audio/gameplay.
 
 **No game was launched.** In-game positions, engine blending, hit/caster
 placement and synchronization still require visual confirmation. The GIFs
@@ -177,12 +179,12 @@ No third-party graphics ownership or new redistribution license is claimed.
 
 SLIVINH and SSORBH now replace recognized impacts in installed SLAYLIVE.ITM
 and SORB.ITM, only while their original roots still create those weapons.
-No source ITM is imported; roots, weapon headers/projectiles, nonvisual effects
-and conditions stay byte-identical. The parser validates ITM signatures,
+No source ITM is imported; roots, weapon headers except the later beta.9
+SORB projectile reference, nonvisual effects and conditions stay byte-identical. The parser validates ITM signatures,
 56-byte headers and disjoint effect blocks. Full export install/reinstall/
 uninstall checks include both items; [30 item guard cases](item_validation.json)
 pass. Beta.9 additionally integrates SSORBT travel and shared native CALLLIH/
-SKYBOLT artwork; 21 projectile guard cases and full install/uninstall pass.
+SKYBOLT artwork; 24 projectile guard cases and full install/uninstall pass.
 
 ## Beta.9 projectile graphics
 
@@ -190,6 +192,16 @@ SORB uses an ADD_PROJECTILE-registered copy of installed PFIRE3 with only BAM
 flags/resref/mirroring changed. Its ability index points to the clone;
 original PRO/root SPL, speed, sound and nonvisual fields remain identical.
 Call Lightning only replaces shared SKYBOLT.BAM after recognized root/PRO
-checks. Chain indexes and all SPL/PRO bytes are untouched. 21 guard cases
+checks. Chain indexes and all SPL/PRO bytes are untouched. 24 guard cases
 verify missing/unknown/malformed resources, installed speed/audio, collision,
 reinstall stability and exact uninstall. No EET engine session was run.
+
+## Beta.10 complete repository recheck
+
+Confirmed a real IDS-only collision failure: a registered SRIOSORB without
+its PRO makes ADD_PROJECTILE skip creation, yet beta.9 assigned the missing
+projectile to SORB. Beta.10 rejects either PROJECTL/MISSILE symbol collision
+before any resource writes, including mixed-case names. 24 projectile cases
+pass. Reverse component order, English/Italiano and partial uninstall retain
+exact resources. All 861 source BAM decisions remain unchanged.
+[Full recheck](REPOSITORY_RECHECK.it.md).

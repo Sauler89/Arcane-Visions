@@ -3,7 +3,7 @@
 > Restano 38 candidati distinti; SKYBOLT IWDEE è un alias di CALLLIH, incluso una sola volta.
 > Le sezioni storiche beta.8 riportano i limiti precedenti, superati dal rapporto linkato.
 
-# Ricontrollo delle esclusioni IWDEE — aggiornamento beta.8
+# Ricontrollo delle esclusioni IWDEE — aggiornamento beta.10
 
 Il pacchetto precedente **non importava tutti gli effetti distinti IWDEE**.
 I 15 BAM erano una selezione di cue diretti riconosciuti nelle spell EET.
@@ -73,7 +73,7 @@ un duplicato. Su 249 BAM: 28 inclusi, 1 alias byte-identico già incluso, 164 co
 Questi 38 non sono esclusi per overlap SR. [Tutte le decisioni](iwd_selection_recheck.csv),
 [candidati e motivi](iwd_pending_candidates.csv), [tutti i BAM SR](sr_source_selection.csv).
 
-PASS: 44 SPL e 2 ITM EET reali, 30 casi delle armi temporanee, 44 casi overlay, 28 regressioni e 12 casi sottospell.
+PASS: 44 SPL e 2 ITM EET reali, 24 casi dei proiettili, 30 casi delle armi temporanee, 44 casi overlay, 28 regressioni e 12 casi sottospell.
 Nessun test visivo dentro una partita. Vedere il rapporto completo per le
 richieste mirate di file e i limiti dei riferimenti PRO dichiarati.
 

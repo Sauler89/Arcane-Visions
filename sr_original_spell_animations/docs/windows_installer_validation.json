@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "release": "WeiDU v251.00",
+  "archive": "WeiDU-Windows-251.zip",
+  "matching_paths": [
+    "WeiDU-Windows/weidu.exe"
+  ],
+  "sha256": "0d17e26e3f3ef5b36796eb0ee8ae73cb851d8b62c9702c2e224da2945caafb75",
+  "Windows_execution_tested": false
+}

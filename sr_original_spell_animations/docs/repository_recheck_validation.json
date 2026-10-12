@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "version": "v0.2.0-beta.10",
+  "review_date": "2026-10-12",
+  "source_commit": "65d2824b89341cf6a4b22f7f1934bd71dabd7235",
+  "tested_version_includes_IDS_collision_fix": true,
+  "assets": {
+    "BAMs": 42,
+    "VVCs": 38,
+    "physical_frames": 1429,
+    "preview_GIFs": 15
+  },
+  "source_BAMs": {
+    "IWDEE": 249,
+    "EET": 388,
+    "SR": 224
+  },
+  "original_EET_SPLs_patched": 44,
+  "original_EET_ITMs_patched": 2,
+  "projectile_regression_cases": 24,
+  "IWD_standalone": true,
+  "SR_IWD_combined": true,
+  "reverse_component_order": true,
+  "partial_uninstall_retained_component_preserved": true,
+  "installer_languages": [
+    "English",
+    "Italiano"
+  ],
+  "source_art_decisions_unchanged": true,
+  "source_archive_hashes_verified": 8,
+  "IWD_builder_byte_exact": true,
+  "Windows_installer_matches_official_WeiDU251": true,
+  "Windows_execution_tested": false,
+  "game_rendering_tested": false,
+  "pending_distinct_IWD_candidates": 38,
+  "unbound_included_art_phases": 3,
+  "excluded_spells": [
+    "SPWI215",
+    "SPWI812"
+  ],
+  "confirmed_fix": "Reject SRIOSORB IDS symbol collisions before writes: ADD_PROJECTILE otherwise skips creating a missing registered PRO and SORB references it.",
+  "scope": "Complete repository and supplied source exports; isolated WeiDU fixtures with synthetic KEY/TLK; no launched EET game"
+}

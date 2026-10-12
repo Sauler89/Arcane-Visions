@@ -1,7 +1,7 @@
 # Arcane Visions — Spell Effect Animations
 
 **Animazioni degli effetti dopo il lancio delle spell originali di BG, per EET/BG2EE.**
-Versione **v0.2.0-beta.9**, di **Sauler89**. Spell Revisions e IWDification non servono.
+Versione **v0.2.0-beta.10**, di **Sauler89**. Spell Revisions e IWDification non servono.
 
 | Componente | Contenuto |
 |---|---|
@@ -9,7 +9,7 @@ Versione **v0.2.0-beta.9**, di **Sauler89**. Spell Revisions e IWDification non 
 | **10 — IWDEE** | 28 BAM e 26 VVC: 28 SPL, 2 armi temporanee e il fulmine nativo condiviso; duplicati grafici esclusi, varianti di colore distinte |
 
 Puoi installarli insieme o separatamente. Non si importano icone, nuove spell,
-meccaniche, proiettili, creature o armi. I dati non visivi delle spell restano
+meccaniche, proiettili, creature o armi dai giochi sorgente. I dati non visivi delle spell restano
 quelli installati nel tuo gioco. La lista completa e le 15 anteprime GIF sono
 nel [README principale](README.md#animation-examples).
 
@@ -29,7 +29,8 @@ Linux/macOS usa WeiDU nativo. Disinstalla con lo stesso installer.
 - Il componente IWD salta le abilità con una configurazione visiva diversa
   da quella riconosciuta e lo segnala. Quello SR sostituisce i visuali 141/215
   delle spell selezionate, conservando gli effetti non visivi.
-- I nomi privati vengono controllati prima della copia: una collisione con
+- I nomi privati, incluso SRIOSORB nelle tabelle PROJECTL.IDS e MISSILE.IDS,
+  vengono controllati prima della copia: una collisione con
   un altro mod interrompe quel componente senza sovrascriverne le risorse.
 - Le sequenze non ripetute possono finire; Barriera di lame, Mantello e
   Falsa alba conservano le rispettive regole di durata visiva.
@@ -70,8 +71,13 @@ specifici degli overlay persistenti, comprese le condizioni di Sanctuary.
 Superati sei nuovi casi per i cue doppi di Chaos, incluse configurazioni
 sconosciute che devono essere saltate. Superati anche 12 casi delle sottospell: si modificano solo se richiamate dalla
 spell principale, conservando le condizioni e senza modificare la root.
-Superati 30 casi specifici delle armi temporanee e 21 dei proiettili.
+Superati 30 casi specifici delle armi temporanee e 24 dei proiettili.
 [Rapporto completo IWDEE e SR](sr_original_spell_animations/docs/FULL_SOURCE_AUDIT.it.md).
+
+La beta.10 corregge una collisione IDS senza file PRO che poteva assegnare
+a SORB un proiettile inesistente. Verificati anche ordine inverso dei componenti,
+installer in italiano e disinstallazione parziale mantenendo l’altro componente.
+[Ricontrollo del repository](sr_original_spell_animations/docs/REPOSITORY_RECHECK.it.md).
 
 Correzioni della beta.2: sequenza di Implosione non troncata, controller singoli
 lasciati terminare, indice globale inutilizzato accettato quando non ci sono

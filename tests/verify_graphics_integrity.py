@@ -31,7 +31,7 @@ for a in allassets:
   assert all(b[o:o+8]==bytes(8) for o in (16,68,120,128,136,148))
   nf,cycles=bam((ROOT/by[ref]['destination']).read_bytes())
   assert all(struct.unpack_from('<I',b,o)[0] in (0,0xffffffff) or 1<=struct.unpack_from('<I',b,o)[0]<=len(cycles) for o in (104,108,144))
-overlays=json.loads((D/'iwd_overlay_mapping.json').read_text());guard=(MOD/'setup-sr_original_spell_animations.tp2').read_text().split('BEGIN @10',1)[1].split(' BEGIN',1)[0]
+overlays=json.loads((D/'iwd_overlay_mapping.json').read_text());guard=(MOD/'setup-sr_original_spell_animations.tp2').read_text().split('BEGIN @10',1)[1].split('ACTION_FOR_EACH av_private IN ',1)[1].split(' BEGIN',1)[0]
 assert set(re.findall(r'~([^~]+\.(?:bam|vvc|pro))~',guard))=={Path(a['destination']).name for a in iw if '/iwd_native/' not in a['destination']}|{'sriosorb.pro'}
 for r in overlays:
  b=(MOD/'assets/iwd'/(r['private']+'.vvc')).read_bytes();assert struct.unpack_from('<I',b,32)[0]&1

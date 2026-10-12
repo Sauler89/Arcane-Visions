@@ -7,7 +7,7 @@ Spell Revisions or Icewind Dale: Enhanced Edition. It replaces the artwork
 shown after a spell is cast, while retaining the installed spell's mechanics.
 **Spell Revisions and IWDification are not required.**
 
-Current version: **v0.2.0-beta.9**, by **Sauler89**.
+Current version: **v0.2.0-beta.10**, by **Sauler89**.
 [Italian instructions](../README.it.md) · [Affected spells](#affected-spells) ·
 [Audit and validation](docs/RIGOROUS_AUDIT.md)
 
@@ -184,7 +184,8 @@ attachment and effect count in each ability; unfamiliar visuals from another
 mod are skipped and logged. Component 0 deliberately replaces all 141/215
 ability visuals of its selected spells, while retaining their nonvisual effects.
 
-Private resource names are checked before installation. A collision aborts
+Private resource names and the SRIOSORB symbol in both PROJECTL.IDS and
+MISSILE.IDS are checked before installation. A collision aborts
 that component before it can overwrite another mod's similarly named resource.
 Native replacements intentionally overwrite the engine graphic resources.
 
@@ -265,12 +266,17 @@ blending and synchronization of the effects require in-game confirmation.
 The GIFs do not replace that test. Install/uninstall tests use minimal KEY/TLK
 fixtures and exported resources; they do not load a complete game installation.
 
-The projectile module passed **21 cases** for installed-data cloning, unknown
+The projectile module passed **24 cases** for installed-data cloning, unknown
 layouts, missing resources, shared lightning, collisions and exact uninstall.
 
 The temporary-weapon patcher also passed **30 cases** for recognized/conditional
 hits, missing/detached/repurposed roots, unknown visuals, delayed cues and
 malformed items, with stable reinstall and byte-exact uninstall.
+
+Both component orders produce identical resources. English/Italiano and
+partial uninstall with the other component retained also passed.
+Beta.10 fixes an IDS-only SRIOSORB collision that could otherwise leave SORB
+pointing to a missing projectile. [Complete recheck](docs/REPOSITORY_RECHECK.it.md).
 
 ## Development
 

@@ -3,9 +3,9 @@
 > Restano 38 candidati distinti; SKYBOLT IWDEE è un alias di CALLLIH, incluso una sola volta.
 > Le sezioni storiche beta.8 riportano i limiti precedenti, superati dal rapporto linkato.
 
-# Ricontrollo completo delle sorgenti — v0.2.0-beta.9
+# Ricontrollo completo delle sorgenti — v0.2.0-beta.10
 
-Ricontrollo del 9 ottobre 2026. Il controllo precedente aveva davvero omesso
+Ricontrollo del 12 ottobre 2026. Il controllo precedente aveva davvero omesso
 alcuni effetti IWDEE. La beta.4 ha corretto sei omissioni; la beta.5 ne corregge altre quattro
 nei collegamenti alle spell. Il rapporto distingue
 i duplicati dalle varianti di colore e dalle fasi ancora da integrare.
@@ -51,7 +51,7 @@ privati e audio rimosso. Le due sottospell vengono patchate solo se la spell
 principale le richiama ancora attraverso un opcode di lancio riconosciuto.
 Le spell principali restano byte-identiche.
 
-La beta.9 contiene **42 BAM, 38 VVC e 1.429 frame fisici**, con **44 SPL EET
+La beta.10 contiene **42 BAM, 38 VVC e 1.429 frame fisici**, con **44 SPL EET
 patchate** nei test: 16 SR e 28 IWDEE, incluse le due sottospell,
 più i cue di impatto di **2 ITM** (Slay Living e Sol’s Searing Orb).
 
@@ -251,15 +251,15 @@ con indici non confermati restano segnalati come tali.
 
 - PASS sui 44 SPL EET e 2 ITM esportati, componente IWDEE indipendente e insieme a SR:
   reinstallazione stabile, ripristino byte per byte dopo disinstallazione.
-- PASS: 30 casi delle armi temporanee e sei nuovi casi della coppia Chaos, 44 casi degli overlay,
+- PASS: 24 casi dei proiettili, 30 casi delle armi temporanee e sei nuovi casi della coppia Chaos, 44 casi degli overlay,
   28 regressioni generali e 12 casi delle
   sottospell, comprese root assenti, scollegate, troncate o riproposte come
   immunità anziché lancio.
-- PASS: byte delle condizioni/meccaniche, effetti globali, icone, indici
-  dei proiettili; tutti i BAM identici alle sorgenti e tutte le dipendenze
+- PASS: byte delle condizioni/meccaniche, effetti globali, icone e indici
+  dei proiettili delle SPL; SORB usa il clone privato del PRO EET; tutti i BAM identici alle sorgenti e tutte le dipendenze
   VVC risolte. Fasi, coordinate e flag dei VVC IWDEE conservati dalle sorgenti.
 - PASS: SR originale, profili sintetici EET/BG2EE, nomi privati, RLE/cicli,
-  13 GIF e relativi hash, collegamenti locali dei README.
+  15 GIF e relativi hash, collegamenti locali dei README.
 
 Una risorsa dell'export EET, `CDDETECT.SPL`, ha una firma `ITM V1  `:
 segnalata nel CSV degli input, ma estranea al mod e non modificata.
@@ -282,3 +282,10 @@ Risultati: [source_coverage_summary.json](source_coverage_summary.json),
 Riferimenti tecnici: [IESDP opcode 157](https://gibberlings3.github.io/iesdp/opcodes/bgee.htm#op157),
 [VVC](https://gibberlings3.github.io/iesdp/file_formats/ie_formats/vvc_v1.htm),
 [PRO](https://gibberlings3.github.io/iesdp/file_formats/ie_formats/pro_v1.htm).
+
+## Ricontrollo repository beta.10
+
+Tutte le 861 decisioni BAM sono state rigenerate e coincidono con la beta.9:
+nessuna nuova omissione attiva dimostrata nella selezione. Corretto il conflitto
+IDS senza PRO di SRIOSORB; verificati italiano, ordine inverso e disinstallazione
+parziale. [Rapporto completo](REPOSITORY_RECHECK.it.md).

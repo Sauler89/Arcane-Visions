@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "cases": 21,
+  "cases": 24,
   "checks": [
     "recognized",
     "different-speed-and-sound",
@@ -22,7 +22,10 @@
     "lightning-other-travel",
     "lightning-missing-bam",
     "lightning-missing-root",
-    "private-PRO-collision"
+    "private-PRO-collision",
+    "PROJECTL-symbol-only-collision",
+    "MISSILE-symbol-only-collision",
+    "both-IDS-symbol-collision"
   ],
   "installed_PRO_gameplay_and_audio_preserved": true,
   "original_PROs_and_root_SPLs_byte_identical": true,
@@ -30,5 +33,6 @@
   "SKYBOLT_shared_BAM_only": true,
   "reinstall_stable": true,
   "uninstall_byte_exact": true,
-  "game_rendering_tested": false
+  "game_rendering_tested": false,
+  "IDS_symbol_collisions_checked_before_writes": true
 }

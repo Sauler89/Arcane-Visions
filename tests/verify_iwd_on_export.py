@@ -33,8 +33,8 @@ try:
  def resource(name):return next(p for p in ov.iterdir() if p.name.lower()==name.lower())
  def snap():
   files=[p for p in ov.iterdir() if p.name.lower()!='add_spell.ids'];result={p.name.lower():hashlib.sha256(p.read_bytes()).hexdigest() for p in files};assert len(result)==len(files),'case-colliding game filenames';return result
- def run(args,label):
-  p=subprocess.run([str(WEIDU),'sr_original_spell_animations/setup-sr_original_spell_animations.tp2','--noautoupdate','--language','0','--no-exit-pause',*args],cwd=game,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT);(OUT/(label+'.log')).write_text(p.stdout);assert p.returncode==0,p.stdout[-10000:]
+ def run(args,label,language=0):
+  p=subprocess.run([str(WEIDU),'sr_original_spell_animations/setup-sr_original_spell_animations.tp2','--noautoupdate','--language',str(language),'--no-exit-pause',*args],cwd=game,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT);(OUT/(label+'.log')).write_text(p.stdout);assert p.returncode==0,p.stdout[-10000:]
  originals={s:resource(s+'.spl').read_bytes() for s in dict.fromkeys([r[0] for r in ROWS]+list(OVERLAY_BY))};before=snap();tlk=(game/'dialog.tlk').read_bytes()
  item_originals={r[1]:resource(r[1]+'.itm').read_bytes() for r in ITEMS}
  item_roots={r[0]:resource(r[0]+'.spl').read_bytes() for r in ITEMS}
@@ -143,9 +143,22 @@ try:
   else:assert new==data,label+' unexpectedly replaced an unrecognized pair'
   run(['--force-uninstall-list','10'],'IWD_chaos_'+label+'_uninstall');assert snap()==snapshot
   p.write_bytes(chaos);assert snap()==before;repeated_cases.append(label)
+ # Reverse component order and partial uninstall must leave the retained component intact.
+ run(['--force-install-list','0'],'SR_Italian_install',language=1);sr_only=snap()
+ run(['--force-uninstall-list','0'],'SR_Italian_uninstall',language=1);assert snap()==before
+ run(['--force-install-list','10'],'IWD_Italian_reverse_install',language=1);check_iwd()
+ run(['--force-install-list','0'],'SR_Italian_reverse_install',language=1);check_iwd()
+ for spell,*_ in CORE['spells']:assert_preserved((SOURCE/(spell+'.SPL')).read_bytes(),resource(spell+'.spl').read_bytes(),spell)
+ reverse=snap();assert reverse==both,'component order changed installed resources'
+ run(['--force-uninstall-list','10'],'IWD_Italian_partial_uninstall',language=1)
+ assert snap()==sr_only,'uninstalling IWD changed the retained SR component'
+ run(['--force-uninstall-list','0'],'SR_Italian_partial_uninstall',language=1);assert snap()==before
  assert (game/'dialog.tlk').read_bytes()==tlk
  result=dict(status='PASS',component=10,spells=len(originals),persistent_overlay_spells=len(OVERLAYS),bam_assets=sum(a['destination'].endswith('.bam') for a in manifest),vvc_assets=sum(a['destination'].endswith('.vvc') for a in manifest),frames_validated=frames,spell_checks=report,standalone_install=True,combined_with_SR=True,reinstall_stable=True,uninstall_byte_exact=True,unknown_visual_skipped=True,icons_projectiles_globals_nonvisual_effects_and_conditions_preserved=True,game_rendering_tested=False,baseline='owner-supplied modded EET exports; isolated fixture with synthetic KEY/TLK',excluded_framework_cache='ADD_SPELL.IDS')
  result['repeated_visual_cases']=repeated_cases
+ result['reverse_component_order_identical']=True
+ result['partial_uninstall_retained_component_preserved']=True
+ result['installer_languages_checked']=['English','Italiano']
  result['projectile_checks']={'SORB_private_clone_mechanics_preserved':True,'SKYBOLT_shared_art_only':True,'SPPR302_bytes_preserved':True,'original_PROs_preserved':True}
  result['temporary_weapon_checks']=[r[1] for r in ITEMS]
  result['temporary_weapon_roots_unchanged']=True
