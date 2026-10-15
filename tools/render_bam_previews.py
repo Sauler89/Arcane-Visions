@@ -12,6 +12,8 @@ DEMO += [('glitterdust','iwd/sriodust','Glitterdust · GLDUSTA',15,[1],True),('r
 DEMO += [('sols-searing-orb-travel','iwd/srioorbt',"Sol's Searing Orb · SSORBT",15,[0],True),('call-lightning','iwd_native/skybolt','Call Lightning · CALLLIH',15,[0],True)]
 DEMO += [('conjure-fire-elemental','custom/sraelfir','Conjure Fire Elemental · DVELFIRE',15,[0],True),('conjure-air-elemental','custom/sraelair','Conjure Air Elemental · DVELAIR',15,[0],True),('conjure-earth-elemental','custom/sraelear','Conjure Earth Elemental · DVELEART',15,[0],True)]
 
+DEMO += [('spell-trap','spelltrap/sratrap','Spell Trap · classic BG2 globe',15,[0],True)]
+
 def decode(path):
  b=path.read_bytes()
  if b[:4]==b'BAMC':

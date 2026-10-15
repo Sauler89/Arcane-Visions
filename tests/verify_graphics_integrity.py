@@ -10,7 +10,7 @@ METADATA=Path(sys.argv[2]).resolve() if len(sys.argv)>2 else None
 metadata_files={p.name.upper():p for p in METADATA.iterdir() if p.is_file()} if METADATA else {}
 helper=ast.parse((ROOT/'tests/verify_assets.py').read_text())
 exec(compile(ast.Module(body=[n for n in helper.body if isinstance(n,ast.FunctionDef) and n.name=='bam'],type_ignores=[]),'<BAM checks>','exec'))
-sr=json.loads((D/'asset_manifest.json').read_text());iw=json.loads((D/'iwd_asset_manifest.json').read_text());allassets=sr+iw
+sr=json.loads((D/'asset_manifest.json').read_text());iw=json.loads((D/'iwd_asset_manifest.json').read_text());trap=json.loads((D/'spelltrap_asset_manifest.json').read_text());allassets=sr+iw+trap
 assert len({a['destination'].lower() for a in allassets})==len(allassets)
 actual={str(p.relative_to(ROOT)) for p in (MOD/'assets').rglob('*') if p.is_file()};assert actual=={a['destination'] for a in allassets}
 by={Path(a['destination']).name.lower():a for a in allassets};frames=nbam=nvvc=0
@@ -33,6 +33,9 @@ for a in allassets:
   assert all(struct.unpack_from('<I',b,o)[0] in (0,0xffffffff) or 1<=struct.unpack_from('<I',b,o)[0]<=len(cycles) for o in (104,108,144))
 overlays=json.loads((D/'iwd_overlay_mapping.json').read_text());guard=(MOD/'setup-sr_original_spell_animations.tp2').read_text().split('BEGIN @10',1)[1].split('ACTION_FOR_EACH av_private IN ',1)[1].split(' BEGIN',1)[0]
 assert set(re.findall(r'~([^~]+\.(?:bam|vvc|pro))~',guard))=={Path(a['destination']).name for a in iw if '/iwd_native/' not in a['destination']}|{'sriosorb.pro'}
+trap_guard=(MOD/'setup-sr_original_spell_animations.tp2').read_text().split('BEGIN @20',1)[1].split('ACTION_FOR_EACH av_private IN ',1)[1].split(' BEGIN',1)[0]
+assert set(re.findall(r'~([^~]+\.(?:bam|vvc))~',trap_guard))=={Path(a['destination']).name for a in trap}
+assert struct.unpack_from('<I',(MOD/'assets/spelltrap/sratrap.vvc').read_bytes(),32)[0]&1
 for r in overlays:
  b=(MOD/'assets/iwd'/(r['private']+'.vvc')).read_bytes();assert struct.unpack_from('<I',b,32)[0]&1
  assert struct.unpack_from('<I',b,92)[0]==0xffffffff
@@ -53,5 +56,5 @@ for p in (ROOT/'README.md',MOD/'README.md',ROOT/'CREDITS.md',D/'RIGOROUS_AUDIT.m
   if target.startswith(('https:','http:','#')):continue
   assert (p.parent/target.split('#')[0]).exists(),(p,target)
 assert not any(p.suffix.lower() in ('.spl','.eff','.pro','.cre','.itm','.bcs') for p in (MOD/'assets').rglob('*') if p.is_file())
-result=dict(status='PASS',bam=nbam,vvc=nvvc,total_frames=frames,preview_gifs=len(previews),core_spells=len(core['spells']),iwd_spells=len(iwd_roots)+1,iwd_patched_SPLs=len(iwd_roots)-len(items),iwd_native_BAMs=1,iwd_patched_ITMs=len(items),exact_BAM_source_bytes=True,no_icons_or_gameplay_imports=True,private_names_unique=True,all_controller_dependencies_resolved=True,all_IWD_private_names_guarded=True,persistent_controllers_loop=True,README_local_links_valid=True,game_rendering_tested=False)
+result=dict(status='PASS',bam=nbam,vvc=nvvc,total_frames=frames,preview_gifs=len(previews),spelltrap_BAMs=1,spelltrap_VVCs=1,spelltrap_SPLs=1,core_spells=len(core['spells']),iwd_spells=len(iwd_roots)+1,iwd_patched_SPLs=len(iwd_roots)-len(items),iwd_native_BAMs=1,iwd_patched_ITMs=len(items),exact_BAM_source_bytes=True,no_icons_or_gameplay_imports=True,private_names_unique=True,all_controller_dependencies_resolved=True,all_IWD_private_names_guarded=True,persistent_controllers_loop=True,README_local_links_valid=True,game_rendering_tested=False)
 print(json.dumps(result,indent=2))

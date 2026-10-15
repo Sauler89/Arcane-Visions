@@ -43,3 +43,18 @@ WeiDU 251 Windows executable and [its own license](sr_original_spell_animations/
 standard libraries for installation checks; source-image comparison uses NumPy
 and preview rendering uses Pillow. GIFs are generated from
 the actual bundled assets and do not depict a launched game.
+
+## Classic Spell Trap globe (component 20)
+
+Cowled Menace, copyright © 2026 Maltodaxtrin/Daxtreme:
+[source folder](https://github.com/Gibberlings3/CowledMenace/tree/c88daf97d585c68089972f4b30980fff29ca6b8a/cowledmenace/spelltrap).
+The project is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/);
+its full [license and disclaimer](sr_original_spell_animations/docs/COWLED-MENACE-LICENSE.md)
+are retained. Original BG2 graphics belong to their original creators.
+
+`dx#trap.bam` becomes `sratrap.bam`, with identical bytes. Its duplicate
+`SPMAGGLO.bam` is not imported. `dx#strap.vvc` becomes `sratrap.vvc`;
+BAM/internal names change and three audio fields are cleared. All rendering
+flags, offsets, FPS and phase mappings are retained. The README GIF is a
+rendered preview derived from these assets. Integration code is new; no source
+quest, spell or gameplay code is imported. No source-author endorsement is implied.

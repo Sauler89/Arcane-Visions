@@ -52,6 +52,6 @@ try:
  run([0,10],label='upgrade-reinstall');assert snap()==after
  run([10,0],False,label='upgrade-uninstall');assert snap()==before
  checks.append('beta.11 Italian -> current English: Shadow Door restored, obsolete assets removed, stable reinstall/exact uninstall')
- result=dict(status='PASS',version='v0.2.0-beta.13',installer_languages=['English'],checks=checks,preserved_resources=preserved,source='owner-supplied EET exports with synthetic KEY/TLK',old_Italian_install_upgrade_tested=True,obsolete_door_assets_removed=True,no_global_native_door_replacement=True,game_rendering_tested=False)
+ result=dict(status='PASS',version=(ROOT/'sr_original_spell_animations/setup-sr_original_spell_animations.tp2').read_text().split('VERSION ~',1)[1].split('~',1)[0],installer_languages=['English'],checks=checks,preserved_resources=preserved,source='owner-supplied EET exports with synthetic KEY/TLK',old_Italian_install_upgrade_tested=True,obsolete_door_assets_removed=True,no_global_native_door_replacement=True,game_rendering_tested=False)
  (OUT/'english_doors_validation.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))
 finally:shutil.rmtree(game)

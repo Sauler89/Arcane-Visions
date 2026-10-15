@@ -235,5 +235,18 @@
     "preview_frame_delay_ms": 70,
     "screen_blending_approximation": true,
     "game_capture": false
+  },
+  {
+    "file": "docs/previews/spell-trap.gif",
+    "asset": "sr_original_spell_animations/assets/spelltrap/sratrap.bam",
+    "asset_sha256": "c903996ec386172a0370c638d2a865a5134c008774eafc319b9259e75a4d67b1",
+    "gif_sha256": "e2e6d405a31b8ba50a6b87d30a8ed9580ec4492c60125a0d45c11732f7329c77",
+    "bam_cycles": [
+      0
+    ],
+    "frame_rate": 15,
+    "preview_frame_delay_ms": 70,
+    "screen_blending_approximation": true,
+    "game_capture": false
   }
 ]

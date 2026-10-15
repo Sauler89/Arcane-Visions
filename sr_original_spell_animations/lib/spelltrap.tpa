@@ -1,0 +1,126 @@
+// Cowled Menace artwork, privately named. Never replace native SPMAGGLO.
+DEFINE_PATCH_FUNCTION av_trap_layout
+ RET av_valid av_ao av_ac av_eo
+BEGIN
+ SET av_valid = 0 SET av_ao = 0 SET av_ac = 0 SET av_eo = 0
+ PATCH_IF SOURCE_SIZE >= 114 BEGIN
+  READ_ASCII 0 av_sig (8)
+  READ_LONG 100 av_ao READ_SHORT 104 av_ac READ_LONG 106 av_eo
+  READ_SHORT 110 av_gi READ_SHORT 112 av_gc
+  SET av_valid = (~%av_sig%~ STRING_EQUAL_CASE ~SPL V1  ~) AND av_ac > 0 AND av_ao >= 114 AND av_ao + av_ac * 40 <= SOURCE_SIZE AND av_eo >= av_ao + av_ac * 40 AND av_eo <= SOURCE_SIZE
+  SET av_end = 0
+  PATCH_IF av_gc > 0 BEGIN SET av_end = av_gi + av_gc END
+  PATCH_IF av_eo + av_end * 48 > SOURCE_SIZE BEGIN SET av_valid = 0 END
+  FOR (av_i = 0; av_i < av_ac AND av_valid; ++av_i) BEGIN
+   READ_SHORT (av_ao + av_i * 40 + 30) av_n
+   READ_SHORT (av_ao + av_i * 40 + 32) av_idx
+   PATCH_IF av_eo + (av_idx + av_n) * 48 > SOURCE_SIZE OR (av_n > 0 AND av_idx < av_end) BEGIN SET av_valid = 0 END
+   PATCH_IF av_n > 0 BEGIN SET av_end = av_idx + av_n END
+  END
+ END
+END
+
+// Exhaustion must already remove SPWI902's effects. Do not alter a shared
+// callback or replace any opcode 259 resource (it is NOT an animation field).
+OUTER_SET av_cleanup = 0
+ACTION_IF FILE_EXISTS_IN_GAME ~SPWI902B.spl~ BEGIN
+ COPY_EXISTING ~SPWI902B.spl~ ~override~
+  LPF av_trap_layout RET av_valid av_ao av_ac av_eo END
+  PATCH_IF av_valid BEGIN
+   SET av_cleanup = 1
+   FOR (av_i = 0; av_i < av_ac; ++av_i) BEGIN
+    READ_SHORT (av_ao + av_i * 40 + 30) av_n
+    READ_SHORT (av_ao + av_i * 40 + 32) av_idx
+    SET av_found = 0
+    FOR (av_j = 0; av_j < av_n; ++av_j) BEGIN
+     SET av_o = av_eo + (av_idx + av_j) * 48
+     READ_SHORT av_o av_op READ_BYTE (av_o + 2) av_target
+     READ_LONG (av_o + 8) av_p2 READ_BYTE (av_o + 12) av_time
+     READ_BYTE (av_o + 18) av_prob1 READ_BYTE (av_o + 19) av_prob2
+     READ_ASCII (av_o + 20) av_ref (8) NULL
+     READ_LONG (av_o + 36) av_save
+     PATCH_IF av_op = 321 AND av_target = 1 AND av_p2 = 0 AND av_time = 1 AND av_prob1 = 100 AND av_prob2 = 0 AND av_save = 0 AND (~%av_ref%~ STRING_EQUAL_CASE ~SPWI902~) BEGIN SET av_found = 1 END
+    END
+    PATCH_IF !av_found BEGIN SET av_cleanup = 0 END
+   END
+  END
+ BUT_ONLY_IF_IT_CHANGES
+END
+
+OUTER_SET av_trap_patched = 0
+ACTION_IF av_cleanup AND FILE_EXISTS_IN_GAME ~SPWI902.spl~ BEGIN
+ COPY_EXISTING ~SPWI902.spl~ ~override~
+  LPF av_trap_layout RET av_valid av_ao av_ac av_eo END
+  PATCH_IF av_valid BEGIN
+   READ_SHORT 28 av_type READ_LONG 52 av_level
+   PATCH_IF av_type != 1 OR av_level != 9 BEGIN SET av_valid = 0 END
+  END
+  // All headers must have one complete, uniformly conditioned set of traps
+  // for levels 1..9. Unknown visual/controller routes are left untouched.
+  FOR (av_i = 0; av_i < av_ac AND av_valid; ++av_i) BEGIN
+   READ_SHORT (av_ao + av_i * 40 + 30) av_n
+   READ_SHORT (av_ao + av_i * 40 + 32) av_idx
+   SET av_mask = 0 SET av_template = 0 - 1
+   FOR (av_j = 0; av_j < av_n AND av_valid; ++av_j) BEGIN
+    SET av_o = av_eo + (av_idx + av_j) * 48
+    READ_SHORT av_o av_op
+    PATCH_IF av_op = 215 OR av_op = 291 OR av_op = 177 OR av_op = 146 OR av_op = 232 BEGIN SET av_valid = 0 END
+    PATCH_IF av_op = 259 BEGIN
+     READ_BYTE (av_o + 2) av_target READ_LONG (av_o + 4) av_amount
+     READ_LONG (av_o + 8) av_power READ_BYTE (av_o + 12) av_time
+     READ_BYTE (av_o + 18) av_prob1 READ_BYTE (av_o + 19) av_prob2 READ_LONG (av_o + 36) av_save
+     READ_LONG (av_o + 14) av_duration READ_ASCII (av_o + 20) av_ref (8) NULL
+     PATCH_IF av_target != 1 OR av_time != 0 OR av_duration = 0 OR av_prob1 != 100 OR av_prob2 != 0 OR av_save != 0 OR av_amount = 0 OR av_power < 1 OR av_power > 9 OR (!(~%av_ref%~ STRING_EQUAL ~~) AND !(~%av_ref%~ STRING_EQUAL_CASE ~SPWI902B~)) BEGIN
+      SET av_valid = 0
+     END ELSE BEGIN
+      PATCH_IF (av_mask BAND (1 BLSL av_power)) != 0 BEGIN SET av_valid = 0 END
+      SET av_mask = av_mask BOR (1 BLSL av_power)
+      PATCH_IF av_template < 0 BEGIN SET av_template = av_o END
+      FOR (av_k = 2; av_k < 48; ++av_k) BEGIN
+       // Resource, trapped power and irrelevant dice do not govern application.
+       PATCH_IF av_k < 4 OR (av_k >= 12 AND av_k < 20) OR av_k >= 36 BEGIN
+        READ_BYTE (av_o + av_k) av_b READ_BYTE (av_template + av_k) av_c
+        PATCH_IF av_b != av_c BEGIN SET av_valid = 0 END
+       END
+      END
+     END
+    END
+   END
+   PATCH_IF av_mask != 1022 OR av_n > 65533 OR av_idx + av_n + av_ac * 2 > 65535 BEGIN SET av_valid = 0 END
+  END
+  PATCH_IF av_valid BEGIN
+   // Reverse insertion preserves every existing effect, gap and table byte.
+   FOR (av_i = av_ac - 1; av_i >= 0; --av_i) BEGIN
+    READ_SHORT (av_ao + av_i * 40 + 30) av_n
+    READ_SHORT (av_ao + av_i * 40 + 32) av_idx
+    FOR (av_j = 0; av_j < av_n; ++av_j) BEGIN
+     SET av_o = av_eo + (av_idx + av_j) * 48 READ_SHORT av_o av_op
+     PATCH_IF av_op = 259 BEGIN
+      FOR (av_k = 0; av_k < 48; ++av_k) BEGIN READ_BYTE (av_o + av_k) $av_bytes(~%av_k%~) END
+     END
+    END
+    SET av_insert = av_idx + av_n SET av_pos = av_eo + av_insert * 48
+    INSERT_BYTES av_pos 96
+    FOR (av_k = 0; av_k < 48; ++av_k) BEGIN
+     WRITE_BYTE (av_pos + av_k) $av_bytes(~%av_k%~)
+     WRITE_BYTE (av_pos + 48 + av_k) $av_bytes(~%av_k%~)
+    END
+    // 291: suppress hardcoded SPMAGGLO/SPTURNI2 on this bearer while active.
+    WRITE_SHORT av_pos 291 WRITE_LONG (av_pos + 4) 0 WRITE_LONG (av_pos + 8) 1
+    WRITE_ASCII (av_pos + 20) ~~ #8 WRITE_LONG (av_pos + 28) 0 WRITE_LONG (av_pos + 32) 0
+    // 215: private looping globe, attached, with installed trap conditions/life.
+    WRITE_SHORT (av_pos + 48) 215 WRITE_LONG (av_pos + 52) 0 WRITE_LONG (av_pos + 56) 1
+    WRITE_ASCII (av_pos + 68) ~sratrap~ #8 WRITE_LONG (av_pos + 76) 0 WRITE_LONG (av_pos + 80) 0
+    WRITE_SHORT (av_ao + av_i * 40 + 30) (av_n + 2)
+    FOR (av_j = av_i + 1; av_j < av_ac; ++av_j) BEGIN
+     READ_SHORT (av_ao + av_j * 40 + 32) av_later
+     WRITE_SHORT (av_ao + av_j * 40 + 32) (av_later + 2)
+    END
+   END
+   SET av_trap_patched = 1
+  END ELSE BEGIN PATCH_PRINT ~Arcane Visions: SPWI902 has an unsupported Spell Trap layout; classic globe skipped.~ END
+ BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN PRINT ~Arcane Visions: Spell Trap or its recognized exhaustion cleanup is missing; classic globe skipped.~ END
+ACTION_IF av_trap_patched BEGIN
+ COPY ~sr_original_spell_animations/assets/spelltrap~ ~override~
+END

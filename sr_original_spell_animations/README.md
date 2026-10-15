@@ -3,11 +3,12 @@
 **Standalone post-cast spell animations for BGEE, BG2EE and EET.**
 
 Arcane Visions gives selected original BG spells the visual effects used by
-Spell Revisions or Icewind Dale: Enhanced Edition. It replaces the artwork
+Spell Revisions or Icewind Dale: Enhanced Edition, with an optional classic
+BG2 Spell Trap globe sourced from Cowled Menace. It replaces the artwork
 shown after a spell is cast, while retaining the installed spell's mechanics.
 **Spell Revisions and IWDification are not required.**
 
-Current version: **v0.2.0-beta.13**, by **Sauler89**.
+Current version: **v0.2.0-beta.14**, by **Sauler89**.
 [Affected spells](#affected-spells) ·
 [Audit and validation](docs/RIGOROUS_AUDIT.md)
 
@@ -54,7 +55,11 @@ These three **Spell Revisions summoning effects** are also used by the
 corresponding Conjure Lesser Elemental spells. They show the summoning animation;
 the elemental creatures keep their installed appearance.
 
-The two globe previews are **IWDEE effect animations**, added in beta.3.
+| Spell Trap — classic BG2 globe, component 20 |
+|:---:|
+| ![Spell Trap classic globe animation](../docs/previews/spell-trap.gif) |
+
+The Minor Globe / Globe of Invulnerability previews are **IWDEE effect animations**, added in beta.3.
 The similarly named SR files `spwi406a/b/c` and `spwi602a/b/c` remain excluded
 because they are icons. `SPMAGGLO` is a separate shared protection overlay.
 
@@ -64,10 +69,11 @@ because they are icons. `SPMAGGLO` is a separate shared protection overlay.
 |---|---|---|
 | **0** | SR effect animations for selected original spells | 13 BAMs, 11 VVCs |
 | **10** | IWDEE effects: 28 SPL resources, two temporary weapons and native lightning | 28 BAMs, 26 VVCs |
+| **20** | Classic BG2 globe for level 9 wizard Spell Trap only | 1 BAM, 1 VVC |
 
 Components can be installed independently or together. Their targeted spell
-lists are disjoint. The complete package contains **41 animation BAMs and
-37 visual-controller VVCs**, and patches **43 SPL files (including two child spells)** in the
+lists are disjoint. The complete package contains **42 animation BAMs and
+38 visual-controller VVCs**, and patches **44 SPL files (including two child spells)** in the
 supplied EET baseline, plus the hit cues in **two temporary-weapon ITMs**. Additional spells use the replaced native graphics.
 
 No spellbook/action-bar/portrait icons, new spells, revised spell descriptions,
@@ -80,7 +86,7 @@ a newly registered clone of its installed projectile for isolated travel art.
 
 1. Extract the entire package into the BGEE/BG2EE/EET game folder containing `chitin.key`.
 2. Run `setup-sr_original_spell_animations.exe` and use the English-only installer.
-3. Install component **0**, **10**, or both. No source-game exports are needed.
+3. Choose any combination of components **0**, **10** and **20**. No source-game exports are needed.
 
 Install after other mods that change these spells. On EET, also install after
 **EET_end**. BGEE with or without Siege of Dragonspear is accepted.
@@ -203,6 +209,31 @@ Door (`SPWI402`) keep their installed Baldur's Gate graphics. The former SR
 should reinstall component 0 through WeiDU to restore the previous Shadow
 Door spell and remove the obsolete private resources.
 
+### Component 20 — classic Spell Trap globe
+
+| Original spell | SPL | Private BAM / VVC | Source artwork |
+|---|---|---|---|
+| Spell Trap — level 9 wizard spell | `SPWI902` | `sratrap` | Cowled Menace `dx#trap.bam` |
+
+Only `SPWI902.SPL` receives this private globe. The component never replaces
+`SPMAGGLO`, never patches other protection spells or item abilities, and does
+not import Cowled Menace quests or gameplay. An item/mod that explicitly
+casts `SPWI902` will naturally receive that spell's visual; separate item
+Spell Trap effects retain their installed art.
+
+The attached globe follows the installed protection's duration. The existing
+`SPWI902B` exhaustion cleanup must remove effects from `SPWI902`; its bytes
+and every original root effect remain unchanged. Missing, conditional or
+unrecognized trap/cleanup layouts are skipped, with no globe assets installed.
+
+**Engine limitation:** while this Spell Trap is active, its opcode 291 hides
+the bearer's hardcoded `SPMAGGLO` and `SPTURNI2` protection overlays, including
+those from concurrently active protections. Their mechanics are unaffected;
+other creatures and shared graphics files are untouched. Custom opcode 215
+visuals are unaffected. This prevents the native aura overlapping the classic
+globe; it is not selective suppression of opcode 259 alone.
+See [Spell Trap integration and validation](docs/SPELL_TRAP.md).
+
 ## Compatibility and graphics handling
 
 The installer edits the resources currently present in the game. Missing
@@ -305,7 +336,8 @@ The temporary-weapon patcher also passed **30 cases** for recognized/conditional
 hits, missing/detached/repurposed roots, unknown visuals, delayed cues and
 malformed items, with stable reinstall and byte-exact uninstall.
 
-Both component orders produce identical resources. English-only installation
+The two original components produce identical resources in either order.
+Spell Trap also passes combined/reverse-order installation checks. English-only installation
 and partial uninstall with the other component retained also passed.
 Beta.10 fixes an IDS-only SRIOSORB collision that could otherwise leave SORB
 pointing to a missing projectile. [Complete recheck](docs/REPOSITORY_RECHECK.md).
@@ -331,6 +363,12 @@ clean test, load before the affected spell was cast. Existing permanent
 effects serialized in a saved creature are not rewritten by the installer.
 [Ghost Armor report, fix and verification](docs/GHOST_ARMOR_FIX.md).
 
+Beta.14 adds optional component 20, isolated classic Spell Trap artwork and
+a nineteenth actual BAM preview. The Spell Trap fixture checks preserve every
+original effect and all unrelated resources, including the exhaustion callback
+and shared protection graphics. Runtime expiry, depletion, dispelling and area
+transitions still require in-game confirmation.
+
 ## Development
 
 ```sh
@@ -340,6 +378,7 @@ python3 tests/verify_installer.py /path/to/weidu [path/to/extracted/spell_rev]
 python3 tests/verify_regressions.py /path/to/weidu
 python3 tests/verify_bgee.py /path/to/weidu /path/to/results
 python3 tests/verify_english_doors.py /path/to/EET-export /path/to/weidu /path/to/results
+python3 tests/verify_spelltrap.py /path/to/EET-export /path/to/weidu /path/to/results
 python3 tests/verify_transient_visuals.py /path/to/EET-export /path/to/weidu /path/to/results
 python3 tests/verify_iwd_on_export.py /path/to/EET-export /path/to/weidu /path/to/results
 python3 tests/verify_overlays.py /path/to/EET-export /path/to/weidu /path/to/results
@@ -368,3 +407,10 @@ or redistributed in any form without the consent of its author.” That source
 notice remains applicable; inclusion here does not grant a new graphics license.
 WeiDU is distributed under its own license in [WeiDU license](docs/WEIDU-COPYING.txt).
 See [CREDITS.md](../CREDITS.md) for provenance and technical references.
+
+Cowled Menace Spell Trap assets: **Maltodaxtrin/Daxtreme**, copyright © 2026.
+Source: [Cowled Menace spelltrap](https://github.com/Gibberlings3/CowledMenace/tree/c88daf97d585c68089972f4b30980fff29ca6b8a/cowledmenace/spelltrap),
+under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
+([retained license](docs/COWLED-MENACE-LICENSE.md)). BAM bytes are unchanged; the VVC is
+privately renamed and silenced. Original BG2 art belongs to its original
+creators. No endorsement by the source mod author is implied.

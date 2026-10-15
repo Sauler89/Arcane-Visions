@@ -1,0 +1,138 @@
+{
+  "status": "PASS",
+  "cases": [
+    {
+      "case": "eet.flag",
+      "status": "PASS",
+      "patched": true
+    },
+    {
+      "case": "oh6000.are",
+      "status": "PASS",
+      "patched": true
+    },
+    {
+      "case": "oh1000.are",
+      "status": "PASS",
+      "patched": true
+    },
+    {
+      "case": "unsupported-IWDEE",
+      "status": "PASS",
+      "patched": false
+    },
+    {
+      "case": "truncated-cleanup",
+      "status": "PASS",
+      "patched": false
+    },
+    {
+      "case": "combined",
+      "status": "PASS",
+      "patched": true
+    },
+    {
+      "case": "reverse",
+      "status": "PASS",
+      "patched": true
+    },
+    {
+      "case": "missing-spell",
+      "status": "PASS",
+      "patched": false
+    },
+    {
+      "case": "missing-cleanup",
+      "status": "PASS",
+      "patched": false
+    },
+    {
+      "case": "bad-cleanup",
+      "status": "PASS",
+      "patched": false
+    },
+    {
+      "case": "conditional-cleanup",
+      "status": "PASS",
+      "patched": false
+    },
+    {
+      "case": "truncated",
+      "status": "PASS",
+      "patched": false
+    },
+    {
+      "case": "wrong-level",
+      "status": "PASS",
+      "patched": false
+    },
+    {
+      "case": "bad-table",
+      "status": "PASS",
+      "patched": false
+    },
+    {
+      "case": "missing-trap-level",
+      "status": "PASS",
+      "patched": false
+    },
+    {
+      "case": "unknown-visual",
+      "status": "PASS",
+      "patched": false
+    },
+    {
+      "case": "unequal-duration",
+      "status": "PASS",
+      "patched": false
+    },
+    {
+      "case": "delayed-trap",
+      "status": "PASS",
+      "patched": false
+    },
+    {
+      "case": "wrong-target",
+      "status": "PASS",
+      "patched": false
+    },
+    {
+      "case": "conditional-traps",
+      "status": "PASS",
+      "patched": false
+    },
+    {
+      "case": "uniform-custom-duration",
+      "status": "PASS",
+      "patched": true
+    },
+    {
+      "case": "three-ability-headers",
+      "status": "PASS",
+      "patched": true
+    },
+    {
+      "case": "shared-effect-block",
+      "status": "PASS",
+      "patched": false
+    },
+    {
+      "case": "collision-sratrap.bam",
+      "status": "PASS",
+      "patched": false
+    },
+    {
+      "case": "collision-SRATRAP.VVC",
+      "status": "PASS",
+      "patched": false
+    }
+  ],
+  "source_spell_sha256": "276ecf4b5c80e7e61bead88526e72ce024c6ad4d33bb829298f6c9558bf391de",
+  "original_effects_byte_identical": true,
+  "only_SPWI902_patched_by_component20": true,
+  "native_resources_unchanged_by_component20": true,
+  "exhaustion_callback_unchanged": true,
+  "reinstall_stable": true,
+  "uninstall_exact": true,
+  "game_rendering_tested": false
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "source": "cowledmenace/spelltrap/dx#trap.bam",
+    "destination": "sr_original_spell_animations/assets/spelltrap/sratrap.bam",
+    "usage": "Level 9 wizard Spell Trap: SPWI902 only",
+    "source_sha256": "c903996ec386172a0370c638d2a865a5134c008774eafc319b9259e75a4d67b1",
+    "installed_sha256": "c903996ec386172a0370c638d2a865a5134c008774eafc319b9259e75a4d67b1",
+    "changes": "BAM bytes unchanged",
+    "source_repository": "Gibberlings3/CowledMenace",
+    "source_commit": "c88daf97d585c68089972f4b30980fff29ca6b8a"
+  },
+  {
+    "source": "cowledmenace/spelltrap/dx#strap.vvc",
+    "destination": "sr_original_spell_animations/assets/spelltrap/sratrap.vvc",
+    "usage": "Level 9 wizard Spell Trap: SPWI902 only",
+    "source_sha256": "2b1e7be2ea5d226f061b23f672d00f073e1ef57cff8155fba0494095b383d236",
+    "installed_sha256": "e0eec5d0f39f2029a2f28d51b9889ed1b608824d0a49ef704e416d5bf8796f53",
+    "changes": "Private BAM/internal name; three audio fields cleared; original looping flags/FPS/placement/phases retained",
+    "source_repository": "Gibberlings3/CowledMenace",
+    "source_commit": "c88daf97d585c68089972f4b30980fff29ca6b8a"
+  }
+]

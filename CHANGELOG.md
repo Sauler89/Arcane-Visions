@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.2.0-beta.14 — isolated classic Spell Trap globe
+
+- Add optional component 20 for level 9 wizard Spell Trap (`SPWI902`) only.
+- Privately rename Cowled Menace globe assets to `sratrap`; retain BAM bytes,
+  strip VVC audio and retain source provenance/license. No global SPMAGGLO copy.
+- Preserve all existing effects and the exhaustion callback. Follow installed
+  duration; skip unknown, conditional, malformed or missing cleanup layouts.
+- Document opcode 291 coexistence: other hardcoded protection auras on the
+  bearer are hidden while Spell Trap is active; mechanics are preserved.
+- Add a genuine BAM GIF to both READMEs and regression coverage for isolation,
+  guards, combined orders, condition preservation, reinstall and exact uninstall.
+
 ## v0.2.0-beta.10 — full repository recheck
 
 - Reject SRIOSORB symbol collisions in PROJECTL.IDS and MISSILE.IDS before

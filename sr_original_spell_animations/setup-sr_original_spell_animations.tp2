@@ -1,6 +1,6 @@
 BACKUP ~sr_original_spell_animations/backup~
 AUTHOR ~Sauler89~
-VERSION ~v0.2.0-beta.13~
+VERSION ~v0.2.0-beta.14~
 README ~sr_original_spell_animations/README.md~
 LANGUAGE ~English~ ~english~ ~sr_original_spell_animations/languages/english/setup.tra~
 
@@ -40,3 +40,14 @@ INCLUDE ~sr_original_spell_animations/lib/iwd_animations.tpa~
 INCLUDE ~sr_original_spell_animations/lib/iwd_overlays.tpa~
 
 INCLUDE ~sr_original_spell_animations/lib/iwd_projectiles.tpa~
+
+BEGIN @20
+DESIGNATED 20
+LABEL ~sra-classic-spell-trap-globe~
+REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet~) @1
+ACTION_FOR_EACH av_private IN ~sratrap.bam~ ~sratrap.vvc~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%av_private%~ BEGIN
+    FAIL ~Arcane Visions: private resource %av_private% already exists; component skipped to avoid overwriting another mod.~
+  END
+END
+INCLUDE ~sr_original_spell_animations/lib/spelltrap.tpa~
