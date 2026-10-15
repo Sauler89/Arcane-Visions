@@ -44,14 +44,14 @@ try:
  old_italian=game/MOD/'languages/italian';shutil.rmtree(old_italian)
  for name in ['srasdor.bam','srasdor.vvc']:(game/MOD/'assets/custom'/name).unlink()
  shutil.copytree(ROOT/MOD,game/MOD,dirs_exist_ok=True)
- run([0,10],language=0,label='upgrade-to-English-beta12')
+ run([0,10],language=0,label='upgrade-to-current-English')
  after=snap()
  for n in preserved:assert after[n]==before[n],n+' not restored after upgrade'
  assert not {'SRASDOR.BAM','SRASDOR.VVC'}&after.keys()
  assert all(re.search(r'\s#0\s+#'+str(c)+r'\s', (game/'WeiDU.log').read_text()) for c in [0,10])
  run([0,10],label='upgrade-reinstall');assert snap()==after
  run([10,0],False,label='upgrade-uninstall');assert snap()==before
- checks.append('beta.11 Italian -> beta.12 English: Shadow Door restored, obsolete assets removed, stable reinstall/exact uninstall')
- result=dict(status='PASS',version='v0.2.0-beta.12',installer_languages=['English'],checks=checks,preserved_resources=preserved,source='owner-supplied EET exports with synthetic KEY/TLK',old_Italian_install_upgrade_tested=True,obsolete_door_assets_removed=True,no_global_native_door_replacement=True,game_rendering_tested=False)
+ checks.append('beta.11 Italian -> current English: Shadow Door restored, obsolete assets removed, stable reinstall/exact uninstall')
+ result=dict(status='PASS',version='v0.2.0-beta.13',installer_languages=['English'],checks=checks,preserved_resources=preserved,source='owner-supplied EET exports with synthetic KEY/TLK',old_Italian_install_upgrade_tested=True,obsolete_door_assets_removed=True,no_global_native_door_replacement=True,game_rendering_tested=False)
  (OUT/'english_doors_validation.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))
 finally:shutil.rmtree(game)

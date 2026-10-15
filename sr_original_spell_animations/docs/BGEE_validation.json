@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "version": "v0.2.0-beta.12",
+  "version": "v0.2.0-beta.13",
   "cases": 28,
   "checks": [
     "BGEE: reproduced old component 0 rejection",

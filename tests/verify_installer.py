@@ -142,8 +142,8 @@ try:
                 e = visuals[0]
                 assert e[2] == target and struct.unpack_from('<I', e, 8)[0] == where, spell
                 assert e[20:28].split(b'\0')[0].lower() == vvc.encode(), spell
-                assert struct.unpack_from('<I', e, 14)[0] == (24 * (i + 1) if persistent else duration if spell == 'SPPR609' else 0), spell
-                assert e[12] == (0 if persistent or spell == 'SPPR609' else 1), spell
+                assert struct.unpack_from('<I', e, 14)[0] == (24 * (i + 1) if persistent else duration), spell
+                assert e[12] == (0 if persistent or where == 1 else 1), spell
                 if persistent:
                     protection = next(e for e in effects if opcode(e) == 120)
                     for start, end in [(2, 4), (12, 20), (36, 44)]:

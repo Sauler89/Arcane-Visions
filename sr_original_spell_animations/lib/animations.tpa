@@ -49,8 +49,11 @@ BEGIN
         SET sra_savebonus = 0
         // Target Self supplies a living effect recipient on an empty point;
         // parameter2=2 places the non-looping visual at the selected point.
-        // Timing 1 lets its complete BAM sequence play without a 2s cutoff.
-        PATCH_IF sra_where = 2 OR (!sra_persistent AND !(~%sra_vvc%~ STRING_EQUAL_CASE ~srasun1~)) BEGIN
+        // Unattached/point cues are one-shot spawns. Attached transient cues
+        // must expire: permanent opcode 215 can survive area/save transitions
+        // after its non-looping animation has finished and be recreated.
+        // Keep their existing 2/3/4s budgets, long enough for complete BAMs.
+        PATCH_IF sra_where = 2 OR (!sra_persistent AND sra_where = 0) BEGIN
           SET sra_timing = 1
           SET sra_duration = 0
         END

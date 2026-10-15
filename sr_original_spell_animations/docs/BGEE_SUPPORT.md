@@ -1,4 +1,4 @@
-# BGEE support — v0.2.0-beta.12
+# BGEE support — v0.2.0-beta.13
 
 Both components now accept Baldur's Gate: Enhanced Edition, with or without
 Siege of Dragonspear, as well as BG2EE and EET. Previously both used

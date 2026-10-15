@@ -1,3 +1,4 @@
+> For the beta.13 transient-visual correction see [GHOST_ARMOR_FIX.md](GHOST_ARMOR_FIX.md).
 > Historical beta.10 audit. Current selection: 41 BAMs, 37 VVCs, 1,409 frames,
 > 15 SR and 28 IWDEE SPLs. See [ENGLISH_AND_DOORS.md](ENGLISH_AND_DOORS.md)
 > for beta.12 changes and current validation.

@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "version": "v0.2.0-beta.12",
+  "version": "v0.2.0-beta.13",
   "installer_languages": [
     "English"
   ],
@@ -8,7 +8,7 @@
     "0: native door spells/art preserved; reinstall/exact uninstall",
     "10: native door spells/art preserved; reinstall/exact uninstall",
     "0-10: native door spells/art preserved; reinstall/exact uninstall",
-    "beta.11 Italian -> beta.12 English: Shadow Door restored, obsolete assets removed, stable reinstall/exact uninstall"
+    "beta.11 Italian -> current English: Shadow Door restored, obsolete assets removed, stable reinstall/exact uninstall"
   ],
   "preserved_resources": [
     "SPWI402.SPL",

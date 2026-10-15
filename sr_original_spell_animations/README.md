@@ -7,7 +7,7 @@ Spell Revisions or Icewind Dale: Enhanced Edition. It replaces the artwork
 shown after a spell is cast, while retaining the installed spell's mechanics.
 **Spell Revisions and IWDification are not required.**
 
-Current version: **v0.2.0-beta.12**, by **Sauler89**.
+Current version: **v0.2.0-beta.13**, by **Sauler89**.
 [Affected spells](#affected-spells) ·
 [Audit and validation](docs/RIGOROUS_AUDIT.md)
 
@@ -217,7 +217,11 @@ MISSILE.IDS are checked before installation. A collision aborts
 that component before it can overwrite another mod's similarly named resource.
 Native replacements intentionally overwrite the engine graphic resources.
 
-Non-looping cues play their full sequence. Mantle follows the duration and
+Transient attached SR cues now expire after their 2/3/4-second playback
+budgets; their non-looping controllers also have finite lifetime caps. Ghost
+Armor no longer installs a permanent attached visual. Armor and other buff
+mechanics retain their installed durations. Independent point/unattached
+cues still finish naturally. Mantle follows the duration and
 conditions of the existing weapon protection; False Dawn retains its two-phase
 schedule. Elemental arrival cues are independent point effects, not changes to
 opcode 67's resource fields. The IWD component preserves effect order/counts,
@@ -319,6 +323,14 @@ Upgrade tests from a beta.11 installation using the removed language confirm
 that WeiDU restores the original door effects and removes their private files.
 [English-only update and door exclusions](docs/ENGLISH_AND_DOORS.md).
 
+Beta.13 corrects an unbounded attached visual in Ghost Armor and the same
+configuration in Spirit Armor and ILLUSH effects. Six spell bindings now use
+finite visual timing, and three VVCs have finite durations. The BAM artwork
+and all nonvisual spell effects are unchanged. Reinstall component 0; for a
+clean test, load before the affected spell was cast. Existing permanent
+effects serialized in a saved creature are not rewritten by the installer.
+[Ghost Armor report, fix and verification](docs/GHOST_ARMOR_FIX.md).
+
 ## Development
 
 ```sh
@@ -328,6 +340,7 @@ python3 tests/verify_installer.py /path/to/weidu [path/to/extracted/spell_rev]
 python3 tests/verify_regressions.py /path/to/weidu
 python3 tests/verify_bgee.py /path/to/weidu /path/to/results
 python3 tests/verify_english_doors.py /path/to/EET-export /path/to/weidu /path/to/results
+python3 tests/verify_transient_visuals.py /path/to/EET-export /path/to/weidu /path/to/results
 python3 tests/verify_iwd_on_export.py /path/to/EET-export /path/to/weidu /path/to/results
 python3 tests/verify_overlays.py /path/to/EET-export /path/to/weidu /path/to/results
 python3 tests/verify_child_visuals.py /path/to/EET-export /path/to/weidu /path/to/results

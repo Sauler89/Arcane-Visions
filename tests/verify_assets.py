@@ -73,6 +73,9 @@ for entry in manifest:
             expected[96:104] = path.stem.upper().encode().ljust(8, b'\0')
             for offset in (120, 128, 148):
                 expected[offset:offset + 8] = bytes(8)
+            # Bound transient attached controllers independently of the SPL.
+            if path.stem in ('srailus', 'sraghst', 'srasprt'):
+                struct.pack_into('<I', expected, 92, {'srailus':30,'sraghst':45,'srasprt':60}[path.stem])
         assert data == expected, path
     if path.suffix == '.bam':
         assert entry['source_sha256'] == entry['installed_sha256'], path
@@ -97,4 +100,4 @@ for _, vvc, _, where, _, _ in config['spells']:
         assert not flags & 1, 'permanent-timing point visuals must not loop'
 print(f'PASS: 13 BAMs, {frames_checked} frames, all cycles/RLE data; 11 VVC dependencies/sequences; hashes, no external palettes/alpha BAMs/audio; 15 spell mappings')
 if source:
-    print('PASS: BAMs byte-identical to SR; VVC changes limited to resource names and audio removal')
+    print('PASS: BAMs byte-identical to SR; VVC changes limited to names, audio removal and documented finite transient lifetimes')

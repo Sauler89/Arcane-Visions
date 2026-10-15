@@ -52,8 +52,8 @@
     "destination": "sr_original_spell_animations/assets/custom/srailus.vvc",
     "usage": "Invisibility, Mirror Image, Invisibility 10 ft., Pixie Dust",
     "source_sha256": "66fab4c32f0dcc51e1f829315f8dd880420e6367eecaedb45817c2a92a41ac73",
-    "installed_sha256": "48706edeecbd6075b766fc47c05aed7e74525f3715ebc19d6f169a8d4bb028fd",
-    "changes": "BAM reference/internal name renamed; three audio references cleared"
+    "installed_sha256": "50346b90364b4cb828ba3955c5210b5cff03e7c68eb20172f09261483bff4f13",
+    "changes": "BAM reference/internal name renamed; three audio references cleared; finite duration 30 frames for transient attached cue (beta.13)"
   },
   {
     "source": "spwi3##/gharmor.bam",
@@ -68,8 +68,8 @@
     "destination": "sr_original_spell_animations/assets/custom/sraghst.vvc",
     "usage": "Ghost Armor: SPWI317",
     "source_sha256": "e2749407ebf95e97281da5d9d076fea6df2b149b8903c35673698d007370a108",
-    "installed_sha256": "a75a6c223477ae8dc615d1543d4c0e599080a9cfe7afac12b07e7f66b1fec42a",
-    "changes": "BAM reference/internal name renamed; three audio references cleared"
+    "installed_sha256": "de947bc0172c6eb5c90e4270f8faffd50f793937cd46a177f9ac6b92fb5fd68f",
+    "changes": "BAM reference/internal name renamed; three audio references cleared; finite duration 45 frames for transient attached cue (beta.13)"
   },
   {
     "source": "spwi4##/sparmor.bam",
@@ -84,8 +84,8 @@
     "destination": "sr_original_spell_animations/assets/custom/srasprt.vvc",
     "usage": "Spirit Armor: SPWI414",
     "source_sha256": "99a7599c348b3a3ab462461e1b2293ed13023f31267ed8486136ef2f337c9987",
-    "installed_sha256": "9c7e38bf9b88bb6ee5dca2d5dd3e78e552d7ee4ebc9989cb2776ad3fe13fc0b3",
-    "changes": "BAM reference/internal name renamed; three audio references cleared"
+    "installed_sha256": "e5cbe145f967263bfd46ab75039c24afd52374e99be22055b91d200384070830",
+    "changes": "BAM reference/internal name renamed; three audio references cleared; finite duration 60 frames for transient attached cue (beta.13)"
   },
   {
     "source": "sppr7##/dvimplo.bam",

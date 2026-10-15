@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "version": "v0.2.0-beta.13",
+  "checks": [
+    "all six transient attached spell bindings: finite host and controller, complete BAM cycle, nonvisual preservation, stable reinstall/exact uninstall",
+    "published beta.12 permanent attached configuration reproduced; upgrade changes only visual timing/duration and three VVC lifetime fields"
+  ],
+  "affected_spells": [
+    "SPWI206",
+    "SPWI212",
+    "SPWI307",
+    "SPPR516",
+    "SPWI317",
+    "SPWI414"
+  ],
+  "controller_lifetimes_frames": {
+    "srailus": 30,
+    "sraghst": 45,
+    "srasprt": 60
+  },
+  "gameplay_armor_saves_icons_globals_and_projectiles_preserved": true,
+  "BAM_artwork_unchanged": true,
+  "persistent_Mantle_False_Dawn_and_point_animations_preserved": true,
+  "old_configuration_reproduced": true,
+  "upgrade_install_reinstall_uninstall_checked": true,
+  "game_rendering_tested": false,
+  "area_transition_or_Silke_encounter_reproduced_in_game": false,
+  "existing_saved_creature_effects_not_rewritten": true
+}
