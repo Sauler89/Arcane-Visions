@@ -1,7 +1,7 @@
 # Arcane Visions — Spell Effect Animations
 
-**Animazioni degli effetti dopo il lancio delle spell originali di BG, per EET/BG2EE.**
-Versione **v0.2.0-beta.10**, di **Sauler89**. Spell Revisions e IWDification non servono.
+**Animazioni degli effetti dopo il lancio delle spell originali di BG, per BGEE/BG2EE/EET.**
+Versione **v0.2.0-beta.11**, di **Sauler89**. Spell Revisions e IWDification non servono.
 
 | Componente | Contenuto |
 |---|---|
@@ -10,18 +10,25 @@ Versione **v0.2.0-beta.10**, di **Sauler89**. Spell Revisions e IWDification non
 
 Puoi installarli insieme o separatamente. Non si importano icone, nuove spell,
 meccaniche, proiettili, creature o armi dai giochi sorgente. I dati non visivi delle spell restano
-quelli installati nel tuo gioco. La lista completa e le 15 anteprime GIF sono
+quelli installati nel tuo gioco. La lista completa e le 18 anteprime GIF sono
 nel [README principale](README.md#animation-examples).
 
 ## Installazione
 
-Estrai tutto nella cartella EET/BG2EE con `chitin.key`, avvia
+Estrai tutto nella cartella BGEE/BG2EE/EET con `chitin.key`, avvia
 `setup-sr_original_spell_animations.exe` e scegli Italiano. Installa i componenti
-0 e/o 10 dopo **EET_end** e i mod che modificano gli incantesimi. Gli export
+0 e/o 10 dopo i mod che modificano gli incantesimi; su EET, anche dopo
+**EET_end**. BGEE è accettato con o senza Siege of Dragonspear. Gli export
 IWDEE/EET non vanno copiati nel gioco. Windows WeiDU 251 è incluso; su
 Linux/macOS usa WeiDU nativo. Disinstalla con lo stesso installer.
 
 ## Cosa sapere
+
+- La beta.11 abilita entrambi i componenti su BGEE: il precedente blocco era
+  nel controllo del gioco. Si modificano solo le spell già presenti; non si
+  aggiungono spell di BG2 né si rendono disponibili nuovi livelli di magia.
+  Spell, armi temporanee e proiettili mancanti o non riconosciuti vengono saltati.
+  [Supporto BGEE e verifiche](sr_original_spell_animations/docs/BGEE_SUPPORT.md).
 
 - `SPMAGGLO` è una grafica condivisa: cambia anche l'aspetto di spell/oggetti
   di altri mod che la usano. Lo stesso vale per i BAM nativi di Intralciare
@@ -70,7 +77,7 @@ Linux/macOS usa WeiDU nativo. Disinstalla con lo stesso installer.
 Verificati tutti i 42 BAM e 38 VVC. Passati i test WeiDU su 44 SPL EET reali (incluse due sottospell)
 e due ITM esportate: installazione, reinstallazione stabile e disinstallazione con
 ripristino byte per byte. Passati anche 28 casi aggiuntivi di regressione e
-i test dei layout SR e dei profili EET/BG2EE. Aggiunti e superati 44 test
+i test dei layout SR e dei profili EET/BG2EE/BGEE. Aggiunti e superati 44 test
 specifici degli overlay persistenti, comprese le condizioni di Sanctuary.
 Superati sei nuovi casi per i cue doppi di Chaos, incluse configurazioni
 sconosciute che devono essere saltate. Superati anche 12 casi delle sottospell: si modificano solo se richiamate dalla
@@ -82,6 +89,11 @@ La beta.10 corregge una collisione IDS senza file PRO che poteva assegnare
 a SORB un proiettile inesistente. Verificati anche ordine inverso dei componenti,
 installer in italiano e disinstallazione parziale mantenendo l’altro componente.
 [Ricontrollo del repository](sr_original_spell_animations/docs/REPOSITORY_RECHECK.it.md).
+
+La beta.11 supera anche i test di entrambi i componenti su profili sintetici
+BGEE, BGEE+SoD, BG2EE ed EET, in inglese e italiano, con reinstallazione,
+ordine inverso e disinstallazione parziale. Non sono export reali di BGEE e
+non è stata avviata una partita.
 
 Correzioni della beta.2: sequenza di Implosione non troncata, controller singoli
 lasciati terminare, indice globale inutilizzato accettato quando non ci sono

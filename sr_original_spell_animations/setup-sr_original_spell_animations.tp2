@@ -1,6 +1,6 @@
 BACKUP ~sr_original_spell_animations/backup~
 AUTHOR ~Sauler89~
-VERSION ~v0.2.0-beta.10~
+VERSION ~v0.2.0-beta.11~
 README ~sr_original_spell_animations/README.md~
 LANGUAGE ~English~ ~english~ ~sr_original_spell_animations/languages/english/setup.tra~
 LANGUAGE ~Italiano~ ~italian~ ~sr_original_spell_animations/languages/italian/setup.tra~
@@ -8,7 +8,7 @@ LANGUAGE ~Italiano~ ~italian~ ~sr_original_spell_animations/languages/italian/se
 BEGIN @0
 DESIGNATED 0
 LABEL ~sra-original-spell-effect-animations~
-REQUIRE_PREDICATE (GAME_IS ~eet bg2ee~) @1
+REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet~) @1
 ACTION_FOR_EACH av_private IN ~sraelair.bam~ ~sraelair.vvc~ ~sraelear.bam~ ~sraelear.vvc~ ~sraelfir.bam~ ~sraelfir.vvc~ ~sraghst.bam~ ~sraghst.vvc~ ~srailus.bam~ ~srailus.vvc~ ~sraimpl.bam~ ~sraimpl.vvc~ ~sramant.bam~ ~sramant.vvc~ ~srasdor.bam~ ~srasdor.vvc~ ~srasprt.bam~ ~srasprt.vvc~ ~srasun.bam~ ~srasun1.vvc~ ~srasun2.vvc~ BEGIN
   ACTION_IF FILE_EXISTS_IN_GAME ~%av_private%~ BEGIN
     FAIL ~Arcane Visions: private resource %av_private% already exists; component skipped to avoid overwriting another mod.~
@@ -19,7 +19,7 @@ INCLUDE ~sr_original_spell_animations/lib/animations.tpa~
 BEGIN @10
 DESIGNATED 10
 LABEL ~sra-iwd-original-spell-effect-animations~
-REQUIRE_PREDICATE (GAME_IS ~eet bg2ee~) @1
+REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet~) @1
 // ADD_PROJECTILE skips a name already registered even if its PRO is absent.
 // Reject both registry collisions before copying assets or patching weapons.
 ACTION_IF FILE_EXISTS_IN_GAME ~PROJECTL.ids~ BEGIN

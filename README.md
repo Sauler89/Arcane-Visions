@@ -1,13 +1,13 @@
 # Arcane Visions — Spell Effect Animations
 
-**Standalone post-cast spell animations for EET and Baldur's Gate II: Enhanced Edition.**
+**Standalone post-cast spell animations for BGEE, BG2EE and EET.**
 
 Arcane Visions gives selected original BG spells the visual effects used by
 Spell Revisions or Icewind Dale: Enhanced Edition. It replaces the artwork
 shown after a spell is cast, while retaining the installed spell's mechanics.
 **Spell Revisions and IWDification are not required.**
 
-Current version: **v0.2.0-beta.10**, by **Sauler89**.
+Current version: **v0.2.0-beta.11**, by **Sauler89**.
  · [Affected spells](#affected-spells) 
 
 ## Animation examples
@@ -77,11 +77,12 @@ a newly registered clone of its installed projectile for isolated travel art.
 
 ## Installation
 
-1. Extract the entire package into the EET/BG2EE game folder containing `chitin.key`.
+1. Extract the entire package into the BGEE/BG2EE/EET game folder containing `chitin.key`.
 2. Run `setup-sr_original_spell_animations.exe` and select English or Italiano.
 3. Install component **0**, **10**, or both. No source-game exports are needed.
 
-Install after **EET_end** and after other mods that change these spells.
+Install after other mods that change these spells. On EET, also install after
+**EET_end**. BGEE with or without Siege of Dragonspear is accepted.
 Windows WeiDU 251 is bundled. On Linux/macOS, use a native WeiDU executable:
 
 ```sh
@@ -90,8 +91,11 @@ weidu sr_original_spell_animations/setup-sr_original_spell_animations.tp2
 
 Uninstall or reinstall through the same installer. The existing installer,
 folder names and component numbers are retained for compatibility with the
-previous beta. EET/BG2EE are supported; BGEE alone, IWDEE and classic BG2 are
-rejected before any assets are copied.
+previous beta. BGEE (with or without SoD), BG2EE and EET are accepted. IWDEE,
+PSTEE and classic BG1/BG2 are rejected before any assets are copied.
+Only existing spell resources are patched: this mod does not add BG2 spells
+to BGEE or make higher-level spells available. Component 10 skips unrecognized
+installed visuals and missing child-spell, temporary-weapon or projectile routes.
 
 ## Affected spells
 
@@ -270,7 +274,7 @@ phase indexes, private names and absence of external palettes/alpha BAMs/audio.
 
 An additional **28 regression cases** cover malformed layouts, an unused global
 index, conditional visual effects, wrong targets/delays, resource collisions
-and unsupported games. Source SR spell layouts and both EET/BG2EE synthetic
+and unsupported games. Source SR spell layouts and EET/BG2EE/BGEE synthetic
 profiles also passed. **44 further overlay cases** verify state and conditional
 duration preservation, recognized/custom layouts, safe skips and collisions.
 **12 child-spell cases** verify recognized, missing, detached, malformed and
@@ -278,7 +282,7 @@ repurposed roots, unknown child visuals, reinstall and exact uninstall.
 Full details and retained results are in
 [the rigorous audit](sr_original_spell_animations/docs/RIGOROUS_AUDIT.md).
 
-**The mod has not yet been visually tested in a launched EET game.** Position,
+**The mod has not yet been visually tested in a launched BGEE, BG2EE or EET game.** Position,
 blending and synchronization of the effects require in-game confirmation.
 The GIFs do not replace that test. Install/uninstall tests use minimal KEY/TLK
 fixtures and exported resources; they do not load a complete game installation.
@@ -295,6 +299,13 @@ partial uninstall with the other component retained also passed.
 Beta.10 fixes an IDS-only SRIOSORB collision that could otherwise leave SORB
 pointing to a missing projectile. [Complete recheck](sr_original_spell_animations/docs/REPOSITORY_RECHECK.it.md).
 
+Beta.11 enables both components on BGEE, with or without SoD. The previous
+BGEE rejection was reproduced, then both components passed install/reinstall/
+uninstall checks on synthetic BGEE, BGEE+SoD, BG2EE and EET profiles in both
+installer languages. Missing spells remain absent, unrelated resources and
+spell mechanics remain unchanged. These checks do not use actual BGEE exports
+or launch the game. [BGEE support and validation](sr_original_spell_animations/docs/BGEE_SUPPORT.md).
+
 ## Development
 
 ```sh
@@ -302,6 +313,7 @@ python3 tests/verify_assets.py [path/to/extracted/spell_rev]
 python3 tests/verify_graphics_integrity.py [path/to/IWDEE-BAM-export] [path/to/IWDEE-metadata]
 python3 tests/verify_installer.py /path/to/weidu [path/to/extracted/spell_rev]
 python3 tests/verify_regressions.py /path/to/weidu
+python3 tests/verify_bgee.py /path/to/weidu /path/to/results
 python3 tests/verify_iwd_on_export.py /path/to/EET-export /path/to/weidu /path/to/results
 python3 tests/verify_overlays.py /path/to/EET-export /path/to/weidu /path/to/results
 python3 tests/verify_child_visuals.py /path/to/EET-export /path/to/weidu /path/to/results

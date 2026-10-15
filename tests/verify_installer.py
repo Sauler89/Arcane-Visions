@@ -124,10 +124,14 @@ try:
     (override / 'unchanged.itm').write_bytes(b'item with icons remains unchanged')
     before = snapshot()
     tlk = (GAME / 'dialog.tlk').read_bytes()
-    for profile, language in [('EET', 0), ('BG2EE', 1)]:
+    for profile, language in [('EET', 0), ('BG2EE', 1), ('BGEE', 0)]:
         if profile == 'BG2EE':
             path('eet.flag').unlink()
             (override / 'oh6000.are').write_bytes(b'BG2EE fixture')
+            before = snapshot()
+        elif profile == 'BGEE':
+            path('oh6000.are').unlink()
+            (override / 'oh1000.are').write_bytes(b'BGEE fixture')
             before = snapshot()
         run('--force-install-list', '0', language=language, autodetect=(profile == 'EET'))
         for spell, vvc, target, where, duration, persistent in SPELLS:
@@ -228,7 +232,7 @@ try:
     print('PASS: empty ability blocks, explicit 24s fallback and missing native SPMAGGLO VVC')
 
     # Unsupported games must fail before copying any assets.
-    path('oh6000.are').unlink()
+    path('oh1000.are').unlink()
     before = snapshot()
     output = run('--force-install-list', '0')
     assert 'SKIPPING:' in output, output
