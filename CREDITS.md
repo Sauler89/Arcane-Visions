@@ -4,9 +4,11 @@ Arcane Visions integration and installer: Sauler89.
 
 Spell Revisions v4.21: Demivrgvs (Marco Montagnoli), Mike1072 and Ardanis.
 SR credits Yarpen and Scorpio for BAM contributions. Copyright 2008–2015
-Marco Montagnoli. The original source README's consent requirement for
-redistribution is retained in the project README. No new license is granted
-for third-party graphics.
+Marco Montagnoli. The original SR source notice states:
+
+> This mod may not be sold, published, compiled or redistributed in any form without the consent of its author.
+
+No new license is granted for third-party graphics.
 
 Icewind Dale: Enhanced Edition artwork: Black Isle Studios, Interplay and
 Beamdog. Only selected graphics exported from the owner's installation are
