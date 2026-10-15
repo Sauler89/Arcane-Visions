@@ -8,7 +8,7 @@ shown after a spell is cast, while retaining the installed spell's mechanics.
 **Spell Revisions and IWDification are not required.**
 
 Current version: **v0.2.0-beta.10**, by **Sauler89**.
-[Italian instructions](README.it.md) · [Affected spells](#affected-spells) ·
+ · [Affected spells](#affected-spells) ·
 [Audit and validation](sr_original_spell_animations/docs/RIGOROUS_AUDIT.md)
 
 ## Animation examples
