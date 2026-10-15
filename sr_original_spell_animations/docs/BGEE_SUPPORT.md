@@ -1,4 +1,4 @@
-# BGEE support — v0.2.0-beta.11
+# BGEE support — v0.2.0-beta.12
 
 Both components now accept Baldur's Gate: Enhanced Edition, with or without
 Siege of Dragonspear, as well as BG2EE and EET. Previously both used
@@ -6,7 +6,8 @@ Siege of Dragonspear, as well as BG2EE and EET. Previously both used
 any animation could be installed. The predicate now lists `bgee bg2ee eet`.
 WeiDU identifies BGEE+SoD as BGEE; no separate `GAME_IS ~sod~` is needed.
 
-The graphics patchers already check whether the target resources exist.
+Beta.11 introduced BGEE support; beta.12 retains it with an English-only
+installer. The graphics patchers already check whether the target resources exist.
 Missing BG2 spells are skipped, not created in BGEE. Component 10 also checks
 the recognized visual layout, root/child and temporary-weapon links, and
 projectile layout. Unfamiliar or missing routes are skipped and logged.
@@ -22,7 +23,7 @@ package, replace the mod folder and installer, and run the installer again.
 `tests/verify_bgee.py` runs real WeiDU 251 against synthetic resources and a
 minimal KEY/TLK fixture. It reproduces the previous rejection, then checks:
 
-- Both components independently and together, English and Italiano, on BGEE,
+- Both components independently and together, English only, on BGEE,
   BGEE+SoD, BG2EE and EET profiles.
 - Install, stable reinstall, exact uninstall, both component orders and partial
   uninstall retaining the other component.
@@ -32,7 +33,7 @@ minimal KEY/TLK fixture. It reproduces the previous rejection, then checks:
   unrelated resources remain unchanged.
 - IWDEE, PSTEE and classic BG1/BG2 are still skipped before resource writes.
 
-All **40 cases passed**. See [BGEE_validation.json](BGEE_validation.json).
+All **28 cases passed**. See [BGEE_validation.json](BGEE_validation.json).
 The existing component-0 installer suite now also tests BGEE alongside EET
 and BG2EE. Asset integrity and the existing regression suite were rerun.
 

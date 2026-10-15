@@ -139,12 +139,6 @@ ACTION_IF FILE_EXISTS_IN_GAME ~SPWI414.spl~ BEGIN
   BUT_ONLY_IF_IT_CHANGES
 END ELSE BEGIN PRINT ~SR Spell Animations: SPWI414.spl missing, skipped.~ END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~SPWI505.spl~ BEGIN
-  COPY_EXISTING ~SPWI505.spl~ ~override~
-    LPF sra_add_visual INT_VAR sra_target = 1 sra_where = 0 sra_seconds = 2 sra_persistent = 0 STR_VAR sra_vvc = ~srasdor~ END
-  BUT_ONLY_IF_IT_CHANGES
-END ELSE BEGIN PRINT ~SR Spell Animations: SPWI505.spl missing, skipped.~ END
-
 ACTION_IF FILE_EXISTS_IN_GAME ~SPPR728.spl~ BEGIN
   COPY_EXISTING ~SPPR728.spl~ ~override~
     LPF sra_add_visual INT_VAR sra_target = 2 sra_where = 0 sra_seconds = 1 sra_persistent = 0 STR_VAR sra_vvc = ~sraimpl~ END

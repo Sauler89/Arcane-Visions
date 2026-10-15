@@ -1,7 +1,6 @@
-> Aggiornamento beta.9: [Sol’s Searing Orb e Call Lightning sono ora inclusi](PROJECTILE_IMPORT.it.md).
-> 42 BAM, 38 VVC, 1.429 frame; 249 BAM IWDEE, 388 EET e 224 SR confrontati.
-> Restano 38 candidati distinti; SKYBOLT IWDEE è un alias di CALLLIH, incluso una sola volta.
-> Le sezioni storiche beta.8 riportano i limiti precedenti, superati dal rapporto linkato.
+> Historical beta.10 audit. Current selection: 41 BAMs, 37 VVCs, 1,409 frames,
+> 15 SR and 28 IWDEE SPLs. See [ENGLISH_AND_DOORS.md](ENGLISH_AND_DOORS.md)
+> for beta.12 changes and current validation.
 
 # Rigorous audit — Arcane Visions v0.2.0-beta.10
 
@@ -66,7 +65,7 @@ state overlays 153–158. Case-insensitive source lookup prevents Linux filename
 omissions. Five BAMs recovered through cue, child and shape selection
 remain included; the sixth, Web, was removed in beta.6 at the owner's request.
 
-[Full source review and exclusions](FULL_SOURCE_AUDIT.it.md) inventories every
+[Full source review and exclusions](FULL_SOURCE_AUDIT.md) inventories every
 SR source BAM, all original-spell dependencies and 38 remaining IWD candidates.
 No additional demonstrated active original-spell SR artwork was found.
 
@@ -78,12 +77,12 @@ reference are changed. The state opcode, timing, duration and every other
 byte of the effect are preserved. A preexisting recognized major-globe
 opcode 215 stays opcode 215. No MINORGLB global replacement is used.
 
-[Detailed review and all exclusions](IWD_SELECTION_RECHECK.it.md). The
+[Detailed review and all exclusions](IWD_SELECTION_RECHECK.md). The
 complete 249-BAM classification distinguishes duplication, SR spell overlap
 and distinct unintegrated candidates. Beta.9 includes CALLLIH (identical to
 IWDEE SKYBOLT) as shared native SKYBOLT art. Hardcoded chain rendering remains
 unverified at runtime. SPCALLLI is identical in both games and remains
-excluded. See [projectile import review](PROJECTILE_IMPORT.it.md).
+excluded. See [projectile import review](PROJECTILE_IMPORT.md).
 
 ## Asset checks
 
@@ -202,6 +201,6 @@ Confirmed a real IDS-only collision failure: a registered SRIOSORB without
 its PRO makes ADD_PROJECTILE skip creation, yet beta.9 assigned the missing
 projectile to SORB. Beta.10 rejects either PROJECTL/MISSILE symbol collision
 before any resource writes, including mixed-case names. 24 projectile cases
-pass. Reverse component order, English/Italiano and partial uninstall retain
+pass. Reverse component order, the then-available languages and partial uninstall retain
 exact resources. All 861 source BAM decisions remain unchanged.
-[Full recheck](REPOSITORY_RECHECK.it.md).
+[Full recheck](REPOSITORY_RECHECK.md).

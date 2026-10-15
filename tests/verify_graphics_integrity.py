@@ -48,7 +48,7 @@ previews=json.loads((ROOT/'docs/previews/manifest.json').read_text())
 for e in previews:
  assert hashlib.sha256((ROOT/e['asset']).read_bytes()).hexdigest()==e['asset_sha256']
  assert hashlib.sha256((ROOT/e['file']).read_bytes()).hexdigest()==e['gif_sha256']
-for p in (ROOT/'README.md',ROOT/'README.it.md',MOD/'README.md',ROOT/'CREDITS.md',D/'RIGOROUS_AUDIT.md',D/'IWD_SELECTION_RECHECK.it.md',D/'FULL_SOURCE_AUDIT.it.md'):
+for p in (ROOT/'README.md',MOD/'README.md',ROOT/'CREDITS.md',D/'RIGOROUS_AUDIT.md',D/'IWD_SELECTION_RECHECK.md',D/'FULL_SOURCE_AUDIT.md'):
  for target in re.findall(r'\]\(([^)]+)\)',p.read_text()):
   if target.startswith(('https:','http:','#')):continue
   assert (p.parent/target.split('#')[0]).exists(),(p,target)

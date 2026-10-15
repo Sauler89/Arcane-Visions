@@ -7,7 +7,7 @@ shared/dvholya1.bam,978d9f26b09ac516e65b391e9271f60d7ac2570ac6c2556f2681a55cb3b3
 shared/dvholya2.bam,83d4bf44088cd5a335671fbde9fdd9c1279d8f0c13563c15098104ea2fb23595,unreferenced_or_inactive,Protection from Evil aura installation commented out,False,DVHOLYA2.VVC,
 shared/dvsun.bam,7ed026d3cb435741b919ccf22cbd5f159e713fd78b1f461fc10cd15bd3e60cfc,included,bundled original-spell animation,True,DVSUN1.VVC | DVSUN2.VVC,
 shared/illush.bam,7b8449334559079ebbc001a873be96ed6a2d8829ebda66964c2c431d72f69045,included,bundled original-spell animation,True,ILLUSHVC.VVC,
-shared/spdimndr.bam,c0f54a5a69631fb08679045a11c96df65b01ef04fdf7eb13c2b2f1399d389b5e,unreferenced_or_inactive,archive BAM is not copied by active installer,False,SPWI109.SPL | SPWI109.SPL@SUB | SPWI402.SPL | SPWI402.SPL@SUB,
+shared/spdimndr.bam,c0f54a5a69631fb08679045a11c96df65b01ef04fdf7eb13c2b2f1399d389b5e,excluded_by_user,Keep installed Baldur's Gate dimensional-door artwork; no replacement or spell patch,False,SPWI109.SPL | SPWI109.SPL@SUB | SPWI402.SPL | SPWI402.SPL@SUB,
 shared/spentaai.bam,73b66e96127192bc1a9ad1a19ba7ab25fd95a8110079c2f75d111fc10d43c22a,included,bundled original-spell animation,True,,
 shared/spentaci.bam,ee2e54480a47a92a3014688cb4382433560c286c0bc637348e7f3d5eaefe34c3,included,bundled original-spell animation,True,DVSHILLE.SPL | DVSHILLE.SPL@SUB | DVSMOUND.SPL | DVSMOUND.SPL@SUB | SPPR105.SPL | SPPR105.SPL@SUB,
 shared/spmagglo.bam,86cb2ecd721fbb5e5ed05928b3666ff724492deb32b1da21d2d536767b73d9f6,included,bundled original-spell animation,True,SPMAGGLO.VVC,
@@ -167,7 +167,7 @@ spwi4##/spwi417c.bam,89f55d3ced6c8e0177b061daf4492a9bc34e2eba72a55dbb3b1bc287341
 spwi4##/spwi423a.bam,597e986bc92b37419939b3fc8a8c4526f665e6200cc8c922645f0c514a864761,icon,spell/item icon field/naming; no world-effect binding found,True,,SCRL6R.ITM: ability icon | SCRL6R.ITM: memorized icon
 spwi4##/spwi423b.bam,3a90feffda26e7de67a505a0d4ed02b4ab8bbf151d0ed0ce9552db3d62a3b1bb,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI423.SPL: ability icon
 spwi4##/spwi423c.bam,6acd8d4deb61d8046228d1051a2fb9fb3627aa758ed525c74df7ff7025d9052d,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI423.SPL: memorized icon
-spwi5##/dvsdoor.bam,f3d79fec03f62dcd769e8090a7623eac57800da8057514d2cb0cecaeedca1fdc,included,bundled original-spell animation,True,DVSDOOR.VVC,
+spwi5##/dvsdoor.bam,f3d79fec03f62dcd769e8090a7623eac57800da8057514d2cb0cecaeedca1fdc,excluded_by_user,Keep installed Baldur's Gate dimensional-door artwork; no replacement or spell patch,True,DVSDOOR.VVC,
 spwi5##/dvwi526a.bam,4133ef3518af7229b30d130423144a14d3110b4d37de68a9dd40e9795d061259,icon,spell/item icon field/naming; no world-effect binding found,True,,
 spwi5##/dvwi526b.bam,145975a38a0a7658a771dcfc6fa70ba1d45c2251b7aa77ef1ed871f109e15cb2,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI526.SPL: ability icon
 spwi5##/dvwi526c.bam,0c8eadecb050cb01ea8c5e72e4a92b92a3f195690908d6d6ed60344d5100ba21,icon,spell/item icon field/naming; no world-effect binding found,True,,SPWI526.SPL: memorized icon

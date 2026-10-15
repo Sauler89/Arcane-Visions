@@ -1,0 +1,20 @@
+{
+  "spells": [
+    "SPWI402",
+    "SPWI505"
+  ],
+  "source_bams": [
+    "spwi5##/dvsdoor.bam",
+    "shared/spdimndr.bam"
+  ],
+  "private_resources_removed": [
+    "srasdor.bam",
+    "srasdor.vvc"
+  ],
+  "native_resources_preserved": [
+    "SPDIMNDR.BAM",
+    "DDOORH.BAM",
+    "DDOORH.VVC"
+  ],
+  "reason": "Retain installed Baldur's Gate dimensional-door effects, including Shadow Door."
+}

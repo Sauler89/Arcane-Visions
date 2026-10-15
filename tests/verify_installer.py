@@ -124,7 +124,7 @@ try:
     (override / 'unchanged.itm').write_bytes(b'item with icons remains unchanged')
     before = snapshot()
     tlk = (GAME / 'dialog.tlk').read_bytes()
-    for profile, language in [('EET', 0), ('BG2EE', 1), ('BGEE', 0)]:
+    for profile, language in [('EET', 0), ('BG2EE', 0), ('BGEE', 0)]:
         if profile == 'BG2EE':
             path('eet.flag').unlink()
             (override / 'oh6000.are').write_bytes(b'BG2EE fixture')
@@ -163,7 +163,7 @@ try:
         assert snapshot() == installed, 'reinstallation must be stable'
         run('--force-uninstall-list', '0', language=language)
         assert snapshot() == before, 'uninstall must restore bytes and remove new resources'
-        print('PASS:', profile, 'install, reinstall, uninstall; 16 spells x 3 headers; mechanics/icons/globals/projectiles/TLK preserved')
+        print('PASS:', profile, 'install, reinstall, uninstall; 15 spells x 3 headers; mechanics/icons/globals/projectiles/TLK preserved')
 
     # Reject truncated global/ability tables and shared or unordered effect blocks.
     def mutate(offset, fmt, value):

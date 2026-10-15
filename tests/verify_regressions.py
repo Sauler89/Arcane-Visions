@@ -26,7 +26,7 @@ try:
   files=[p for p in ov.iterdir() if p.name.lower()!='add_spell.ids'];result={p.name.lower():p.read_bytes() for p in files};assert len(result)==len(files),'case-colliding paths';return result
  def path(n):return next(p for p in ov.iterdir() if p.name.lower()==n)
  def run(component,install=True,success=True):
-  p=subprocess.run([str(WEIDU),'sr_original_spell_animations/setup-sr_original_spell_animations.tp2','--noautoupdate','--language','1','--no-exit-pause','--force-install-list' if install else '--force-uninstall-list',str(component)],cwd=game,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+  p=subprocess.run([str(WEIDU),'sr_original_spell_animations/setup-sr_original_spell_animations.tp2','--noautoupdate','--language','0','--no-exit-pause','--force-install-list' if install else '--force-uninstall-list',str(component)],cwd=game,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
   assert (p.returncode==0)==success,p.stdout[-8000:];return p.stdout
  b=base();ao,n,eo=struct.unpack_from('<IHI',b,100)
  bad=[('truncated',b'SPL V1  '),('signature',b'BAD V1  '+b[8:]),('ability-offset',mutate(b,100,'<I',0xfffffff0)),('ability-count',mutate(b,104,'<H',65535)),('effect-before-abilities',mutate(b,106,'<I',100)),('effect-offset',mutate(b,106,'<I',0xfffffff0)),('global-index',mutate(b,110,'<H',65535)),('global-count',mutate(b,112,'<H',65535)),('ability-effect-count',mutate(b,ao+30,'<H',65535)),('ability-effect-index',mutate(b,ao+32,'<H',65535)),('global-overlap',mutate(b,ao+32,'<H',0)),('shared-ability-block',mutate(b,ao+40+32,'<H',2)),('no-abilities',mutate(b,104,'<H',0))]

@@ -144,21 +144,21 @@ try:
   run(['--force-uninstall-list','10'],'IWD_chaos_'+label+'_uninstall');assert snap()==snapshot
   p.write_bytes(chaos);assert snap()==before;repeated_cases.append(label)
  # Reverse component order and partial uninstall must leave the retained component intact.
- run(['--force-install-list','0'],'SR_Italian_install',language=1);sr_only=snap()
- run(['--force-uninstall-list','0'],'SR_Italian_uninstall',language=1);assert snap()==before
- run(['--force-install-list','10'],'IWD_Italian_reverse_install',language=1);check_iwd()
- run(['--force-install-list','0'],'SR_Italian_reverse_install',language=1);check_iwd()
+ run(['--force-install-list','0'],'SR_English_install',language=0);sr_only=snap()
+ run(['--force-uninstall-list','0'],'SR_English_uninstall',language=0);assert snap()==before
+ run(['--force-install-list','10'],'IWD_English_reverse_install',language=0);check_iwd()
+ run(['--force-install-list','0'],'SR_English_reverse_install',language=0);check_iwd()
  for spell,*_ in CORE['spells']:assert_preserved((SOURCE/(spell+'.SPL')).read_bytes(),resource(spell+'.spl').read_bytes(),spell)
  reverse=snap();assert reverse==both,'component order changed installed resources'
- run(['--force-uninstall-list','10'],'IWD_Italian_partial_uninstall',language=1)
+ run(['--force-uninstall-list','10'],'IWD_English_partial_uninstall',language=0)
  assert snap()==sr_only,'uninstalling IWD changed the retained SR component'
- run(['--force-uninstall-list','0'],'SR_Italian_partial_uninstall',language=1);assert snap()==before
+ run(['--force-uninstall-list','0'],'SR_English_partial_uninstall',language=0);assert snap()==before
  assert (game/'dialog.tlk').read_bytes()==tlk
  result=dict(status='PASS',component=10,spells=len(originals),persistent_overlay_spells=len(OVERLAYS),bam_assets=sum(a['destination'].endswith('.bam') for a in manifest),vvc_assets=sum(a['destination'].endswith('.vvc') for a in manifest),frames_validated=frames,spell_checks=report,standalone_install=True,combined_with_SR=True,reinstall_stable=True,uninstall_byte_exact=True,unknown_visual_skipped=True,icons_projectiles_globals_nonvisual_effects_and_conditions_preserved=True,game_rendering_tested=False,baseline='owner-supplied modded EET exports; isolated fixture with synthetic KEY/TLK',excluded_framework_cache='ADD_SPELL.IDS')
  result['repeated_visual_cases']=repeated_cases
  result['reverse_component_order_identical']=True
  result['partial_uninstall_retained_component_preserved']=True
- result['installer_languages_checked']=['English','Italiano']
+ result['installer_languages_checked']=['English']
  result['projectile_checks']={'SORB_private_clone_mechanics_preserved':True,'SKYBOLT_shared_art_only':True,'SPPR302_bytes_preserved':True,'original_PROs_preserved':True}
  result['temporary_weapon_checks']=[r[1] for r in ITEMS]
  result['temporary_weapon_roots_unchanged']=True

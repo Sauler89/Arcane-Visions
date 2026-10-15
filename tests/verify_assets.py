@@ -50,9 +50,9 @@ def bam(data):
     return frames, cycle_lengths
 
 
-assert len(manifest) == 26
-assert len({a['destination'].lower() for a in manifest}) == 26
-assert len(config['spells']) == 16
+assert len(manifest) == 24
+assert len({a['destination'].lower() for a in manifest}) == 24
+assert len(config['spells']) == 15
 assets = {Path(a['destination']).name.lower(): a for a in manifest}
 assert set(assets) == {a[1] for a in config['assets']}
 renames = {Path(a['source']).stem.upper(): Path(a['destination']).stem.upper()
@@ -95,6 +95,6 @@ for _, vvc, _, where, _, _ in config['spells']:
     flags = struct.unpack_from('<I', (ROOT / dep['destination']).read_bytes(), 32)[0]
     if where == 2:
         assert not flags & 1, 'permanent-timing point visuals must not loop'
-print(f'PASS: 14 BAMs, {frames_checked} frames, all cycles/RLE data; 12 VVC dependencies/sequences; hashes, no external palettes/alpha BAMs/audio; 16 spell mappings')
+print(f'PASS: 13 BAMs, {frames_checked} frames, all cycles/RLE data; 11 VVC dependencies/sequences; hashes, no external palettes/alpha BAMs/audio; 15 spell mappings')
 if source:
     print('PASS: BAMs byte-identical to SR; VVC changes limited to resource names and audio removal')

@@ -49,14 +49,6 @@
       0
     ],
     [
-      "SPWI505",
-      "srasdor",
-      1,
-      0,
-      0,
-      0
-    ],
-    [
       "SPPR728",
       "sraimpl",
       2,
@@ -194,18 +186,6 @@
       "spwi4##/sparmor.vvc",
       "srasprt.vvc",
       "Spirit Armor: SPWI414",
-      "custom"
-    ],
-    [
-      "spwi5##/dvsdoor.bam",
-      "srasdor.bam",
-      "Shadow Door: SPWI505",
-      "custom"
-    ],
-    [
-      "spwi5##/dvsdoor.vvc",
-      "srasdor.vvc",
-      "Shadow Door: SPWI505",
       "custom"
     ],
     [

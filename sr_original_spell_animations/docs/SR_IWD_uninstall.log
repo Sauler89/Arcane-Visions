@@ -1,4 +1,4 @@
-[/workspace/scratch/bdd9eba40ea0/tools/Linux/WeiDU-Linux/weidu] WeiDU version 25100
+[/workspace/scratch/bdd9eba40ea0/tools/WeiDU-Linux/weidu] WeiDU version 25100
 [./chitin.key] 0 BIFFs, 0 resources
 [./dialog.tlk] 1 string entries
 [./dialog.tlk] claims to be writeable.
@@ -12,7 +12,7 @@ SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2  0 10 Instal
 Removing [Arcane Visions: SR effects for original BG spells] (component #0)
 uninstall: sr_original_spell_animations/setup-sr_original_spell_animations.tp2 0
 We must temporarily uninstall [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 10
-Will uninstall  76 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 10.
+Will uninstall  88 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 10.
   Restoring backed-up [sr_original_spell_animations/backup/10/SPPR308.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPPR411.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPPR417.spl]
@@ -27,20 +27,27 @@ Will uninstall  76 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPE
   Restoring backed-up [sr_original_spell_animations/backup/10/SPWI711.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPWI713.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPWI715.spl]
-  Restoring backed-up [sr_original_spell_animations/backup/10/SPWI812.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPWI922.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPWI224.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPWI413A.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPPR712A.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPPR607.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPPR212.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPPR310.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPPR709.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPWI401.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SPWI508.spl]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SLAYLIVE.itm]
+  Restoring backed-up [sr_original_spell_animations/backup/10/SORB.itm]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPPR109.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPWI311.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPWI406.spl]
   Restoring backed-up [sr_original_spell_animations/backup/10/SPWI602.spl]
-  Restoring backed-up [sr_original_spell_animations/backup/10/SPWI215.spl]
-Uninstalled     76 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 10.
-Will uninstall  42 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 0.
+  Restoring backed-up [sr_original_spell_animations/backup/10/PROJECTL.IDS]
+  Restoring backed-up [sr_original_spell_animations/backup/10/MISSILE.IDS]
+  Restoring backed-up [sr_original_spell_animations/backup/10/skybolt.bam]
+Uninstalled     88 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 10.
+Will uninstall  39 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 0.
   Restoring backed-up [sr_original_spell_animations/backup/0/spentaai.bam]
   Restoring backed-up [sr_original_spell_animations/backup/0/spentaci.bam]
   Restoring backed-up [sr_original_spell_animations/backup/0/spchrorb.bam]
@@ -52,7 +59,6 @@ Will uninstall  42 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPE
   Restoring backed-up [sr_original_spell_animations/backup/0/SPPR516.spl]
   Restoring backed-up [sr_original_spell_animations/backup/0/SPWI317.spl]
   Restoring backed-up [sr_original_spell_animations/backup/0/SPWI414.spl]
-  Restoring backed-up [sr_original_spell_animations/backup/0/SPWI505.spl]
   Restoring backed-up [sr_original_spell_animations/backup/0/SPPR728.spl]
   Restoring backed-up [sr_original_spell_animations/backup/0/SPPR609.spl]
   Restoring backed-up [sr_original_spell_animations/backup/0/SPWI708.spl]
@@ -62,7 +68,7 @@ Will uninstall  42 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPE
   Restoring backed-up [sr_original_spell_animations/backup/0/SPWI620.spl]
   Restoring backed-up [sr_original_spell_animations/backup/0/SPWI621.spl]
   Restoring backed-up [sr_original_spell_animations/backup/0/SPWI622.spl]
-Uninstalled     42 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 0.
+Uninstalled     39 files for [SR_ORIGINAL_SPELL_ANIMATIONS/SETUP-SR_ORIGINAL_SPELL_ANIMATIONS.TP2] component 0.
 
 
 SUCCESSFULLY REMOVED [Arcane Visions: SR effects for original BG spells] (component #0)

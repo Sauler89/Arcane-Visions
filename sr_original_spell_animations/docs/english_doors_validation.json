@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "version": "v0.2.0-beta.12",
+  "installer_languages": [
+    "English"
+  ],
+  "checks": [
+    "0: native door spells/art preserved; reinstall/exact uninstall",
+    "10: native door spells/art preserved; reinstall/exact uninstall",
+    "0-10: native door spells/art preserved; reinstall/exact uninstall",
+    "beta.11 Italian -> beta.12 English: Shadow Door restored, obsolete assets removed, stable reinstall/exact uninstall"
+  ],
+  "preserved_resources": [
+    "SPWI402.SPL",
+    "SPWI505.SPL",
+    "SPWI109.SPL",
+    "SPDIMNDR.BAM",
+    "DDOORH.BAM",
+    "DDOORH.VVC",
+    "SPWI215.SPL",
+    "SPWI812.SPL"
+  ],
+  "source": "owner-supplied EET exports with synthetic KEY/TLK",
+  "old_Italian_install_upgrade_tested": true,
+  "obsolete_door_assets_removed": true,
+  "no_global_native_door_replacement": true,
+  "game_rendering_tested": false
+}

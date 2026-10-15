@@ -248,6 +248,7 @@ for a in decoded['SR']:
      if ao+(i+1)*size<=len(b) and rr(b,ao+i*size+4)==stem:icons.append(n+': ability icon');break
  copied=bool(re.search(r'COPY\s+~[^~]*[\\/]'+re.escape(p.name)+r'~',active_text,re.I))
  if a['path'].upper() in included_sr:status='included';reason='bundled original-spell animation'
+ elif a['path'].lower() in ('spwi5##/dvsdoor.bam','shared/spdimndr.bam'):status='excluded_by_user';reason="Retain installed Baldur's Gate dimensional-door artwork"
  elif '/WINGS/' in '/'+a['path'].upper():status='avatar_or_equipment';reason='celestial wings/equipment artwork'
  elif stem in extra_reasons:
   reason=extra_reasons[stem];status='unreferenced_or_inactive' if stem in ('A#SHOPE','A#SPAIN','DVHOLYA1','DVHOLYA2','SPDIMNDR','SPCCOLDL') else 'new_spell_or_item'

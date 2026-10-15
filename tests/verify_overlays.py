@@ -17,7 +17,7 @@ try:
  def snap():
   files=[p for p in ov.iterdir() if p.name.lower()!='add_spell.ids'];data={p.name.lower():p.read_bytes() for p in files};assert len(data)==len(files);return data
  def run(install=True,success=True):
-  p=subprocess.run([str(WEIDU),'sr_original_spell_animations/setup-sr_original_spell_animations.tp2','--noautoupdate','--language','1','--no-exit-pause','--force-install-list' if install else '--force-uninstall-list','10'],cwd=game,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+  p=subprocess.run([str(WEIDU),'sr_original_spell_animations/setup-sr_original_spell_animations.tp2','--noautoupdate','--language','0','--no-exit-pause','--force-install-list' if install else '--force-uninstall-list','10'],cwd=game,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
   assert (p.returncode==0)==success,p.stdout[-8000:];return p.stdout
  def offsets(b,op):
   ao,n,eo=struct.unpack_from('<IHI',b,100);result=[]

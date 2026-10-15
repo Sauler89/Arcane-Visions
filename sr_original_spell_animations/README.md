@@ -7,8 +7,8 @@ Spell Revisions or Icewind Dale: Enhanced Edition. It replaces the artwork
 shown after a spell is cast, while retaining the installed spell's mechanics.
 **Spell Revisions and IWDification are not required.**
 
-Current version: **v0.2.0-beta.11**, by **Sauler89**.
-[Italian instructions](../README.it.md) · [Affected spells](#affected-spells) ·
+Current version: **v0.2.0-beta.12**, by **Sauler89**.
+[Affected spells](#affected-spells) ·
 [Audit and validation](docs/RIGOROUS_AUDIT.md)
 
 ## Animation examples
@@ -62,12 +62,12 @@ because they are icons. `SPMAGGLO` is a separate shared protection overlay.
 
 | Component | Content | Assets |
 |---|---|---|
-| **0** | SR effect animations for selected original spells | 14 BAMs, 12 VVCs |
+| **0** | SR effect animations for selected original spells | 13 BAMs, 11 VVCs |
 | **10** | IWDEE effects: 28 SPL resources, two temporary weapons and native lightning | 28 BAMs, 26 VVCs |
 
 Components can be installed independently or together. Their targeted spell
-lists are disjoint. The complete package contains **42 animation BAMs and
-38 visual-controller VVCs**, and patches **44 SPL files (including two child spells)** in the
+lists are disjoint. The complete package contains **41 animation BAMs and
+37 visual-controller VVCs**, and patches **43 SPL files (including two child spells)** in the
 supplied EET baseline, plus the hit cues in **two temporary-weapon ITMs**. Additional spells use the replaced native graphics.
 
 No spellbook/action-bar/portrait icons, new spells, revised spell descriptions,
@@ -79,7 +79,7 @@ a newly registered clone of its installed projectile for isolated travel art.
 ## Installation
 
 1. Extract the entire package into the BGEE/BG2EE/EET game folder containing `chitin.key`.
-2. Run `setup-sr_original_spell_animations.exe` and select English or Italiano.
+2. Run `setup-sr_original_spell_animations.exe` and use the English-only installer.
 3. Install component **0**, **10**, or both. No source-game exports are needed.
 
 Install after other mods that change these spells. On EET, also install after
@@ -112,7 +112,6 @@ installed visuals and missing child-spell, temporary-weapon or projectile routes
 | Pixie Dust | `SPPR516` | `illush` |
 | Ghost Armor | `SPWI317` | `gharmor` |
 | Spirit Armor | `SPWI414` | `sparmor` |
-| Shadow Door | `SPWI505` | `dvsdoor` |
 | Implosion | `SPPR728` | `dvimplo` |
 | False Dawn | `SPPR609` | `dvsun` |
 | Conjure Lesser Fire Elemental | `SPWI516` | `dvelfire` |
@@ -197,6 +196,13 @@ Both globes use private resources, so minor and major can show different art
 without replacing `MINORGLB` globally. Sanctuary's state is retained; it is
 never replaced with a graphics-only effect.
 
+Dimensional-door effects are excluded. Shadow Door (`SPWI505`) and Dimension
+Door (`SPWI402`) keep their installed Baldur's Gate graphics. The former SR
+`dvsdoor` replacement and its private BAM/VVC are no longer distributed;
+`SPDIMNDR` and `DDOORH` are not replaced globally. Existing installations
+should reinstall component 0 through WeiDU to restore the previous Shadow
+Door spell and remove the obsolete private resources.
+
 ## Compatibility and graphics handling
 
 The installer edits the resources currently present in the game. Missing
@@ -260,8 +266,8 @@ Call Lightning replaces the shared native SKYBOLT BAM with CALLLIH IWDEE
 Other SKYBOLT consumers receive the same art. CALLLIH and the previously
 supplied IWDEE SKYBOLT are identical: only one is shipped. SPCALLLI remains
 an EET duplicate. Chain rendering still needs an in-game test.
-See [the projectile import review](docs/PROJECTILE_IMPORT.it.md).
-See [the full source review](docs/FULL_SOURCE_AUDIT.it.md),
+See [the projectile import review](docs/PROJECTILE_IMPORT.md).
+See [the full source review](docs/FULL_SOURCE_AUDIT.md),
 [all IWD decisions](docs/iwd_selection_recheck.csv),
 [all SR decisions](docs/sr_source_selection.csv)
 and [every pending candidate](docs/iwd_pending_candidates.csv).
@@ -269,7 +275,7 @@ and [every pending candidate](docs/iwd_pending_candidates.csv).
 ## Validation and beta status
 
 WeiDU installation, reinstallation and byte-exact uninstallation passed in
-isolated fixtures, including the **44 real exported EET SPL files and two ITMs**. Assets were
+isolated fixtures, including the **43 real exported EET SPL files and two ITMs**. Assets were
 checked for hashes, frame bounds/RLE data, cycle references, VVC dependencies,
 phase indexes, private names and absence of external palettes/alpha BAMs/audio.
 
@@ -295,17 +301,23 @@ The temporary-weapon patcher also passed **30 cases** for recognized/conditional
 hits, missing/detached/repurposed roots, unknown visuals, delayed cues and
 malformed items, with stable reinstall and byte-exact uninstall.
 
-Both component orders produce identical resources. English/Italiano and
-partial uninstall with the other component retained also passed.
+Both component orders produce identical resources. English-only installation
+and partial uninstall with the other component retained also passed.
 Beta.10 fixes an IDS-only SRIOSORB collision that could otherwise leave SORB
-pointing to a missing projectile. [Complete recheck](docs/REPOSITORY_RECHECK.it.md).
+pointing to a missing projectile. [Complete recheck](docs/REPOSITORY_RECHECK.md).
 
 Beta.11 enables both components on BGEE, with or without SoD. The previous
 BGEE rejection was reproduced, then both components passed install/reinstall/
 uninstall checks on synthetic BGEE, BGEE+SoD, BG2EE and EET profiles in both
-installer languages. Missing spells remain absent, unrelated resources and
+then-available installer languages. Missing spells remain absent, unrelated resources and
 spell mechanics remain unchanged. These checks do not use actual BGEE exports
 or launch the game. [BGEE support and validation](docs/BGEE_SUPPORT.md).
+
+Beta.12 removes the Italian installer and documentation, and excludes SR
+Shadow Door artwork. All remaining package documentation is in English.
+Upgrade tests from a beta.11 installation using the removed language confirm
+that WeiDU restores the original door effects and removes their private files.
+[English-only update and door exclusions](docs/ENGLISH_AND_DOORS.md).
 
 ## Development
 
@@ -315,6 +327,7 @@ python3 tests/verify_graphics_integrity.py [path/to/IWDEE-BAM-export] [path/to/I
 python3 tests/verify_installer.py /path/to/weidu [path/to/extracted/spell_rev]
 python3 tests/verify_regressions.py /path/to/weidu
 python3 tests/verify_bgee.py /path/to/weidu /path/to/results
+python3 tests/verify_english_doors.py /path/to/EET-export /path/to/weidu /path/to/results
 python3 tests/verify_iwd_on_export.py /path/to/EET-export /path/to/weidu /path/to/results
 python3 tests/verify_overlays.py /path/to/EET-export /path/to/weidu /path/to/results
 python3 tests/verify_child_visuals.py /path/to/EET-export /path/to/weidu /path/to/results

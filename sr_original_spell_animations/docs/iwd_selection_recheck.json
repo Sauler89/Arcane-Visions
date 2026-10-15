@@ -1,5 +1,5 @@
 {
-  "version": "v0.2.0-beta.10",
+  "version": "v0.2.0-beta.12",
   "inputs": {
     "IWDEE": 249,
     "EET": 388,
@@ -22,8 +22,9 @@
   },
   "SR_statuses": {
     "icon": 178,
-    "included": 14,
-    "unreferenced_or_inactive": 6,
+    "included": 13,
+    "unreferenced_or_inactive": 5,
+    "excluded_by_user": 2,
     "avatar_or_equipment": 17,
     "new_spell_or_item": 8,
     "item_or_unused": 1
@@ -63,5 +64,6 @@
   "complete_IWDEE_import": false,
   "game_rendering_tested": false,
   "hardcoded_Call_Lightning_binding_is_engine_inference": true,
-  "shipped_IWD_BAM_count": 28
+  "shipped_IWD_BAM_count": 28,
+  "selection_update": "SR door artwork excluded by owner in beta.12; other source comparison results retained from the full beta.10 audit."
 }

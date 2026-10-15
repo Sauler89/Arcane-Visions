@@ -88,22 +88,6 @@
     "changes": "BAM reference/internal name renamed; three audio references cleared"
   },
   {
-    "source": "spwi5##/dvsdoor.bam",
-    "destination": "sr_original_spell_animations/assets/custom/srasdor.bam",
-    "usage": "Shadow Door: SPWI505",
-    "source_sha256": "f3d79fec03f62dcd769e8090a7623eac57800da8057514d2cb0cecaeedca1fdc",
-    "installed_sha256": "f3d79fec03f62dcd769e8090a7623eac57800da8057514d2cb0cecaeedca1fdc",
-    "changes": "BAM bytes unchanged"
-  },
-  {
-    "source": "spwi5##/dvsdoor.vvc",
-    "destination": "sr_original_spell_animations/assets/custom/srasdor.vvc",
-    "usage": "Shadow Door: SPWI505",
-    "source_sha256": "b743402d548cf76ef6e17bf7613d53e82c03a7d824d32a545c2baf7120494821",
-    "installed_sha256": "be59c23098255e2190e8dda1cf43ed04441c9c7f9f78a5d35cda820ffe1b0c36",
-    "changes": "BAM reference/internal name renamed; three audio references cleared"
-  },
-  {
     "source": "sppr7##/dvimplo.bam",
     "destination": "sr_original_spell_animations/assets/custom/sraimpl.bam",
     "usage": "Implosion: SPPR728",
